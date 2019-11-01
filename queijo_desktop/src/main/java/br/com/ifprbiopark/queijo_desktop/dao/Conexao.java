@@ -18,12 +18,13 @@ public class Conexao {
     private Conexao() {
         try {
             conexao = DriverManager.getConnection("jdbc:sqlite:bancoqueijos.db");
-            
+
             Statement statement = conexao.createStatement();
             // criando tabelas
             statement.execute("CREATE TABLE IF NOT EXISTS fornecedor( ID INTEGER, NOME VARCHAR )");
-            
+
         } catch (SQLException ex) {
+            conexao = null;
             Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
