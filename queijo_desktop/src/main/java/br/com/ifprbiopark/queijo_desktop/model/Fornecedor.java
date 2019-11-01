@@ -4,6 +4,10 @@ public class Fornecedor {
     private int id;
     private String nome;
 
+    public Fornecedor() {
+        id = 0;
+    }
+    
     public int getId() {
         return id;
     }
