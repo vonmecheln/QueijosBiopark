@@ -5,7 +5,7 @@ import br.com.ifprbiopark.queijo_desktop.model.Fornecedor;
 
 public class ControleFornecedor {
 
-    public void salvar(Fornecedor f){
+    public Fornecedor salvar(Fornecedor f){
         FornecedorDao dao = new FornecedorDao();
         
         if (f.getId() == 0) {
@@ -13,6 +13,8 @@ public class ControleFornecedor {
         } else {
             f = dao.alterar(f);
         }
+        
+        return f;
         
     }
 }

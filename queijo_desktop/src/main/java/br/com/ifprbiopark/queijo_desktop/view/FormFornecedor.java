@@ -14,6 +14,8 @@ import br.com.ifprbiopark.queijo_desktop.model.Fornecedor;
  */
 public class FormFornecedor extends javax.swing.JFrame {
 
+    Fornecedor fornecedor = new Fornecedor();
+    
     /**
      * Creates new form FormFornecedor
      */
@@ -74,11 +76,11 @@ public class FormFornecedor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        Fornecedor fornecedor = new Fornecedor();
+        
         fornecedor.setNome(tfNome.getText());
         
         ControleFornecedor controleF = new ControleFornecedor();
-        controleF.salvar(fornecedor);
+        fornecedor = controleF.salvar(fornecedor);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

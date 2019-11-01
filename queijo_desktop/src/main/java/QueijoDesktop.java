@@ -1,4 +1,5 @@
 
+import br.com.ifprbiopark.queijo_desktop.view.FormFornecedor;
 import br.com.ifprbiopark.queijo_desktop.view.TelaPrincipal;
 
 public class QueijoDesktop {
@@ -33,7 +34,7 @@ public class QueijoDesktop {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new FormFornecedor().setVisible(true);
             }
         });
     }
