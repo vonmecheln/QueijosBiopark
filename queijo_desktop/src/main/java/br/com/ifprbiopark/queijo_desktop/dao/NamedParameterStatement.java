@@ -43,6 +43,23 @@ public class NamedParameterStatement {
     }
 
     /**
+     * Creates a NamedParameterStatement. Wraps a call to
+     * c.{@link Connection#prepareStatement(java.lang.String) prepareStatement}.
+     *
+     * @param connection the database connection
+     * @param query the parameterized query
+     * @param RETURN_GENERATED_KEYS	- A constante definida em
+     * java.sql.Statement.RETURN_GENERATED_KEYS
+     * @throws SQLException - Se o statement nao puder ser criado
+     */
+    public NamedParameterStatement(Connection connection, String query,
+            Integer RETURN_GENERATED_KEYS) throws SQLException {
+        indexMap = new HashMap();
+        String parsedQuery = parse(query, indexMap);
+        statement = connection.prepareStatement(parsedQuery, RETURN_GENERATED_KEYS);
+    }
+
+    /**
      * Parses a query with named parameters. The parameter-index mappings are
      * put into the map, and the parsed query is returned. DO NOT CALL FROM
      * CLIENT CODE. This method is non-private so JUnit code can test it.
@@ -55,7 +72,7 @@ public class NamedParameterStatement {
         // I was originally using regular expressions, but they didn't work well for ignoring 
         // parameter-like strings inside quotes.
         int length = query.length();
-        StringBuffer parsedQuery = new StringBuffer(length);
+        StringBuilder parsedQuery = new StringBuilder(length);
         boolean inSingleQuote = false;
         boolean inDoubleQuote = false;
         int index = 1;
@@ -90,7 +107,7 @@ public class NamedParameterStatement {
                         indexList = new LinkedList();
                         paramMap.put(name, indexList);
                     }
-                    indexList.add(new Integer(index));
+                    indexList.add(index);
 
                     index++;
                 }
@@ -106,7 +123,7 @@ public class NamedParameterStatement {
             int i = 0;
             for (Iterator itr2 = list.iterator(); itr2.hasNext();) {
                 Integer x = (Integer) itr2.next();
-                indexes[i++] = x.intValue();
+                indexes[i++] = x;
             }
             entry.setValue(indexes);
         }
