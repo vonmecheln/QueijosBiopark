@@ -6,16 +6,17 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleFornecedor;
+import br.com.ifprbiopark.queijo_desktop.exception.FornecedorException;
 import br.com.ifprbiopark.queijo_desktop.model.Fornecedor;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author luis
- */
 public class FormFornecedor extends javax.swing.JFrame {
 
     Fornecedor fornecedor = new Fornecedor();
-    
+
     /**
      * Creates new form FormFornecedor
      */
@@ -35,6 +36,7 @@ public class FormFornecedor extends javax.swing.JFrame {
         tfNome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        aviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,36 +58,51 @@ public class FormFornecedor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jLabel1)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85)
                 .addComponent(jButton1)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(47, 47, 47))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
-        fornecedor.setNome(tfNome.getText());
-        
-        ControleFornecedor controleF = new ControleFornecedor();
-        fornecedor = controleF.salvar(fornecedor);
-        
+
+        aviso.setText("");
+        try {
+            fornecedor.setNome(tfNome.getText());
+
+            ControleFornecedor controleF = new ControleFornecedor();
+            controleF.salvar(fornecedor);
+
+            aviso.setText("Fornecedor salvo com sucesso!");
+            aviso.setForeground(Color.GREEN);
+
+        } catch (FornecedorException ex) {
+
+            aviso.setText(ex.getMessage());
+            aviso.setForeground(Color.RED);
+            //Logger.getLogger(FormFornecedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel aviso;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField tfNome;

@@ -21,7 +21,7 @@ public class Conexao {
 
             Statement statement = conexao.createStatement();
             // criando tabelas
-            statement.execute("CREATE TABLE IF NOT EXISTS fornecedor( ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME VARCHAR )");
+            statement.execute("CREATE TABLE IF NOT EXISTS fornecedor( ID INTEGER, NOME VARCHAR )");
 
         } catch (SQLException ex) {
             conexao = null;
