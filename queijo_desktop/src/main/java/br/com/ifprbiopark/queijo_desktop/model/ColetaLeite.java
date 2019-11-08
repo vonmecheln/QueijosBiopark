@@ -1,12 +1,14 @@
 
 package br.com.ifprbiopark.queijo_desktop.model;
 
+import java.util.Date;
+
 
 public class ColetaLeite {
     
     private Integer idColetaLeite;
     private String loteColeta;
-    private date dtColeta;
+    private Date dtColeta;
     private Produtor Produtor_idProdutor;
     private double qtdLeite;
 

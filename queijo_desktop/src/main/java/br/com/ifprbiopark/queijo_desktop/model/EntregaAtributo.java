@@ -6,8 +6,8 @@ public class EntregaAtributo {
     
     private Integer idEntregaAtributo;
     private String valor;
-    private Atributo Atributo_idAtributo;
-    private ColetaLeite ColetaLeite_idColetaLeite;
+    private Atributos atributo_idAtributo;
+    private ColetaLeite coletaLeite_idColetaLeite;
 
     public Integer getIdEntregaAtributo() {
         return idEntregaAtributo;
