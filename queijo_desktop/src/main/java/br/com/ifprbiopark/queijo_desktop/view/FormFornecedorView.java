@@ -13,14 +13,14 @@ import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FormFornecedor extends javax.swing.JFrame {
+public class FormFornecedorView extends javax.swing.JInternalFrame {
 
     Fornecedor fornecedor = new Fornecedor();
 
     /**
      * Creates new form FormFornecedor
      */
-    public FormFornecedor() {
+    public FormFornecedorView() {
         initComponents();
     }
 
@@ -39,7 +39,13 @@ public class FormFornecedor extends javax.swing.JFrame {
         aviso = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Cadastro de fornecedor");
+        setName("Cadastro de fornecedor"); // NOI18N
 
         jLabel1.setText("Nome");
 
@@ -103,7 +109,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
             aviso.setText(ex.getMessage());
             aviso.setForeground(Color.RED);
-            //Logger.getLogger(FormFornecedor.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(FormFornecedorView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
