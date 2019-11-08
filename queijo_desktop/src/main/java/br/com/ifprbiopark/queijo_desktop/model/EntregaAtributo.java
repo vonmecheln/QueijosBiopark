@@ -25,20 +25,20 @@ public class EntregaAtributo {
         this.valor = valor;
     }
 
-    public Atributo getAtributo_idAtributo() {
-        return Atributo_idAtributo;
+    public Atributos getAtributo_idAtributo() {
+        return atributo_idAtributo;
     }
 
-    public void setAtributo_idAtributo(Atributo Atributo_idAtributo) {
-        this.Atributo_idAtributo = Atributo_idAtributo;
+    public void setAtributo_idAtributo(Atributos Atributo_idAtributo) {
+        this.atributo_idAtributo = Atributo_idAtributo;
     }
 
     public ColetaLeite getColetaLeite_idColetaLeite() {
-        return ColetaLeite_idColetaLeite;
+        return coletaLeite_idColetaLeite;
     }
 
     public void setColetaLeite_idColetaLeite(ColetaLeite ColetaLeite_idColetaLeite) {
-        this.ColetaLeite_idColetaLeite = ColetaLeite_idColetaLeite;
+        this.coletaLeite_idColetaLeite = ColetaLeite_idColetaLeite;
     }
     
     

@@ -28,11 +28,11 @@ public class ColetaLeite {
         this.loteColeta = loteColeta;
     }
 
-    public date getDtColeta() {
+    public Date getDtColeta() {
         return dtColeta;
     }
 
-    public void setDtColeta(date dtColeta) {
+    public void setDtColeta(Date dtColeta) {
         this.dtColeta = dtColeta;
     }
 
