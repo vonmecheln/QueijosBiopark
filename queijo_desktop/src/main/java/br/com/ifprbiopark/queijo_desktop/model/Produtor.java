@@ -4,7 +4,7 @@ package br.com.ifprbiopark.queijo_desktop.model;
  class Produtor {
      
     private Integer idProdutor;
-    private Pessoa Pessoa_idPessoa;
+    private Pessoa pessoa_idPessoa;
 
     public int getIdProdutor() {
         return idProdutor;

@@ -9,7 +9,7 @@ public class ColetaLeite {
     private Integer idColetaLeite;
     private String loteColeta;
     private Date dtColeta;
-    private Produtor Produtor_idProdutor;
+    private Produtor produtor_idProdutor;
     private double qtdLeite;
 
     public Integer getIdColetaLeite() {
