@@ -37,11 +37,11 @@ public class ColetaLeite {
     }
 
     public Produtor getProdutor_idProdutor() {
-        return Produtor_idProdutor;
+        return produtor_idProdutor;
     }
 
     public void setProdutor_idProdutor(Produtor Produtor_idProdutor) {
-        this.Produtor_idProdutor = Produtor_idProdutor;
+        this.produtor_idProdutor = Produtor_idProdutor;
     }
 
     public double getQtdLeite() {

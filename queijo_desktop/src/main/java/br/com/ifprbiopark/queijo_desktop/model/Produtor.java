@@ -15,11 +15,11 @@ package br.com.ifprbiopark.queijo_desktop.model;
     }
 
     public Pessoa getPessoa_idPessoa() {
-        return Pessoa_idPessoa;
+        return pessoa_idPessoa;
     }
 
     public void setPessoa_idPessoa(Pessoa Pessoa_idPessoa) {
-        this.Pessoa_idPessoa = Pessoa_idPessoa;
+        this.pessoa_idPessoa = Pessoa_idPessoa;
     }
     
     
