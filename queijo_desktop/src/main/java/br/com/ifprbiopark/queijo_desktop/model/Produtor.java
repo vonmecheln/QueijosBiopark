@@ -1,7 +1,7 @@
 
 package br.com.ifprbiopark.queijo_desktop.model;
 
- class Produtor {
+public class Produtor {
      
     private Integer idProdutor;
     private Pessoa pessoa_idPessoa;
