@@ -42,6 +42,12 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Processamento");
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações de Processamento"));
 
         jLabel1.setText("Item:");

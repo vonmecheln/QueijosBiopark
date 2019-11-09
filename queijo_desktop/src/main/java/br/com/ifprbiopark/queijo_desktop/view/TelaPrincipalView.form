@@ -9,12 +9,36 @@
             <Property name="text" type="java.lang.String" value="Cadastro"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuFornecedor">
+            <MenuItem class="javax.swing.JMenuItem" name="menuPessoa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fornecedor"/>
+                <Property name="text" type="java.lang.String" value="Pessoa"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuFornecedorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuPessoaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuEntradaLeite">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Entrada de Leite"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuEntradaLeiteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuClassificacaoLeite">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Classifica&#xe7;&#xe3;o de Leite"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuClassificacaoLeiteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuProcessamento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processamento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuProcessamentoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

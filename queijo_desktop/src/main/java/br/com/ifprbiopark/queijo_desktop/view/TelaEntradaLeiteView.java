@@ -44,6 +44,11 @@ public class TelaEntradaLeiteView extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEntradaLeite = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Entrada de Leite");
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Fornecedor"));
 
         lblCodigo.setText("Código:");

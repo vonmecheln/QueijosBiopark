@@ -13,14 +13,14 @@ import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FormFornecedorView extends javax.swing.JInternalFrame {
+public class TelaPessoaView extends javax.swing.JInternalFrame {
 
     Fornecedor fornecedor = new Fornecedor();
 
     /**
      * Creates new form FormFornecedor
      */
-    public FormFornecedorView() {
+    public TelaPessoaView() {
         initComponents();
     }
 
@@ -160,11 +160,12 @@ public class FormFornecedorView extends javax.swing.JInternalFrame {
                     .addComponent(lblCodigo)
                     .addComponent(lblDocumento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTelefone)
@@ -188,7 +189,6 @@ public class FormFornecedorView extends javax.swing.JInternalFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        getAccessibleContext().setAccessibleName("Cadastro de Pessoa");
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
@@ -210,7 +210,7 @@ public class FormFornecedorView extends javax.swing.JInternalFrame {
 
             aviso.setText(ex.getMessage());
             aviso.setForeground(Color.RED);
-            //Logger.getLogger(FormFornecedorView.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(TelaPessoaView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
