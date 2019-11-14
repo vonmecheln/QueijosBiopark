@@ -1,5 +1,5 @@
 
-import br.com.ifprbiopark.queijo_desktop.view.FormFornecedorView;
+import br.com.ifprbiopark.queijo_desktop.view.TelaPessoaView;
 import br.com.ifprbiopark.queijo_desktop.view.TelaPrincipalView;
 
 public class QueijoDesktop {

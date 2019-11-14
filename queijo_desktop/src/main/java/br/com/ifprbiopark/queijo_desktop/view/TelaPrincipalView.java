@@ -22,7 +22,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
-        menuFornecedor = new javax.swing.JMenuItem();
+        menuPessoa = new javax.swing.JMenuItem();
+        menuEntradaLeite = new javax.swing.JMenuItem();
+        menuClassificacaoLeite = new javax.swing.JMenuItem();
+        menuProcessamento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,13 +49,37 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         menuCadastro.setText("Cadastro");
 
-        menuFornecedor.setText("Fornecedor");
-        menuFornecedor.addActionListener(new java.awt.event.ActionListener() {
+        menuPessoa.setText("Pessoa");
+        menuPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuFornecedorActionPerformed(evt);
+                menuPessoaActionPerformed(evt);
             }
         });
-        menuCadastro.add(menuFornecedor);
+        menuCadastro.add(menuPessoa);
+
+        menuEntradaLeite.setText("Entrada de Leite");
+        menuEntradaLeite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEntradaLeiteActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuEntradaLeite);
+
+        menuClassificacaoLeite.setText("Classificação de Leite");
+        menuClassificacaoLeite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClassificacaoLeiteActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuClassificacaoLeite);
+
+        menuProcessamento.setText("Processamento");
+        menuProcessamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuProcessamentoActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuProcessamento);
 
         jMenuBar1.add(menuCadastro);
 
@@ -82,11 +109,29 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFornecedorActionPerformed
-        FormFornecedorView formFornecedor = new FormFornecedorView();
-        painelDesktop.add(formFornecedor);
-        formFornecedor.setVisible(true);
-    }//GEN-LAST:event_menuFornecedorActionPerformed
+    private void menuPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPessoaActionPerformed
+        TelaPessoaView formPessoa = new TelaPessoaView();
+        painelDesktop.add(formPessoa);
+        formPessoa.setVisible(true);
+    }//GEN-LAST:event_menuPessoaActionPerformed
+
+    private void menuEntradaLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntradaLeiteActionPerformed
+        TelaEntradaLeiteView formEntradaLeite = new TelaEntradaLeiteView();
+        painelDesktop.add(formEntradaLeite);
+        formEntradaLeite.setVisible(true);
+    }//GEN-LAST:event_menuEntradaLeiteActionPerformed
+
+    private void menuClassificacaoLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClassificacaoLeiteActionPerformed
+        TelaClassificacaoLeiteView formClassificacaoLeite = new TelaClassificacaoLeiteView();
+        painelDesktop.add(formClassificacaoLeite);
+        formClassificacaoLeite.setVisible(true);
+    }//GEN-LAST:event_menuClassificacaoLeiteActionPerformed
+
+    private void menuProcessamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProcessamentoActionPerformed
+        TelaProcessamentoView formProcessamentoe = new TelaProcessamentoView();
+        painelDesktop.add(formProcessamentoe);
+        formProcessamentoe.setVisible(true);
+    }//GEN-LAST:event_menuProcessamentoActionPerformed
 
     
 
@@ -95,7 +140,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu menuCadastro;
-    private javax.swing.JMenuItem menuFornecedor;
+    private javax.swing.JMenuItem menuClassificacaoLeite;
+    private javax.swing.JMenuItem menuEntradaLeite;
+    private javax.swing.JMenuItem menuPessoa;
+    private javax.swing.JMenuItem menuProcessamento;
     private javax.swing.JDesktopPane painelDesktop;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FornecedorDao {
-
+public class FornecedorDao extends AbstractDao<Fornecedor> {
+    
+    @Override
     public void inserir(Fornecedor f) throws DbException {
-
         try {
             
             String sql = "INSERT INTO fornecedor( NOME ) VALUES (:nome)";
@@ -38,18 +38,22 @@ public class FornecedorDao {
 
         } catch (SQLException ex) {
             throw new DbException(ex);
-        } 
-        
+        }
     }
 
-    public boolean excluir(Fornecedor f) {
-
-        return false;
+    @Override
+    public boolean excluir(Fornecedor objeto) throws DbException {
+        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Fornecedor alterar(Fornecedor f) {
-
-        return f;
+    @Override
+    public Fornecedor alterar(Fornecedor objeto) throws DbException {
+        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+        @Override
+    public Fornecedor consultar(Fornecedor objeto) throws DbException {
+        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public List<Fornecedor> selecionarPeloNome(String n) {
