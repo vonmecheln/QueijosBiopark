@@ -5,17 +5,14 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
-import br.com.ifprbiopark.queijo_desktop.control.ControleFornecedor;
-import br.com.ifprbiopark.queijo_desktop.exception.FornecedorException;
-import br.com.ifprbiopark.queijo_desktop.model.Fornecedor;
+import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
+import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
+import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.awt.Color;
-import java.awt.Font;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TelaPessoaView extends javax.swing.JInternalFrame {
 
-    Fornecedor fornecedor = new Fornecedor();
+    Pessoa pessoa = new Pessoa();
 
     /**
      * Creates new form FormFornecedor
@@ -182,15 +179,15 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
 
         aviso.setText("");
         try {
-            fornecedor.setNome(txtNome.getText());
+            pessoa.setNome(txtNome.getText());
 
-            ControleFornecedor controleF = new ControleFornecedor();
-            controleF.salvar(fornecedor);
+            ControlePessoa controle = new ControlePessoa();
+            controle.salvar(pessoa);
 
             aviso.setText("Fornecedor salvo com sucesso!");
             aviso.setForeground(Color.GREEN);
 
-        } catch (FornecedorException ex) {
+        } catch (PessoaException ex) {
 
             aviso.setText(ex.getMessage());
             aviso.setForeground(Color.RED);
