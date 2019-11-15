@@ -73,33 +73,37 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
         throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<ColetaLeite> listarColetas() throws SQLException, DbException {
-        List<ColetaLeite> coletas = new ArrayList<>();
+    public List<ColetaLeite> listarColetas() {
+        try {
+            List<ColetaLeite> coletas = new ArrayList<>();
 
-        //String SQL;
-        String sql = "SELECT FROM coletaLeite( idColetaLeite, loteColeta, dtColeta, idProdutor ) "
-                + "VALUES (:idColetaLeite, :loteColeta, :dtColeta, idProdutor)";
+            //String SQL;
+            String sql = "SELECT FROM coletaLeite( idColetaLeite, loteColeta, dtColeta, idProdutor ) "
+                    + "VALUES (:idColetaLeite, :loteColeta, :dtColeta, idProdutor)";
 
-        Conexao con = Conexao.getInstance();
-        NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
-        ResultSet consulta = nps.executeQuery();
-        while (consulta.next()) {
-            ColetaLeite coleta = new ColetaLeite();
-            coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
-            coleta.setIdColetaLeite(consulta.getInt("loteColeta"));
-            coleta.setDtColeta(consulta.getDate("dtColeta"));
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                ColetaLeite coleta = new ColetaLeite();
+                coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
+                coleta.setIdColetaLeite(consulta.getInt("loteColeta"));
+                coleta.setDtColeta(consulta.getDate("dtColeta"));
 
-            ProdutorDao produtorDao = new ProdutorDao();
-            Produtor produtor = new Produtor();
-            produtor.setIdProdutor(consulta.getInt("idProdutor"));
+                ProdutorDao produtorDao = new ProdutorDao();
+                Produtor produtor = new Produtor();
+                produtor.setIdProdutor(consulta.getInt("idProdutor"));
 
-            coleta.setProdutor_idProdutor(produtorDao.consultar(produtor));
+                coleta.setProdutor_idProdutor(produtorDao.consultar(produtor));
 
-            coletas.add(coleta);
+                coletas.add(coleta);
 
+            }
+            return coletas;
+        } catch (Exception e) {
+            return null;
         }
-        return coletas;
 
     }
 
