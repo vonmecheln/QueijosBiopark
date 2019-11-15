@@ -4,7 +4,7 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
-import br.com.ifprbiopark.queijo_desktop.model.Produtor;
+import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             nps.setInt("idColetaLeite", c.getIdColetaLeite());
             nps.setString("loteColeta", c.getLoteColeta());
             nps.setDate("dtColeta", new java.sql.Date(c.getDtColeta().getTime()));
-            nps.setInt("idProdutor", c.getProdutor_idProdutor().getIdProdutor());
+            nps.setInt("idProdutor", c.getProdutor_idProdutor().getIdPessoa());
 
             int exec = nps.executeUpdate();
             if (exec == 0) {
@@ -91,11 +91,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 coleta.setIdColetaLeite(consulta.getInt("loteColeta"));
                 coleta.setDtColeta(consulta.getDate("dtColeta"));
 
-                ProdutorDao produtorDao = new ProdutorDao();
-                Produtor produtor = new Produtor();
-                produtor.setIdProdutor(consulta.getInt("idProdutor"));
-
-                coleta.setProdutor_idProdutor(produtorDao.consultar(produtor));
+                PessoaDao pessoaDao = new PessoaDao();
+                coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("idProdutor")));
 
                 coletas.add(coleta);
 

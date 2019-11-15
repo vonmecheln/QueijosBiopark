@@ -9,6 +9,7 @@ import javax.swing.table.AbstractTableModel;
 public class TableRecebimentoLeite extends AbstractTableModel {
     
     ColetaLeiteDao coleta = new ColetaLeiteDao();
+   
     List<ColetaLeite> listaEntregas = coleta.listarColetas();
     
     
