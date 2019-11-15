@@ -26,8 +26,12 @@ public class ProdutorDao extends AbstractDao<Produtor>{
     }
 
     @Override
-    public Produtor consultar(Produtor objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+    public Produtor consultar(Produtor p) throws DbException {
+        
+        
+        
+        return p;
+        
     }
 
     @Override
