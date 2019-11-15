@@ -10,14 +10,12 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ColetaLeiteDao extends AbstractDao<ColetaLeite>{
-    
-    
+public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
     @Override
     public void inserir(ColetaLeite c) throws DbException {
         try {
-            
+
             String sql = "INSERT INTO coletaLeite( idColetaLeite, loteColeta, dtColeta, idProdutor ) "
                     + "VALUES (:idColetaLeite, :loteColeta, :dtColeta, idProdutor)";
             Conexao con = Conexao.getInstance();
@@ -48,7 +46,19 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite>{
 
     @Override
     public boolean excluir(ColetaLeite objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = " delete from coletaLeite where idColetaLeite = :idColetaLeite";
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            nps.setInt("idColetaLeite", objeto.getIdColetaLeite());
+            int exec = nps.executeUpdate();
+            if (exec == 0) {
+                throw new NotExecuteInsertException();
+            }
+        } catch (SQLException ex) {
+            throw new DbException(ex);
+        }
+        return true;
     }
 
     @Override
@@ -64,5 +74,5 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite>{
     public List<ColetaLeite> listarColetas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
