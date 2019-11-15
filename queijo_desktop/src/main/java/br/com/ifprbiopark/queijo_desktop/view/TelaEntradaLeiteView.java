@@ -5,17 +5,23 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableRecebimentoLeite;
+
 /**
  *
  * @author marcos.andre
  */
 public class TelaEntradaLeiteView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form TelaEntradaLeiteView
-     */
+   
+    TableRecebimentoLeite listaColetas = new TableRecebimentoLeite();
+    
+       
+    
     public TelaEntradaLeiteView() {
         initComponents();
+        
+         tblEntradaLeite.setModel(listaColetas);
     }
 
     /**

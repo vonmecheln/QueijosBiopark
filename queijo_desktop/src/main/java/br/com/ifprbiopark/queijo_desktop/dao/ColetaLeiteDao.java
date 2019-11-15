@@ -1,13 +1,49 @@
 package br.com.ifprbiopark.queijo_desktop.dao;
 
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
+import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ColetaLeiteDao extends AbstractDao<ColetaLeite>{
+    
+    
 
     @Override
-    public void inserir(ColetaLeite objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+    public void inserir(ColetaLeite c) throws DbException {
+        try {
+            
+            String sql = "INSERT INTO coletaLeite( idColetaLeite, loteColeta, dtColeta, idProdutor ) "
+                    + "VALUES (:idColetaLeite, :loteColeta, :dtColeta, idProdutor)";
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            nps.setInt("idColetaLeite", c.getIdColetaLeite());
+            nps.setString("loteColeta", c.getLoteColeta());
+            nps.setDate("dtColeta", new java.sql.Date(c.getDtColeta().getTime()));
+            nps.setInt("idProdutor", c.getProdutor_idProdutor().getIdProdutor());
+
+            int exec = nps.executeUpdate();
+            if (exec == 0) {
+                throw new NotExecuteInsertException();
+            }
+
+            int key = 0;
+            ResultSet retorno = nps.getGeneratedKeys();
+            if (retorno != null && retorno.next()) {
+                key = retorno.getInt(1);
+            } else {
+                throw new GeneratedKeysException();
+            }
+            c.setIdColetaLeite(key);
+
+        } catch (SQLException ex) {
+            throw new DbException(ex);
+        }
     }
 
     @Override
@@ -23,6 +59,10 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite>{
     @Override
     public ColetaLeite alterar(ColetaLeite objeto) throws DbException {
         throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<ColetaLeite> listarColetas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

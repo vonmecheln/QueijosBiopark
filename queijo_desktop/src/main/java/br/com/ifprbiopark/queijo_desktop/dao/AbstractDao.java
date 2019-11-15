@@ -12,6 +12,7 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
  * @author jhona
  */
 public abstract class AbstractDao<T> {
+    
     public abstract void inserir(T objeto) throws DbException;
      
     public abstract boolean excluir(T objeto) throws DbException;
