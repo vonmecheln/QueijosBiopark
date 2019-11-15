@@ -37,11 +37,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         painelDesktop.setLayout(painelDesktopLayout);
         painelDesktopLayout.setHorizontalGroup(
             painelDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         painelDesktopLayout.setVerticalGroup(
             painelDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
 
         jToolBar1.setFloatable(false);
