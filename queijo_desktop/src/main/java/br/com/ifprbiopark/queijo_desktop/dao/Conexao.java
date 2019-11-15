@@ -21,19 +21,28 @@ public class Conexao {
 
             Statement statement = conexao.createStatement();
             // criando tabelas
-            statement.execute("CREATE TABLE IF NOT EXISTS `pessoa` ("
-                    + "  `idPessoa` INT(11) NOT NULL,"
-                    + "  `nome` VARCHAR(45) NOT NULL,"
-                    + "  `endereco` VARCHAR(50) NOT NULL,"
-                    + "  `tipoFiscal` VARCHAR(1) NOT NULL,"
-                    + "  `cadastro` VARCHAR(14) NOT NULL,"
-                    + "  `tipoPessoa` VARCHAR(45) NOT NULL,"
-                    + "  PRIMARY KEY (`idPessoa`))");
-
             statement.execute("CREATE TABLE IF NOT EXISTS `atributos` ("
                     + "  `idAtributo` INT(11) NOT NULL,"
                     + "  `nomeAtributo` VARCHAR(45) NOT NULL,"
                     + "  PRIMARY KEY (`idAtributo`))");
+
+            statement.execute("CREATE TABLE IF NOT EXISTS `pessoa` ("
+                    + "  `idPessoa` INT(11) NOT NULL PRIMARY KEY,"
+                    + "  `nome` VARCHAR(45) NOT NULL,"
+                    + "  `endereco` VARCHAR(50) NOT NULL,"
+                    + "  `tipoFiscal` VARCHAR(1) NOT NULL,"
+                    + "  `cadastro` VARCHAR(14) NOT NULL,"
+                    + "  `tipoPessoa` VARCHAR(45) NOT NULL)");
+
+//            statement.execute("CREATE TABLE IF NOT EXISTS `coletaleite` ("
+//                    + "  `idColetaLeite` INT(11) NOT NULL PRIMARY KEY,"
+//                    + "  `loteColeta` VARCHAR(45) NOT NULL,"
+//                    + "  `dtColeta` DATE NOT NULL,"
+//                    + "  `qtdLeite` DOUBLE NOT NULL,"
+//                    + "  `Pessoa_idPessoa` INT(11) NOT NULL,"                    
+//                    + "  CONSTRAINT `fk_ColetaLeite_Pessoa1`"
+//                    + "    FOREIGN KEY (`Pessoa_idPessoa`)"
+//                    + "    REFERENCES `mydb`.`pessoa` (`idPessoa`))");
 
         } catch (SQLException ex) {
             conexao = null;

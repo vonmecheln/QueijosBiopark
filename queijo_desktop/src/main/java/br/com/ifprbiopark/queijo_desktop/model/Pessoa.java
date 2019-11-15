@@ -11,6 +11,11 @@ public class Pessoa {
     private String cadastro;
     private String tipoPessoa;
 
+    public Pessoa() {
+        idPessoa = 0;
+    }
+
+    
     public Integer getIdPessoa() {
         return idPessoa;
     }
