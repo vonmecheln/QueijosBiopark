@@ -71,7 +71,32 @@ public class PessoaDao extends AbstractDao<Pessoa>{
 
     @Override
     public Pessoa consultar(int id) throws DbException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            
+            //String SQL;
+            String sql = "SELECT FROM coletaLeite( idColetaLeite, loteColeta, dtColeta, idProdutor ) "
+                    + "VALUES (:idColetaLeite, :loteColeta, :dtColeta, idProdutor)";
+
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Pessoa pessoa = new Pessoa();
+                pessoa.setIdPessoa(consulta.getInt("idPessoa"));
+                pessoa.setNome(consulta.getString("nome"));
+                pessoa.setEndereco(consulta.getString("endereco"));
+                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
+                pessoa.setCadastro(consulta.getString("cadastro"));
+                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+                
+                return pessoa;
+                
+            }
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
     }
     
 }
