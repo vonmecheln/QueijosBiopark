@@ -9,7 +9,7 @@ public class ColetaLeite {
     private Integer idColetaLeite;
     private String loteColeta;
     private Date dtColeta;
-    private Produtor produtor_idProdutor;
+    private Pessoa produtor_idProdutor;
     private double qtdLeite;
 
     public Integer getIdColetaLeite() {
@@ -36,11 +36,11 @@ public class ColetaLeite {
         this.dtColeta = dtColeta;
     }
 
-    public Produtor getProdutor_idProdutor() {
+    public Pessoa getProdutor_idProdutor() {
         return produtor_idProdutor;
     }
 
-    public void setProdutor_idProdutor(Produtor Produtor_idProdutor) {
+    public void setProdutor_idProdutor(Pessoa Produtor_idProdutor) {
         this.produtor_idProdutor = Produtor_idProdutor;
     }
 

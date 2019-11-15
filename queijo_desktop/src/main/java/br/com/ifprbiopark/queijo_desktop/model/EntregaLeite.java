@@ -11,7 +11,7 @@ public class EntregaLeite {
     private double ph;
     private double acidez;
     private String situacao;
-    private Fornecedor fornecedor;
+    private Pessoa fornecedor;
 
     public int getId() {
         return id;
@@ -77,11 +77,11 @@ public class EntregaLeite {
         this.situacao = situacao;
     }
 
-    public Fornecedor getFornecedor() {
+    public Pessoa getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
+    public void setFornecedor(Pessoa fornecedor) {
         this.fornecedor = fornecedor;
     } 
 }
