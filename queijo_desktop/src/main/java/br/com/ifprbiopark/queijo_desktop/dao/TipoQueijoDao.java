@@ -33,5 +33,10 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
     public TipoQueijo alterar(TipoQueijo objeto) throws DbException {
         throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public TipoQueijo consultar(int id) throws DbException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

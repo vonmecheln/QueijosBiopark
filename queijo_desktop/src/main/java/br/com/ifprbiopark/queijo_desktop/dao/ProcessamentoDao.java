@@ -33,5 +33,10 @@ public class ProcessamentoDao extends AbstractDao<Processamento>{
     public Processamento alterar(Processamento objeto) throws DbException {
         throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Processamento consultar(int id) throws DbException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

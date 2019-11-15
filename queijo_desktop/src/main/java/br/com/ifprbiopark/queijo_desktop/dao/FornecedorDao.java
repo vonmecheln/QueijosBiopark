@@ -61,4 +61,9 @@ public class FornecedorDao extends AbstractDao<Fornecedor> {
 
         return listaFornecedores;
     }
+
+    @Override
+    public Fornecedor consultar(int id) throws DbException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
