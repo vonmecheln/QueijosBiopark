@@ -61,7 +61,10 @@ public class PessoaDao extends AbstractDao<Pessoa>{
 
     @Override
     public Pessoa consultar(Pessoa objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+        if(objeto == null){
+            return null;
+        }
+        return consultar(objeto.getIdPessoa());
     }
 
     @Override
