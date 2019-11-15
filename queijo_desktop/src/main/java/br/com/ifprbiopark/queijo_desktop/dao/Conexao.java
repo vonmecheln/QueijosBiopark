@@ -21,7 +21,19 @@ public class Conexao {
 
             Statement statement = conexao.createStatement();
             // criando tabelas
-            statement.execute("CREATE TABLE IF NOT EXISTS fornecedor( ID INTEGER, NOME VARCHAR )");
+            statement.execute("CREATE TABLE IF NOT EXISTS `mydb`.`pessoa` ("
+                    + "  `idPessoa` INT(11) NOT NULL,"
+                    + "  `nome` VARCHAR(45) NOT NULL,"
+                    + "  `endereco` VARCHAR(50) NOT NULL,"
+                    + "  `tipoFiscal` VARCHAR(1) NOT NULL,"
+                    + "  `cadastro` VARCHAR(14) NOT NULL,"
+                    + "  `tipoPessoa` VARCHAR(45) NOT NULL,"
+                    + "  PRIMARY KEY (`idPessoa`))");
+
+            statement.execute("CREATE TABLE IF NOT EXISTS `mydb`.`atributos` ("
+                    + "  `idAtributo` INT(11) NOT NULL,"
+                    + "  `nomeAtributo` VARCHAR(45) NOT NULL,"
+                    + "  PRIMARY KEY (`idAtributo`))");
 
         } catch (SQLException ex) {
             conexao = null;

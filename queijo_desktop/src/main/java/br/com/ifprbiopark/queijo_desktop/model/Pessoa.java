@@ -6,15 +6,16 @@ public class Pessoa {
     
     private Integer idPessoa;
     private String nome;
-    private String endereco;
-    private int pessoaFisica;
+    private String endereco;    
+    private String tipoFiscal;
     private String cadastro;
+    private String tipoPessoa;
 
-    public int getIdPessoa() {
+    public Integer getIdPessoa() {
         return idPessoa;
     }
 
-    public void setIdPessoa(int idPessoa) {
+    public void setIdPessoa(Integer idPessoa) {
         this.idPessoa = idPessoa;
     }
 
@@ -34,12 +35,12 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-    public int getPessoaFisica() {
-        return pessoaFisica;
+    public String getTipoFiscal() {
+        return tipoFiscal;
     }
 
-    public void setPessoaFisica(int pessoaFisica) {
-        this.pessoaFisica = pessoaFisica;
+    public void setTipoFiscal(String tipoFiscal) {
+        this.tipoFiscal = tipoFiscal;
     }
 
     public String getCadastro() {
@@ -49,8 +50,14 @@ public class Pessoa {
     public void setCadastro(String cadastro) {
         this.cadastro = cadastro;
     }
-    
-    
+
+    public String getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(String tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
     
     
 }

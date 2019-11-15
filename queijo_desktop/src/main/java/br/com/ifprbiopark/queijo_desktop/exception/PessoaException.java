@@ -1,10 +1,10 @@
 package br.com.ifprbiopark.queijo_desktop.exception;
 
-public class FornecedorException extends BasicException {
+public class PessoaException extends BasicException {
 
     
 
-    public FornecedorException(Exception ex) {
+    public PessoaException(Exception ex) {
         super("Fornecedor: " + ex.getMessage());
     }
 
