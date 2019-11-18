@@ -6,6 +6,7 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableRecebimentoLeite;
+import java.awt.Dimension;
 
 /**
  *
@@ -13,15 +14,17 @@ import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableRecebimentoLeite;
  */
 public class TelaEntradaLeiteView extends javax.swing.JInternalFrame {
 
-   
     TableRecebimentoLeite listaColetas = new TableRecebimentoLeite();
-    
-       
-    
+
     public TelaEntradaLeiteView() {
         initComponents();
-        
-         tblEntradaLeite.setModel(listaColetas);
+
+        tblEntradaLeite.setModel(listaColetas);
+    }
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**

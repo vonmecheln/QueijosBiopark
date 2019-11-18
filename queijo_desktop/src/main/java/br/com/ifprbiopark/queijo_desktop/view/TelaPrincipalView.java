@@ -1,5 +1,10 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JRootPane;
+
 public class TelaPrincipalView extends javax.swing.JFrame {
 
     /**
@@ -7,6 +12,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
      */
     public TelaPrincipalView() {
         initComponents();
+       
     }
 
     /**
@@ -110,27 +116,55 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPessoaActionPerformed
-        TelaPessoaView formPessoa = new TelaPessoaView();
-        painelDesktop.add(formPessoa);
-        formPessoa.setVisible(true);
+        try {
+            TelaPessoaView formPessoa = new TelaPessoaView();
+            painelDesktop.add(formPessoa);
+            formPessoa.setMaximum(true);
+            formPessoa.setVisible(true);
+            formPessoa.setPosicao();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuPessoaActionPerformed
 
     private void menuEntradaLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntradaLeiteActionPerformed
-        TelaEntradaLeiteView formEntradaLeite = new TelaEntradaLeiteView();
-        painelDesktop.add(formEntradaLeite);
-        formEntradaLeite.setVisible(true);
+        try {
+            TelaEntradaLeiteView formEntradaLeite = new TelaEntradaLeiteView();
+            painelDesktop.add(formEntradaLeite);
+            formEntradaLeite.setMaximum(true);
+            formEntradaLeite.setVisible(true);        
+            formEntradaLeite.setPosicao();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuEntradaLeiteActionPerformed
 
     private void menuClassificacaoLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClassificacaoLeiteActionPerformed
-        TelaClassificacaoLeiteView formClassificacaoLeite = new TelaClassificacaoLeiteView();
-        painelDesktop.add(formClassificacaoLeite);
-        formClassificacaoLeite.setVisible(true);
+        try {
+            TelaClassificacaoLeiteView formClassificacaoLeite = new TelaClassificacaoLeiteView();
+            painelDesktop.add(formClassificacaoLeite);
+            formClassificacaoLeite.setMaximum(true);
+            formClassificacaoLeite.setVisible(true);
+            formClassificacaoLeite.setPosicao();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        
     }//GEN-LAST:event_menuClassificacaoLeiteActionPerformed
 
     private void menuProcessamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProcessamentoActionPerformed
-        TelaProcessamentoView formProcessamentoe = new TelaProcessamentoView();
-        painelDesktop.add(formProcessamentoe);
-        formProcessamentoe.setVisible(true);
+        try {
+            TelaProcessamentoView formProcessamentoe = new TelaProcessamentoView();
+            painelDesktop.add(formProcessamentoe);
+            formProcessamentoe.setMaximum(true);
+            formProcessamentoe.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+            formProcessamentoe.setVisible(true);
+            formProcessamentoe.setPosicao();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_menuProcessamentoActionPerformed
 
     

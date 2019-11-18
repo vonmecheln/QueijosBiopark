@@ -9,6 +9,7 @@ import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
 import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.awt.Color;
+import java.awt.Dimension;
 
 public class TelaPessoaView extends javax.swing.JInternalFrame {
 
@@ -20,7 +21,11 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     public TelaPessoaView() {
         initComponents();
     }
-
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
