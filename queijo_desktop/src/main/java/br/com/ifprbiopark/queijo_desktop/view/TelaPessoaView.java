@@ -180,6 +180,10 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         aviso.setText("");
         try {
             pessoa.setNome(txtNome.getText());
+            pessoa.setEndereco(txtEndereco.getText());
+            pessoa.setCadastro("123");
+            pessoa.setTipoFiscal("1234");
+            pessoa.setTipoPessoa("1");
 
             ControlePessoa controle = new ControlePessoa();
             controle.salvar(pessoa);
