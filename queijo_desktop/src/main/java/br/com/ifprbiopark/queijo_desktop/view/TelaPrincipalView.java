@@ -129,7 +129,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void menuEntradaLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntradaLeiteActionPerformed
         try {
-            TelaEntradaLeiteView formEntradaLeite = new TelaEntradaLeiteView();
+            TelaColetaLeiteView formEntradaLeite = new TelaColetaLeiteView();
             painelDesktop.add(formEntradaLeite);
             formEntradaLeite.setMaximum(true);
             formEntradaLeite.setVisible(true);        

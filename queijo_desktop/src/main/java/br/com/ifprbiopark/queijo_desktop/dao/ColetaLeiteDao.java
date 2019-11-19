@@ -18,15 +18,20 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     public void inserir(ColetaLeite c) throws DbException {
         try {
 
-            String sql = "INSERT INTO coletaLeite( idColetaLeite, loteColeta, dtColeta, idProdutor ) "
-                    + "VALUES (:idColetaLeite, :loteColeta, :dtColeta, idProdutor)";
+            String sql = "INSERT INTO coletaLeite( loteColeta, dtColeta, qtdLeite, produtor_idProdutor, Pessoa_idPessoa) "
+                    + "VALUES (:loteColeta, :dtColeta, :qtdLeite, :produtor_idProdutor, :Pessoa_idPessoa)";
+                        
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setInt("idColetaLeite", c.getIdColetaLeite());
+            
             nps.setString("loteColeta", c.getLoteColeta());
             nps.setDate("dtColeta", new java.sql.Date(c.getDtColeta().getTime()));
-            nps.setInt("idProdutor", c.getProdutor_idProdutor().getIdPessoa());
-
+            nps.setDouble("qtdLeite", c.getQtdLeite());
+            nps.setInt("produtor_idProdutor", c.getProdutor_idProdutor().getIdPessoa());
+            nps.setInt("produtor_idProdutor", c.getProdutor_idProdutor().getIdPessoa());
+            nps.setInt("produtor_idProdutor", c.getPessoa_idPessoa().getIdPessoa());
+            
+            
             int exec = nps.executeUpdate();
             if (exec == 0) {
                 throw new NotExecuteInsertException();
@@ -78,8 +83,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             List<ColetaLeite> coletas = new ArrayList<>();
 
             //String SQL;
-            String sql = "SELECT FROM coletaLeite( idColetaLeite, loteColeta, dtColeta, idProdutor ) "
-                    + "VALUES (:idColetaLeite, :loteColeta, :dtColeta, idProdutor)";
+            String sql = "SELECT idColetaLeite, loteColeta, dtColeta, Produtor_idProdutor, qtdLeite, "
+                    + "Pessoa_idPessoa from coletaleite";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -90,7 +95,17 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
                 coleta.setIdColetaLeite(consulta.getInt("loteColeta"));
                 coleta.setDtColeta(consulta.getDate("dtColeta"));
+                
+                //seta funcionario;
+                Pessoa f = new Pessoa();
+                f.setIdPessoa(consulta.getInt("Pessoa_idPessoa"));
+                coleta.setPessoa_idPessoa(f);
 
+                //seta produtor;
+                Pessoa p = new Pessoa();
+                p.setIdPessoa(consulta.getInt("Produtor_idProdutor"));
+                coleta.setProdutor_idProdutor(p);
+                
                 PessoaDao pessoaDao = new PessoaDao();
                 coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("idProdutor")));
 
@@ -99,6 +114,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             }
             return coletas;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
 

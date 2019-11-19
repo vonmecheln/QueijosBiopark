@@ -10,7 +10,18 @@ public class ColetaLeite {
     private String loteColeta;
     private Date dtColeta;
     private Pessoa produtor_idProdutor;
+    private Pessoa Pessoa_idPessoa;
     private double qtdLeite;
+
+    public Pessoa getPessoa_idPessoa() {
+        return Pessoa_idPessoa;
+    }
+
+    public void setPessoa_idPessoa(Pessoa Pessoa_idPessoa) {
+        this.Pessoa_idPessoa = Pessoa_idPessoa;
+    }
+    
+    
 
     public Integer getIdColetaLeite() {
         return idColetaLeite;

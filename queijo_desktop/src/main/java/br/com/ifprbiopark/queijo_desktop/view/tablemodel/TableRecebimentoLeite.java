@@ -13,7 +13,7 @@ public class TableRecebimentoLeite extends AbstractTableModel {
     List<ColetaLeite> listaEntregas = coleta.listarColetas();
     
     
-    private String[] nomeColunas = {"Lote", "Data", "Fornecedor", "Quantidade"};
+    private String[] nomeColunas = {"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote"};
    
     @Override
     public String getColumnName(int column) {
