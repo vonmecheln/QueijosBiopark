@@ -157,7 +157,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         try {
             TelaProcessamentoView formProcessamentoe = new TelaProcessamentoView();
             painelDesktop.add(formProcessamentoe);
-            formProcessamentoe.setMaximum(true);
+            formProcessamentoe.setMaximum(false);
             formProcessamentoe.setVisible(true);
             formProcessamentoe.setPosicao();
         } catch (PropertyVetoException ex) {
