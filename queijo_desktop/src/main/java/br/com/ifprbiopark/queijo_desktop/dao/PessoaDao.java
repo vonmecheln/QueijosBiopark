@@ -11,6 +11,8 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -99,6 +101,54 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             return null;
         } catch (Exception e) {
             return null;
+        }
+    }
+    
+    public List<Pessoa> consultarFornecedores() throws DbException {
+        try {
+            
+            List<Pessoa> pessoas = new ArrayList<Pessoa>();
+            
+            String sql = "SELECT idPessoa, nome FROM pessoa WHERE tipoPessoa = 'fornecedor' ORDER BY nome ASC";
+
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Pessoa pessoa = new Pessoa();
+                pessoa.setIdPessoa(consulta.getInt("idPessoa"));
+                pessoa.setNome(consulta.getString("nome"));
+                pessoas.add(pessoa);
+            }
+            return pessoas;
+
+        } catch (SQLException ex) {
+            throw new DbException(ex);
+        }
+    }
+    
+        public List<Pessoa> consultarFuncionarios() throws DbException {
+        try {
+            
+            List<Pessoa> pessoas = new ArrayList<Pessoa>();
+            
+            String sql = "SELECT idPessoa, nome FROM pessoa WHERE tipoPessoa = 'funcionario' ORDER BY nome ASC";
+
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Pessoa pessoa = new Pessoa();
+                pessoa.setIdPessoa(consulta.getInt("idPessoa"));
+                pessoa.setNome(consulta.getString("nome"));
+                pessoas.add(pessoa);
+            }
+            return pessoas;
+
+        } catch (SQLException ex) {
+            throw new DbException(ex);
         }
     }
     
