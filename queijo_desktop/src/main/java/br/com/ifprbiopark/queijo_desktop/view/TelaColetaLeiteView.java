@@ -6,6 +6,7 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
@@ -16,6 +17,7 @@ import java.awt.Dimension;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -29,13 +31,23 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
     TableRecebimentoLeite listaColetas = new TableRecebimentoLeite();
 
-    public TelaColetaLeiteView() throws ParseException {
+    public TelaColetaLeiteView() throws ParseException, DbException {
         initComponents();
 
         tblEntradaLeite.setModel(listaColetas);
         
         MaskFormatter coletaLeite = new MaskFormatter("##/##/####");  
         coletaLeite.install(jfData);
+        
+        //Botao fornecedor
+        PessoaDao p = new PessoaDao();
+        List<Pessoa> fornecedores = p.consultarFornecedores();
+
+        jcFornecedor.removeAll();
+        
+        for (int i = 0; i < fornecedores.size(); i++) {
+            jcFornecedor.addItem(fornecedores.get(i).getNome());
+        }
         
     }
 
@@ -74,8 +86,6 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Fornecedor"));
-
-        jcFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
