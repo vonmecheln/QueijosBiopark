@@ -5,8 +5,18 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableRecebimentoLeite;
+import java.awt.Component;
+
 import java.awt.Dimension;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,17 +47,17 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
-        txtData = new javax.swing.JTextField();
+        tfData = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        txtLote = new javax.swing.JTextField();
-        txtQuantidade = new javax.swing.JTextField();
-        btnSalvar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        jcFornecedor = new javax.swing.JComboBox<>();
+        tfLote = new javax.swing.JTextField();
+        tfQuantidade = new javax.swing.JTextField();
+        jbSalvar = new javax.swing.JButton();
+        jbExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEntradaLeite = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jcFuncionario = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -55,17 +65,17 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Entrada de Leite");
 
-        txtData.setBorder(javax.swing.BorderFactory.createTitledBorder("Data:"));
-        txtData.addActionListener(new java.awt.event.ActionListener() {
+        tfData.setBorder(javax.swing.BorderFactory.createTitledBorder("Data:"));
+        tfData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDataActionPerformed(evt);
+                tfDataActionPerformed(evt);
             }
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Fornecedor"));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,34 +83,39 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jcFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jcFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        txtLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote:"));
-        txtLote.addActionListener(new java.awt.event.ActionListener() {
+        tfLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote:"));
+        tfLote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLoteActionPerformed(evt);
+                tfLoteActionPerformed(evt);
             }
         });
 
-        txtQuantidade.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantidade:"));
-        txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+        tfQuantidade.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantidade:"));
+        tfQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuantidadeActionPerformed(evt);
+                tfQuantidadeActionPerformed(evt);
             }
         });
 
-        btnSalvar.setText("Salvar");
+        jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
-        btnCancelar.setText("Excluir");
+        jbExcluir.setText("Excluir");
 
         tblEntradaLeite.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,7 +134,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Funcionário"));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,14 +142,14 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox2, 0, 350, Short.MAX_VALUE)
+                .addComponent(jcFuncionario, 0, 350, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox2)
+                .addComponent(jcFuncionario)
                 .addContainerGap())
         );
 
@@ -149,15 +164,15 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfLote, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jbExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
@@ -173,11 +188,11 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -186,31 +201,106 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoteActionPerformed
+    private void tfLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLoteActionPerformed
+    }//GEN-LAST:event_tfLoteActionPerformed
 
-    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
+    private void tfQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfQuantidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtQuantidadeActionPerformed
+    }//GEN-LAST:event_tfQuantidadeActionPerformed
 
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
+    private void tfDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDataActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
+    }//GEN-LAST:event_tfDataActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        
+        ColetaLeite coleta = new ColetaLeite();
+        ControleColetaLeite cColeta  = new ControleColetaLeite();
+        
+        //ajusta o botao
+        if (jbSalvar.getText().equals("Atualizar")) {
+            jbSalvar.setText("Salvar");
+        }
+
+        //Obriga preenchimento do cpf ou cnpj;
+        if (tfData.getText().isEmpty()) {
+            Component frame = null;
+            JOptionPane.showMessageDialog(frame, "Insira os dados para Cadastrar!");
+
+        } else {
+
+            //Aqui atualiza os dados do objeto com informaçoes da table model;
+            if (tblEntradaLeite.getSelectedRow() != -1) {
+
+                int row = tblEntradaLeite.getSelectedRow();
+                
+                //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
+                Object id = tblEntradaLeite.getValueAt(row, 0);
+                Object produtor = tblEntradaLeite.getValueAt(row, 1);
+                Object quantidade = tblEntradaLeite.getValueAt(row, 2);
+                Object data = tblEntradaLeite.getValueAt(row, 3);
+                Object funcionario = tblEntradaLeite.getValueAt(row, 4);
+                Object lote = tblEntradaLeite.getValueAt(row, 5);
+                
+                coleta.setIdColetaLeite((Integer) id);
+                coleta.setProdutor_idProdutor((Pessoa) produtor);
+                coleta.setQtdLeite((double) quantidade);
+                coleta.setDtColeta((Date) data);
+                
+                //funcionario
+                Pessoa p = new Pessoa();
+                p.setIdPessoa(coleta.getPessoa_idPessoa().getIdPessoa());
+                
+                coleta.setLoteColeta((String) lote);
+                
+                
+                try {
+                    cColeta.salvar(coleta);
+                } catch (DbException ex) {
+                    Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                listaColetas.updateRow();
+
+                //limpar campos;
+                //tt.setNome("");
+
+            } else {
+
+                //coleta dados do formulario;
+                //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
+                coleta.setProdutor_idProdutor(jcFornecedor.getSelectedIndex());
+                coleta.setPessoa_idPessoa(jcFuncionario.getSelectedIndex());
+                coleta.setQtdLeite(tfQuantidade.getText());
+                coleta.setDtColeta(tfData.getText());
+                coleta.setLoteColeta(tfLote.getText());
+                
+                
+                
+                listaColetas.addRow(cColeta.salvar(coleta));
+                        
+            }
+
+        }
+        
+        
+    }//GEN-LAST:event_jbSalvarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbExcluir;
+    private javax.swing.JButton jbSalvar;
+    private javax.swing.JComboBox<String> jcFornecedor;
+    private javax.swing.JComboBox<String> jcFuncionario;
     private javax.swing.JTable tblEntradaLeite;
-    private javax.swing.JTextField txtData;
-    private javax.swing.JTextField txtLote;
-    private javax.swing.JTextField txtQuantidade;
+    private javax.swing.JTextField tfData;
+    private javax.swing.JTextField tfLote;
+    private javax.swing.JTextField tfQuantidade;
     // End of variables declaration//GEN-END:variables
 }

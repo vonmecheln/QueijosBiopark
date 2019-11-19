@@ -1,10 +1,11 @@
+package br.com.ifprbiopark.queijo_desktop.control;
+
 import br.com.ifprbiopark.queijo_desktop.dao.ColetaLeiteDao;
-import br.com.ifprbiopark.queijo_desktop.exception.RequiredFieldException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import java.util.List;
 
-public class ControllerColetaLeite {
+public class ControleColetaLeite {
     
     ColetaLeiteDao coleta = new ColetaLeiteDao();
 
