@@ -13,10 +13,12 @@ import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableRecebimentoLeite;
 import java.awt.Component;
 
 import java.awt.Dimension;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -26,10 +28,14 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
     TableRecebimentoLeite listaColetas = new TableRecebimentoLeite();
 
-    public TelaColetaLeiteView() {
+    public TelaColetaLeiteView() throws ParseException {
         initComponents();
 
         tblEntradaLeite.setModel(listaColetas);
+        
+        MaskFormatter maskData = new MaskFormatter("##/##/####");  
+        maskData.install(tfData);
+        
     }
 
     public void setPosicao() {
@@ -271,15 +277,20 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
                 //coleta dados do formulario;
                 //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
-                coleta.setProdutor_idProdutor(jcFornecedor.getSelectedIndex());
-                coleta.setPessoa_idPessoa(jcFuncionario.getSelectedIndex());
-                coleta.setQtdLeite(tfQuantidade.getText());
-                coleta.setDtColeta(tfData.getText());
+                //coleta.setProdutor_idProdutor(jcFornecedor.getSelectedIndex());
+                //coleta.setPessoa_idPessoa();
+                coleta.setQtdLeite(Double.parseDouble(tfQuantidade.getText()));
+                //coleta.setDtColeta(Date) tfData.getText());
                 coleta.setLoteColeta(tfLote.getText());
                 
                 
                 
-                listaColetas.addRow(cColeta.salvar(coleta));
+                listaColetas.addRow(coleta);
+                try {
+                    cColeta.salvar(coleta);
+                } catch (DbException ex) {
+                    Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                         
             }
 
