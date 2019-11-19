@@ -24,6 +24,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         painelDesktop = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -31,8 +32,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         menuPessoa = new javax.swing.JMenuItem();
         menuEntradaLeite = new javax.swing.JMenuItem();
         menuClassificacaoLeite = new javax.swing.JMenuItem();
+        menuItem = new javax.swing.JMenuItem();
         menuProcessamento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -78,6 +82,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
         menuCadastro.add(menuClassificacaoLeite);
+
+        menuItem.setText("Item");
+        menuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItem);
 
         menuProcessamento.setText("Processamento");
         menuProcessamento.addActionListener(new java.awt.event.ActionListener() {
@@ -166,15 +178,31 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_menuProcessamentoActionPerformed
 
+    private void menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemActionPerformed
+          try {
+            TelaItemView formItem = new TelaItemView();
+            painelDesktop.add(formItem);
+            formItem.setMaximum(false);
+            formItem.setVisible(true);        
+            formItem.setPosicao();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        
+    }//GEN-LAST:event_menuItemActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenuItem menuClassificacaoLeite;
     private javax.swing.JMenuItem menuEntradaLeite;
+    private javax.swing.JMenuItem menuItem;
     private javax.swing.JMenuItem menuPessoa;
     private javax.swing.JMenuItem menuProcessamento;
     private javax.swing.JDesktopPane painelDesktop;
