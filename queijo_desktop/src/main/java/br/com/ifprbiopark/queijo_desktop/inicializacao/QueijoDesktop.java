@@ -1,10 +1,12 @@
+package br.com.ifprbiopark.queijo_desktop.inicializacao;
+
 
 import br.com.ifprbiopark.queijo_desktop.view.TelaPessoaView;
 import br.com.ifprbiopark.queijo_desktop.view.TelaPrincipalView;
 import javax.swing.JFrame;
 
 public class QueijoDesktop {
-    public static JFrame telaPrincipal;
+    public static TelaPrincipalView telaPrincipal;
     
     /**
      * @param args the command line arguments
