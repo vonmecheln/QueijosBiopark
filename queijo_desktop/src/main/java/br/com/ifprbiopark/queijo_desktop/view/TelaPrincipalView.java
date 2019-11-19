@@ -119,7 +119,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         try {
             TelaPessoaView formPessoa = new TelaPessoaView();
             painelDesktop.add(formPessoa);
-            formPessoa.setMaximum(true);
+            formPessoa.setMaximum(false);
             formPessoa.setVisible(true);
             formPessoa.setPosicao();
         } catch (PropertyVetoException ex) {
@@ -131,7 +131,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         try {
             TelaColetaLeiteView formEntradaLeite = new TelaColetaLeiteView();
             painelDesktop.add(formEntradaLeite);
-            formEntradaLeite.setMaximum(true);
+            formEntradaLeite.setMaximum(false);
             formEntradaLeite.setVisible(true);        
             formEntradaLeite.setPosicao();
         } catch (PropertyVetoException ex) {
@@ -143,7 +143,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         try {
             TelaClassificacaoLeiteView formClassificacaoLeite = new TelaClassificacaoLeiteView();
             painelDesktop.add(formClassificacaoLeite);
-            formClassificacaoLeite.setMaximum(true);
+            formClassificacaoLeite.setMaximum(false);
             formClassificacaoLeite.setVisible(true);
             formClassificacaoLeite.setPosicao();
         } catch (PropertyVetoException ex) {
@@ -158,7 +158,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             TelaProcessamentoView formProcessamentoe = new TelaProcessamentoView();
             painelDesktop.add(formProcessamentoe);
             formProcessamentoe.setMaximum(true);
-            formProcessamentoe.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
             formProcessamentoe.setVisible(true);
             formProcessamentoe.setPosicao();
         } catch (PropertyVetoException ex) {
