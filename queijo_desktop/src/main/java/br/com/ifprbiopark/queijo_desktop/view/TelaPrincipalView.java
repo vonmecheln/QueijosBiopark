@@ -2,6 +2,7 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import java.awt.Color;
 import java.beans.PropertyVetoException;
+import java.text.ParseException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -165,6 +166,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             formEntradaLeite.setVisible(true);
             formEntradaLeite.setPosicao();
         } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuEntradaLeiteActionPerformed

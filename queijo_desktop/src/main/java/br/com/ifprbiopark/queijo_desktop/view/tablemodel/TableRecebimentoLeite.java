@@ -35,13 +35,17 @@ public class TableRecebimentoLeite extends AbstractTableModel {
     public Object getValueAt(int linha, int coluna) {
         switch(coluna){
             case 0:
-                return listaEntregas.get(linha).getLoteColeta();
+                return listaEntregas.get(linha).getIdColetaLeite();
             case 1:
-                return listaEntregas.get(linha).getDtColeta();
-            case 2:
                 return listaEntregas.get(linha).getProdutor_idProdutor();
-            case 3:
+            case 2:
                 return listaEntregas.get(linha).getQtdLeite();
+            case 3:
+                return listaEntregas.get(linha).getDtColeta();
+            case 4:
+                return listaEntregas.get(linha).getPessoa_idPessoa();
+            case 5:
+                return listaEntregas.get(linha).getLoteColeta();
                                     
         }
         
