@@ -7,6 +7,7 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
 import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
+import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -176,6 +177,8 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
 
             ControlePessoa controle = new ControlePessoa();
             controle.salvar(pessoa);
+            
+            QueijoDesktop.telaPrincipal.setMenssagem("Fornecedor salvo com sucesso!", Color.GREEN);
 
             aviso.setText("Fornecedor salvo com sucesso!");
             aviso.setForeground(Color.GREEN);

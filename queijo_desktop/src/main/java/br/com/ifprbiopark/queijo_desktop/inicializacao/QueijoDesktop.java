@@ -1,9 +1,12 @@
+package br.com.ifprbiopark.queijo_desktop.inicializacao;
+
 
 import br.com.ifprbiopark.queijo_desktop.view.TelaPessoaView;
 import br.com.ifprbiopark.queijo_desktop.view.TelaPrincipalView;
 import javax.swing.JFrame;
 
 public class QueijoDesktop {
+    public static TelaPrincipalView telaPrincipal;
     
     /**
      * @param args the command line arguments
@@ -36,7 +39,7 @@ public class QueijoDesktop {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFrame telaPrincipal = new TelaPrincipalView();
+                telaPrincipal = new TelaPrincipalView();
                 telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH); 
                 telaPrincipal.setVisible(true);
             }
