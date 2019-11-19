@@ -14,6 +14,7 @@ import java.awt.Component;
 
 import java.awt.Dimension;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,8 +34,8 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
         tblEntradaLeite.setModel(listaColetas);
         
-        MaskFormatter maskData = new MaskFormatter("##/##/####");  
-        maskData.install(tfData);
+        MaskFormatter coletaLeite = new MaskFormatter("##/##/####");  
+        coletaLeite.install(jfData);
         
     }
 
@@ -63,7 +64,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         jcFuncionario = new javax.swing.JComboBox<>();
         jfData = new javax.swing.JFormattedTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblEntradaLeite = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -140,7 +141,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
         jfData.setBorder(javax.swing.BorderFactory.createTitledBorder("Data"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEntradaLeite.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -151,7 +152,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblEntradaLeite);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,7 +225,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         }
 
         //Obriga preenchimento do cpf ou cnpj;
-        if (tfData.getText().isEmpty()) {
+        if (jfData.getText().isEmpty()) {
             Component frame = null;
             JOptionPane.showMessageDialog(frame, "Insira os dados para Cadastrar!");
 
@@ -269,12 +270,23 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
             } else {
 
-                //coleta dados do formulario;
-                //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
-                //coleta.setProdutor_idProdutor(jcFornecedor.getSelectedIndex());
-                //coleta.setPessoa_idPessoa();
+                try {
+                    //coleta dados do formulario;
+                    //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
+                    //coleta.setProdutor_idProdutor(jcFornecedor.getSelectedIndex());
+                    //coleta.setPessoa_idPessoa();
+                    
+                    //data da coleta;
+                    Date leiteColeta = new SimpleDateFormat("dd/MM/yyyy").parse(jfData.getText());
+                    coleta.setDtColeta(leiteColeta);
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                //coleta.setDtColeta(dtColeta);
+                
                 coleta.setQtdLeite(Double.parseDouble(tfQuantidade.getText()));
-                //coleta.setDtColeta(Date) tfData.getText());
                 coleta.setLoteColeta(tfLote.getText());
                 
                 
@@ -299,12 +311,12 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox<String> jcFornecedor;
     private javax.swing.JComboBox<String> jcFuncionario;
     private javax.swing.JFormattedTextField jfData;
+    private javax.swing.JTable tblEntradaLeite;
     private javax.swing.JTextField tfLote;
     private javax.swing.JTextField tfQuantidade;
     // End of variables declaration//GEN-END:variables
