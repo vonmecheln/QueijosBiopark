@@ -357,6 +357,8 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     listaColetas.removeRow(tblEntradaLeite.getSelectedRow());
 
                 }
+            }
+        }
     }//GEN-LAST:event_jbExcluirActionPerformed
 
 
