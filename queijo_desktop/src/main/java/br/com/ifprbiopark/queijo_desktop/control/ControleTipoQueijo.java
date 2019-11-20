@@ -5,6 +5,12 @@
  */
 package br.com.ifprbiopark.queijo_desktop.control;
 
+import br.com.ifprbiopark.queijo_desktop.dao.TipoQueijoDao;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.model.TipoQueijo;
+import java.util.List;
+
 /**
  *
  * @author UnioestePROEX
@@ -12,21 +18,22 @@ package br.com.ifprbiopark.queijo_desktop.control;
 public class ControleTipoQueijo {
     
     //inserir dao correspondente;
+    TipoQueijoDao dao = new TipoQueijoDao();
     
-    public void salvar(ColetaLeite c) throws DbException{
-        coleta.inserir(c);
+    public void salvar(TipoQueijo c) throws DbException{
+        dao.inserir(c);
     }
     
-    public void excluir (ColetaLeite c) throws DbException{
-        coleta.excluir(c);
+    public void excluir (TipoQueijo c) throws DbException{
+        dao.excluir(c);
     }
     
-    public void alterar(ColetaLeite c) throws DbException {
-        coleta.alterar(c);
+    public void alterar(TipoQueijo c) throws DbException {
+        dao.alterar(c);
     }
     
-    public List<ColetaLeite> listaColeta(ColetaLeite c) throws DbException{
-        return coleta.listarColetas();
+    public List<ColetaLeite> listaColeta(TipoQueijo c) throws DbException{
+        return null;
 
 }
     

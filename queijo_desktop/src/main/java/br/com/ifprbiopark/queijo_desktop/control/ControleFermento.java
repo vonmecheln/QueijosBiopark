@@ -5,6 +5,11 @@
  */
 package br.com.ifprbiopark.queijo_desktop.control;
 
+import br.com.ifprbiopark.queijo_desktop.dao.FermentoDao;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.Fermento;
+import java.util.List;
+
 /**
  *
  * @author UnioestePROEX
@@ -12,21 +17,22 @@ package br.com.ifprbiopark.queijo_desktop.control;
 public class ControleFermento {
     
     //inserir dao correspondente;
+    FermentoDao dao = new FermentoDao();
     
-    public void salvar(ColetaLeite c) throws DbException{
-        coleta.inserir(c);
+    public void salvar(Fermento c) throws DbException{
+        dao.inserir(c);
     }
     
-    public void excluir (ColetaLeite c) throws DbException{
-        coleta.excluir(c);
+    public void excluir (Fermento c) throws DbException{
+        dao.excluir(c);
     }
     
-    public void alterar(ColetaLeite c) throws DbException {
-        coleta.alterar(c);
+    public void alterar(Fermento c) throws DbException {
+        dao.alterar(c);
     }
     
-    public List<ColetaLeite> listaColeta(ColetaLeite c) throws DbException{
-        return coleta.listarColetas();
+    public List<Fermento> listaColeta(Fermento c) throws DbException{
+        return  null;
 
 }
     
