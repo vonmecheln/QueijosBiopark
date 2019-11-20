@@ -24,6 +24,16 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     public TelaPessoaView() throws ParseException {
         initComponents();
         
+        //mascara situacao fiscal (documento)
+        
+        if(cmbTipoDoc.getSelectedIndex() == 0){
+            MaskFormatter cpf = new MaskFormatter("###.###.###-##");  
+            cpf.install(txtDoc);
+        } else {
+            MaskFormatter cnpj = new MaskFormatter("###.###.###/####-##");  
+            cnpj.install(txtDoc);
+        } 
+        
         MaskFormatter telefone = new MaskFormatter("##.#####.####");  
         telefone.install(tfTelefone);
         
