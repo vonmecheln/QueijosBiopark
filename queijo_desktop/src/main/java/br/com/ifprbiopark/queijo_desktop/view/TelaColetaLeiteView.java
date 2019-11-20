@@ -35,7 +35,12 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
     public TelaColetaLeiteView() throws ParseException, DbException {
         initComponents();
-
+        load();
+        
+        //fim;
+    }
+    
+    private void load() throws ParseException, DbException{
         tblEntradaLeite.setModel(listaColetas);
         
         MaskFormatter coletaLeite = new MaskFormatter("##/##/####");  
@@ -61,7 +66,6 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         for (int i = 0; i < funcionarios.size(); i++) {
             jcFuncionario.addItem(funcionarios.get(i).getNome());
         }
-        //fim;
     }
 
     public void setPosicao() {
@@ -260,39 +264,47 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
             //Aqui atualiza os dados do objeto com informaçoes da table model;
             if (tblEntradaLeite.getSelectedRow() != -1) {
 
-                int row = tblEntradaLeite.getSelectedRow();
-                
-                //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
-                Object id = tblEntradaLeite.getValueAt(row, 0);
-                Object produtor = tblEntradaLeite.getValueAt(row, 1);
-                Object quantidade = tblEntradaLeite.getValueAt(row, 2);
-                Object data = tblEntradaLeite.getValueAt(row, 3);
-                Object funcionario = tblEntradaLeite.getValueAt(row, 4);
-                Object lote = tblEntradaLeite.getValueAt(row, 5);
-                
-                coleta.setIdColetaLeite((Integer) id);
-                coleta.setProdutor_idProdutor((Pessoa) produtor);
-                coleta.setQtdLeite((double) quantidade);
-                coleta.setDtColeta((Date) data);
-                
-                //funcionario
-                Pessoa p = new Pessoa();
-                p.setIdPessoa(coleta.getPessoa_idPessoa().getIdPessoa());
-                
-                coleta.setLoteColeta((String) lote);
-                
-                
                 try {
-                    cColeta.salvar(coleta);
+
+                    int row = tblEntradaLeite.getSelectedRow();
+                    
+                    //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
+                    Object id = tblEntradaLeite.getValueAt(row, 0);
+                    Object produtor = tblEntradaLeite.getValueAt(row, 1);
+                    Object quantidade = tblEntradaLeite.getValueAt(row, 2);
+                    Object data = tblEntradaLeite.getValueAt(row, 3);
+                    Object funcionario = tblEntradaLeite.getValueAt(row, 4);
+                    Object lote = tblEntradaLeite.getValueAt(row, 5);
+                    
+                    coleta.setIdColetaLeite((Integer) id);
+                    coleta.setProdutor_idProdutor((Pessoa) produtor);
+                    coleta.setQtdLeite((double) quantidade);
+                    coleta.setDtColeta((Date) data);
+                    
+                    //funcionario
+                    Pessoa p = new Pessoa();
+                    p.setIdPessoa(coleta.getPessoa_idPessoa().getIdPessoa());
+                    
+                    coleta.setLoteColeta((String) lote);
+                    
+                    
+                    try {
+                        cColeta.salvar(coleta);
+                    } catch (DbException ex) {
+                        Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    load();
+                    listaColetas.updateRow();
+                    
+                    //limpar campos;
+                    //tt.setNome("");
+                    
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DbException ex) {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                
-                listaColetas.updateRow();
-
-                //limpar campos;
-                //tt.setNome("");
 
             } else {
 
