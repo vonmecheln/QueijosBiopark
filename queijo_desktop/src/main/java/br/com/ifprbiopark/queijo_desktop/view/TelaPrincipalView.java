@@ -28,15 +28,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        menuCadastro = new javax.swing.JMenu();
-        menuPessoa = new javax.swing.JMenuItem();
-        menuEntradaLeite = new javax.swing.JMenuItem();
-        menuClassificacaoLeite = new javax.swing.JMenuItem();
-        menuItem = new javax.swing.JMenuItem();
-        menuProcessamento = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         pnlInicio = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pnlMenssagem = new javax.swing.JPanel();
@@ -53,55 +44,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLayeredPane2 = new javax.swing.JLayeredPane();
         pnlBgGeral = new javax.swing.JPanel();
         imgDesktop = new javax.swing.JLabel();
-
-        jMenuItem1.setText("jMenuItem1");
-
-        menuCadastro.setText("Cadastro");
-
-        menuPessoa.setText("Pessoa");
-        menuPessoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuPessoaActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuPessoa);
-
-        menuEntradaLeite.setText("Entrada de Leite");
-        menuEntradaLeite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuEntradaLeiteActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuEntradaLeite);
-
-        menuClassificacaoLeite.setText("Classificação de Leite");
-        menuClassificacaoLeite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuClassificacaoLeiteActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuClassificacaoLeite);
-
-        menuItem.setText("Item");
-        menuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuItem);
-
-        menuProcessamento.setText("Processamento");
-        menuProcessamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuProcessamentoActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuProcessamento);
-
-        jMenuBar1.add(menuCadastro);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1366, 720));
@@ -149,7 +91,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         pnlMenuSelecionado.setOpaque(false);
         pnlMenuSelecionado.setPreferredSize(new java.awt.Dimension(1280, 730));
 
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -162,7 +104,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -175,7 +117,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -188,7 +130,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -201,7 +143,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -214,7 +156,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel7MouseEntered(evt);
@@ -357,72 +299,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuProcessamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProcessamentoActionPerformed
-        try {
-            TelaProcessamentoView formProcessamentoe = new TelaProcessamentoView();
-            painelDesktop.add(formProcessamentoe);
-            formProcessamentoe.setMaximum(false);
-            formProcessamentoe.setVisible(true);
-            formProcessamentoe.setPosicao();
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_menuProcessamentoActionPerformed
-
-    private void menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemActionPerformed
-        try {
-            TelaItemView formItem = new TelaItemView();
-            painelDesktop.add(formItem);
-            formItem.setMaximum(false);
-            formItem.setVisible(true);
-            formItem.setPosicao();
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_menuItemActionPerformed
-
-    private void menuClassificacaoLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClassificacaoLeiteActionPerformed
-        try {
-            TelaClassificacaoLeiteView formClassificacaoLeite = new TelaClassificacaoLeiteView();
-            painelDesktop.add(formClassificacaoLeite);
-            formClassificacaoLeite.setMaximum(false);
-            formClassificacaoLeite.setVisible(true);
-            formClassificacaoLeite.setPosicao();
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_menuClassificacaoLeiteActionPerformed
-
-    private void menuEntradaLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntradaLeiteActionPerformed
-        try {
-            TelaColetaLeiteView formEntradaLeite = new TelaColetaLeiteView();
-            painelDesktop.add(formEntradaLeite);
-            formEntradaLeite.setMaximum(false);
-            formEntradaLeite.setVisible(true);
-            formEntradaLeite.setPosicao();
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DbException ex) {
-            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_menuEntradaLeiteActionPerformed
-
-    private void menuPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPessoaActionPerformed
-        try {
-            TelaPessoaView formPessoa = new TelaPessoaView();
-            painelDesktop.add(formPessoa);
-            formPessoa.setMaximum(false);
-            formPessoa.setVisible(true);
-            formPessoa.setPosicao();
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_menuPessoaActionPerformed
-
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
         jLabel7.setIcon(null); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(211, 243));// TODO add your handling code here:
@@ -484,17 +360,31 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        TelaPessoaView formPessoa = new TelaPessoaView();
-        painelDesktop.add(formPessoa);
-        formPessoa.setPosicao();
-        formPessoa.setVisible(true);
+        TelaPessoaView formPessoa;
+        try {
+            formPessoa = new TelaPessoaView();
+            painelDesktop.add(formPessoa);
+            formPessoa.setPosicao();
+            formPessoa.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        TelaEntradaLeiteView formEntrada = new TelaEntradaLeiteView();
-        painelDesktop.add(formEntrada);
-        formEntrada.setPosicao();
-        formEntrada.setVisible(true);
+        TelaColetaLeiteView formEntrada;
+        try {
+            formEntrada = new TelaColetaLeiteView();
+            painelDesktop.add(formEntrada);
+            formEntrada.setPosicao();
+            formEntrada.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DbException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -547,17 +437,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLayeredPane jLayeredPane2;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMenssagem;
-    private javax.swing.JMenu menuCadastro;
-    private javax.swing.JMenuItem menuClassificacaoLeite;
-    private javax.swing.JMenuItem menuEntradaLeite;
-    private javax.swing.JMenuItem menuItem;
-    private javax.swing.JMenuItem menuPessoa;
-    private javax.swing.JMenuItem menuProcessamento;
     private javax.swing.JDesktopPane painelDesktop;
     private javax.swing.JPanel pnlBgGeral;
     private javax.swing.JPanel pnlInicio;
