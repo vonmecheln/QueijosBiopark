@@ -486,30 +486,35 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         TelaPessoaView formPessoa = new TelaPessoaView();
         painelDesktop.add(formPessoa);
+        formPessoa.setPosicao();
         formPessoa.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         TelaEntradaLeiteView formEntrada = new TelaEntradaLeiteView();
         painelDesktop.add(formEntrada);
+        formEntrada.setPosicao();
         formEntrada.setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         TelaClassificacaoLeiteView formClassificacao = new TelaClassificacaoLeiteView();
         painelDesktop.add(formClassificacao);
+        formClassificacao.setPosicao();
         formClassificacao.setVisible(true);       
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         TelaProcessamentoView formProcessamento = new TelaProcessamentoView();
         painelDesktop.add(formProcessamento);
+        formProcessamento.setPosicao();
         formProcessamento.setVisible(true); 
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         TelaItemView formItem = new TelaItemView();
         painelDesktop.add(formItem);
+        formItem.setPosicao();
         formItem.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
 

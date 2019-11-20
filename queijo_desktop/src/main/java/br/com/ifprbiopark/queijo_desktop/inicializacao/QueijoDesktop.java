@@ -40,7 +40,7 @@ public class QueijoDesktop {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 telaPrincipal = new TelaPrincipalView();
-                telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+                //telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH); 
                 telaPrincipal.setVisible(true);
             }
         });
