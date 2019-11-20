@@ -77,7 +77,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
 
         txtDoc.setBorder(javax.swing.BorderFactory.createTitledBorder("CPF/CNPJ"));
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produtor", "Fornecedor", "Funcionario", "Cliente\t" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produtor", "Fornecedor", "Funcionário", "Cliente" }));
         cmbTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Pessoa"));
         cmbTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +137,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -148,7 +148,6 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +170,16 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         try {
             pessoa.setNome(txtNome.getText());
             pessoa.setEndereco(txtEndereco.getText());
-            pessoa.setCadastro("123");
-            pessoa.setTipoFiscal("1234");
-            pessoa.setTipoPessoa("1");
+            pessoa.setCadastro(txtDoc.getText());
+            
+            if (cmbTipoDoc.getSelectedItem().equals("CPF")){
+                pessoa.setTipoFiscal("0");
+            }
+            else if (cmbTipoDoc.getSelectedItem().equals("CNPJ")){
+                pessoa.setTipoFiscal("1");
+            }            
+            
+            pessoa.setTipoPessoa((String)cmbTipo.getSelectedItem());
 
             ControlePessoa controle = new ControlePessoa();
             controle.salvar(pessoa);

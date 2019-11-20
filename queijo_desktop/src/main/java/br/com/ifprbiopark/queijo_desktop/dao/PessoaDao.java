@@ -109,7 +109,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             
             List<Pessoa> pessoas = new ArrayList<Pessoa>();
             
-            String sql = "SELECT idPessoa, nome FROM pessoa WHERE tipoPessoa = 'fornecedor' ORDER BY nome ASC";
+            String sql = "SELECT idPessoa, nome FROM pessoa WHERE tipoPessoa = 'Fornecedor' ORDER BY nome ASC";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -133,7 +133,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             
             List<Pessoa> pessoas = new ArrayList<Pessoa>();
             
-            String sql = "SELECT idPessoa, nome FROM pessoa WHERE tipoPessoa = 'funcionario' ORDER BY nome ASC";
+            String sql = "SELECT idPessoa, nome FROM pessoa WHERE tipoPessoa = 'Funcionário' ORDER BY nome ASC";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
