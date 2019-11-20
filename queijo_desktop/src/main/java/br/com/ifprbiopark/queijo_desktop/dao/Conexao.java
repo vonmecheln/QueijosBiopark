@@ -32,6 +32,7 @@ public class Conexao {
                                 "  endereco VARCHAR(50) NOT NULL," +
                                 "  tipoFiscal VARCHAR(1) NOT NULL," +
                                 "  cadastro VARCHAR(14) NOT NULL," +
+                                "  telefone VARCHAR(15)," +
                                 "  tipoPessoa VARCHAR(45) NOT NULL)");
 
             statement.execute("  CREATE TABLE IF NOT EXISTS coletaleite (" +
