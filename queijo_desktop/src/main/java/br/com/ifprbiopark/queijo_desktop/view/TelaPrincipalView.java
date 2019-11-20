@@ -2,12 +2,12 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import java.awt.Color;
-import java.beans.PropertyVetoException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 
 public class TelaPrincipalView extends javax.swing.JFrame {
 
@@ -46,7 +46,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         imgDesktop = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 720));
+        setTitle("Queijos Biopark");
+        setPreferredSize(new java.awt.Dimension(1366, 749));
         setResizable(false);
 
         pnlInicio.setLayout(new java.awt.CardLayout());
@@ -54,10 +55,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1366, 720));
         jPanel1.setRequestFocusEnabled(false);
 
-        pnlMenssagem.setBackground(new java.awt.Color(240, 240, 240));
+        pnlMenssagem.setBackground(new java.awt.Color(255, 255, 255));
         pnlMenssagem.setLayout(new java.awt.CardLayout());
-
-        lblMenssagem.setText(" ");
         pnlMenssagem.add(lblMenssagem, "card2");
 
         painelDesktop.setBackground(new java.awt.Color(255, 255, 255));
@@ -262,14 +261,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addGap(0, 720, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addComponent(painelDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 23, Short.MAX_VALUE)))
+                    .addComponent(painelDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 28, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pnlMenuSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 705, Short.MAX_VALUE)
-                    .addComponent(pnlMenssagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 696, Short.MAX_VALUE)
+                    .addComponent(pnlMenssagem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -410,19 +409,20 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     public void setMenssagem(String menssagem, Color corFundo) {
         lblMenssagem.setText(menssagem);
-        lblMenssagem.setForeground(Color.WHITE);
-        lblMenssagem.setBackground(corFundo);
-
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask(){
-            public void run(){
-                lblMenssagem.setText(" ");
-                lblMenssagem.setForeground(Color.BLACK);
-                lblMenssagem.setBackground(Color.LIGHT_GRAY);
-            }
-        }, 5000, 1000);
+        //lblMenssagem.setForeground(Color.WHITE);
+        pnlMenssagem.setBackground(corFundo);
         
-        timer.cancel();
+        ActionListener taskPerformer = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                lblMenssagem.setText(" ");
+                //lblMenssagem.setForeground(Color.BLACK);
+                pnlMenssagem.setBackground(Color.white);
+            }
+        };
+        Timer timer = new Timer(5000, taskPerformer);
+        timer.setRepeats(false);                
+        timer.start();        
         
 
     }
