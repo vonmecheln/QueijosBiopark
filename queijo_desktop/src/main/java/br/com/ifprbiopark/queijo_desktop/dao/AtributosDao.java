@@ -9,7 +9,6 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.Atributos;
-import br.com.ifprbiopark.queijo_desktop.model.TipoQueijo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
