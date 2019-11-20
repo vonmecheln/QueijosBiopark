@@ -10,6 +10,7 @@ public class Pessoa {
     private String tipoFiscal;
     private String cadastro;
     private String tipoPessoa;
+    private String telefone;
 
     public Pessoa() {
         idPessoa = 0;
@@ -62,6 +63,14 @@ public class Pessoa {
 
     public void setTipoPessoa(String tipoPessoa) {
         this.tipoPessoa = tipoPessoa;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
     
     

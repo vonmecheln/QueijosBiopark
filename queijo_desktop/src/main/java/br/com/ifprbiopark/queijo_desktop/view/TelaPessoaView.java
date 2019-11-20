@@ -24,7 +24,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     public TelaPessoaView() throws ParseException {
         initComponents();
         
-        MaskFormatter telefone = new MaskFormatter("##/#####/####");  
+        MaskFormatter telefone = new MaskFormatter("##.#####.####");  
         telefone.install(tfTelefone);
         
     }
@@ -178,6 +178,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             pessoa.setNome(txtNome.getText());
             pessoa.setEndereco(txtEndereco.getText());
             pessoa.setCadastro(txtDoc.getText());
+            pessoa.setTelefone(tfTelefone.getText());
             
             if (cmbTipoDoc.getSelectedItem().equals("CPF")){
                 pessoa.setTipoFiscal("0");
