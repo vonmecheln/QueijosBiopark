@@ -28,6 +28,8 @@ import javax.swing.text.MaskFormatter;
  * @author marcos.andre
  */
 public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
+    private List<Pessoa> fornecedores;
+    private List<Pessoa> funcionarios;
 
     TableRecebimentoLeite listaColetas = new TableRecebimentoLeite();
 
@@ -39,16 +41,27 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         MaskFormatter coletaLeite = new MaskFormatter("##/##/####");  
         coletaLeite.install(jfData);
         
-        //Botao fornecedor
+        //inicio - > Botao fornecedor
         PessoaDao p = new PessoaDao();
-        List<Pessoa> fornecedores = p.consultarFornecedores();
+        fornecedores = p.consultarFornecedores();
 
         jcFornecedor.removeAll();
         
         for (int i = 0; i < fornecedores.size(); i++) {
             jcFornecedor.addItem(fornecedores.get(i).getNome());
         }
+        //fim;
         
+        //inicio - > Botao funcioario
+        PessoaDao f = new PessoaDao();
+        funcionarios = f.consultarFuncionarios();
+
+        jcFuncionario.removeAll();
+        
+        for (int i = 0; i < funcionarios.size(); i++) {
+            jcFuncionario.addItem(funcionarios.get(i).getNome());
+        }
+        //fim;
     }
 
     public void setPosicao() {
@@ -129,8 +142,6 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Funcionário"));
-
-        jcFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -281,11 +292,12 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
             } else {
 
                 try {
-                    //coleta dados do formulario;
-                    //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
-                    //coleta.setProdutor_idProdutor(jcFornecedor.getSelectedIndex());
-                    //coleta.setPessoa_idPessoa();
+                    //coleta dados do formulario da tela "ColetaLeite";
                     
+                    //fornecedor na tela;
+                    coleta.setProdutor_idProdutor(fornecedores.get(jcFornecedor.getSelectedIndex()));
+                    //Funcionario na tela;
+                    coleta.setPessoa_idPessoa(funcionarios.get(jcFuncionario.getSelectedIndex()));
                     //data da coleta;
                     Date leiteColeta = new SimpleDateFormat("dd/MM/yyyy").parse(jfData.getText());
                     coleta.setDtColeta(leiteColeta);
@@ -293,9 +305,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                
-                //coleta.setDtColeta(dtColeta);
-                
+                               
                 coleta.setQtdLeite(Double.parseDouble(tfQuantidade.getText()));
                 coleta.setLoteColeta(tfLote.getText());
                 

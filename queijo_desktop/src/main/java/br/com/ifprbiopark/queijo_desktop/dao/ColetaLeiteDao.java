@@ -28,8 +28,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             nps.setDate("dtColeta", new java.sql.Date(c.getDtColeta().getTime()));
             nps.setDouble("qtdLeite", c.getQtdLeite());
             nps.setInt("produtor_idProdutor", c.getProdutor_idProdutor().getIdPessoa());
-            nps.setInt("produtor_idProdutor", c.getProdutor_idProdutor().getIdPessoa());
-            nps.setInt("produtor_idProdutor", c.getPessoa_idPessoa().getIdPessoa());
+            nps.setInt("Pessoa_idPessoa", c.getPessoa_idPessoa().getIdPessoa());
             
             
             int exec = nps.executeUpdate();
@@ -84,7 +83,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
             //String SQL;
             String sql = "SELECT idColetaLeite, loteColeta, dtColeta, Produtor_idProdutor, qtdLeite, "
-                    + "Pessoa_idPessoa from coletaleite";
+                    + "Pessoa_idPessoa FROM coletaleite";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -93,7 +92,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             while (consulta.next()) {
                 ColetaLeite coleta = new ColetaLeite();
                 coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
-                coleta.setIdColetaLeite(consulta.getInt("loteColeta"));
+                coleta.setLoteColeta(consulta.getString("loteColeta"));
                 coleta.setDtColeta(consulta.getDate("dtColeta"));
                 
                 //seta funcionario;
@@ -106,8 +105,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 p.setIdPessoa(consulta.getInt("Produtor_idProdutor"));
                 coleta.setProdutor_idProdutor(p);
                 
-                PessoaDao pessoaDao = new PessoaDao();
-                coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("idProdutor")));
+                //PessoaDao pessoaDao = new PessoaDao();
+                //coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("idProdutor")));
 
                 coletas.add(coleta);
 

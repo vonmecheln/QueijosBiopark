@@ -1,5 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import java.awt.Color;
 import java.beans.PropertyVetoException;
 import java.text.ParseException;
@@ -160,7 +161,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void menuEntradaLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntradaLeiteActionPerformed
         try {
-            TelaColetaLeiteView formEntradaLeite = new TelaColetaLeiteView();
+            TelaColetaLeiteView formEntradaLeite = null;
+            try {
+                formEntradaLeite = new TelaColetaLeiteView();
+            } catch (DbException ex) {
+                Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             painelDesktop.add(formEntradaLeite);
             formEntradaLeite.setMaximum(false);
             formEntradaLeite.setVisible(true);
