@@ -11,6 +11,8 @@ import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.text.ParseException;
+import javax.swing.text.MaskFormatter;
 
 public class TelaPessoaView extends javax.swing.JInternalFrame {
 
@@ -19,8 +21,12 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormFornecedor
      */
-    public TelaPessoaView() {
+    public TelaPessoaView() throws ParseException {
         initComponents();
+        
+        MaskFormatter telefone = new MaskFormatter("##/#####/####");  
+        telefone.install(tfTelefone);
+        
     }
     
     public void setPosicao() {
@@ -41,11 +47,11 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         aviso = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         txtEndereco = new javax.swing.JTextField();
-        txtFone = new javax.swing.JTextField();
         txtDoc = new javax.swing.JTextField();
         cmbTipo = new javax.swing.JComboBox<>();
         cmbTipoDoc = new javax.swing.JComboBox<>();
         txtID = new javax.swing.JTextField();
+        tfTelefone = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -73,8 +79,6 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
 
         txtEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
-        txtFone.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
-
         txtDoc.setBorder(javax.swing.BorderFactory.createTitledBorder("CPF/CNPJ"));
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produtor", "Fornecedor", "Funcionário", "Cliente" }));
@@ -101,6 +105,8 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             }
         });
 
+        tfTelefone.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,17 +118,17 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(538, 538, 538))
+                        .addGap(574, 574, 574))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFone))
+                                .addComponent(tfTelefone))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDoc))
                             .addGroup(layout.createSequentialGroup()
@@ -138,17 +144,15 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(63, 63, 63))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtEndereco)
+                    .addComponent(tfTelefone))
                 .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -224,9 +228,9 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JComboBox<String> cmbTipoDoc;
+    private javax.swing.JFormattedTextField tfTelefone;
     private javax.swing.JTextField txtDoc;
     private javax.swing.JTextField txtEndereco;
-    private javax.swing.JTextField txtFone;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
