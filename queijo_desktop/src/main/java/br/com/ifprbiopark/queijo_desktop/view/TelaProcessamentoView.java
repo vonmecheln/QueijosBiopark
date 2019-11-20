@@ -56,34 +56,34 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
         txtTempoFerm = new javax.swing.JTextField();
         txtPhPreMat = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField23 = new javax.swing.JTextField();
+        txtCloretoCalcio = new javax.swing.JTextField();
+        txtPhEsformagem = new javax.swing.JTextField();
+        txtTempoCoagulacao = new javax.swing.JTextField();
+        txtCoagulante = new javax.swing.JTextField();
+        txtPhCorte = new javax.swing.JTextField();
+        txtPh24 = new javax.swing.JTextField();
+        txtDessoragem = new javax.swing.JTextField();
+        txtTemperatura24 = new javax.swing.JTextField();
+        txtTemperatura = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        jTextField14 = new javax.swing.JTextField();
+        txtTemperaturaSalga = new javax.swing.JTextField();
         txtDataSalga = new javax.swing.JFormattedTextField();
         jPanel7 = new javax.swing.JPanel();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField30 = new javax.swing.JTextField();
+        txtTipoTratamento = new javax.swing.JTextField();
+        txtDataCasca = new javax.swing.JFormattedTextField();
         jPanel8 = new javax.swing.JPanel();
-        jTextField27 = new javax.swing.JTextField();
-        jTextField28 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
+        txtPecasQueijo = new javax.swing.JTextField();
+        txtPesoMedio = new javax.swing.JTextField();
+        txtPesoTotal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtObservacao = new javax.swing.JTextPane();
         jPanel9 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField26 = new javax.swing.JTextField();
+        cmbFuncionario = new javax.swing.JComboBox<>();
+        txtLotePAcabado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField25 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        txtTempoTratamento = new javax.swing.JTextField();
+        btnSalvar = new javax.swing.JToggleButton();
+        btnExcluir = new javax.swing.JToggleButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -286,66 +286,66 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Coagulação"));
 
-        jTextField6.setBorder(javax.swing.BorderFactory.createTitledBorder("Cloreto de Cálcio (ml)"));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtCloretoCalcio.setBorder(javax.swing.BorderFactory.createTitledBorder("Cloreto de Cálcio (ml)"));
+        txtCloretoCalcio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtCloretoCalcioActionPerformed(evt);
             }
         });
 
-        jTextField15.setBorder(javax.swing.BorderFactory.createTitledBorder("pH da Esformagem:"));
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        txtPhEsformagem.setBorder(javax.swing.BorderFactory.createTitledBorder("pH da Esformagem:"));
+        txtPhEsformagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                txtPhEsformagemActionPerformed(evt);
             }
         });
 
-        jTextField16.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de Coagulação"));
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        txtTempoCoagulacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de Coagulação"));
+        txtTempoCoagulacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                txtTempoCoagulacaoActionPerformed(evt);
             }
         });
 
-        jTextField17.setBorder(javax.swing.BorderFactory.createTitledBorder("Coagulante"));
-        jTextField17.addActionListener(new java.awt.event.ActionListener() {
+        txtCoagulante.setBorder(javax.swing.BorderFactory.createTitledBorder("Coagulante"));
+        txtCoagulante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField17ActionPerformed(evt);
+                txtCoagulanteActionPerformed(evt);
             }
         });
 
-        jTextField18.setBorder(javax.swing.BorderFactory.createTitledBorder("pH do Corte:"));
-        jTextField18.addActionListener(new java.awt.event.ActionListener() {
+        txtPhCorte.setBorder(javax.swing.BorderFactory.createTitledBorder("pH do Corte:"));
+        txtPhCorte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField18ActionPerformed(evt);
+                txtPhCorteActionPerformed(evt);
             }
         });
 
-        jTextField19.setBorder(javax.swing.BorderFactory.createTitledBorder("pH após 24Hs"));
-        jTextField19.addActionListener(new java.awt.event.ActionListener() {
+        txtPh24.setBorder(javax.swing.BorderFactory.createTitledBorder("pH após 24Hs"));
+        txtPh24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField19ActionPerformed(evt);
+                txtPh24ActionPerformed(evt);
             }
         });
 
-        jTextField20.setBorder(javax.swing.BorderFactory.createTitledBorder("Dessoragem:"));
-        jTextField20.addActionListener(new java.awt.event.ActionListener() {
+        txtDessoragem.setBorder(javax.swing.BorderFactory.createTitledBorder("Dessoragem:"));
+        txtDessoragem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField20ActionPerformed(evt);
+                txtDessoragemActionPerformed(evt);
             }
         });
 
-        jTextField21.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura:"));
-        jTextField21.addActionListener(new java.awt.event.ActionListener() {
+        txtTemperatura24.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura:"));
+        txtTemperatura24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField21ActionPerformed(evt);
+                txtTemperatura24ActionPerformed(evt);
             }
         });
 
-        jTextField23.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura:"));
-        jTextField23.addActionListener(new java.awt.event.ActionListener() {
+        txtTemperatura.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura:"));
+        txtTemperatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField23ActionPerformed(evt);
+                txtTemperaturaActionPerformed(evt);
             }
         });
 
@@ -356,52 +356,52 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCloretoCalcio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPh24, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDessoragem, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCoagulante, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTempoCoagulacao, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPhCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPhEsformagem, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTemperatura24, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCloretoCalcio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCoagulante, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTempoCoagulacao, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPhCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPhEsformagem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField21)))
+                    .addComponent(txtPh24, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(txtDessoragem, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTemperatura24)))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Maturação"));
 
-        jTextField14.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura:"));
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        txtTemperaturaSalga.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura:"));
+        txtTemperaturaSalga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                txtTemperaturaSalgaActionPerformed(evt);
             }
         });
 
@@ -416,13 +416,13 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(txtDataSalga, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(txtTemperaturaSalga, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTemperaturaSalga, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(txtDataSalga)
         );
@@ -430,17 +430,17 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Tratamento da Casca"));
 
-        jTextField24.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Inicial:"));
-        jTextField24.addActionListener(new java.awt.event.ActionListener() {
+        txtTipoTratamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de tratamento:"));
+        txtTipoTratamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField24ActionPerformed(evt);
+                txtTipoTratamentoActionPerformed(evt);
             }
         });
 
-        jTextField30.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de tratamento:"));
-        jTextField30.addActionListener(new java.awt.event.ActionListener() {
+        txtDataCasca.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Inicial"));
+        txtDataCasca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField30ActionPerformed(evt);
+                txtDataCascaActionPerformed(evt);
             }
         });
 
@@ -449,39 +449,38 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addComponent(txtDataCasca, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtTipoTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField24)
-            .addComponent(jTextField30)
+            .addComponent(txtTipoTratamento, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(txtDataCasca)
         );
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Rendimento"));
 
-        jTextField27.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtd de Peças Produzidas:"));
-        jTextField27.addActionListener(new java.awt.event.ActionListener() {
+        txtPecasQueijo.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtd de Peças Produzidas:"));
+        txtPecasQueijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField27ActionPerformed(evt);
+                txtPecasQueijoActionPerformed(evt);
             }
         });
 
-        jTextField28.setBorder(javax.swing.BorderFactory.createTitledBorder("Peso Médio:"));
-        jTextField28.addActionListener(new java.awt.event.ActionListener() {
+        txtPesoMedio.setBorder(javax.swing.BorderFactory.createTitledBorder("Peso Médio:"));
+        txtPesoMedio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField28ActionPerformed(evt);
+                txtPesoMedioActionPerformed(evt);
             }
         });
 
-        jTextField29.setBorder(javax.swing.BorderFactory.createTitledBorder("Peso Total:"));
-        jTextField29.addActionListener(new java.awt.event.ActionListener() {
+        txtPesoTotal.setBorder(javax.swing.BorderFactory.createTitledBorder("Peso Total:"));
+        txtPesoTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField29ActionPerformed(evt);
+                txtPesoTotalActionPerformed(evt);
             }
         });
 
@@ -490,34 +489,35 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPecasQueijo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPesoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPesoMedio, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 32, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPecasQueijo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesoMedio, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Observações:"));
-        jScrollPane1.setViewportView(jTextPane1);
+        txtObservacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Observações:"));
+        jScrollPane1.setViewportView(txtObservacao);
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbFuncionario.setBorder(javax.swing.BorderFactory.createTitledBorder("Funcionario"));
 
-        jTextField26.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote (Produto Acabado):"));
-        jTextField26.addActionListener(new java.awt.event.ActionListener() {
+        txtLotePAcabado.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote (Produto Acabado):"));
+        txtLotePAcabado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField26ActionPerformed(evt);
+                txtLotePAcabadoActionPerformed(evt);
             }
         });
 
@@ -527,37 +527,37 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addComponent(txtLotePAcabado, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLotePAcabado, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Tipo de Salga");
 
-        jTextField25.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de tratamento:"));
-        jTextField25.addActionListener(new java.awt.event.ActionListener() {
+        txtTempoTratamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de tratamento:"));
+        txtTempoTratamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField25ActionPerformed(evt);
+                txtTempoTratamentoActionPerformed(evt);
             }
         });
 
-        jToggleButton1.setText("Salvar");
+        btnSalvar.setText("Salvar");
 
-        jToggleButton3.setText("Excluir");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -573,7 +573,7 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTempoTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -589,9 +589,9 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(44, 44, 44)
-                            .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
@@ -614,22 +614,23 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtTempoTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jToggleButton1)
-                            .addComponent(jToggleButton3))
+                            .addComponent(btnSalvar)
+                            .addComponent(btnExcluir))
                         .addGap(52, 52, 52))))
         );
 
@@ -669,90 +670,92 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPhPreMatActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtCloretoCalcioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCloretoCalcioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtCloretoCalcioActionPerformed
 
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+    private void txtTemperaturaSalgaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperaturaSalgaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
+    }//GEN-LAST:event_txtTemperaturaSalgaActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void txtPhEsformagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhEsformagemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_txtPhEsformagemActionPerformed
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void txtTempoCoagulacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoCoagulacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_txtTempoCoagulacaoActionPerformed
 
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
+    private void txtCoagulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCoagulanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17ActionPerformed
+    }//GEN-LAST:event_txtCoagulanteActionPerformed
 
-    private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
+    private void txtPhCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhCorteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField18ActionPerformed
+    }//GEN-LAST:event_txtPhCorteActionPerformed
 
-    private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
+    private void txtPh24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPh24ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField19ActionPerformed
+    }//GEN-LAST:event_txtPh24ActionPerformed
 
-    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
+    private void txtDessoragemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDessoragemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField20ActionPerformed
+    }//GEN-LAST:event_txtDessoragemActionPerformed
 
-    private void jTextField21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField21ActionPerformed
+    private void txtTemperatura24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperatura24ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField21ActionPerformed
+    }//GEN-LAST:event_txtTemperatura24ActionPerformed
 
-    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
+    private void txtTemperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperaturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField23ActionPerformed
+    }//GEN-LAST:event_txtTemperaturaActionPerformed
 
-    private void jTextField24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField24ActionPerformed
+    private void txtTempoTratamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoTratamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField24ActionPerformed
+    }//GEN-LAST:event_txtTempoTratamentoActionPerformed
 
-    private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
+    private void txtLotePAcabadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLotePAcabadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField25ActionPerformed
+    }//GEN-LAST:event_txtLotePAcabadoActionPerformed
 
-    private void jTextField26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField26ActionPerformed
+    private void txtPecasQueijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPecasQueijoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField26ActionPerformed
+    }//GEN-LAST:event_txtPecasQueijoActionPerformed
 
-    private void jTextField27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField27ActionPerformed
+    private void txtPesoMedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoMedioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField27ActionPerformed
+    }//GEN-LAST:event_txtPesoMedioActionPerformed
 
-    private void jTextField28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField28ActionPerformed
+    private void txtPesoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField28ActionPerformed
+    }//GEN-LAST:event_txtPesoTotalActionPerformed
 
-    private void jTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField29ActionPerformed
+    private void txtTipoTratamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoTratamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField29ActionPerformed
-
-    private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField30ActionPerformed
+    }//GEN-LAST:event_txtTipoTratamentoActionPerformed
 
     private void txtQtdUtilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtdUtilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQtdUtilActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void txtItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtItemActionPerformed
 
+    private void txtDataCascaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataCascaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataCascaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnExcluir;
+    private javax.swing.JToggleButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbFuncionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -764,39 +767,37 @@ public class TelaProcessamentoView extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JRadioButton rbLeiteCru;
     private javax.swing.JRadioButton rbLeitePast;
+    private javax.swing.JTextField txtCloretoCalcio;
+    private javax.swing.JTextField txtCoagulante;
+    private javax.swing.JFormattedTextField txtDataCasca;
     private javax.swing.JFormattedTextField txtDataSalga;
+    private javax.swing.JTextField txtDessoragem;
     private javax.swing.JTextField txtItem;
     private javax.swing.JTextField txtItemFerm;
     private javax.swing.JTextField txtLoteInf;
+    private javax.swing.JTextField txtLotePAcabado;
     private javax.swing.JTextField txtMarcaFerm;
+    private javax.swing.JTextPane txtObservacao;
+    private javax.swing.JTextField txtPecasQueijo;
+    private javax.swing.JTextField txtPesoMedio;
+    private javax.swing.JTextField txtPesoTotal;
+    private javax.swing.JTextField txtPh24;
+    private javax.swing.JTextField txtPhCorte;
+    private javax.swing.JTextField txtPhEsformagem;
     private javax.swing.JTextField txtPhPreMat;
     private javax.swing.JTextField txtQtdUtil;
     private javax.swing.JTextField txtQuantFerm;
     private javax.swing.JTextField txtTempPreMat;
+    private javax.swing.JTextField txtTemperatura;
+    private javax.swing.JTextField txtTemperatura24;
     private javax.swing.JTextField txtTemperaturaPross;
+    private javax.swing.JTextField txtTemperaturaSalga;
+    private javax.swing.JTextField txtTempoCoagulacao;
     private javax.swing.JTextField txtTempoFerm;
     private javax.swing.JTextField txtTempoPross;
+    private javax.swing.JTextField txtTempoTratamento;
+    private javax.swing.JTextField txtTipoTratamento;
     // End of variables declaration//GEN-END:variables
 }
