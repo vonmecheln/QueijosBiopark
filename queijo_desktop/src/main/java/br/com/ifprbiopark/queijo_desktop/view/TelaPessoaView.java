@@ -11,6 +11,8 @@ import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.text.ParseException;
+import javax.swing.text.MaskFormatter;
 
 public class TelaPessoaView extends javax.swing.JInternalFrame {
 
@@ -19,8 +21,12 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormFornecedor
      */
-    public TelaPessoaView() {
+    public TelaPessoaView() throws ParseException {
         initComponents();
+        
+        MaskFormatter telefone = new MaskFormatter("##/#####/####");  
+        telefone.install(tfTelefone);
+        
     }
     
     public void setPosicao() {
@@ -41,7 +47,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         aviso = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         txtEndereco = new javax.swing.JTextField();
-        txtFone = new javax.swing.JTextField();
+        tfTelefone = new javax.swing.JTextField();
         txtDoc = new javax.swing.JTextField();
         cmbTipo = new javax.swing.JComboBox<>();
         cmbTipoDoc = new javax.swing.JComboBox<>();
@@ -73,7 +79,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
 
         txtEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
-        txtFone.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
+        tfTelefone.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
 
         txtDoc.setBorder(javax.swing.BorderFactory.createTitledBorder("CPF/CNPJ"));
 
@@ -118,7 +124,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFone))
+                                .addComponent(tfTelefone))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -148,7 +154,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                         .addGap(63, 63, 63))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -224,9 +230,9 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JComboBox<String> cmbTipoDoc;
+    private javax.swing.JTextField tfTelefone;
     private javax.swing.JTextField txtDoc;
     private javax.swing.JTextField txtEndereco;
-    private javax.swing.JTextField txtFone;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables

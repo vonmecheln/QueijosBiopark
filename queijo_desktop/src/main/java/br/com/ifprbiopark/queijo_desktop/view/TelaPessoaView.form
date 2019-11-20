@@ -46,7 +46,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtEndereco" min="-2" pref="464" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtFone" max="32767" attributes="0"/>
+                              <Component id="tfTelefone" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtNome" min="-2" pref="380" max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
                   </Group>
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="txtEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFone" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Component id="cmbTipo" min="-2" pref="52" max="-2" attributes="0"/>
@@ -145,7 +145,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtFone">
+    <Component class="javax.swing.JTextField" name="tfTelefone">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
