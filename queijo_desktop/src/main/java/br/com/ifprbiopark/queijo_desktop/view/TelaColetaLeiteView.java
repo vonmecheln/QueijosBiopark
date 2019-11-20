@@ -139,6 +139,11 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         });
 
         jbExcluir.setText("Excluir");
+        jbExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Funcionário"));
@@ -324,6 +329,35 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
+        
+        ControleColetaLeite cColeta = new ControleColetaLeite();
+        ColetaLeite c = new ColetaLeite();
+        
+        if (tblEntradaLeite.getSelectedRow() != -1) {
+
+            if (JOptionPane.showConfirmDialog(null, "Deseja excluir este cadastro?", "Atenção!",
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+                int row = tblEntradaLeite.getSelectedRow();
+                if (row > -1) {
+
+                    //para selecionar o ID a coluna deve ser setada com valor 0;
+                    Object id = tblEntradaLeite.getValueAt(row, 0);
+                    
+                    c.setIdColetaLeite((Integer) id);
+                    
+                    try {
+                        cColeta.excluir(c);
+                    } catch (DbException ex) {
+                        Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    listaColetas.removeRow(tblEntradaLeite.getSelectedRow());
+
+                }
+    }//GEN-LAST:event_jbExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
