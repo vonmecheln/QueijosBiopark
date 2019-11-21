@@ -21,19 +21,19 @@ public class RelatorioDao {
     public ArrayList<Relatorio> pesquisar(String filtro) throws SQLException {
         ArrayList<Relatorio> retorno = new ArrayList<>();
 
-        String sql = "Select * from tipoqueijo where Lower(:nomeTipo)";
+        String sql = "Select * from receitaqueijo where Lower(:nomeReceita)";
         //String sql = "SELECT * FROM viewRelatorio WHERE lower(tipoQueijo) like ?";
         //ResultSet resultadoConsulta = executarConsultaSQL(sql, "%" + filtro.trim().toLowerCase() + "%");
 
         Conexao con = Conexao.getInstance();
         NamedParameterStatement nps = con.NamedParameterStatement(sql);
-        nps.setString("nomeTipo", filtro);
+        nps.setString("nomeReceita", filtro);
         ResultSet resultadoConsulta = nps.executeQuery();
 
         while (resultadoConsulta.next()) {
             Relatorio relatorio = new Relatorio();
-            relatorio.setId(resultadoConsulta.getInt("idTipoQueijo"));
-            relatorio.setLoteSa(resultadoConsulta.getString("nomeTipo"));
+            relatorio.setId(resultadoConsulta.getInt("idReceita"));
+            relatorio.setLoteSa(resultadoConsulta.getString("nomeReceita"));
             //relatorio.setLotePa(resultadoConsulta.getString("﻿loteQueijo"));
             //relatorio.setTipoQueijo(resultadoConsulta.getString("﻿TipoQueijo_idTipoQueijo"));
 
