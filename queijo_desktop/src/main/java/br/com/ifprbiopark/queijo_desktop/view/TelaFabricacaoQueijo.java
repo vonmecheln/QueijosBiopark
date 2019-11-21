@@ -797,6 +797,42 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
 //        
 //        
 //        private Pessoa Responsavel_idResponsavel;
+
+//                jcTipoQueijo
+//                tfLote
+//                jcColeta
+//                cbQuantidadeLeite
+//                rbLeiteCru
+//                rbLeitePast
+//                txtTempoPross
+//                txtTemperaturaPross
+//                txtTempPreMat
+//                txtQuantFerm
+//                txtTempoFerm
+//                txtItemFerm
+//                txtMarcaFerm
+//                txtPhPreMat
+//                txtTemperatura
+//                txtCloretoCalcio
+//                txtCoagulante
+//                txtTempoCoagulacao
+//                txtPhCorte
+//                txtPhEsformagem
+//                txtPh24
+//                txtDessoragem
+//                txtTemperatura24
+//                txtDataSalga
+//                txtTemperaturaSalga
+//                txtTempoTratamento
+//                txtDataCasca
+//                txtTipoTratamento
+//                txtPecasQueijo
+//                txtPesoTotal
+//                txtPesoMedio
+//                txtLotePAcabado
+//                cmbFuncionario
+//                txtObservacao
+    
     }//GEN-LAST:event_btnSalvarActionPerformed
 
 
