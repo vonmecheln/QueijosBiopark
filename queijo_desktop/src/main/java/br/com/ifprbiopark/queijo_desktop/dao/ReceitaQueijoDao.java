@@ -24,11 +24,11 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
     public void inserir(ReceitaQueijo tq) throws DbException {
         try {
             
-            String sql = "INSERT INTO tipoqueijo(nomeTipo) VALUES(:nomeTipo)";
+            String sql = "INSERT INTO receitaqueijo(nomeReceita) VALUES(:nomeReceita)";
             
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("nomeTipo", tq.getNomeTipo());
+            nps.setString("nomeReceita", tq.getNomeTipo());
 
             int exec = nps.executeUpdate();
             if (exec == 0) {
@@ -53,7 +53,7 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
     public boolean excluir(ReceitaQueijo tq) throws DbException {
         try {
             
-            String sql = "DELETE tipoqueijo WHERE idTipoQueijo = :id";
+            String sql = "DELETE receitaqueijo WHERE idReceita = :id";
             
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -81,11 +81,11 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
     public ReceitaQueijo alterar(ReceitaQueijo tq) throws DbException {
         try {
             
-            String sql = "UPDATE tipoqueijo SET nomeTipo = :nomeTipo WHERE idTipoQueijo = :id";
+            String sql = "UPDATE receitaqueijo SET nomeReceita = :nomeReceita WHERE idReceita = :id";
             
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("nomeTipo", tq.getNomeTipo());
+            nps.setString("nomeReceita", tq.getNomeTipo());
             nps.setInt("id", tq.getIdTipoQueijo());
 
             int exec = nps.executeUpdate();
@@ -105,7 +105,7 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             ReceitaQueijo tq = new ReceitaQueijo();
             
             //String SQL;
-            String sql = "SELECT idTipoQueijo, nomeTipo FROM tipoqueijo WHERE idTipoQueijo = :id ";
+            String sql = "SELECT idReceita, nomeReceita FROM receitaqueijo WHERE idReceita = :id ";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -114,8 +114,8 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
-                tq.setIdTipoQueijo(consulta.getInt("idTipoQueijo"));
-                tq.setNomeTipo(consulta.getString("nomeTipo"));
+                tq.setIdTipoQueijo(consulta.getInt("idReceita"));
+                tq.setNomeTipo(consulta.getString("nomeReceita"));
             }
             consulta.close();
             return tq;
@@ -129,7 +129,7 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             List<ReceitaQueijo> lista = new ArrayList<ReceitaQueijo>();
             
             //String SQL;
-            String sql = "SELECT idTipoQueijo, nomeTipo FROM tipoqueijo";
+            String sql = "SELECT idReceita, nomeReceita FROM receitaqueijo";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -137,8 +137,8 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 ReceitaQueijo tq = new ReceitaQueijo();
-                tq.setIdTipoQueijo(consulta.getInt("idTipoQueijo"));
-                tq.setNomeTipo(consulta.getString("nomeTipo"));
+                tq.setIdTipoQueijo(consulta.getInt("idReceita"));
+                tq.setNomeTipo(consulta.getString("nomeReceita"));
                 lista.add(tq);
             }
             consulta.close();
@@ -153,17 +153,17 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             List<ReceitaQueijo> lista = new ArrayList<ReceitaQueijo>();
             
             //String SQL;
-            String sql = "SELECT idTipoQueijo, nomeTipo FROM tipoqueijo WHERE nomeTipo LIKE '%:nomeTipo%'";
+            String sql = "SELECT idReceita, nomeReceita FROM receitaqueijo WHERE nomeReceita LIKE '%:nomeReceita%'";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("nomeTipo", nome);
+            nps.setString("nomeReceita", nome);
             
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 ReceitaQueijo tq = new ReceitaQueijo();
-                tq.setIdTipoQueijo(consulta.getInt("idTipoQueijo"));
-                tq.setNomeTipo(consulta.getString("nomeTipo"));
+                tq.setIdTipoQueijo(consulta.getInt("idReceita"));
+                tq.setNomeTipo(consulta.getString("nomeReceita"));
                 lista.add(tq);
             }
             consulta.close();
@@ -175,7 +175,7 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
         public List<ReceitaQueijo> listarColetas() {
         try {
             List<ReceitaQueijo> tipoQueijo = new ArrayList<>();
-            String sql = "SELECT idTipoQueijo, nomeTipo FROM tipoqueijo";
+            String sql = "SELECT idReceita, nomeReceita FROM receitaqueijo";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -183,8 +183,8 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 ReceitaQueijo tipo = new ReceitaQueijo();
-                tipo.setIdTipoQueijo(consulta.getInt("idTipoQueijo"));
-                tipo.setNomeTipo(consulta.getString("nomeTipo"));
+                tipo.setIdTipoQueijo(consulta.getInt("idReceita"));
+                tipo.setNomeTipo(consulta.getString("nomeReceita"));
 
                 tipoQueijo.add(tipo);
 
