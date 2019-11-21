@@ -299,8 +299,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     load();
                     listaColetas.updateRow();
                     
-                    //limpar campos;
-                    //tt.setNome("");
+                    
                     
                 } catch (ParseException ex) {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
@@ -331,6 +330,11 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                 
                 
                 listaColetas.addRow(coleta);
+                
+                //limpar campos;
+                    jfData.setText("");
+                    tfQuantidade.setText("");
+                    tfLote.setText("");
                 try {
                     cColeta.salvar(coleta);
                 } catch (DbException ex) {
