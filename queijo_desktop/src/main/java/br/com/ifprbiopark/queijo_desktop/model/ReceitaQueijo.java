@@ -2,11 +2,12 @@
 package br.com.ifprbiopark.queijo_desktop.model;
 
 
-public class TipoQueijo {
+public class ReceitaQueijo {
     
     private Integer idTipoQueijo;
     private String nomeTipo;
 
+    
     public Integer getIdTipoQueijo() {
         return idTipoQueijo;
     }

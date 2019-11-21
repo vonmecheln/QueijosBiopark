@@ -8,7 +8,7 @@ package br.com.ifprbiopark.queijo_desktop.dao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
-import br.com.ifprbiopark.queijo_desktop.model.TipoQueijo;
+import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,10 +18,10 @@ import java.util.List;
  *
  * @author jhona
  */
-public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
+public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
     @Override
-    public void inserir(TipoQueijo tq) throws DbException {
+    public void inserir(ReceitaQueijo tq) throws DbException {
         try {
             
             String sql = "INSERT INTO tipoqueijo(nomeTipo) VALUES(:nomeTipo)";
@@ -50,7 +50,7 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
     }
 
     @Override
-    public boolean excluir(TipoQueijo tq) throws DbException {
+    public boolean excluir(ReceitaQueijo tq) throws DbException {
         try {
             
             String sql = "DELETE tipoqueijo WHERE idTipoQueijo = :id";
@@ -73,12 +73,12 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
     }
 
     @Override
-    public TipoQueijo consultar(TipoQueijo tq) throws DbException {
+    public ReceitaQueijo consultar(ReceitaQueijo tq) throws DbException {
         return consultar(tq.getIdTipoQueijo());
     }
 
     @Override
-    public TipoQueijo alterar(TipoQueijo tq) throws DbException {
+    public ReceitaQueijo alterar(ReceitaQueijo tq) throws DbException {
         try {
             
             String sql = "UPDATE tipoqueijo SET nomeTipo = :nomeTipo WHERE idTipoQueijo = :id";
@@ -100,9 +100,9 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
     }
 
     @Override
-    public TipoQueijo consultar(int id) throws DbException {
+    public ReceitaQueijo consultar(int id) throws DbException {
         try {
-            TipoQueijo tq = new TipoQueijo();
+            ReceitaQueijo tq = new ReceitaQueijo();
             
             //String SQL;
             String sql = "SELECT idTipoQueijo, nomeTipo FROM tipoqueijo WHERE idTipoQueijo = :id ";
@@ -124,9 +124,9 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
         }
     }
     
-    public List<TipoQueijo> consultar() throws DbException {
+    public List<ReceitaQueijo> consultar() throws DbException {
         try {
-            List<TipoQueijo> lista = new ArrayList<TipoQueijo>();
+            List<ReceitaQueijo> lista = new ArrayList<ReceitaQueijo>();
             
             //String SQL;
             String sql = "SELECT idTipoQueijo, nomeTipo FROM tipoqueijo";
@@ -136,7 +136,7 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
             
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
-                TipoQueijo tq = new TipoQueijo();
+                ReceitaQueijo tq = new ReceitaQueijo();
                 tq.setIdTipoQueijo(consulta.getInt("idTipoQueijo"));
                 tq.setNomeTipo(consulta.getString("nomeTipo"));
                 lista.add(tq);
@@ -148,9 +148,9 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
         }
     }
     
-        public List<TipoQueijo> consultar(String nome) throws DbException {
+        public List<ReceitaQueijo> consultar(String nome) throws DbException {
         try {
-            List<TipoQueijo> lista = new ArrayList<TipoQueijo>();
+            List<ReceitaQueijo> lista = new ArrayList<ReceitaQueijo>();
             
             //String SQL;
             String sql = "SELECT idTipoQueijo, nomeTipo FROM tipoqueijo WHERE nomeTipo LIKE '%:nomeTipo%'";
@@ -161,7 +161,7 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
             
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
-                TipoQueijo tq = new TipoQueijo();
+                ReceitaQueijo tq = new ReceitaQueijo();
                 tq.setIdTipoQueijo(consulta.getInt("idTipoQueijo"));
                 tq.setNomeTipo(consulta.getString("nomeTipo"));
                 lista.add(tq);
@@ -171,6 +171,30 @@ public class TipoQueijoDao extends AbstractDao<TipoQueijo> {
         } catch (SQLException ex) {
             throw new DbException(ex);
         }
+    }
+        public List<ReceitaQueijo> listarColetas() {
+        try {
+            List<ReceitaQueijo> tipoQueijo = new ArrayList<>();
+            String sql = "SELECT idTipoQueijo, nomeTipo FROM tipoqueijo";
+
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                ReceitaQueijo tipo = new ReceitaQueijo();
+                tipo.setIdTipoQueijo(consulta.getInt("idTipoQueijo"));
+                tipo.setNomeTipo(consulta.getString("nomeTipo"));
+
+                tipoQueijo.add(tipo);
+
+            }
+            return tipoQueijo;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
     
 }

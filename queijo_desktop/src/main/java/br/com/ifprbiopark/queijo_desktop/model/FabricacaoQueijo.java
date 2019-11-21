@@ -7,7 +7,7 @@ import java.util.Date;
 public class FabricacaoQueijo {
     
     private Integer idFabricacaoQueijo;
-    private TipoQueijo tipoQueijo_idTipoQueijo;
+    private ReceitaQueijo tipoQueijo_idTipoQueijo;
     private Date dataFabricacao;
     private String loteQueijo;
     private ColetaLeite coletaLeite_idColetaLeite;
@@ -57,11 +57,11 @@ public class FabricacaoQueijo {
         this.idFabricacaoQueijo = idFabricacaoQueijo;
     }
 
-    public TipoQueijo getTipoQueijo_idTipoQueijo() {
+    public ReceitaQueijo getTipoQueijo_idTipoQueijo() {
         return tipoQueijo_idTipoQueijo;
     }
 
-    public void setTipoQueijo_idTipoQueijo(TipoQueijo tipoQueijo_idTipoQueijo) {
+    public void setTipoQueijo_idTipoQueijo(ReceitaQueijo tipoQueijo_idTipoQueijo) {
         this.tipoQueijo_idTipoQueijo = tipoQueijo_idTipoQueijo;
     }
 
