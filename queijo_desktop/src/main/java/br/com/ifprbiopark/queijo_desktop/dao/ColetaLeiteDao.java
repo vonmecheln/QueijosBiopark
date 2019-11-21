@@ -18,8 +18,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     public void inserir(ColetaLeite c) throws DbException {
         try {
 
-            String sql = "INSERT INTO coletaLeite( loteColeta, dtColeta, qtdLeite, produtor_idProdutor, Pessoa_idPessoa) "
-                    + "VALUES (:loteColeta, :dtColeta, :qtdLeite, :produtor_idProdutor, :Pessoa_idPessoa)";
+            String sql = "INSERT INTO coletaLeite( loteColeta, dtColeta, qtdLeite, produtor_id, funcionario_id) "
+                    + "VALUES (:loteColeta, :dtColeta, :qtdLeite, :produtor_id, :funcionario_id)";
                         
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -27,8 +27,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             nps.setString("loteColeta", c.getLoteColeta());
             nps.setDate("dtColeta", new java.sql.Date(c.getDtColeta().getTime()));
             nps.setDouble("qtdLeite", c.getQtdLeite());
-            nps.setInt("produtor_idProdutor", c.getProdutor_idProdutor().getIdPessoa());
-            nps.setInt("Pessoa_idPessoa", c.getPessoa_idPessoa().getIdPessoa());
+            nps.setInt("produtor_id", c.getProdutor_idProdutor().getIdPessoa());
+            nps.setInt("funcionario_id", c.getPessoa_idPessoa().getIdPessoa());
             
             
             int exec = nps.executeUpdate();
@@ -82,8 +82,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             List<ColetaLeite> coletas = new ArrayList<>();
 
             //String SQL;
-            String sql = "SELECT idColetaLeite, loteColeta, dtColeta, Produtor_idProdutor, qtdLeite, "
-                    + "Pessoa_idPessoa FROM coletaleite";
+            String sql = "SELECT idColetaLeite, loteColeta, dtColeta, produtor_id, qtdLeite, "
+                    + "funcionario_id FROM coletaleite";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -108,9 +108,9 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 //                coleta.setProdutor_idProdutor(p);
                 
                 //
-                coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("Produtor_idProdutor")));
+                coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("produtor_id")));
                 
-                coleta.setPessoa_idPessoa(pessoaDao.consultar(consulta.getInt("Pessoa_idPessoa")));
+                coleta.setPessoa_idPessoa(pessoaDao.consultar(consulta.getInt("funcionario_id")));
 
                 coletas.add(coleta);
 
