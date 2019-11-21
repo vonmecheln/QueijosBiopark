@@ -12,3 +12,5 @@
 hs_err_pid*
 /queijo_desktop/target/
 queijo_desktop/bancoqueijos\.db
+
+.DS_Store
