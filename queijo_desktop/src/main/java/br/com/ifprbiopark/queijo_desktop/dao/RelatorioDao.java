@@ -21,13 +21,15 @@ public class RelatorioDao {
     public ArrayList<Relatorio> pesquisar(String filtro) throws SQLException {
         ArrayList<Relatorio> retorno = new ArrayList<>();
 
-        String sql = "Select * from receitaqueijo where Lower(:nomeReceita)";
+        String sql = "Select * from tipoqueijo";
+        if (filtro != null && filtro.length() > 0) {
+            sql += " where Lower(nomeTipo) like '%"+filtro.toLowerCase()+"%'";
+        }
+
         //String sql = "SELECT * FROM viewRelatorio WHERE lower(tipoQueijo) like ?";
         //ResultSet resultadoConsulta = executarConsultaSQL(sql, "%" + filtro.trim().toLowerCase() + "%");
-
         Conexao con = Conexao.getInstance();
         NamedParameterStatement nps = con.NamedParameterStatement(sql);
-        nps.setString("nomeReceita", filtro);
         ResultSet resultadoConsulta = nps.executeQuery();
 
         while (resultadoConsulta.next()) {

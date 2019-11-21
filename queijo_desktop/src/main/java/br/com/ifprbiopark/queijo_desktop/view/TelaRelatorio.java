@@ -52,7 +52,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "idRelatorio", "loteSa", "lotePa", "tipoQueijo"
+                "Data entrega", "Lote", "Litros", "Gordura", "Proteina", "pH", "Acidez", "Produtor", "Situação"
             }
         ));
         jScrollPane1.setViewportView(tblRelatorio);
@@ -60,7 +60,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa por Nome"));
 
-        tfPesquisaNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Queijo"));
+        tfPesquisaNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Produtor"));
 
         btPesquisa1.setText("Pesquisar");
 
