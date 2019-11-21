@@ -23,11 +23,11 @@ public class Conexao {
                    
             // criando tabelas
             statement.execute("  CREATE TABLE IF NOT EXISTS atributos (" +
-                                "  idAtributo INTEGER PRIMARY KEY," +
+                                "  idAtributo INTEGER PRIMARY KEY AUTOINCREMENT," +
                                 "  nomeAtributo VARCHAR(45) NOT NULL)");
             
             statement.execute("  CREATE TABLE IF NOT EXISTS pessoa (" +
-                                "  idPessoa INTEGER PRIMARY KEY," +
+                                "  idPessoa INTEGER PRIMARY KEY AUTOINCREMENT," +
                                 "  nome VARCHAR(45) NOT NULL," +
                                 "  endereco VARCHAR(50) NOT NULL," +
                                 "  tipoFiscal VARCHAR(1) NOT NULL," +
@@ -39,15 +39,15 @@ public class Conexao {
                                 "  idColetaLeite INTEGER PRIMARY KEY," +
                                 "  loteColeta VARCHAR(45) NOT NULL," +
                                 "  dtColeta DATE NOT NULL," +
-                                "  Produtor_idProdutor INTEGER NOT NULL," +
+                                "  Produtor_idProdutor INTEGER NOT NULL REFERENCES pessoa (idPessoa)," +
                                 "  qtdLeite DOUBLE NOT NULL," +
-                                "  Pessoa_idPessoa INTEGER NOT NULL)");
+                                "  Pessoa_idPessoa INTEGER NOT NULL REFERENCES pessoa (idPessoa)");
             
             statement.execute("  CREATE TABLE IF NOT EXISTS entradaatributo (" +
                                 "  idEntradaAtributo INTEGER PRIMARY KEY," +
                                 "  valor VARCHAR(10) NOT NULL," +
-                                "  Atributos_idAtributo INTEGER NOT NULL," +
-                                "  ColetaLeite_idColetaLeite INTEGER NOT NULL)");
+                                "  Atributos_idAtributo INTEGER NOT NULL REFERENCES atributos(idAtributo)," +
+                                "  ColetaLeite_idColetaLeite INTEGER NOT NULL REFRENCES coletaleite (idColetaLeite)");
 
             statement.execute("  CREATE TABLE IF NOT EXISTS fermento (" +
                                 "  idFermento INTEGER PRIMARY KEY," +
@@ -63,26 +63,26 @@ public class Conexao {
                                 "  nomeTipo VARCHAR(45) NOT NULL)");
 
             statement.execute("  CREATE TABLE IF NOT EXISTS fabricacaoqueijo (" +
-                                "  idFabricacaoQueijo INTEGER PRIMARY KEY," +
-                                "  TipoQueijo_idTipoQueijo INTEGER NOT NULL," +
+                                "  idFabricacaoQueijo INTEGER PRIMARY KEY AUTOINCREMENT," +
+                                "  TipoQueijo_idTipoQueijo INTEGER NOT NULL REFRENCES tipoqueijo(idTipoQueijo)," +
                                 "  dataFabricacao DATE NOT NULL," +
                                 "  loteQueijo VARCHAR(45) NOT NULL," +
-                                "  ColetaLeite_idColetaLeite INTEGER NOT NULL," +
-                                "  Processamento_idProcessamento INTEGER NOT NULL," +
+                                "  ColetaLeite_idColetaLeite INTEGER NOT NULL REFERENCES coletaleite(idColetaLeite)," +
+                                "  Processamento_idProcessamento INTEGER NOT NULL REFERENCES processamento(idProcessamento)," +
                                 "  tempoProcessamento INTEGER NOT NULL," +
                                 "  temperaturaProcessamento INTEGER NOT NULL," +
                                 "  temperaturaPreMaturacao INTEGER NOT NULL," +
-                                "  Fermento_idFermento INTEGER NOT NULL," +
-                                "  qtdFermento DOUBLE NOT NULL," +
+                                "  Fermento_idFermento INTEGER NOT NULL REFERENCES fermento (idFermento)," +
+                                "  qtdFermento NUMERIC(14,2) NOT NULL," +
                                 "  tempoMaturacao INTEGER NOT NULL," +
-                                "  phMaturacao DOUBLE NOT NULL," +
+                                "  phMaturacao NUMERIC(14,2) NOT NULL," +
                                 "  temperaturaCoagulacao INTEGER NOT NULL," +
-                                "  qtdClCalcio DOUBLE NOT NULL," +
-                                "  qtdCoagulante DOUBLE NOT NULL," +
+                                "  qtdClCalcio NUMERIC(14,2) NOT NULL," +
+                                "  qtdCoagulante NUMERIC(14,2) NOT NULL," +
                                 "  tempoCoagulacao INTEGER NOT NULL," +
-                                "  phCorte DOUBLE NOT NULL," +
-                                "  phEnformagem DOUBLE NOT NULL," +
-                                "  phFinal DOUBLE NOT NULL," +
+                                "  phCorte NUMERIC(14,2) NOT NULL," +
+                                "  phEnformagem NUMERIC(14,2) NOT NULL," +
+                                "  phFinal NUMERIC(14,2) NOT NULL," +
                                 "  dessoragem INTEGER NOT NULL," +
                                 "  temperaturaDessoragem INTEGER NOT NULL," +
                                 "  tipoSalga VARCHAR(45) NULL DEFAULT NULL," +
@@ -92,11 +92,10 @@ public class Conexao {
                                 "  tipoTratamento VARCHAR(45) NULL DEFAULT NULL," +
                                 "  tempoTratamento INTEGER NULL DEFAULT NULL," +
                                 "  qtdPecas INTEGER NOT NULL," +
-                                "  pesoMPecas DOUBLE NOT NULL," +
-                                "  pesoTotal DOUBLE NOT NULL," +
+                                "  pesoMPecas NUMERIC(14,2) NOT NULL," +
+                                "  pesoTotal NUMERIC(14,2) NOT NULL," +
                                 "  observacoes LONGTEXT NULL DEFAULT NULL," +
-                                "  FabricacaoQueijocol VARCHAR(45) NULL DEFAULT NULL," +
-                                "  Responsavel_idResponsavel INTEGER NOT NULL)");
+                                "  Responsavel_idResponsavel INTEGER NOT NULL REFERENCES pessoa (idPessoa)");
 
 //            statement.execute("CREATE TABLE IF NOT EXISTS `pessoa` ("
 //                    + "  `idPessoa` INTEGER PRIMARY KEY,"
