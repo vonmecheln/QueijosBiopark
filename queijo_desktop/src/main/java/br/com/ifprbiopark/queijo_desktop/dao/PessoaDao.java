@@ -25,9 +25,9 @@ public class PessoaDao extends AbstractDao<Pessoa>{
         try {
             
             String sql = "INSERT INTO pessoa( "
-                    + "nome, endereco, tipoFiscal, cadastro, tipoPessoa "
+                    + "nome, endereco, tipoFiscal, cadastro, tipoPessoa, telefone "
                     + ") VALUES ("
-                    + ":nome, :endereco, :tipoFiscal, :cadastro, :tipoPessoa)";
+                    + ":nome, :endereco, :tipoFiscal, :cadastro, :tipoPessoa, :telefone)";
             
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -36,6 +36,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             nps.setString("tipoFiscal", p.getTipoFiscal());
             nps.setString("cadastro", p.getCadastro());
             nps.setString("tipoPessoa", p.getTipoPessoa());
+            nps.setString("telefone", p.getTelefone());
 
             int exec = nps.executeUpdate();
             if (exec == 0) {
@@ -92,7 +93,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
         try {
             
             String sql = "UPDATE pessoa SET "
-                    + "nome = :nome, endereco = :endereco, tipoFiscal = :tipoFiscal, cadastro = :cadastro, tipoPessoa = :tipoPessoa"
+                    + "nome = :nome, endereco = :endereco, tipoFiscal = :tipoFiscal, cadastro = :cadastro, tipoPessoa = :tipoPessoa, telefone = :telefone"
                     + " WHERE "
                     + "idPessoa = :id";
             
@@ -103,6 +104,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             nps.setString("tipoFiscal", p.getTipoFiscal());
             nps.setString("cadastro", p.getCadastro());
             nps.setString("tipoPessoa", p.getTipoPessoa());
+            nps.setString("telefone", p.getTelefone());
             nps.setInt("id", p.getIdPessoa());
 
             int exec = nps.executeUpdate();
@@ -121,7 +123,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
         try {
             
             //String SQL;
-            String sql = "SELECT idPessoa, nome FROM pessoa WHERE idPessoa = :id";
+            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, cadastro, tipoPessoa, telefone FROM pessoa WHERE idPessoa = :id";
             
 
             Conexao con = Conexao.getInstance();
@@ -134,13 +136,13 @@ public class PessoaDao extends AbstractDao<Pessoa>{
                 Pessoa pessoa = new Pessoa();
                 pessoa.setIdPessoa(consulta.getInt("idPessoa"));
                 pessoa.setNome(consulta.getString("nome"));
-//                pessoa.setEndereco(consulta.getString("endereco"));
-//                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
-//                pessoa.setCadastro(consulta.getString("cadastro"));
-//                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+                pessoa.setEndereco(consulta.getString("endereco"));
+                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
+                pessoa.setCadastro(consulta.getString("cadastro"));
+                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+                pessoa.setTelefone(consulta.getString("telefone"));
                 
-                return pessoa;
-                
+                return pessoa;                
             }
             return null;
         } catch (SQLException ex) {
@@ -202,7 +204,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             List<Pessoa> pessoas = new ArrayList<Pessoa>();            
             
             //String SQL;
-            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, cadastro, tipoPessoa FROM pessoa WHERE nome LIKE '%:nome%'";
+            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, cadastro, tipoPessoa, telefone FROM pessoa WHERE nome LIKE '%:nome%'";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -218,6 +220,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
                 pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
                 pessoa.setCadastro(consulta.getString("cadastro"));
                 pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+                pessoa.setTelefone(consulta.getString("telefone"));
                 
                 pessoas.add(pessoa);                
             }

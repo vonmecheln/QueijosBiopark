@@ -6,16 +6,13 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
-import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
 import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import com.google.common.base.Strings;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.text.MaskFormatter;
+import javax.swing.JOptionPane;
 
 public class TelaPessoaView extends javax.swing.JInternalFrame {
 
@@ -30,12 +27,16 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         //mascara situacao fiscal (documento)        
         alteraMascara();
         try{
-            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         }
         catch (Exception ex){
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
-        }
-        
+        }        
+    }
+    
+    public void setId(int id){
+        txtID.setText(String.valueOf(id));
+        consultar();
     }
     
     public void setPosicao() {
@@ -58,7 +59,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         cmbTipo = new javax.swing.JComboBox<>();
         cmbTipoDoc = new javax.swing.JComboBox<>();
         txtID = new javax.swing.JTextField();
-        tfTelefone = new javax.swing.JFormattedTextField();
+        txtTelefone = new javax.swing.JFormattedTextField();
         txtDoc = new javax.swing.JFormattedTextField();
 
         setClosable(true);
@@ -70,16 +71,6 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         setName("Cadastro de Pessoa"); // NOI18N
 
         txtNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
-        txtNome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNomeMouseClicked(evt);
-            }
-        });
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
         txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomeKeyPressed(evt);
@@ -101,11 +92,6 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         });
 
         txtEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
-        txtEndereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnderecoActionPerformed(evt);
-            }
-        });
         txtEndereco.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEnderecoKeyPressed(evt);
@@ -114,11 +100,6 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produtor", "Fornecedor", "Funcionário", "Cliente" }));
         cmbTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Pessoa"));
-        cmbTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbTipoActionPerformed(evt);
-            }
-        });
 
         cmbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPF", "CNPJ" }));
         cmbTipoDoc.setBorder(javax.swing.BorderFactory.createTitledBorder("Documento"));
@@ -130,20 +111,10 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
 
         txtID.setEditable(false);
         txtID.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
-        txtID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
-            }
-        });
 
-        tfTelefone.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
+        txtTelefone.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
 
         txtDoc.setBorder(javax.swing.BorderFactory.createTitledBorder("CPF/CNPJ"));
-        txtDoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDocActionPerformed(evt);
-            }
-        });
         txtDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDocKeyPressed(evt);
@@ -171,11 +142,11 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfTelefone))
+                                .addComponent(txtTelefone))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCancelar)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
@@ -195,7 +166,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtEndereco)
-                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -245,7 +216,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                 pessoa.setNome(txtNome.getText());
                 pessoa.setEndereco(txtEndereco.getText());
                 pessoa.setCadastro(txtDoc.getText());
-                pessoa.setTelefone(tfTelefone.getText());
+                pessoa.setTelefone(txtTelefone.getText());
 
                 if (cmbTipoDoc.getSelectedItem().equals("CPF")){
                     pessoa.setTipoFiscal("0");
@@ -271,45 +242,55 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         }
     }
     
+    private void consultar(){
+        try{
+            Pessoa p = new Pessoa();
+            ControlePessoa cp = new ControlePessoa();
+            if (!Strings.isNullOrEmpty(txtID.getText())){            
+
+                p = cp.consultar(Integer.parseInt(txtID.getText()));
+            }
+            
+            if (!Strings.isNullOrEmpty(p.getNome())){
+                txtNome.setText(p.getNome());
+                txtEndereco.setText(p.getEndereco());
+                
+                if (p.getTipoFiscal().equals("0")){
+                    cmbTipoDoc.setSelectedIndex(0);
+                }
+                else if (p.getTipoFiscal().equals("1")){
+                    cmbTipoDoc.setSelectedIndex(1);
+                }
+                
+                txtDoc.setText(p.getCadastro());
+                
+                txtTelefone.setText(p.getTelefone());
+                
+                cmbTipo.setSelectedItem(p.getTipoPessoa());
+            }
+            
+            btnSalvar.setText("Atualizar");            
+        }
+        catch (Exception ex){
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
+        }        
+    }
+    
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        if (!Strings.isNullOrEmpty(txtNome.getText()) || !Strings.isNullOrEmpty(txtEndereco.getText())){
+            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair sem salvar?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                this.dispose();
+            }
+        }
+        else{
+            this.dispose();;
+        }
+        
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTipoActionPerformed
-
-    private void cmbTipoDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoDocActionPerformed
-        alteraMascara();
-    }//GEN-LAST:event_cmbTipoDocActionPerformed
-
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
-
-    private void txtDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocActionPerformed
-        
-    }//GEN-LAST:event_txtDocActionPerformed
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
-        
-    }//GEN-LAST:event_txtEnderecoActionPerformed
-
-    private void txtNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNomeMouseClicked
-
-    }//GEN-LAST:event_txtNomeMouseClicked
-
-    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
-        txtNome.setBackground(Color.white);
-    }//GEN-LAST:event_txtNomeKeyPressed
 
     private void txtDocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDocKeyPressed
         txtDoc.setBackground(Color.white);
@@ -319,16 +300,24 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         txtEndereco.setBackground(Color.white);
     }//GEN-LAST:event_txtEnderecoKeyPressed
 
+    private void cmbTipoDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoDocActionPerformed
+        alteraMascara();
+    }//GEN-LAST:event_cmbTipoDocActionPerformed
+
+    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
+        txtNome.setBackground(Color.white);
+    }//GEN-LAST:event_txtNomeKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JComboBox<String> cmbTipoDoc;
-    private javax.swing.JFormattedTextField tfTelefone;
     private javax.swing.JFormattedTextField txtDoc;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }
