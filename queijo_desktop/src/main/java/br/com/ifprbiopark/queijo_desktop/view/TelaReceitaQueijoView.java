@@ -5,19 +5,26 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableReceitaQueijo;
 import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author 55459
  */
-public class TelaItemView extends javax.swing.JInternalFrame {
+public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form TelaItem
-     */
-    public TelaItemView() {
+    TableReceitaQueijo listaItem = new TableReceitaQueijo();
+    
+    public TelaReceitaQueijoView() {
         initComponents();
+       tblItem.setModel( listaItem);
     }
     
     public void setPosicao() {
@@ -36,11 +43,11 @@ public class TelaItemView extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tfDescricao = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblItem = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -50,7 +57,7 @@ public class TelaItemView extends javax.swing.JInternalFrame {
 
         jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição"));
+        tfDescricao.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,7 +67,7 @@ public class TelaItemView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -69,7 +76,7 @@ public class TelaItemView extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -82,7 +89,7 @@ public class TelaItemView extends javax.swing.JInternalFrame {
 
         jButton2.setText("Cancelar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblItem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -93,7 +100,7 @@ public class TelaItemView extends javax.swing.JInternalFrame {
                 "Código", "Descrição"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblItem);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,7 +137,15 @@ public class TelaItemView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        ReceitaQueijo item = new ReceitaQueijo();
+        item.setNomeTipo(tfDescricao.getText());
+        ControleReceitaQueijo controleQueijo = new ControleReceitaQueijo();
+        try {
+            controleQueijo.salvar(item);
+        } catch (DbException ex) {
+            Logger.getLogger(TelaReceitaQueijoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -139,8 +154,8 @@ public class TelaItemView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tblItem;
+    private javax.swing.JTextField tfDescricao;
     // End of variables declaration//GEN-END:variables
 }

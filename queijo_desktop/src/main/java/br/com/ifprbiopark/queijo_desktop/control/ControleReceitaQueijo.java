@@ -5,34 +5,34 @@
  */
 package br.com.ifprbiopark.queijo_desktop.control;
 
-import br.com.ifprbiopark.queijo_desktop.dao.TipoQueijoDao;
+import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
-import br.com.ifprbiopark.queijo_desktop.model.TipoQueijo;
+import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.util.List;
 
 /**
  *
  * @author UnioestePROEX
  */
-public class ControleTipoQueijo {
+public class ControleReceitaQueijo {
     
     //inserir dao correspondente;
-    TipoQueijoDao dao = new TipoQueijoDao();
+    ReceitaQueijoDao dao = new ReceitaQueijoDao();
     
-    public void salvar(TipoQueijo c) throws DbException{
+    public void salvar(ReceitaQueijo c) throws DbException{
         dao.inserir(c);
     }
     
-    public void excluir (TipoQueijo c) throws DbException{
+    public void excluir (ReceitaQueijo c) throws DbException{
         dao.excluir(c);
     }
     
-    public void alterar(TipoQueijo c) throws DbException {
+    public void alterar(ReceitaQueijo c) throws DbException {
         dao.alterar(c);
     }
     
-    public List<ColetaLeite> listaColeta(TipoQueijo c) throws DbException{
+    public List<ColetaLeite> listaColeta(ReceitaQueijo c) throws DbException{
         return null;
 
 }
