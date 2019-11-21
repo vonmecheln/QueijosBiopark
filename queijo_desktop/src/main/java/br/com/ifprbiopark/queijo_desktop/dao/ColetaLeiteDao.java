@@ -87,7 +87,9 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-
+            
+            PessoaDao pessoaDao = new PessoaDao();
+            
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 ColetaLeite coleta = new ColetaLeite();
@@ -95,18 +97,20 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 coleta.setLoteColeta(consulta.getString("loteColeta"));
                 coleta.setDtColeta(consulta.getDate("dtColeta"));
                 
-                //seta funcionario;
-                Pessoa f = new Pessoa();
-                f.setIdPessoa(consulta.getInt("Pessoa_idPessoa"));
-                coleta.setPessoa_idPessoa(f);
-
-                //seta produtor;
-                Pessoa p = new Pessoa();
-                p.setIdPessoa(consulta.getInt("Produtor_idProdutor"));
-                coleta.setProdutor_idProdutor(p);
+//                //seta funcionario;
+//                Pessoa f = new Pessoa();
+//                f.setIdPessoa(consulta.getInt("Pessoa_idPessoa"));
+//                coleta.setPessoa_idPessoa(f);
+//
+//                //seta produtor;
+//                Pessoa p = new Pessoa();
+//                p.setIdPessoa(consulta.getInt("Produtor_idProdutor"));
+//                coleta.setProdutor_idProdutor(p);
                 
-                //PessoaDao pessoaDao = new PessoaDao();
-                //coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("idProdutor")));
+                //
+                coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("Produtor_idProdutor")));
+                
+                coleta.setPessoa_idPessoa(pessoaDao.consultar(consulta.getInt("Pessoa_idPessoa")));
 
                 coletas.add(coleta);
 

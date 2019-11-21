@@ -37,12 +37,6 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         initComponents();
         load();
         
-        //fim;
-    }
-    
-    private void load() throws ParseException, DbException{
-        tblEntradaLeite.setModel(listaColetas);
-        
         MaskFormatter coletaLeite = new MaskFormatter("##/##/####");  
         coletaLeite.install(jfData);
         
@@ -66,6 +60,14 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         for (int i = 0; i < funcionarios.size(); i++) {
             jcFuncionario.addItem(funcionarios.get(i).getNome());
         }
+        
+        
+    }
+    
+    private void load() throws ParseException, DbException{
+        tblEntradaLeite.setModel(listaColetas);
+        
+        
     }
 
     public void setPosicao() {

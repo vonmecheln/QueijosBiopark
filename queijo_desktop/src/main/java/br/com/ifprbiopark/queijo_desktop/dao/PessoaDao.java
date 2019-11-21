@@ -79,8 +79,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
         try {
             
             //String SQL;
-            String sql = "SELECT FROM coletaLeite( idColetaLeite, loteColeta, dtColeta, idProdutor ) "
-                    + "VALUES (:idColetaLeite, :loteColeta, :dtColeta, idProdutor)";
+            String sql = "SELECT idPessoa, nome FROM pessoa WHERE idPessoa = " + id;
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -90,17 +89,17 @@ public class PessoaDao extends AbstractDao<Pessoa>{
                 Pessoa pessoa = new Pessoa();
                 pessoa.setIdPessoa(consulta.getInt("idPessoa"));
                 pessoa.setNome(consulta.getString("nome"));
-                pessoa.setEndereco(consulta.getString("endereco"));
-                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
-                pessoa.setCadastro(consulta.getString("cadastro"));
-                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+//                pessoa.setEndereco(consulta.getString("endereco"));
+//                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
+//                pessoa.setCadastro(consulta.getString("cadastro"));
+//                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
                 
                 return pessoa;
                 
             }
             return null;
-        } catch (Exception e) {
-            return null;
+        } catch (SQLException ex) {
+            throw new DbException(ex);
         }
     }
     

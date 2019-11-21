@@ -2,6 +2,7 @@ package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
 import br.com.ifprbiopark.queijo_desktop.dao.*;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -12,6 +13,7 @@ public class TableRecebimentoLeite extends AbstractTableModel {
    
     List<ColetaLeite> listaEntregas = coleta.listarColetas();
     
+     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
     private String[] nomeColunas = {"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote"};
    
@@ -37,13 +39,16 @@ public class TableRecebimentoLeite extends AbstractTableModel {
             case 0:
                 return listaEntregas.get(linha).getIdColetaLeite();
             case 1:
-                return listaEntregas.get(linha).getProdutor_idProdutor().getIdPessoa();
+                return listaEntregas.get(linha).getProdutor_idProdutor().getNome();
             case 2:
                 return listaEntregas.get(linha).getQtdLeite();
             case 3:
+                if(listaEntregas.get(linha).getDtColeta() != null){
+                    return sdf.format(listaEntregas.get(linha).getDtColeta());
+                }
                 return listaEntregas.get(linha).getDtColeta();
             case 4:
-                return listaEntregas.get(linha).getPessoa_idPessoa().getIdPessoa();
+                return listaEntregas.get(linha).getPessoa_idPessoa().getNome();
             case 5:
                 return listaEntregas.get(linha).getLoteColeta();
                                     
