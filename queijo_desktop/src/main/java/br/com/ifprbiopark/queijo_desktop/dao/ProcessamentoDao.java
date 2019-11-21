@@ -51,7 +51,7 @@ public class ProcessamentoDao extends AbstractDao<Processamento>{
 
     @Override
     public boolean excluir(Processamento p) throws DbException {
-                try {
+        try {
             
             String sql = "DELETE processamento WHERE idProcessamento = :id";
             

@@ -88,7 +88,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
     }
 
     @Override
-    public Pessoa alterar(Pessoa p) throws DbException {
+    public Pessoa alterar(Pessoa p) throws Exception {
         try {
             
             String sql = "UPDATE pessoa SET "
@@ -107,20 +107,12 @@ public class PessoaDao extends AbstractDao<Pessoa>{
 
             int exec = nps.executeUpdate();
             if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-
-            int key = 0;
-            ResultSet retorno = nps.getGeneratedKeys();
-            if (retorno != null && retorno.next()) {
-                key = retorno.getInt(1);
-            } else {
-                throw new GeneratedKeysException();
+                throw new Exception("Erro ao alterar dados.");
             }
             
             return p;
-        } catch (SQLException ex) {
-            throw new DbException(ex);
+        } catch (Exception ex) {
+            throw new Exception(ex);
         }
     }
 
