@@ -41,7 +41,8 @@ public class Conexao {
                     + "    dtColeta DATE NOT NULL, "
                     + "    produtor_id INTEGER NOT NULL REFERENCES pessoa(idPessoa), "
                     + "    qtdLeite NUMERIC(14,2) NOT NULL, "
-                    + "    funcionario_id INTEGER NOT NULL REFERENCES pessoa(idPessoa));");
+                    + "    funcionario_id INTEGER NOT NULL REFERENCES pessoa(idPessoa), "
+                    + "    situacao VARCHAR(15));");
 
             statement.execute("CREATE TABLE IF NOT EXISTS entradaatributo ("
                     + "    idEntradaAtributo INTEGER PRIMARY KEY AUTOINCREMENT, "
