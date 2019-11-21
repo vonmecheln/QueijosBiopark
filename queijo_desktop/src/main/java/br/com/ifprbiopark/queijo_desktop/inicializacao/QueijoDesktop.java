@@ -1,13 +1,11 @@
 package br.com.ifprbiopark.queijo_desktop.inicializacao;
 
-
-import br.com.ifprbiopark.queijo_desktop.view.TelaPessoaView;
 import br.com.ifprbiopark.queijo_desktop.view.TelaPrincipalView;
-import javax.swing.JFrame;
 
 public class QueijoDesktop {
+
     public static TelaPrincipalView telaPrincipal;
-    
+
     /**
      * @param args the command line arguments
      */
@@ -24,25 +22,16 @@ public class QueijoDesktop {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-
+        
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                telaPrincipal = new TelaPrincipalView();
-                //telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-                telaPrincipal.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            telaPrincipal = new TelaPrincipalView();
+            //telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            telaPrincipal.setVisible(true);
         });
     }
 }
