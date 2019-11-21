@@ -5,25 +5,43 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
-import br.com.ifprbiopark.queijo_desktop.control.ControleFornecedor;
-import br.com.ifprbiopark.queijo_desktop.exception.FornecedorException;
-import br.com.ifprbiopark.queijo_desktop.model.Fornecedor;
+import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
+import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
+import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
+import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
+import com.google.common.base.Strings;
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.Dimension;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.text.MaskFormatter;
 
 public class TelaPessoaView extends javax.swing.JInternalFrame {
 
-    Fornecedor fornecedor = new Fornecedor();
+    Pessoa pessoa = new Pessoa();
 
     /**
      * Creates new form FormFornecedor
      */
-    public TelaPessoaView() {
+    public TelaPessoaView() throws ParseException {
         initComponents();
+        
+        //mascara situacao fiscal (documento)        
+        alteraMascara();
+        try{
+            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        }
+        catch (Exception ex){
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
+        }
+        
     }
-
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,22 +52,14 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         txtNome = new javax.swing.JTextField();
-        lblNome = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
-        aviso = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
-        lblCodigo = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
-        lblEndereco = new javax.swing.JLabel();
-        lblTelefone = new javax.swing.JLabel();
-        lblTipoPessoa = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
-        txtFone = new javax.swing.JTextField();
-        txtDoc = new javax.swing.JTextField();
         cmbTipo = new javax.swing.JComboBox<>();
-        lblDocumento = new javax.swing.JLabel();
         cmbTipoDoc = new javax.swing.JComboBox<>();
-        btnEditar = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
+        tfTelefone = new javax.swing.JFormattedTextField();
+        txtDoc = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -59,7 +69,22 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         setTitle("Cadastro de Pessoa");
         setName("Cadastro de Pessoa"); // NOI18N
 
-        lblNome.setText("Nome");
+        txtNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
+        txtNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNomeMouseClicked(evt);
+            }
+        });
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeKeyPressed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,35 +100,53 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             }
         });
 
-        lblCodigo.setText("Código");
-
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+        txtEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
+        txtEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
+                txtEnderecoActionPerformed(evt);
+            }
+        });
+        txtEndereco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEnderecoKeyPressed(evt);
             }
         });
 
-        lblEndereco.setText("Endereço");
-
-        lblTelefone.setText("Telefone");
-
-        lblTipoPessoa.setText("Tipo Pessoa");
-
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produtor", "Fornecedor", "Funcionario", "Cliente\t" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produtor", "Fornecedor", "Funcionário", "Cliente" }));
+        cmbTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Pessoa"));
         cmbTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipoActionPerformed(evt);
             }
         });
 
-        lblDocumento.setText("Documento");
-
         cmbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPF", "CNPJ" }));
-
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        cmbTipoDoc.setBorder(javax.swing.BorderFactory.createTitledBorder("Documento"));
+        cmbTipoDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                cmbTipoDocActionPerformed(evt);
+            }
+        });
+
+        txtID.setEditable(false);
+        txtID.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
+        tfTelefone.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
+
+        txtDoc.setBorder(javax.swing.BorderFactory.createTitledBorder("CPF/CNPJ"));
+        txtDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDocActionPerformed(evt);
+            }
+        });
+        txtDoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDocKeyPressed(evt);
             }
         });
 
@@ -114,79 +157,51 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCodigo)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(594, 614, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEndereco))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelefone)
-                            .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDoc))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblDocumento)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblTipoPessoa)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cmbTipo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(btnSalvar)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnCancelar))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfTelefone))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelar)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(17, 17, 17)
+                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome)
-                    .addComponent(lblCodigo)
-                    .addComponent(lblDocumento))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTelefone)
-                    .addComponent(lblEndereco))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblTipoPessoa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtEndereco)
+                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -194,30 +209,71 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    private void alteraMascara(){
+        try{
+            txtDoc.setText("");
+            if (cmbTipoDoc.getSelectedItem()== "CPF"){
+                    txtDoc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
 
-        aviso.setText("");
-        try {
-            fornecedor.setNome(txtNome.getText());
-
-            ControleFornecedor controleF = new ControleFornecedor();
-            controleF.salvar(fornecedor);
-
-            aviso.setText("Fornecedor salvo com sucesso!");
-            aviso.setForeground(Color.GREEN);
-
-        } catch (FornecedorException ex) {
-
-            aviso.setText(ex.getMessage());
-            aviso.setForeground(Color.RED);
-            //Logger.getLogger(TelaPessoaView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            else if (cmbTipoDoc.getSelectedItem() == "CNPJ"){
+                    txtDoc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###/####-##")));
+            }            
         }
+        catch (Exception ex){
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
+        }
+    }
+    
+    private void salvar(){
+        try {
+            boolean salvamentoLiberado = true;
+            if (Strings.isNullOrEmpty(txtNome.getText())){
+                salvamentoLiberado = false;
+                txtNome.setBackground(Color.pink);
+            }            
+            if (txtDoc.getText() == "   .   .   -  " || txtDoc.getText() == "   .   .   /    -  "){
+                salvamentoLiberado = false;
+                txtDoc.setBackground(Color.pink);
+            }
+            if (Strings.isNullOrEmpty(txtEndereco.getText())){
+                salvamentoLiberado = false;
+                txtEndereco.setBackground(Color.pink);
+            }
+            
+            if (salvamentoLiberado){
+                pessoa.setNome(txtNome.getText());
+                pessoa.setEndereco(txtEndereco.getText());
+                pessoa.setCadastro(txtDoc.getText());
+                pessoa.setTelefone(tfTelefone.getText());
 
+                if (cmbTipoDoc.getSelectedItem().equals("CPF")){
+                    pessoa.setTipoFiscal("0");
+                }
+                else if (cmbTipoDoc.getSelectedItem().equals("CNPJ")){
+                    pessoa.setTipoFiscal("1");
+                }            
+
+                pessoa.setTipoPessoa((String)cmbTipo.getSelectedItem());
+
+                ControlePessoa controle = new ControlePessoa();
+                controle.salvar(pessoa);
+
+                QueijoDesktop.telaPrincipal.setMenssagem("Salvo com sucesso.", Color.GREEN);
+
+                txtID.setText(String.valueOf(pessoa.getIdPessoa()));
+            }
+            else{
+                QueijoDesktop.telaPrincipal.setMenssagem("Por favor, preencha os campos", Color.yellow);
+            }                  
+        } catch (Exception ex) {
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
+        }
+    }
+    
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
@@ -227,28 +283,52 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTipoActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+    private void cmbTipoDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoDocActionPerformed
+        alteraMascara();
+    }//GEN-LAST:event_cmbTipoDocActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void txtDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocActionPerformed
+        
+    }//GEN-LAST:event_txtDocActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
+        
+    }//GEN-LAST:event_txtEnderecoActionPerformed
+
+    private void txtNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNomeMouseClicked
+
+    }//GEN-LAST:event_txtNomeMouseClicked
+
+    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
+        txtNome.setBackground(Color.white);
+    }//GEN-LAST:event_txtNomeKeyPressed
+
+    private void txtDocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDocKeyPressed
+        txtDoc.setBackground(Color.white);
+    }//GEN-LAST:event_txtDocKeyPressed
+
+    private void txtEnderecoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnderecoKeyPressed
+        txtEndereco.setBackground(Color.white);
+    }//GEN-LAST:event_txtEnderecoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel aviso;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JComboBox<String> cmbTipoDoc;
-    private javax.swing.JLabel lblCodigo;
-    private javax.swing.JLabel lblDocumento;
-    private javax.swing.JLabel lblEndereco;
-    private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblTelefone;
-    private javax.swing.JLabel lblTipoPessoa;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDoc;
+    private javax.swing.JFormattedTextField tfTelefone;
+    private javax.swing.JFormattedTextField txtDoc;
     private javax.swing.JTextField txtEndereco;
-    private javax.swing.JTextField txtFone;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

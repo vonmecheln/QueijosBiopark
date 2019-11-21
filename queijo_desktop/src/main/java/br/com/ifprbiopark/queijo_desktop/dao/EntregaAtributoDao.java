@@ -33,5 +33,10 @@ public class EntregaAtributoDao extends AbstractDao<EntregaAtributo>{
     public EntregaAtributo alterar(EntregaAtributo objeto) throws DbException {
         throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public EntregaAtributo consultar(int id) throws DbException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

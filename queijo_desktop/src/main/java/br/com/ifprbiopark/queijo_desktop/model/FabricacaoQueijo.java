@@ -7,7 +7,7 @@ import java.util.Date;
 public class FabricacaoQueijo {
     
     private Integer idFabricacaoQueijo;
-    private TipoQueijo tipoQueijo_idTipoQueijo;
+    private ReceitaQueijo tipoQueijo_idTipoQueijo;
     private Date dataFabricacao;
     private String loteQueijo;
     private ColetaLeite coletaLeite_idColetaLeite;
@@ -22,7 +22,7 @@ public class FabricacaoQueijo {
     private Integer temperaturaCoagulacao;
     private double qtdClCalcio;
     private double qtdCoagulante;
-    private Integer tempocoagulante;
+    private Integer tempoCoagulacao;
     private double phCorte;
     private double phEnformagem;
     private double phFinal;
@@ -39,6 +39,15 @@ public class FabricacaoQueijo {
     private double pesoTotal;
     private String observacoes;
     private String fabricacaoQueijocol;
+    private Pessoa Responsavel_idResponsavel;
+
+    public Pessoa getResponsavel_idResponsavel() {
+        return Responsavel_idResponsavel;
+    }
+
+    public void setResponsavel_idResponsavel(Pessoa Responsavel_idResponsavel) {
+        this.Responsavel_idResponsavel = Responsavel_idResponsavel;
+    }
 
     public Integer getIdFabricacaoQueijo() {
         return idFabricacaoQueijo;
@@ -48,11 +57,11 @@ public class FabricacaoQueijo {
         this.idFabricacaoQueijo = idFabricacaoQueijo;
     }
 
-    public TipoQueijo getTipoQueijo_idTipoQueijo() {
+    public ReceitaQueijo getTipoQueijo_idTipoQueijo() {
         return tipoQueijo_idTipoQueijo;
     }
 
-    public void setTipoQueijo_idTipoQueijo(TipoQueijo tipoQueijo_idTipoQueijo) {
+    public void setTipoQueijo_idTipoQueijo(ReceitaQueijo tipoQueijo_idTipoQueijo) {
         this.tipoQueijo_idTipoQueijo = tipoQueijo_idTipoQueijo;
     }
 
@@ -168,12 +177,12 @@ public class FabricacaoQueijo {
         this.qtdCoagulante = qtdCoagulante;
     }
 
-    public Integer getTempocoagulante() {
-        return tempocoagulante;
+    public Integer getTempoCoagulacao() {
+        return tempoCoagulacao;
     }
 
-    public void setTempocoagulante(Integer tempocoagulante) {
-        this.tempocoagulante = tempocoagulante;
+    public void setTempoCoagulacao(Integer tempoCoagulacao) {
+        this.tempoCoagulacao = tempoCoagulacao;
     }
 
     public double getPhCorte() {
