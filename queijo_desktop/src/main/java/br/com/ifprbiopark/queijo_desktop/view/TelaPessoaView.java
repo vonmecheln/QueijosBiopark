@@ -232,7 +232,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                 salvamentoLiberado = false;
                 txtNome.setBackground(Color.pink);
             }            
-            if (txtDoc.getText() == "   .   .   -  " || txtDoc.getText() == "   .   .   /    -  "){
+            if ( Strings.isNullOrEmpty(txtDoc.getText())||txtDoc.getText().equals("   .   .   -  ") || txtDoc.getText().equals("   .   .   /    -  ")){
                 salvamentoLiberado = false;
                 txtDoc.setBackground(Color.pink);
             }

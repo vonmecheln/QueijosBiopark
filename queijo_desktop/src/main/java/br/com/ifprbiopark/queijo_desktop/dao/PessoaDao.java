@@ -57,8 +57,26 @@ public class PessoaDao extends AbstractDao<Pessoa>{
     }
 
     @Override
-    public boolean excluir(Pessoa objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+    public boolean excluir(Pessoa p) throws DbException {
+        try {
+            
+            String sql = "DELETE pessoa WHERE idPessoa = :id";
+            
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            nps.setInt("id", p.getIdPessoa());
+
+            boolean exec = nps.execute();
+            if (!exec) {
+                throw new SQLException();
+            }
+            else{
+                return exec;
+            }          
+
+        } catch (SQLException ex) {
+            throw new DbException(ex);
+        }
     }
 
     @Override
@@ -70,8 +88,40 @@ public class PessoaDao extends AbstractDao<Pessoa>{
     }
 
     @Override
-    public Pessoa alterar(Pessoa objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+    public Pessoa alterar(Pessoa p) throws DbException {
+        try {
+            
+            String sql = "UPDATE pessoa SET "
+                    + "nome = :nome, endereco = :endereco, tipoFiscal = :tipoFiscal, cadastro = :cadastro, tipoPessoa = :tipoPessoa"
+                    + " WHERE "
+                    + "idPessoa = :id";
+            
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            nps.setString("nome", p.getNome());            
+            nps.setString("endereco", p.getEndereco());
+            nps.setString("tipoFiscal", p.getTipoFiscal());
+            nps.setString("cadastro", p.getCadastro());
+            nps.setString("tipoPessoa", p.getTipoPessoa());
+            nps.setInt("id", p.getIdPessoa());
+
+            int exec = nps.executeUpdate();
+            if (exec == 0) {
+                throw new NotExecuteInsertException();
+            }
+
+            int key = 0;
+            ResultSet retorno = nps.getGeneratedKeys();
+            if (retorno != null && retorno.next()) {
+                key = retorno.getInt(1);
+            } else {
+                throw new GeneratedKeysException();
+            }
+            
+            return p;
+        } catch (SQLException ex) {
+            throw new DbException(ex);
+        }
     }
 
     @Override
@@ -79,10 +129,13 @@ public class PessoaDao extends AbstractDao<Pessoa>{
         try {
             
             //String SQL;
-            String sql = "SELECT idPessoa, nome FROM pessoa WHERE idPessoa = " + id;
+            String sql = "SELECT idPessoa, nome FROM pessoa WHERE idPessoa = :id";
+            
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            
+            nps.setInt("id", id);
 
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
@@ -146,6 +199,37 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             }
             return pessoas;
 
+        } catch (SQLException ex) {
+            throw new DbException(ex);
+        }
+    }
+        
+        public List<Pessoa> consultar(String nome) throws DbException {
+        try {
+            
+            List<Pessoa> pessoas = new ArrayList<Pessoa>();            
+            
+            //String SQL;
+            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, cadastro, tipoPessoa FROM pessoa WHERE nome LIKE '%:nome%'";
+
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            
+            nps.setString("nome", nome);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Pessoa pessoa = new Pessoa();
+                pessoa.setIdPessoa(consulta.getInt("idPessoa"));
+                pessoa.setNome(consulta.getString("nome"));
+                pessoa.setEndereco(consulta.getString("endereco"));
+                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
+                pessoa.setCadastro(consulta.getString("cadastro"));
+                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+                
+                pessoas.add(pessoa);                
+            }
+            return pessoas;
         } catch (SQLException ex) {
             throw new DbException(ex);
         }
