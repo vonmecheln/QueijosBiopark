@@ -157,6 +157,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel7MouseEntered(evt);
             }
@@ -264,13 +267,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                     .addComponent(painelDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 28, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlMenuSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE))
+                .addComponent(pnlMenuSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addGap(0, 696, Short.MAX_VALUE)
                     .addComponent(pnlMenssagem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
         );
 
         pnlInicio.add(jPanel1, "card2");
@@ -406,6 +409,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         formItem.setPosicao();
         formItem.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        TelaRelatorio formRelatorio = new TelaRelatorio();
+        painelDesktop.add(formRelatorio);
+        //formRelatorio.setPosicao();
+        formRelatorio.setVisible(true);     // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     public void setMenssagem(String menssagem, Color corFundo) {
         lblMenssagem.setText(menssagem);

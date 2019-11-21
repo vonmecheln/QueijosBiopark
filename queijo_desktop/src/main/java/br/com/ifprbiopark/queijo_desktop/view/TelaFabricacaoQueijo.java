@@ -758,45 +758,45 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         
         FabricacaoQueijo queijo = new FabricacaoQueijo();
-        
-        queijo.setTipoQueijo_idTipoQueijo(jcTipoQueijo.getSelectedIndex());
-        queijo.setColetaLeite_idColetaLeite(jcColeta.getSelectedIndex());
-        queijo.setTipoQueijo_idTipoQueijo(tipoQueijo_idTipoQueijo);
-        queijo.setDataFabricacao(dataFabricacao);
-        queijo.setLoteQueijo(loteQueijo);
-        queijo.setColetaLeite_idColetaLeite(coletaLeite_idColetaLeite);
-        queijo.setProcessamento_idProcessamento(processamento_idProcessamento);
-        queijo.setTempoProcessamento(tempoProcessamento);
-        queijo.setTemperaturaProcessamento(temperaturaProcessamento);
-        queijo.setTemperaturaPreMaturacao(temperaturaPreMaturacao);
-        queijo.setFermento_idFermento(fermento_idFermento);
-        queijo.setQtdFermento(0);
-        queijo.setTempoMaturacao(tempoMaturacao);
-        queijo.setPhMaturacao(0);
-        queijo.setTemperaturaCoagulacao(temperaturaCoagulacao);
-        queijo.setQtdClCalcio(0);
-        queijo.setQtdCoagulante(0);
-        queijo.setTempoCoagulacao(tempoCoagulacao);
-        queijo.setPhCorte(0);
-        queijo.setPhEnformagem(0);
-        queijo.setPhFinal(0);
-        queijo.setDessoragem(dessoragem);
-        queijo.setTemperaturaDessoragem(temperaturaDessoragem);
-        queijo.setTipoSalga(tipoSalga);
-        queijo.setDataMaturacao(dataMaturacao);
-        queijo.setTempoMaturacao(temperaturaMaturacao);
-        queijo.setDataLavagem(dataLavagem);
-        queijo.setTipoTratamento(tipoTratamento);
-        queijo.setTempoTratamento(tempoTratamento);
-        queijo.setQtdPecas(qtdPecas);
-        queijo.setPesoMPecas(pesoMPecas);
-        queijo.setPesoTotal(pesoTotal);
-        queijo.setObservacoes(observacoes);
-        queijo.setFabricacaoQueijocol(fabricacaoQueijocol);
-        queijo.setResponsavel_idResponsavel(Responsavel_idResponsavel);
-        
-        
-        private Pessoa Responsavel_idResponsavel;
+//        
+//        queijo.setTipoQueijo_idTipoQueijo(jcTipoQueijo.getSelectedIndex());
+//        queijo.setColetaLeite_idColetaLeite(jcColeta.getSelectedIndex());
+//        queijo.setTipoQueijo_idTipoQueijo(tipoQueijo_idTipoQueijo);
+//        queijo.setDataFabricacao(dataFabricacao);
+//        queijo.setLoteQueijo(loteQueijo);
+//        queijo.setColetaLeite_idColetaLeite(coletaLeite_idColetaLeite);
+//        queijo.setProcessamento_idProcessamento(processamento_idProcessamento);
+//        queijo.setTempoProcessamento(tempoProcessamento);
+//        queijo.setTemperaturaProcessamento(temperaturaProcessamento);
+//        queijo.setTemperaturaPreMaturacao(temperaturaPreMaturacao);
+//        queijo.setFermento_idFermento(fermento_idFermento);
+//        queijo.setQtdFermento(0);
+//        queijo.setTempoMaturacao(tempoMaturacao);
+//        queijo.setPhMaturacao(0);
+//        queijo.setTemperaturaCoagulacao(temperaturaCoagulacao);
+//        queijo.setQtdClCalcio(0);
+//        queijo.setQtdCoagulante(0);
+//        queijo.setTempoCoagulacao(tempoCoagulacao);
+//        queijo.setPhCorte(0);
+//        queijo.setPhEnformagem(0);
+//        queijo.setPhFinal(0);
+//        queijo.setDessoragem(dessoragem);
+//        queijo.setTemperaturaDessoragem(temperaturaDessoragem);
+//        queijo.setTipoSalga(tipoSalga);
+//        queijo.setDataMaturacao(dataMaturacao);
+//        queijo.setTempoMaturacao(temperaturaMaturacao);
+//        queijo.setDataLavagem(dataLavagem);
+//        queijo.setTipoTratamento(tipoTratamento);
+//        queijo.setTempoTratamento(tempoTratamento);
+//        queijo.setQtdPecas(qtdPecas);
+//        queijo.setPesoMPecas(pesoMPecas);
+//        queijo.setPesoTotal(pesoTotal);
+//        queijo.setObservacoes(observacoes);
+//        queijo.setFabricacaoQueijocol(fabricacaoQueijocol);
+//        queijo.setResponsavel_idResponsavel(Responsavel_idResponsavel);
+//        
+//        
+//        private Pessoa Responsavel_idResponsavel;
     }//GEN-LAST:event_btnSalvarActionPerformed
 
 
