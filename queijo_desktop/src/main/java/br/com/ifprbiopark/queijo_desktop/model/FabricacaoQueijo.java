@@ -7,10 +7,15 @@ import java.util.Date;
 public class FabricacaoQueijo {
     
     private Integer idFabricacaoQueijo;
+    
+    //informacoes basicas de processamento
     private ReceitaQueijo tipoQueijo_idTipoQueijo;
-    private Date dataFabricacao;
     private String loteQueijo;
     private ColetaLeite coletaLeite_idColetaLeite;
+    private double qtdLeiteUtilizada;
+    
+    
+    private Date dataFabricacao;
     private Processamento processamento_idProcessamento;
     private Integer tempoProcessamento;
     private Integer temperaturaProcessamento;
@@ -311,6 +316,14 @@ public class FabricacaoQueijo {
 
     public void setFabricacaoQueijocol(String fabricacaoQueijocol) {
         this.fabricacaoQueijocol = fabricacaoQueijocol;
+    }
+
+    public double getQtdLeiteUtilizada() {
+        return qtdLeiteUtilizada;
+    }
+
+    public void setQtdLeiteUtilizada(double qtdLeiteUtilizada) {
+        this.qtdLeiteUtilizada = qtdLeiteUtilizada;
     }
     
     
