@@ -54,8 +54,23 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
             new String [] {
                 "Cód.Coleta", "Data", "Lote M.P.", "Cód. Produtor", "Qtd. Leite", "Situacao"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblRelatorio);
+        if (tblRelatorio.getColumnModel().getColumnCount() > 0) {
+            tblRelatorio.getColumnModel().getColumn(0).setPreferredWidth(15);
+            tblRelatorio.getColumnModel().getColumn(1).setPreferredWidth(25);
+            tblRelatorio.getColumnModel().getColumn(2).setPreferredWidth(15);
+            tblRelatorio.getColumnModel().getColumn(3).setPreferredWidth(25);
+            tblRelatorio.getColumnModel().getColumn(4).setPreferredWidth(25);
+        }
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa por Nome"));
@@ -182,14 +197,16 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Falha ao Pesquisar!", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
         for (Relatorio relatorio : this.resultadoPesquisaRelatorio) {
-            model.addRow(new Object[]{
-    //               relatorio.getIdRelatorio(),
-   //             relatorio.getLoteSa(),
-   //             relatorio.getLotePa(),
-   //             relatorio.getTipoQueijo()
+            model.addRow(new Object[]{      
+              relatorio.getIdColetaLeite(),
+              relatorio.getDtColeta(),
+              relatorio.getLoteColeta(),
+              relatorio.getProdutor_id(),
+              relatorio.getQtdLeite(),
+              relatorio.getSituacao()
             });
         }
-    }
+ }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btPesquisa1;
