@@ -91,7 +91,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         jcTipoQueijo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         txtTemperaturaPross = new javax.swing.JTextField();
-        txtTempoPross = new javax.swing.JTextField();
+        txtTempoFermento = new javax.swing.JTextField();
         jcTipoLeite = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         txtTempPreMat = new javax.swing.JTextField();
@@ -99,8 +99,8 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         txtQuantFerm = new javax.swing.JTextField();
         txtMarcaFerm = new javax.swing.JTextField();
         txtItemFerm = new javax.swing.JTextField();
-        txtTempoFerm = new javax.swing.JTextField();
-        txtPhPreMat = new javax.swing.JTextField();
+        txtTempoFermentacao = new javax.swing.JTextField();
+        txtPhPreMatura = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         txtCloretoCalcio = new javax.swing.JTextField();
         txtPhEsformagem = new javax.swing.JTextField();
@@ -193,10 +193,10 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             }
         });
 
-        txtTempoPross.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo:"));
-        txtTempoPross.addActionListener(new java.awt.event.ActionListener() {
+        txtTempoFermento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo:"));
+        txtTempoFermento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTempoProssActionPerformed(evt);
+                txtTempoFermentoActionPerformed(evt);
             }
         });
 
@@ -210,7 +210,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jcTipoLeite, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtTempoPross, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTempoFermento, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtTemperaturaPross, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -220,7 +220,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jcTipoLeite)
-                    .addComponent(txtTempoPross, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                    .addComponent(txtTempoFermento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                     .addComponent(txtTemperaturaPross, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -275,17 +275,17 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             }
         });
 
-        txtTempoFerm.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo:"));
-        txtTempoFerm.addActionListener(new java.awt.event.ActionListener() {
+        txtTempoFermentacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo:"));
+        txtTempoFermentacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTempoFermActionPerformed(evt);
+                txtTempoFermentacaoActionPerformed(evt);
             }
         });
 
-        txtPhPreMat.setBorder(javax.swing.BorderFactory.createTitledBorder("PH após Pré Maturação:"));
-        txtPhPreMat.addActionListener(new java.awt.event.ActionListener() {
+        txtPhPreMatura.setBorder(javax.swing.BorderFactory.createTitledBorder("PH após Pré Maturação:"));
+        txtPhPreMatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhPreMatActionPerformed(evt);
+                txtPhPreMaturaActionPerformed(evt);
             }
         });
 
@@ -297,13 +297,13 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addComponent(txtQuantFerm, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtTempoFerm, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTempoFermentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtItemFerm, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtMarcaFerm, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtPhPreMat, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPhPreMatura, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -314,9 +314,9 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
                         .addGap(2, 2, 2)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtQuantFerm, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                            .addComponent(txtTempoFerm)
+                            .addComponent(txtTempoFermentacao)
                             .addComponent(txtItemFerm)))
-                    .addComponent(txtPhPreMat)
+                    .addComponent(txtPhPreMatura)
                     .addComponent(txtMarcaFerm))
                 .addContainerGap())
         );
@@ -693,9 +693,9 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTempPreMatActionPerformed
 
-    private void txtTempoProssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoProssActionPerformed
+    private void txtTempoFermentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoFermentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTempoProssActionPerformed
+    }//GEN-LAST:event_txtTempoFermentoActionPerformed
 
     private void txtMarcaFermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaFermActionPerformed
         // TODO add your handling code here:
@@ -705,13 +705,13 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtItemFermActionPerformed
 
-    private void txtTempoFermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoFermActionPerformed
+    private void txtTempoFermentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoFermentacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTempoFermActionPerformed
+    }//GEN-LAST:event_txtTempoFermentacaoActionPerformed
 
-    private void txtPhPreMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhPreMatActionPerformed
+    private void txtPhPreMaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhPreMaturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhPreMatActionPerformed
+    }//GEN-LAST:event_txtPhPreMaturaActionPerformed
 
     private void txtCloretoCalcioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCloretoCalcioActionPerformed
         // TODO add your handling code here:
@@ -801,19 +801,19 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         
         //Processamento
         queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
-        queijo.setTempoProcessamento(Integer.parseInt(txtTempoPross.getText())); 
+        queijo.setTempoProcessamento(Integer.parseInt(txtTempoFermento.getText())); 
         queijo.setTemperaturaProcessamento(Integer.parseInt(txtTemperaturaPross.getText())); 
 //        
-//        //Prematuracao
-//        queijo.setTemperaturaPreMaturacao(txtTempPreMat.getText());
-//        
-//        //Insercao de Fermento
-//        queijo.setQtdFermento(txtQuantFerm.getText());
-//        queijo.setTempoFermentacao(txtTempoFerm.getText());
+         //Prematuracao
+        queijo.setTemperaturaPreMaturacao(Integer.parseInt(txtTempPreMat.getText()));
+        
+        //Insercao de Fermento
+//        queijo.setQtdFermento(Integer.parseInt(txtQuantFerm.getText()));
+//        queijo.setTempoFermentacao(Integer.parseInt(txtTempoFermento.getText()));
 //        queijo.setFermento_idFermento(txtItemFerm.getText());
 //        queijo.setMarcaFermento(txtMarcaFerm.getText());
-//        queijo.setPhMaturacao(txtPhPreMat.getText());
-//        
+//        queijo.setPhPreMaturacao(txtPhPreMaturacao.getText());
+        
 //        //Coagulacao
 //        queijo.setTemperaturaCoagulacao(txtTemperatura.getText());
 //        queijo.setQtdClCalcio(txtCloretoCalcio.getText());
@@ -882,7 +882,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtPh24;
     private javax.swing.JTextField txtPhCorte;
     private javax.swing.JTextField txtPhEsformagem;
-    private javax.swing.JTextField txtPhPreMat;
+    private javax.swing.JTextField txtPhPreMatura;
     private javax.swing.JTextField txtQuantFerm;
     private javax.swing.JTextField txtQuantidadeLeiteUtilizada;
     private javax.swing.JTextField txtTempPreMat;
@@ -891,8 +891,8 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTemperaturaPross;
     private javax.swing.JTextField txtTemperaturaSalga;
     private javax.swing.JTextField txtTempoCoagulacao;
-    private javax.swing.JTextField txtTempoFerm;
-    private javax.swing.JTextField txtTempoPross;
+    private javax.swing.JTextField txtTempoFermentacao;
+    private javax.swing.JTextField txtTempoFermento;
     private javax.swing.JTextField txtTempoTratamento;
     // End of variables declaration//GEN-END:variables
 }

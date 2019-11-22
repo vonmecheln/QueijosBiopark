@@ -8,24 +8,28 @@ public class FabricacaoQueijo {
     
     private Integer idFabricacaoQueijo;
     
-    //informacoes basicas de processamento
+    //informacoes basicas de processamento;
     private ReceitaQueijo tipoQueijo_idTipoQueijo;
     private String loteQueijo;
     private ColetaLeite coletaLeite_idColetaLeite;
     private double qtdLeiteUtilizada;
     
-    //Processamento
+    //processamento;
     private String tipoLeite;
     private Integer tempoProcessamento;
     private Integer temperaturaProcessamento;
     private Integer temperaturaPreMaturacao;
 
+    //fermento;
+    private double qtdFermento;
+    private Integer tempoFermentacao;
+    private Fermento fermento_idFermento;
+    private String marcaFermento;
+    private Integer phPreMaturacao;
     
+    private Integer tempoMaturacao;
     private Date dataFabricacao;
     private Processamento processamento_idProcessamento;
-    private Fermento fermento_idFermento;
-    private double qtdFermento;
-    private Integer tempoMaturacao;
     private double phMaturacao;
     private Integer temperaturaCoagulacao;
     private double qtdClCalcio;
@@ -335,6 +339,30 @@ public class FabricacaoQueijo {
 
     public void setTipoLeite(String tipoLeite) {
         this.tipoLeite = tipoLeite;
+    }
+
+    public Integer getTempoFermentacao() {
+        return tempoFermentacao;
+    }
+
+    public void setTempoFermentacao(Integer tempoFermentacao) {
+        this.tempoFermentacao = tempoFermentacao;
+    }
+
+    public String getMarcaFermento() {
+        return marcaFermento;
+    }
+
+    public void setMarcaFermento(String marcaFermento) {
+        this.marcaFermento = marcaFermento;
+    }
+
+    public Integer getPhPreMaturacao() {
+        return phPreMaturacao;
+    }
+
+    public void setPhPreMaturacao(Integer phPreMaturacao) {
+        this.phPreMaturacao = phPreMaturacao;
     }
     
     

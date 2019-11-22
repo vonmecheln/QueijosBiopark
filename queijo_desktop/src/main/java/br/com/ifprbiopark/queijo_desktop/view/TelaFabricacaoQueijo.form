@@ -244,7 +244,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jcTipoLeite" min="-2" pref="147" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtTempoPross" min="-2" pref="106" max="-2" attributes="0"/>
+                  <Component id="txtTempoFermento" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtTemperaturaPross" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -256,7 +256,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jcTipoLeite" max="32767" attributes="0"/>
-                      <Component id="txtTempoPross" alignment="0" pref="46" max="32767" attributes="0"/>
+                      <Component id="txtTempoFermento" alignment="0" pref="46" max="32767" attributes="0"/>
                       <Component id="txtTemperaturaPross" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -277,7 +277,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperaturaProssActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTempoPross">
+        <Component class="javax.swing.JTextField" name="txtTempoFermento">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -286,7 +286,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoProssActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoFermentoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jcTipoLeite">
@@ -374,13 +374,13 @@
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="txtQuantFerm" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtTempoFerm" min="-2" pref="106" max="-2" attributes="0"/>
+                  <Component id="txtTempoFermentacao" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtItemFerm" min="-2" pref="244" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="txtMarcaFerm" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="txtPhPreMat" min="-2" pref="147" max="-2" attributes="0"/>
+                  <Component id="txtPhPreMatura" min="-2" pref="147" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -393,11 +393,11 @@
                           <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtQuantFerm" pref="45" max="32767" attributes="0"/>
-                              <Component id="txtTempoFerm" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtTempoFermentacao" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtItemFerm" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="txtPhPreMat" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtPhPreMatura" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtMarcaFerm" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -442,7 +442,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtItemFermActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTempoFerm">
+        <Component class="javax.swing.JTextField" name="txtTempoFermentacao">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -451,10 +451,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoFermActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoFermentacaoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPhPreMat">
+        <Component class="javax.swing.JTextField" name="txtPhPreMatura">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -463,7 +463,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhPreMatActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhPreMaturaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
