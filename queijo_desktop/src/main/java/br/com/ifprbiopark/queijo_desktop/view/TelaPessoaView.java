@@ -236,6 +236,9 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             }
             
             if (salvamentoLiberado){
+                if(!Strings.isNullOrEmpty(txtID.getText())){
+                    pessoa.setIdPessoa(Integer.parseInt(txtID.getText()));
+                }
                 pessoa.setNome(txtNome.getText());
                 pessoa.setEndereco(txtEndereco.getText());
                 pessoa.setDocumento(txtDoc.getText());
