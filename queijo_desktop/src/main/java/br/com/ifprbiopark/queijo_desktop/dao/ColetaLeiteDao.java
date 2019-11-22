@@ -4,17 +4,10 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
-import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
@@ -24,18 +17,17 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
             String sql = "INSERT INTO coletaLeite( loteColeta, dtColeta, qtdLeite, produtor_id, funcionario_id, situacao) "
                     + "VALUES (:loteColeta, :dtColeta, :qtdLeite, :produtor_id, :funcionario_id, :situacao)";
-                        
+
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            
+
             nps.setString("loteColeta", c.getLoteColeta());
             nps.setDate("dtColeta", new java.sql.Date(c.getDtColeta().getTime()));
             nps.setDouble("qtdLeite", c.getQtdLeite());
             nps.setInt("produtor_id", c.getProdutor_idProdutor().getIdPessoa());
             nps.setInt("funcionario_id", c.getPessoa_idPessoa().getIdPessoa());
             nps.setString("situacao", c.getSituacao());
-           
-            
+
             int exec = nps.executeUpdate();
             if (exec == 0) {
                 throw new NotExecuteInsertException();
@@ -92,17 +84,17 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            
+
             PessoaDao pessoaDao = new PessoaDao();
-            
+
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 ColetaLeite coleta = new ColetaLeite();
                 coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
                 coleta.setLoteColeta(consulta.getString("loteColeta"));
-                java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dtColeta"));                
+                java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dtColeta"));
                 coleta.setDtColeta(d);
-                
+
 //                //seta funcionario;
 //                Pessoa f = new Pessoa();
 //                f.setIdPessoa(consulta.getInt("Pessoa_idPessoa"));
@@ -112,12 +104,11 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 //                Pessoa p = new Pessoa();
 //                p.setIdPessoa(consulta.getInt("Produtor_idProdutor"));
 //                coleta.setProdutor_idProdutor(p);
-                
                 //
                 coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("produtor_id")));
-                
+
                 coleta.setPessoa_idPessoa(pessoaDao.consultar(consulta.getInt("funcionario_id")));
-                
+                coleta.setQtdLeite(consulta.getDouble("qtdLeite"));
                 coleta.setSituacao(consulta.getString("situacao"));
 
                 coletas.add(coleta);
