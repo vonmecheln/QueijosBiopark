@@ -41,8 +41,8 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        tfLote = new javax.swing.JTextField();
-        cbQuantidadeLeite = new javax.swing.JTextField();
+        txtLote = new javax.swing.JTextField();
+        txtQuantidadeLeiteUtilizada = new javax.swing.JTextField();
         jcColeta = new javax.swing.JComboBox<>();
         jcTipoQueijo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
@@ -101,12 +101,12 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações de Processamento"));
 
-        tfLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote:"));
+        txtLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote:"));
 
-        cbQuantidadeLeite.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtde Utilizada:"));
-        cbQuantidadeLeite.addActionListener(new java.awt.event.ActionListener() {
+        txtQuantidadeLeiteUtilizada.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtde Utilizada:"));
+        txtQuantidadeLeiteUtilizada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbQuantidadeLeiteActionPerformed(evt);
+                txtQuantidadeLeiteUtilizadaActionPerformed(evt);
             }
         });
 
@@ -121,18 +121,18 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jcTipoQueijo, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tfLote, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jcColeta, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(cbQuantidadeLeite, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtQuantidadeLeiteUtilizada, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(tfLote)
-                .addComponent(cbQuantidadeLeite))
+                .addComponent(txtLote)
+                .addComponent(txtQuantidadeLeiteUtilizada))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcColeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -743,9 +743,9 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfTipoTratamentoCascaActionPerformed
 
-    private void cbQuantidadeLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbQuantidadeLeiteActionPerformed
+    private void txtQuantidadeLeiteUtilizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeLeiteUtilizadaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbQuantidadeLeiteActionPerformed
+    }//GEN-LAST:event_txtQuantidadeLeiteUtilizadaActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
@@ -757,57 +757,57 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         
-        FabricacaoQueijo fqueijo = new FabricacaoQueijo();
-        Qeuijo
+        FabricacaoQueijo queijo = new FabricacaoQueijo();
+      
                 
         //informacoes inicio do processamento;
         queijo.setTipoQueijo_idTipoQueijo(jcTipoQueijo.getSelectedIndex());     
-        queijo.setLoteQueijo(tfLote.getText());                                 
+        queijo.setLoteQueijo(txtLote.getText());                                 
         queijo.setColetaLeite_idColetaLeite(jcColeta.getSelectedIndex()); 
-        queijo.setQuantidadeLeiteUsado(cbQuantidadeLeite.getText());
+        queijo.setQuantidadeLeiteUsado(txtQuantidadeLeiteUtilizada.getText());
         
-        //Processamento
-        queijo.setTipoLeite() //5 cru
-        queijo.setTipoLeite() //6 pasteurizado
-        queijo.setTempoProcessamento(txtTempoPross.getText()); 
-        queijo.setTemperaturaProcessamento(txtTemperaturaPross.getText()); 
-        
-        //Prematuracao
-        queijo.setTemperaturaPreMaturacao(txtTempPreMat.getText());
-        
-        //Insercao de Fermento
-        queijo.setQtdFermento(txtQuantFerm.getText());
-        queijo.setTempoFermentacao(txtTempoFerm.getText());
-        queijo.setFermento_idFermento(txtItemFerm.getText());
-        queijo.setMarcaFermento(txtMarcaFerm.getText());
-        queijo.setPhMaturacao(txtPhPreMat.getText());
-        
-        //Coagulacao
-        queijo.setTemperaturaCoagulacao(txtTemperatura.getText());
-        queijo.setQtdClCalcio(txtCloretoCalcio.getText());
-        queijo.setQtdCoagulante(txtCoagulante.getText());
-        queijo.setTempoCoagulacao(txtTempoCoagulacao.getText());
-        queijo.setPhCorte(txtPhCorte.getText());
-        queijo.setPhEnformagem(txtPhEsformagem.getText());
-        queijo.setPh24h(txtPh24.getText());
-        queijo.setDessoragem(txtDessoragem.getText());
-        queijo.setTemperatura24h(txtTemperatura24.getText());
-        
-        
-        //Etapa de Salga
-        queijo.setDataSalga(tfDataSalga.getText());
-        queijo.setTemperaturaSalga(tfTemperaturaSalga.getText());
-        queijo.setTempoTratamentoSalga(tfTempoTratamentoSalga.getText());
-        queijo.setDataTratamentoCasca(tfTempoTratamentoCasca.getText());
-        queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
-        
-        //Rendimento
-        queijo.setQuantidadeProduzida(tfQuantidadeProduzida.getText());
-        queijo.setPesoTotalLote(tfPesoTotalLote.getText());
-        queijo.setPesoMedioLote(tfPesoMedioLote.getText());
-        queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
-        queijo.setFuncionario(cbFuncionario);
-        queijo.setObservacoes(tfObservacao.getText());
+//        //Processamento
+//        queijo.setTipoLeite() //5 cru
+//        queijo.setTipoLeite() //6 pasteurizado
+//        queijo.setTempoProcessamento(txtTempoPross.getText()); 
+//        queijo.setTemperaturaProcessamento(txtTemperaturaPross.getText()); 
+//        
+//        //Prematuracao
+//        queijo.setTemperaturaPreMaturacao(txtTempPreMat.getText());
+//        
+//        //Insercao de Fermento
+//        queijo.setQtdFermento(txtQuantFerm.getText());
+//        queijo.setTempoFermentacao(txtTempoFerm.getText());
+//        queijo.setFermento_idFermento(txtItemFerm.getText());
+//        queijo.setMarcaFermento(txtMarcaFerm.getText());
+//        queijo.setPhMaturacao(txtPhPreMat.getText());
+//        
+//        //Coagulacao
+//        queijo.setTemperaturaCoagulacao(txtTemperatura.getText());
+//        queijo.setQtdClCalcio(txtCloretoCalcio.getText());
+//        queijo.setQtdCoagulante(txtCoagulante.getText());
+//        queijo.setTempoCoagulacao(txtTempoCoagulacao.getText());
+//        queijo.setPhCorte(txtPhCorte.getText());
+//        queijo.setPhEnformagem(txtPhEsformagem.getText());
+//        queijo.setPh24h(txtPh24.getText());
+//        queijo.setDessoragem(txtDessoragem.getText());
+//        queijo.setTemperatura24h(txtTemperatura24.getText());
+//        
+//        
+//        //Etapa de Salga
+//        queijo.setDataSalga(tfDataSalga.getText());
+//        queijo.setTemperaturaSalga(tfTemperaturaSalga.getText());
+//        queijo.setTempoTratamentoSalga(tfTempoTratamentoSalga.getText());
+//        queijo.setDataTratamentoCasca(tfTempoTratamentoCasca.getText());
+//        queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
+//        
+//        //Rendimento
+//        queijo.setQuantidadeProduzida(tfQuantidadeProduzida.getText());
+//        queijo.setPesoTotalLote(tfPesoTotalLote.getText());
+//        queijo.setPesoMedioLote(tfPesoMedioLote.getText());
+//        queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
+//        queijo.setFuncionario(cbFuncionario);
+//        queijo.setObservacoes(tfObservacao.getText());
        
                 
     
@@ -818,7 +818,6 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JToggleButton btnExcluir;
     private javax.swing.JToggleButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTextField cbQuantidadeLeite;
     private javax.swing.JComboBox<String> cmbFuncionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -836,7 +835,6 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbLeiteCru;
     private javax.swing.JRadioButton rbLeitePast;
     private javax.swing.JFormattedTextField tfDataTratamentoCasca;
-    private javax.swing.JTextField tfLote;
     private javax.swing.JTextField tfLoteProdutoAcabado;
     private javax.swing.JTextPane tfObservacao;
     private javax.swing.JTextField tfPesoMedioLote;
@@ -848,12 +846,14 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField txtDataSalga;
     private javax.swing.JTextField txtDessoragem;
     private javax.swing.JTextField txtItemFerm;
+    private javax.swing.JTextField txtLote;
     private javax.swing.JTextField txtMarcaFerm;
     private javax.swing.JTextField txtPh24;
     private javax.swing.JTextField txtPhCorte;
     private javax.swing.JTextField txtPhEsformagem;
     private javax.swing.JTextField txtPhPreMat;
     private javax.swing.JTextField txtQuantFerm;
+    private javax.swing.JTextField txtQuantidadeLeiteUtilizada;
     private javax.swing.JTextField txtTempPreMat;
     private javax.swing.JTextField txtTemperatura;
     private javax.swing.JTextField txtTemperatura24;
