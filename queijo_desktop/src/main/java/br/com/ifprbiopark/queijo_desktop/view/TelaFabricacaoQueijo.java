@@ -5,9 +5,15 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
+import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.awt.Dimension;
 import java.util.HashSet;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,9 +25,28 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
      * Creates new form TelaProcessamentoView
      */
     
+    ControleReceitaQueijo rqControl;
+    List<ReceitaQueijo> listaReceitaQueijo;
     
     public TelaFabricacaoQueijo() {
         initComponents();
+        
+        //carregar as receitas
+        rqControl = new ControleReceitaQueijo();
+        try {
+            listaReceitaQueijo = rqControl.listaReceitaQueijo();
+            jcTipoQueijo.removeAll();
+            jcTipoQueijo.addItem("");
+            for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {                
+                jcTipoQueijo.addItem(receitaQueijo.getNomeTipo());
+            }
+            
+            
+        } catch (DbException ex) {
+            Logger.getLogger(TelaFabricacaoQueijo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
        
     }
     
@@ -394,7 +419,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
                     .addComponent(txtPhEsformagem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPh24, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(txtPh24)
                     .addComponent(txtDessoragem, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtTemperatura24)))
         );
@@ -630,7 +655,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -760,11 +785,11 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         FabricacaoQueijo queijo = new FabricacaoQueijo();
       
                 
-        //informacoes inicio do processamento;
-        queijo.setTipoQueijo_idTipoQueijo(jcTipoQueijo.getSelectedIndex());     
-        queijo.setLoteQueijo(txtLote.getText());                                 
-        queijo.setColetaLeite_idColetaLeite(jcColeta.getSelectedIndex()); 
-        queijo.setQuantidadeLeiteUsado(txtQuantidadeLeiteUtilizada.getText());
+        //informacoes inicio do processamento;        
+        queijo.setTipoQueijo_idTipoQueijo(listaReceitaQueijo.get(jcTipoQueijo.getSelectedIndex()));     
+        //queijo.setLoteQueijo(txtLote.getText());                                 
+        //queijo.setColetaLeite_idColetaLeite(jcColeta.getSelectedIndex()); 
+        //queijo.setQuantidadeLeiteUsado(txtQuantidadeLeiteUtilizada.getText());
         
 //        //Processamento
 //        queijo.setTipoLeite() //5 cru
