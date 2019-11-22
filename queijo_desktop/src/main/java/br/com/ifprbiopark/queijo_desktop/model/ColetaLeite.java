@@ -2,6 +2,7 @@
 package br.com.ifprbiopark.queijo_desktop.model;
 
 import java.util.Date;
+import java.util.List;
 
 
 public class ColetaLeite {
@@ -71,7 +72,7 @@ public class ColetaLeite {
     public void setQtdLeite(double qtdLeite) {
         this.qtdLeite = qtdLeite;
     }
-    
+
     
     
 }

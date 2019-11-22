@@ -21,7 +21,7 @@ public class ControleColetaLeite {
         coleta.alterar(c);
     }
     
-    public List<ColetaLeite> listaColeta(ColetaLeite c) throws DbException{
+    public List<ColetaLeite> listaColeta() throws DbException{
         return coleta.listarColetas();
 
 }
