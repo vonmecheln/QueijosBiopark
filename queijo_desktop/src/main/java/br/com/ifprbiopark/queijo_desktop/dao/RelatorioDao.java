@@ -20,25 +20,24 @@ public class RelatorioDao {
 
     public ArrayList<Relatorio> pesquisar(String filtro) throws SQLException {
         ArrayList<Relatorio> retorno = new ArrayList<>();
-
-        String sql = "Select * from tipoqueijo";
+        //﻿SELECT idColetaLeite, dtColeta, loteColeta, produtor_id, qtdLeite, situacao FROM coletaleite;
+        String sql = "Select idColetaLeite, dtColeta, loteColeta, produtor_id, qtdLeite, situacao FROM coletaleite";
         if (filtro != null && filtro.length() > 0) {
-            sql += " where Lower(nomeTipo) like '%"+filtro.toLowerCase()+"%'";
+            sql += " where Lower(loteColeta) like '%" + filtro.toLowerCase() + "%'";
         }
 
-        //String sql = "SELECT * FROM viewRelatorio WHERE lower(tipoQueijo) like ?";
-        //ResultSet resultadoConsulta = executarConsultaSQL(sql, "%" + filtro.trim().toLowerCase() + "%");
         Conexao con = Conexao.getInstance();
         NamedParameterStatement nps = con.NamedParameterStatement(sql);
         ResultSet resultadoConsulta = nps.executeQuery();
 
         while (resultadoConsulta.next()) {
             Relatorio relatorio = new Relatorio();
-            relatorio.setId(resultadoConsulta.getInt("idReceita"));
-            relatorio.setLoteSa(resultadoConsulta.getString("nomeReceita"));
-            //relatorio.setLotePa(resultadoConsulta.getString("﻿loteQueijo"));
-            //relatorio.setTipoQueijo(resultadoConsulta.getString("﻿TipoQueijo_idTipoQueijo"));
-
+              relatorio.setIdColetaLeite(resultadoConsulta.getInt("idColetaLeite"));
+              relatorio.setDtColeta(resultadoConsulta.getString("dtColeta"));
+              relatorio.setLoteColeta(resultadoConsulta.getString("loteColeta"));
+              relatorio.setProdutor_id(resultadoConsulta.getString("produtor_id"));
+              relatorio.setQtdLeite(resultadoConsulta.getString("qtdLeite"));
+              relatorio.setSituacao(resultadoConsulta.getString("situacao"));
             retorno.add(relatorio);
         }
 

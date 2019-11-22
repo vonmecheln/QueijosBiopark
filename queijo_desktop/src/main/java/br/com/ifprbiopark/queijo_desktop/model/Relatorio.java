@@ -10,65 +10,61 @@ package br.com.ifprbiopark.queijo_desktop.model;
  * @author macbook
  */
 public class Relatorio {
+    private int idColetaLeite;
+    private String dtColeta;
+    private String loteColeta;
+    private String produtor_id;
+    private String qtdLeite;
+    private String situacao;
 
-    private int idRelatorio;
-    private String loteSa;
-    private String lotePa;
-    private String tipoQueijo;
-
-    /**
-     * @return int return the id
-     */
-    public int getIdRelatorio() {
-        return idRelatorio;
+    public int getIdColetaLeite() {
+        return idColetaLeite;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int idRelatorio) {
-        this.idRelatorio = idRelatorio;
+    public void setIdColetaLeite(int idColetaLeite) {
+        this.idColetaLeite = idColetaLeite;
     }
 
-    /**
-     * @return String return the loteSa
-     */
-    public String getLoteSa() {
-        return loteSa;
+    public String getDtColeta() {
+        return dtColeta;
     }
 
-    /**
-     * @param loteSa the loteSa to set
-     */
-    public void setLoteSa(String loteSa) {
-        this.loteSa = loteSa;
+    public void setDtColeta(String dtColeta) {
+        this.dtColeta = dtColeta;
     }
 
-    /**
-     * @return String return the lotePa
-     */
-    public String getLotePa() {
-        return lotePa;
+    public String getLoteColeta() {
+        return loteColeta;
     }
 
-    /**
-     * @param lotePa the lotePa to set
-     */
-    public void setLotePa(String lotePa) {
-        this.lotePa = lotePa;
+    public void setLoteColeta(String loteColeta) {
+        this.loteColeta = loteColeta;
     }
 
-    /**
-     * @return String return the tipoQueijo
-     */
-    public String getTipoQueijo() {
-        return tipoQueijo;
+    public String getProdutor_id() {
+        return produtor_id;
     }
 
-    /**
-     * @param tipoQueijo the tipoQueijo to set
-     */
-    public void setTipoQueijo(String tipoQueijo) {
-        this.tipoQueijo = tipoQueijo;
+    public void setProdutor_id(String produtor_id) {
+        this.produtor_id = produtor_id;
     }
+
+    public String getQtdLeite() {
+        return qtdLeite;
+    }
+
+    public void setQtdLeite(String qtdLeite) {
+        this.qtdLeite = qtdLeite;
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+    
+    
+
 }

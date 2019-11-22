@@ -52,7 +52,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Data entrega", "Lote", "Litros", "Gordura", "Proteina", "pH", "Acidez", "Produtor", "Situação"
+                "Cód.Coleta", "Data", "Lote M.P.", "Cód. Produtor", "Qtd. Leite", "Situacao"
             }
         ));
         jScrollPane1.setViewportView(tblRelatorio);
@@ -183,10 +183,10 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         }
         for (Relatorio relatorio : this.resultadoPesquisaRelatorio) {
             model.addRow(new Object[]{
-                relatorio.getIdRelatorio(),
-                relatorio.getLoteSa(),
-                relatorio.getLotePa(),
-                relatorio.getTipoQueijo()
+    //               relatorio.getIdRelatorio(),
+   //             relatorio.getLoteSa(),
+   //             relatorio.getLotePa(),
+   //             relatorio.getTipoQueijo()
             });
         }
     }
