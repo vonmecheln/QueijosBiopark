@@ -100,7 +100,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             }
         });
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fornecedor", "Funcionário", "Cliente" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fornecedor", "Funcionário" }));
         cmbTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Pessoa"));
 
         cmbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPF", "CNPJ" }));

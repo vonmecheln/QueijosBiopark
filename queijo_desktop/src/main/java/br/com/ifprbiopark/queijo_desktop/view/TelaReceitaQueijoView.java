@@ -12,7 +12,6 @@ import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableReceitaQueijo;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -50,7 +49,7 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
-        setTitle("Cadastro de Item");
+        setTitle("Cadastro de Receitas - Tipos de Queijos");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -93,6 +92,11 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
                 "Código", "Descrição"
             }
         ));
+        tblItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblItemMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblItem);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,6 +145,11 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tblItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemMouseClicked
+        tblItem.getSelectedRow();
+        tfDescricao.setText(String.valueOf(listaItem.getValueAt(tblItem.getSelectedRow(),1)));
+    }//GEN-LAST:event_tblItemMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
