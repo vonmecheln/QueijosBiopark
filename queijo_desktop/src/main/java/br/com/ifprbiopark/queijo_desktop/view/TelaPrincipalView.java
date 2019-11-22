@@ -437,10 +437,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        TelaRelatorio formRelatorio = new TelaRelatorio();
-        painelDesktop.add(formRelatorio);
+        TelaFermentoView formFermento = new TelaFermentoView();
+        painelDesktop.add(formFermento);
         //formRelatorio.setPosicao();
-        formRelatorio.setVisible(true);     // TODO add your handling code here:
+        formFermento.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
