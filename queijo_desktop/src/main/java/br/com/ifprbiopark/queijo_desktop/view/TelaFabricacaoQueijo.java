@@ -91,9 +91,8 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         jcTipoQueijo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         txtTemperaturaPross = new javax.swing.JTextField();
-        rbLeiteCru = new javax.swing.JRadioButton();
-        rbLeitePast = new javax.swing.JRadioButton();
         txtTempoPross = new javax.swing.JTextField();
+        jcTipoLeite = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         txtTempPreMat = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
@@ -194,12 +193,6 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             }
         });
 
-        rbLeiteCru.setBackground(new java.awt.Color(255, 255, 255));
-        rbLeiteCru.setText("Leite Cru");
-
-        rbLeitePast.setBackground(new java.awt.Color(255, 255, 255));
-        rbLeitePast.setText("Leite Pasteuzidado");
-
         txtTempoPross.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo:"));
         txtTempoPross.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,16 +200,16 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             }
         });
 
+        jcTipoLeite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cru", "Pasteurizado" }));
+        jcTipoLeite.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Leite"));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbLeiteCru)
-                    .addComponent(rbLeitePast))
-                .addGap(44, 44, 44)
+                .addComponent(jcTipoLeite, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(txtTempoPross, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtTemperaturaPross, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,13 +218,10 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(rbLeiteCru)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbLeitePast))
-                    .addComponent(txtTempoPross)
-                    .addComponent(txtTemperaturaPross))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jcTipoLeite)
+                    .addComponent(txtTempoPross, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                    .addComponent(txtTemperaturaPross, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -678,7 +668,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -809,11 +799,10 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setColetaLeite_idColetaLeite((listaColetaLeite.get(jcColeta.getSelectedIndex())));
         queijo.setQtdLeiteUtilizada(Double.parseDouble(txtQuantidadeLeiteUtilizada.getText()));
         
-//        //Processamento
-//        queijo.setTipoLeite() //5 cru
-//        queijo.setTipoLeite() //6 pasteurizado
-//        queijo.setTempoProcessamento(txtTempoPross.getText()); 
-//        queijo.setTemperaturaProcessamento(txtTemperaturaPross.getText()); 
+        //Processamento
+        queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
+        queijo.setTempoProcessamento(Integer.parseInt(txtTempoPross.getText())); 
+        queijo.setTemperaturaProcessamento(Integer.parseInt(txtTemperaturaPross.getText())); 
 //        
 //        //Prematuracao
 //        queijo.setTemperaturaPreMaturacao(txtTempPreMat.getText());
@@ -874,9 +863,8 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcColeta;
+    private javax.swing.JComboBox<String> jcTipoLeite;
     private javax.swing.JComboBox<String> jcTipoQueijo;
-    private javax.swing.JRadioButton rbLeiteCru;
-    private javax.swing.JRadioButton rbLeitePast;
     private javax.swing.JFormattedTextField tfDataTratamentoCasca;
     private javax.swing.JTextField tfLoteProdutoAcabado;
     private javax.swing.JTextPane tfObservacao;

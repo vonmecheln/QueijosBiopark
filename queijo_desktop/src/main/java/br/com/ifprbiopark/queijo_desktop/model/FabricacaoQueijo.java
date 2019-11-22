@@ -14,12 +14,15 @@ public class FabricacaoQueijo {
     private ColetaLeite coletaLeite_idColetaLeite;
     private double qtdLeiteUtilizada;
     
-    
-    private Date dataFabricacao;
-    private Processamento processamento_idProcessamento;
+    //Processamento
+    private String tipoLeite;
     private Integer tempoProcessamento;
     private Integer temperaturaProcessamento;
     private Integer temperaturaPreMaturacao;
+
+    
+    private Date dataFabricacao;
+    private Processamento processamento_idProcessamento;
     private Fermento fermento_idFermento;
     private double qtdFermento;
     private Integer tempoMaturacao;
@@ -324,6 +327,14 @@ public class FabricacaoQueijo {
 
     public void setQtdLeiteUtilizada(double qtdLeiteUtilizada) {
         this.qtdLeiteUtilizada = qtdLeiteUtilizada;
+    }
+
+    public String getTipoLeite() {
+        return tipoLeite;
+    }
+
+    public void setTipoLeite(String tipoLeite) {
+        this.tipoLeite = tipoLeite;
     }
     
     
