@@ -8,7 +8,11 @@ import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -96,7 +100,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 ColetaLeite coleta = new ColetaLeite();
                 coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
                 coleta.setLoteColeta(consulta.getString("loteColeta"));
-                coleta.setDtColeta(consulta.getDate("dtColeta"));
+                java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dtColeta"));                
+                coleta.setDtColeta(d);
                 
 //                //seta funcionario;
 //                Pessoa f = new Pessoa();

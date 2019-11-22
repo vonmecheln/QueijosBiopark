@@ -1,12 +1,9 @@
-
 package br.com.ifprbiopark.queijo_desktop.model;
 
 import java.util.Date;
-import java.util.List;
-
 
 public class ColetaLeite {
-    
+
     private Integer idColetaLeite;
     private String loteColeta;
     private Date dtColeta;
@@ -30,8 +27,6 @@ public class ColetaLeite {
     public void setPessoa_idPessoa(Pessoa Pessoa_idPessoa) {
         this.Pessoa_idPessoa = Pessoa_idPessoa;
     }
-    
-    
 
     public Integer getIdColetaLeite() {
         return idColetaLeite;
@@ -73,6 +68,4 @@ public class ColetaLeite {
         this.qtdLeite = qtdLeite;
     }
 
-    
-    
 }
