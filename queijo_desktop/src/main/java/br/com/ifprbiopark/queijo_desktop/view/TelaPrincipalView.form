@@ -109,7 +109,7 @@
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                      <Component id="pnlMenuSelecionado" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnlMenuSelecionado" alignment="0" pref="749" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
@@ -118,7 +118,7 @@
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
-                      <Component id="jLayeredPane2" alignment="0" pref="730" max="32767" attributes="0"/>
+                      <Component id="jLayeredPane2" alignment="0" pref="749" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
