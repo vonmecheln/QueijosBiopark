@@ -5,8 +5,10 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.awt.Dimension;
@@ -25,8 +27,13 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
      * Creates new form TelaProcessamentoView
      */
     
+    //lista de receitas do queijo
     ControleReceitaQueijo rqControl;
     List<ReceitaQueijo> listaReceitaQueijo;
+    
+    //lista de coletas de leite;
+    ControleColetaLeite cleite;
+    List<ColetaLeite> listaColetaLeite;
     
     public TelaFabricacaoQueijo() {
         initComponents();
@@ -40,13 +47,25 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {                
                 jcTipoQueijo.addItem(receitaQueijo.getNomeTipo());
             }
-            
-            
+          
         } catch (DbException ex) {
             Logger.getLogger(TelaFabricacaoQueijo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        //carregar as coletas de leite
+        cleite = new ControleColetaLeite();
         
+        try {
+            listaColetaLeite = cleite.listaColeta();
+            jcColeta.removeAll();
+            jcColeta.addItem("");
+            for (ColetaLeite coletaLeite : listaColetaLeite){
+                jcColeta.addItem(coletaLeite.getLoteColeta());
+            } 
+        
+        } catch (DbException ex) {
+            Logger.getLogger(TelaFabricacaoQueijo.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }
     
