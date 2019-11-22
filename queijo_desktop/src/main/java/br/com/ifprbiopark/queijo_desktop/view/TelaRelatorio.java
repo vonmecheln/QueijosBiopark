@@ -170,7 +170,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         for (Relatorio relatorio : this.resultadoPesquisaRelatorio) {
             model.addRow(new Object[]{      
               relatorio.getIdColetaLeite(), 
-              relatorio.getDtColeta(),
+              //relatorio.getDtColeta(),
               relatorio.getLoteColeta(),
               relatorio.getProdutor_id(),
               relatorio.getQtdLeite(),

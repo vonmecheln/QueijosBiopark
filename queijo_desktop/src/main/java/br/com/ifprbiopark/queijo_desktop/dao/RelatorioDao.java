@@ -33,7 +33,9 @@ public class RelatorioDao {
         while (resultadoConsulta.next()) {
             Relatorio relatorio = new Relatorio();
               relatorio.setIdColetaLeite(resultadoConsulta.getInt("idColetaLeite"));
-              relatorio.setDtColeta(resultadoConsulta.getDate("dtColeta"));
+              //relatorio.setDtColeta(resultadoConsulta.getDate("dtColeta"));
+              
+              
               relatorio.setLoteColeta(resultadoConsulta.getString("loteColeta"));
               relatorio.setProdutor_id(resultadoConsulta.getString("nome"));
               relatorio.setQtdLeite(resultadoConsulta.getString("qtdLeite"));
