@@ -288,7 +288,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     Object situacao = tblEntradaLeite.getValueAt(row, 6);
                     
                     coleta.setIdColetaLeite((Integer) id);
-                    coleta.setProdutor_idProdutor((Pessoa) produtor);
+                    //coleta.setProdutor_idProdutor((Pessoa) produtor);
                     coleta.setQtdLeite((double) quantidade);
                     coleta.setDtColeta((Date) data);
                     coleta.setSituacao((String)situacao);
