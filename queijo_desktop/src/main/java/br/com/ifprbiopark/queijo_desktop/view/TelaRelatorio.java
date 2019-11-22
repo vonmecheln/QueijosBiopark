@@ -36,9 +36,6 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRelatorio = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        tfPesquisaNome = new javax.swing.JTextField();
-        btPesquisa1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tfPesquisaLote = new javax.swing.JTextField();
         btPesquisa2 = new javax.swing.JButton();
@@ -52,7 +49,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Cód.Coleta", "Data", "Lote M.P.", "Cód. Produtor", "Qtd. Leite", "Situacao"
+                "Cód.Coleta", "Data", "Lote M.P.", "Produtor", "Qtd. Leite", "Situacao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -65,37 +62,12 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblRelatorio);
         if (tblRelatorio.getColumnModel().getColumnCount() > 0) {
-            tblRelatorio.getColumnModel().getColumn(0).setPreferredWidth(15);
+            tblRelatorio.getColumnModel().getColumn(0).setPreferredWidth(4);
             tblRelatorio.getColumnModel().getColumn(1).setPreferredWidth(25);
             tblRelatorio.getColumnModel().getColumn(2).setPreferredWidth(15);
-            tblRelatorio.getColumnModel().getColumn(3).setPreferredWidth(25);
+            tblRelatorio.getColumnModel().getColumn(3).setPreferredWidth(50);
             tblRelatorio.getColumnModel().getColumn(4).setPreferredWidth(25);
         }
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa por Nome"));
-
-        tfPesquisaNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Produtor"));
-
-        btPesquisa1.setText("Pesquisar");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tfPesquisaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btPesquisa1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(tfPesquisaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btPesquisa1))
-        );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa por Lote"));
@@ -136,28 +108,25 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(214, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(202, 202, 202))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1)
                     .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 513, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(400, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
+                    .addGap(121, 121, 121)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -192,6 +161,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
 
         try {
             this.resultadoPesquisaRelatorio = controle.pesquisar(tfPesquisaLote.getText().trim());
+  
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Falha ao Pesquisar!", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -209,14 +179,11 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
  }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btPesquisa1;
     private javax.swing.JButton btPesquisa2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRelatorio;
     private javax.swing.JTextField tfPesquisaLote;
-    private javax.swing.JTextField tfPesquisaNome;
     // End of variables declaration//GEN-END:variables
 }

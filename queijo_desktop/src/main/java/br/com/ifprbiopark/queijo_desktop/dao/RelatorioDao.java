@@ -20,10 +20,9 @@ public class RelatorioDao {
 
     public ArrayList<Relatorio> pesquisar(String filtro) throws SQLException {
         ArrayList<Relatorio> retorno = new ArrayList<>();
-        //﻿SELECT idColetaLeite, dtColeta, loteColeta, produtor_id, qtdLeite, situacao FROM coletaleite;
-        String sql = "Select idColetaLeite, dtColeta, loteColeta, produtor_id, qtdLeite, situacao FROM coletaleite";
+        String sql = "Select idColetaLeite, dtColeta, loteColeta, nome, qtdLeite, situacao FROM coletaleite inner join pessoa on produtor_id=idPessoa";
         if (filtro != null && filtro.length() > 0) {
-            sql += " where Lower(loteColeta) like '%" + filtro.toLowerCase() + "%'";
+            sql += " where Lower(coletaleite.loteColeta) like '%" + filtro.toLowerCase() + "%'";
         }
 
         Conexao con = Conexao.getInstance();
@@ -35,7 +34,7 @@ public class RelatorioDao {
               relatorio.setIdColetaLeite(resultadoConsulta.getInt("idColetaLeite"));
               relatorio.setDtColeta(resultadoConsulta.getString("dtColeta"));
               relatorio.setLoteColeta(resultadoConsulta.getString("loteColeta"));
-              relatorio.setProdutor_id(resultadoConsulta.getString("produtor_id"));
+              relatorio.setProdutor_id(resultadoConsulta.getString("nome"));
               relatorio.setQtdLeite(resultadoConsulta.getString("qtdLeite"));
               relatorio.setSituacao(resultadoConsulta.getString("situacao"));
             retorno.add(relatorio);
