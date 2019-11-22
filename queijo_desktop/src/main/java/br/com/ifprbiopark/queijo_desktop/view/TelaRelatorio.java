@@ -7,6 +7,7 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleRelatorio;
 import br.com.ifprbiopark.queijo_desktop.model.Relatorio;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -168,7 +169,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         }
         for (Relatorio relatorio : this.resultadoPesquisaRelatorio) {
             model.addRow(new Object[]{      
-              relatorio.getIdColetaLeite(),
+              relatorio.getIdColetaLeite(), 
               relatorio.getDtColeta(),
               relatorio.getLoteColeta(),
               relatorio.getProdutor_id(),

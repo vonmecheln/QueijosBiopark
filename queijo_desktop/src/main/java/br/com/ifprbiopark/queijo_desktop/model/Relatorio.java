@@ -5,13 +5,20 @@
  */
 package br.com.ifprbiopark.queijo_desktop.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author macbook
  */
 public class Relatorio {
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    //chamada de formatação no GETTER
+    
     private int idColetaLeite;
-    private String dtColeta;
+    private Date dtColeta;
     private String loteColeta;
     private String produtor_id;
     private String qtdLeite;
@@ -26,16 +33,21 @@ public class Relatorio {
     }
 
     public String getDtColeta() {
-        return dtColeta;
+        return sdf.format(dtColeta);
     }
 
-    public void setDtColeta(String dtColeta) {
+    public void setDtColeta(Date dtColeta) {
         this.dtColeta = dtColeta;
     }
 
     public String getLoteColeta() {
-        return loteColeta;
-    }
+       
+            return loteColeta;
+        }
+
+    
+
+    
 
     public void setLoteColeta(String loteColeta) {
         this.loteColeta = loteColeta;
@@ -64,7 +76,5 @@ public class Relatorio {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
-    
-    
 
 }

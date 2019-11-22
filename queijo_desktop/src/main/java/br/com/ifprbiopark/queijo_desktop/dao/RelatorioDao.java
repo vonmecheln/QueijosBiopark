@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -32,7 +33,7 @@ public class RelatorioDao {
         while (resultadoConsulta.next()) {
             Relatorio relatorio = new Relatorio();
               relatorio.setIdColetaLeite(resultadoConsulta.getInt("idColetaLeite"));
-              relatorio.setDtColeta(resultadoConsulta.getString("dtColeta"));
+              relatorio.setDtColeta(resultadoConsulta.getDate("dtColeta"));
               relatorio.setLoteColeta(resultadoConsulta.getString("loteColeta"));
               relatorio.setProdutor_id(resultadoConsulta.getString("nome"));
               relatorio.setQtdLeite(resultadoConsulta.getString("qtdLeite"));
