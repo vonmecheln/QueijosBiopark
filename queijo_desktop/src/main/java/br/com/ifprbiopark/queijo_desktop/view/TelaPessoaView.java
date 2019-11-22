@@ -123,7 +123,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
             }
         });
 
-        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/20x20.png"))); // NOI18N
+        btnConsultar.setText("Consulta");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
