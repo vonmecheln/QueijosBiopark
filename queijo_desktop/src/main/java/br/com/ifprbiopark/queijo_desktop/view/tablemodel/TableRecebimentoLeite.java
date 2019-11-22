@@ -15,7 +15,7 @@ public class TableRecebimentoLeite extends AbstractTableModel {
     
      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
-    private String[] nomeColunas = {"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote"};
+    private String[] nomeColunas = {"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote", "Situação"};
    
     @Override
     public String getColumnName(int column) {
@@ -51,6 +51,8 @@ public class TableRecebimentoLeite extends AbstractTableModel {
                 return listaEntregas.get(linha).getPessoa_idPessoa().getNome();
             case 5:
                 return listaEntregas.get(linha).getLoteColeta();
+             case 6:
+                return listaEntregas.get(linha).getSituacao();
                                     
         }
         
