@@ -11,6 +11,8 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -131,4 +133,30 @@ public class FermentoDao extends AbstractDao<Fermento>{
         }
     }
     
+    public List<Fermento> listar() {
+        try {
+            List <Fermento> retornoFermento = new ArrayList<>(); 
+            //String SQL;
+            String sql = "SELECT idFermento, tipoFermento,marca FROM fermento";
+
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Fermento fermento = new Fermento();
+                fermento.setIdFermento(consulta.getInt("idFermento"));
+                fermento.setTipoFermento(consulta.getString("tipoFermento"));
+                fermento.setMarca(consulta.getString("marca"));
+
+                retornoFermento.add(fermento);
+                
+            }
+            return retornoFermento;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+        
+    }   
+
 }

@@ -147,11 +147,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jcTipoQueijo" min="-2" pref="349" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="tfLote" min="-2" pref="71" max="-2" attributes="0"/>
+                  <Component id="txtLote" min="-2" pref="71" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jcColeta" min="-2" pref="137" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="cbQuantidadeLeite" min="-2" pref="133" max="-2" attributes="0"/>
+                  <Component id="txtQuantidadeLeiteUtilizada" min="-2" pref="133" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -159,8 +159,8 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                  <Component id="tfLote" alignment="3" max="32767" attributes="0"/>
-                  <Component id="cbQuantidadeLeite" alignment="3" max="32767" attributes="0"/>
+                  <Component id="txtLote" alignment="3" max="32767" attributes="0"/>
+                  <Component id="txtQuantidadeLeiteUtilizada" alignment="3" max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -173,7 +173,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="tfLote">
+        <Component class="javax.swing.JTextField" name="txtLote">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -182,7 +182,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="cbQuantidadeLeite">
+        <Component class="javax.swing.JTextField" name="txtQuantidadeLeiteUtilizada">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -191,7 +191,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbQuantidadeLeiteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantidadeLeiteUtilizadaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jcColeta">
@@ -729,22 +729,22 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="txtDataCasca" min="-2" pref="242" max="-2" attributes="0"/>
+                  <Component id="tfDataTratamentoCasca" min="-2" pref="242" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtTipoTratamento" min="-2" pref="184" max="-2" attributes="0"/>
+                  <Component id="tfTipoTratamentoCasca" min="-2" pref="184" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="txtTipoTratamento" pref="50" max="32767" attributes="0"/>
-              <Component id="txtDataCasca" alignment="0" max="32767" attributes="0"/>
+              <Component id="tfTipoTratamentoCasca" pref="50" max="32767" attributes="0"/>
+              <Component id="tfDataTratamentoCasca" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtTipoTratamento">
+        <Component class="javax.swing.JTextField" name="tfTipoTratamentoCasca">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -753,10 +753,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTipoTratamentoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfTipoTratamentoCascaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtDataCasca">
+        <Component class="javax.swing.JFormattedTextField" name="tfDataTratamentoCasca">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -765,7 +765,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDataCascaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfDataTratamentoCascaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -786,11 +786,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="txtPecasQueijo" min="-2" pref="153" max="-2" attributes="0"/>
+                  <Component id="tfQueijoProduzido" min="-2" pref="153" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="txtPesoTotal" min="-2" pref="106" max="-2" attributes="0"/>
+                  <Component id="tfPesoTotalLote" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtPesoMedio" min="-2" pref="106" max="-2" attributes="0"/>
+                  <Component id="tfPesoMedioLote" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -799,9 +799,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtPecasQueijo" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="txtPesoMedio" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="txtPesoTotal" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="tfQueijoProduzido" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="tfPesoMedioLote" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="tfPesoTotalLote" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -809,7 +809,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtPecasQueijo">
+        <Component class="javax.swing.JTextField" name="tfQueijoProduzido">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -818,10 +818,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPecasQueijoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfQueijoProduzidoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPesoMedio">
+        <Component class="javax.swing.JTextField" name="tfPesoMedioLote">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -830,10 +830,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPesoMedioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPesoMedioLoteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPesoTotal">
+        <Component class="javax.swing.JTextField" name="tfPesoTotalLote">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -842,7 +842,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPesoTotalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPesoTotalLoteActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -854,7 +854,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtObservacao">
+        <Component class="javax.swing.JTextPane" name="tfObservacao">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -877,7 +877,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtLotePAcabado" min="-2" pref="197" max="-2" attributes="0"/>
+                  <Component id="tfLoteProdutoAcabado" min="-2" pref="197" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="cmbFuncionario" min="-2" pref="207" max="-2" attributes="0"/>
                   <EmptySpace pref="100" max="32767" attributes="0"/>
@@ -889,7 +889,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtLotePAcabado" alignment="3" min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="tfLoteProdutoAcabado" alignment="3" min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="cmbFuncionario" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -918,7 +918,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtLotePAcabado">
+        <Component class="javax.swing.JTextField" name="tfLoteProdutoAcabado">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -927,7 +927,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLotePAcabadoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfLoteProdutoAcabadoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
