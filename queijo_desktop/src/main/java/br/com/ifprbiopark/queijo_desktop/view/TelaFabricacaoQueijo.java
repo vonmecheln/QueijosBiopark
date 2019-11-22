@@ -804,11 +804,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         FabricacaoQueijo queijo = new FabricacaoQueijo();
       
                 
-        //informacoes inicio do processamento;        
         queijo.setTipoQueijo_idTipoQueijo(listaReceitaQueijo.get(jcTipoQueijo.getSelectedIndex()));     
-        //queijo.setLoteQueijo(txtLote.getText());                                 
-        //queijo.setColetaLeite_idColetaLeite(jcColeta.getSelectedIndex()); 
-        //queijo.setQuantidadeLeiteUsado(txtQuantidadeLeiteUtilizada.getText());
         
 //        //Processamento
 //        queijo.setTipoLeite() //5 cru

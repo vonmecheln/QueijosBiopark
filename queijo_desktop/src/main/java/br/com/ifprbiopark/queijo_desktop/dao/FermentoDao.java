@@ -26,10 +26,10 @@ public class FermentoDao extends AbstractDao<Fermento>{
     public void inserir(Fermento fermento) throws DbException {
        try {
             
-            String sql = "INSERT INTO fermento( "
+            String sql = "INSERT INTO fermento( idFermento, "
                     + "tipoFermento, marca "
                     + ") VALUES ("
-                    + ":tipoFermento, :marca)";
+                    + " (select count(*) + 1 from fermento),  :tipoFermento, :marca)";
             
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);  

@@ -90,6 +90,10 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        setClosable(true);
+        setTitle("Cadastro Fermento");
+
+        txtId.setEditable(false);
         txtId.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +139,11 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
             }
         });
         tbFermento.getTableHeader().setReorderingAllowed(false);
+        tbFermento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbFermentoMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tbFermento);
         if (tbFermento.getColumnModel().getColumnCount() > 0) {
             tbFermento.getColumnModel().getColumn(0).setResizable(false);
@@ -200,16 +209,30 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Fermento item = new Fermento();
+        try {
+            item.setIdFermento (Integer.parseInt(txtId.getText()));
+        }catch (NumberFormatException e ){}
         item.setTipoFermento(txtTipo.getText());
         item.setMarca(txtMarca.getText());
         ControleFermento controleFermento = new ControleFermento();
         try {
+            if(item.getIdFermento() > 0){
+                controleFermento.alterar(item);
+            }else
             controleFermento.salvar(item);
         } catch (DbException ex) {
             Logger.getLogger(TelaFermentoView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        tbFermento.setModel(tableFermento);
+        tableFermento.recarregar();
+        tableFermento.fireTableDataChanged();
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void tbFermentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbFermentoMouseClicked
+        tbFermento.getSelectedRow();
+        txtId.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(),0))); 
+        txtTipo.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(),1))); 
+        txtMarca.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(),2))); 
+    }//GEN-LAST:event_tbFermentoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

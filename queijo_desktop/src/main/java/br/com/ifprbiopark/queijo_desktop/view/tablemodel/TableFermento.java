@@ -21,6 +21,11 @@ public class TableFermento extends AbstractTableModel {
     
     private String[] nomeColunas = {"Código", "Tipo", "Marca"};
    
+    
+    public void recarregar(){
+        fermentos = tipo.listar();
+    }
+    
     public String getColumnName(int column) {
         return nomeColunas[column];
     }
@@ -39,7 +44,7 @@ public class TableFermento extends AbstractTableModel {
                 return fermentos.get(linha).getIdFermento();
             case 1:
                 return fermentos.get(linha).getTipoFermento();
-            case 3:
+            case 2:
                 return fermentos.get(linha).getMarca();
         }
         
