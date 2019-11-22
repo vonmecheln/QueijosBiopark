@@ -12,9 +12,18 @@ public class ColetaLeite {
     private Pessoa produtor_idProdutor;
     private Pessoa Pessoa_idPessoa;
     private double qtdLeite;
+    private String situacao;
 
     public Pessoa getPessoa_idPessoa() {
         return Pessoa_idPessoa;
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
     public void setPessoa_idPessoa(Pessoa Pessoa_idPessoa) {

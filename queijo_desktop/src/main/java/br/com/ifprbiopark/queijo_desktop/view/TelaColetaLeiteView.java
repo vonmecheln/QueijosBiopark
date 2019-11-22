@@ -96,6 +96,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         jfData = new javax.swing.JFormattedTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEntradaLeite = new javax.swing.JTable();
+        tfSituacao = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -186,6 +187,9 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(tblEntradaLeite);
 
+        tfSituacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Situação:"));
+        tfSituacao.setName(""); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -200,16 +204,18 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jfData, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfLote, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                                .addComponent(jbSalvar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbExcluir)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -226,14 +232,17 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                             .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
+
+        tfSituacao.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,11 +286,13 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     Object data = tblEntradaLeite.getValueAt(row, 3);
                     Object funcionario = tblEntradaLeite.getValueAt(row, 4);
                     Object lote = tblEntradaLeite.getValueAt(row, 5);
+                    Object situacao = tblEntradaLeite.getValueAt(row, 6);
                     
                     coleta.setIdColetaLeite((Integer) id);
                     coleta.setProdutor_idProdutor((Pessoa) produtor);
                     coleta.setQtdLeite((double) quantidade);
                     coleta.setDtColeta((Date) data);
+                    coleta.setSituacao((String)situacao);
                     
                     //funcionario
                     Pessoa p = new Pessoa();
@@ -322,6 +333,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                 } catch (ParseException ex) {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                    coleta.setSituacao(tfSituacao.getText());
                 
                                
                 coleta.setQtdLeite(Double.parseDouble(tfQuantidade.getText()));
@@ -393,5 +405,6 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblEntradaLeite;
     private javax.swing.JTextField tfLote;
     private javax.swing.JTextField tfQuantidade;
+    private javax.swing.JTextField tfSituacao;
     // End of variables declaration//GEN-END:variables
 }

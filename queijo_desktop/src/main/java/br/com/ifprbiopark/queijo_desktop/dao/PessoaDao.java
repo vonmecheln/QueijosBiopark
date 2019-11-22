@@ -25,16 +25,16 @@ public class PessoaDao extends AbstractDao<Pessoa>{
         try {
             
             String sql = "INSERT INTO pessoa( "
-                    + "nome, endereco, tipoFiscal, cadastro, tipoPessoa, telefone "
+                    + "nome, endereco, tipoFiscal, documento, tipoPessoa, telefone "
                     + ") VALUES ("
-                    + ":nome, :endereco, :tipoFiscal, :cadastro, :tipoPessoa, :telefone)";
+                    + ":nome, :endereco, :tipoFiscal, :documento, :tipoPessoa, :telefone)";
             
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nome", p.getNome());            
             nps.setString("endereco", p.getEndereco());
             nps.setString("tipoFiscal", p.getTipoFiscal());
-            nps.setString("cadastro", p.getCadastro());
+            nps.setString("documento", p.getCadastro());
             nps.setString("tipoPessoa", p.getTipoPessoa());
             nps.setString("telefone", p.getTelefone());
 
@@ -93,7 +93,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
         try {
             
             String sql = "UPDATE pessoa SET "
-                    + "nome = :nome, endereco = :endereco, tipoFiscal = :tipoFiscal, cadastro = :cadastro, tipoPessoa = :tipoPessoa, telefone = :telefone"
+                    + "nome = :nome, endereco = :endereco, tipoFiscal = :tipoFiscal, documento = :documento, tipoPessoa = :tipoPessoa, telefone = :telefone"
                     + " WHERE "
                     + "idPessoa = :id";
             
@@ -102,7 +102,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             nps.setString("nome", p.getNome());            
             nps.setString("endereco", p.getEndereco());
             nps.setString("tipoFiscal", p.getTipoFiscal());
-            nps.setString("cadastro", p.getCadastro());
+            nps.setString("documento", p.getCadastro());
             nps.setString("tipoPessoa", p.getTipoPessoa());
             nps.setString("telefone", p.getTelefone());
             nps.setInt("id", p.getIdPessoa());
@@ -123,7 +123,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
         try {
             
             //String SQL;
-            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, cadastro, tipoPessoa, telefone FROM pessoa WHERE idPessoa = :id";
+            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, documento, tipoPessoa, telefone FROM pessoa WHERE idPessoa = :id";
             
 
             Conexao con = Conexao.getInstance();
@@ -138,7 +138,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
                 pessoa.setNome(consulta.getString("nome"));
                 pessoa.setEndereco(consulta.getString("endereco"));
                 pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
-                pessoa.setCadastro(consulta.getString("cadastro"));
+                pessoa.setCadastro(consulta.getString("documento"));
                 pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
                 pessoa.setTelefone(consulta.getString("telefone"));
                 
@@ -204,7 +204,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             List<Pessoa> pessoas = new ArrayList<Pessoa>();            
             
             //String SQL;
-            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, cadastro, tipoPessoa, telefone FROM pessoa WHERE nome LIKE '%:nome%'";
+            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, documento, tipoPessoa, telefone FROM pessoa WHERE nome LIKE '%:nome%'";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -218,7 +218,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
                 pessoa.setNome(consulta.getString("nome"));
                 pessoa.setEndereco(consulta.getString("endereco"));
                 pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
-                pessoa.setCadastro(consulta.getString("cadastro"));
+                pessoa.setCadastro(consulta.getString("documento"));
                 pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
                 pessoa.setTelefone(consulta.getString("telefone"));
                 

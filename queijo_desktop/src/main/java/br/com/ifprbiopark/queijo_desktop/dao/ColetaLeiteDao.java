@@ -18,8 +18,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     public void inserir(ColetaLeite c) throws DbException {
         try {
 
-            String sql = "INSERT INTO coletaLeite( loteColeta, dtColeta, qtdLeite, produtor_id, funcionario_id) "
-                    + "VALUES (:loteColeta, :dtColeta, :qtdLeite, :produtor_id, :funcionario_id)";
+            String sql = "INSERT INTO coletaLeite( loteColeta, dtColeta, qtdLeite, produtor_id, funcionario_id, situacao) "
+                    + "VALUES (:loteColeta, :dtColeta, :qtdLeite, :produtor_id, :funcionario_id, :situacao)";
                         
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -29,7 +29,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             nps.setDouble("qtdLeite", c.getQtdLeite());
             nps.setInt("produtor_id", c.getProdutor_idProdutor().getIdPessoa());
             nps.setInt("funcionario_id", c.getPessoa_idPessoa().getIdPessoa());
-            
+            nps.setString("situacao", c.getSituacao());
+           
             
             int exec = nps.executeUpdate();
             if (exec == 0) {
@@ -82,7 +83,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             List<ColetaLeite> coletas = new ArrayList<>();
 
             //String SQL;
-            String sql = "SELECT idColetaLeite, loteColeta, dtColeta, produtor_id, qtdLeite, "
+            String sql = "SELECT idColetaLeite, loteColeta, dtColeta, produtor_id, qtdLeite, situacao, "
                     + "funcionario_id FROM coletaleite";
 
             Conexao con = Conexao.getInstance();
@@ -111,6 +112,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("produtor_id")));
                 
                 coleta.setPessoa_idPessoa(pessoaDao.consultar(consulta.getInt("funcionario_id")));
+                
+                coleta.setSituacao(consulta.getString("situacao"));
 
                 coletas.add(coleta);
 
