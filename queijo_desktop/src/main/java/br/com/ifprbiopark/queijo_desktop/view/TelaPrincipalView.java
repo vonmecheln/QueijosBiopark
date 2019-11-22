@@ -41,6 +41,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         pnlBgGeral = new javax.swing.JPanel();
         imgDesktop = new javax.swing.JLabel();
@@ -168,6 +169,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel8MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlMenuSelecionadoLayout = new javax.swing.GroupLayout(pnlMenuSelecionado);
         pnlMenuSelecionado.setLayout(pnlMenuSelecionadoLayout);
         pnlMenuSelecionadoLayout.setHorizontalGroup(
@@ -178,6 +192,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
         );
         pnlMenuSelecionadoLayout.setVerticalGroup(
             pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,11 +208,16 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 5, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(180, Short.MAX_VALUE))
+            .addGroup(pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuSelecionadoLayout.createSequentialGroup()
+                    .addContainerGap(551, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(131, Short.MAX_VALUE)))
         );
 
         jLayeredPane2.setPreferredSize(new java.awt.Dimension(1366, 720));
@@ -228,7 +249,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 730, Short.MAX_VALUE)
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane2Layout.createSequentialGroup()
                     .addComponent(pnlBgGeral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,19 +282,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 730, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addComponent(painelDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 28, Short.MAX_VALUE)))
+                    .addGap(0, 38, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlMenuSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
+                .addComponent(pnlMenuSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 696, Short.MAX_VALUE)
+                    .addGap(0, 706, Short.MAX_VALUE)
                     .addComponent(pnlMenssagem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
+                .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE))
         );
 
         pnlInicio.add(jPanel1, "card2");
@@ -290,7 +311,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 730, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -307,7 +328,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btRelatorios.jpg")));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btFermentos.jpg")));
         jLabel7.setPreferredSize(new java.awt.Dimension(211, 243));   // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseEntered
 
@@ -327,7 +348,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseExited
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btProcessamento.jpg")));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btPessoas.jpg")));
         jLabel5.setPreferredSize(new java.awt.Dimension(211, 243));    // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseEntered
 
@@ -337,7 +358,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btClassificacao.jpg")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btProcessamento.jpg")));
         jLabel4.setPreferredSize(new java.awt.Dimension(211, 243));   // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseEntered
 
@@ -347,7 +368,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseExited
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btEntrada.jpg")));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btClassificacao.jpg")));
         jLabel3.setPreferredSize(new java.awt.Dimension(211, 243));    // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseEntered
 
@@ -357,24 +378,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btPessoas.jpg")));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btEntrada.jpg")));
         jLabel2.setPreferredSize(new java.awt.Dimension(211, 243));
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        TelaPessoaView formPessoa;
-        try {
-            formPessoa = new TelaPessoaView();
-            painelDesktop.add(formPessoa);
-            formPessoa.setPosicao();
-            formPessoa.setVisible(true);
-        } catch (ParseException ex) {
-            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         TelaColetaLeiteView formEntrada;
         try {
             formEntrada = new TelaColetaLeiteView();
@@ -387,20 +396,37 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         TelaClassificacaoLeiteView formClassificacao = new TelaClassificacaoLeiteView();
         painelDesktop.add(formClassificacao);
         formClassificacao.setPosicao();
-        formClassificacao.setVisible(true);       
-    }//GEN-LAST:event_jLabel4MouseClicked
+        formClassificacao.setVisible(true);
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         TelaFabricacaoQueijo formProcessamento = new TelaFabricacaoQueijo();
         painelDesktop.add(formProcessamento);
         formProcessamento.setPosicao();
-        formProcessamento.setVisible(true); 
+        formProcessamento.setVisible(true);
+
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        TelaPessoaView formPessoa;
+        try {
+            formPessoa = new TelaPessoaView();
+            painelDesktop.add(formPessoa);
+            formPessoa.setPosicao();
+            formPessoa.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -417,23 +443,39 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         formRelatorio.setVisible(true);     // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        TelaRelatorio formRelatorio = new TelaRelatorio();
+        painelDesktop.add(formRelatorio);
+        //formRelatorio.setPosicao();
+        formRelatorio.setVisible(true);  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btRelatorios.jpg")));
+        jLabel8.setPreferredSize(new java.awt.Dimension(211, 243));        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
+        jLabel8.setIcon(null);
+        jLabel8.setPreferredSize(new java.awt.Dimension(211, 243));   // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseExited
+
     public void setMenssagem(String menssagem, Color corFundo) {
         lblMenssagem.setText(menssagem);
         //lblMenssagem.setForeground(Color.WHITE);
         pnlMenssagem.setBackground(corFundo);
-        
-        ActionListener taskPerformer = new ActionListener(){
+
+        ActionListener taskPerformer = new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent evt){
+            public void actionPerformed(ActionEvent evt) {
                 lblMenssagem.setText(" ");
                 //lblMenssagem.setForeground(Color.BLACK);
                 pnlMenssagem.setBackground(Color.white);
             }
         };
         Timer timer = new Timer(5000, taskPerformer);
-        timer.setRepeats(false);                
-        timer.start();        
-        
+        timer.setRepeats(false);
+        timer.start();
 
     }
 
@@ -446,6 +488,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMenssagem;
