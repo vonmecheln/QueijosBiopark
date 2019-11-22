@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.Timer;
 
 public class TelaPrincipalView extends javax.swing.JFrame {
@@ -17,6 +18,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     public TelaPrincipalView() {
         initComponents();
 
+    }
+    
+    public JDesktopPane getPainelDesktop(){
+        return painelDesktop;
     }
 
     /**

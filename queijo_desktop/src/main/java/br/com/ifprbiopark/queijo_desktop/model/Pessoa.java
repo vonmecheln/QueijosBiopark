@@ -8,7 +8,7 @@ public class Pessoa {
     private String nome;
     private String endereco;    
     private String tipoFiscal;
-    private String cadastro;
+    private String documento;
     private String tipoPessoa;
     private String telefone;
 
@@ -49,12 +49,12 @@ public class Pessoa {
         this.tipoFiscal = tipoFiscal;
     }
 
-    public String getCadastro() {
-        return cadastro;
+    public String getDocumento() {
+        return documento;
     }
 
-    public void setCadastro(String cadastro) {
-        this.cadastro = cadastro;
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
     public String getTipoPessoa() {

@@ -34,7 +34,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             nps.setString("nome", p.getNome());            
             nps.setString("endereco", p.getEndereco());
             nps.setString("tipoFiscal", p.getTipoFiscal());
-            nps.setString("documento", p.getCadastro());
+            nps.setString("documento", p.getDocumento());
             nps.setString("tipoPessoa", p.getTipoPessoa());
             nps.setString("telefone", p.getTelefone());
 
@@ -102,7 +102,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             nps.setString("nome", p.getNome());            
             nps.setString("endereco", p.getEndereco());
             nps.setString("tipoFiscal", p.getTipoFiscal());
-            nps.setString("documento", p.getCadastro());
+            nps.setString("documento", p.getDocumento());
             nps.setString("tipoPessoa", p.getTipoPessoa());
             nps.setString("telefone", p.getTelefone());
             nps.setInt("id", p.getIdPessoa());
@@ -138,7 +138,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
                 pessoa.setNome(consulta.getString("nome"));
                 pessoa.setEndereco(consulta.getString("endereco"));
                 pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
-                pessoa.setCadastro(consulta.getString("documento"));
+                pessoa.setDocumento(consulta.getString("documento"));
                 pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
                 pessoa.setTelefone(consulta.getString("telefone"));
                 
@@ -218,7 +218,7 @@ public class PessoaDao extends AbstractDao<Pessoa>{
                 pessoa.setNome(consulta.getString("nome"));
                 pessoa.setEndereco(consulta.getString("endereco"));
                 pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
-                pessoa.setCadastro(consulta.getString("documento"));
+                pessoa.setDocumento(consulta.getString("documento"));
                 pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
                 pessoa.setTelefone(consulta.getString("telefone"));
                 
@@ -227,6 +227,79 @@ public class PessoaDao extends AbstractDao<Pessoa>{
             return pessoas;
         } catch (SQLException ex) {
             throw new DbException(ex);
+        }
+    }
+
+    public List<Pessoa> consultar(String nome, String tipo) throws Exception{
+        try {
+            
+            List<Pessoa> pessoas = new ArrayList<Pessoa>();            
+            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, documento, tipoPessoa, telefone FROM pessoa WHERE ";
+            //String SQL;
+            if (nome != null && tipo != null)
+                sql += "nome LIKE '%" + nome + "%' AND tipoPessoa = '" + tipo + "'";
+            else if (nome == null && tipo != null)
+                sql += "tipoPessoa = '" + tipo + "'";
+            else if (nome != null && tipo == null)
+                sql += "nome LIKE '%" + nome + "%'";           
+             
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            
+//            if (nome != null && tipo != null){
+//                nps.setString("nome", nome);
+//                nps.setString("tipo", tipo);
+//            }
+//            else if (nome == null && tipo != null)
+//                nps.setString("tipo", tipo);
+//            else if (nome != null && tipo == null)
+//                nps.setString("nome", nome);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Pessoa pessoa = new Pessoa();
+                pessoa.setIdPessoa(consulta.getInt("idPessoa"));
+                pessoa.setNome(consulta.getString("nome"));
+                pessoa.setEndereco(consulta.getString("endereco"));
+                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
+                pessoa.setDocumento(consulta.getString("documento"));
+                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+                pessoa.setTelefone(consulta.getString("telefone"));
+                
+                pessoas.add(pessoa);                
+            }
+            return pessoas;
+        } catch (Exception ex) {
+            throw new Exception(ex.getMessage());
+        }
+    }
+    
+        public List<Pessoa> consultar() throws Exception{
+        try {
+            
+            List<Pessoa> pessoas = new ArrayList<Pessoa>();            
+            String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, documento, tipoPessoa, telefone FROM pessoa";      
+             
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Pessoa pessoa = new Pessoa();
+                pessoa.setIdPessoa(consulta.getInt("idPessoa"));
+                pessoa.setNome(consulta.getString("nome"));
+                pessoa.setEndereco(consulta.getString("endereco"));
+                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
+                pessoa.setDocumento(consulta.getString("documento"));
+                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+                pessoa.setTelefone(consulta.getString("telefone"));
+                
+                pessoas.add(pessoa);                
+            }
+            return pessoas;
+        } catch (Exception ex) {
+            throw new Exception(ex.getMessage());
         }
     }
     
