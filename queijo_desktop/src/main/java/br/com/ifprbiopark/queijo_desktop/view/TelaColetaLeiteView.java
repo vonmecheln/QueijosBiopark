@@ -121,7 +121,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jcFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tfLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote:"));
@@ -131,7 +131,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
             }
         });
 
-        tfQuantidade.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantidade:"));
+        tfQuantidade.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantidade(L):"));
         tfQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfQuantidadeActionPerformed(evt);
@@ -214,7 +214,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)))))
+                                .addComponent(jbExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -242,6 +242,8 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
+
+        tfQuantidade.getAccessibleContext().setAccessibleName("Quantidade(L):");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

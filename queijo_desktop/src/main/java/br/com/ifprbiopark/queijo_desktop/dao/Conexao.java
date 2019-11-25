@@ -1,6 +1,5 @@
 package br.com.ifprbiopark.queijo_desktop.dao;
 
-import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
