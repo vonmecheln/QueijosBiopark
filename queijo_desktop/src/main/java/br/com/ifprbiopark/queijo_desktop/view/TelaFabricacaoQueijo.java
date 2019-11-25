@@ -803,7 +803,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
         queijo.setTempoProcessamento(Integer.parseInt(txtTempoFermento.getText())); 
         queijo.setTemperaturaProcessamento(Integer.parseInt(txtTemperaturaPross.getText())); 
-//        
+        
          //Prematuracao
         queijo.setTemperaturaPreMaturacao(Integer.parseInt(txtTempPreMat.getText()));
         
@@ -824,15 +824,17 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setPh24(Integer.parseInt(txtPh24.getText()));
         queijo.setDessoragem(Integer.parseInt(txtDessoragem.getText()));
         queijo.setTemperaturaDessoragem(Integer.parseInt(txtTemperatura24.getText()));
-//        
-//        
-//        //Etapa de Salga
-//        queijo.setDataSalga(tfDataSalga.getText());
-//        queijo.setTemperaturaSalga(tfTemperaturaSalga.getText());
-//        queijo.setTempoTratamentoSalga(tfTempoTratamentoSalga.getText());
-//        queijo.setDataTratamentoCasca(tfTempoTratamentoCasca.getText());
-//        queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
-//        
+        
+        
+        //Etapa de Salga
+        queijo.setDataSalga(txtDataSalga.getText());
+        queijo.setTemperaturaSalga(txtTemperaturaSalga.getText());
+        queijo.setTempoTratamentoSalga(txtTempoTratamento.getText());
+        
+        //tratamento casca
+        queijo.setDataTratamentoCasca(tfDataTratamentoCasca.getText());
+        queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
+        
 //        //Rendimento
 //        queijo.setQuantidadeProduzida(tfQuantidadeProduzida.getText());
 //        queijo.setPesoTotalLote(tfPesoTotalLote.getText());

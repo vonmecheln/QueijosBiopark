@@ -27,8 +27,7 @@ public class FabricacaoQueijo {
     private String marcaFermento;
     private Integer phPreMaturacao;
     
-    //Coagulacao
-    
+    //Coagulacao;
     private Integer temperaturaCoagulacao;
     private double qtdClCalcio;
     private double qtdCoagulante;
@@ -39,7 +38,23 @@ public class FabricacaoQueijo {
     private Integer dessoragem;
     private Integer temperaturaDessoragem;
     
-    //
+    //Salga;
+    private String dataSalga;
+    private String temperaturaSalga;
+    private String tempoTratamentoSalga;
+    
+    //Casca
+    private String dataTratamentoCasca;
+    private String tipoTratamentoCasca;
+    
+    
+    //Rendimento;
+    private Integer qtdPecas;
+    private double pesoTotal;
+    private double pesoMedioPecas;
+    private String LoteAcabado;
+    private Pessoa Responsavel_idResponsavel;
+    private String observacoes;
     
     private Integer tempoMaturacao;
     private Date dataFabricacao;
@@ -50,22 +65,8 @@ public class FabricacaoQueijo {
     private Date dataMaturacao;
     private Integer temperaturaMaturacao;
     private Date dataLavagem;
-    private String tipoTratamento;
     private Integer tempoTratamento;
-    private Integer qtdPecas;
-    private double pesoMPecas;
-    private double pesoTotal;
-    private String observacoes;
     private String fabricacaoQueijocol;
-    private Pessoa Responsavel_idResponsavel;
-
-    public Pessoa getResponsavel_idResponsavel() {
-        return Responsavel_idResponsavel;
-    }
-
-    public void setResponsavel_idResponsavel(Pessoa Responsavel_idResponsavel) {
-        this.Responsavel_idResponsavel = Responsavel_idResponsavel;
-    }
 
     public Integer getIdFabricacaoQueijo() {
         return idFabricacaoQueijo;
@@ -81,14 +82,6 @@ public class FabricacaoQueijo {
 
     public void setTipoQueijo_idTipoQueijo(ReceitaQueijo tipoQueijo_idTipoQueijo) {
         this.tipoQueijo_idTipoQueijo = tipoQueijo_idTipoQueijo;
-    }
-
-    public Date getDataFabricacao() {
-        return dataFabricacao;
-    }
-
-    public void setDataFabricacao(Date dataFabricacao) {
-        this.dataFabricacao = dataFabricacao;
     }
 
     public String getLoteQueijo() {
@@ -107,12 +100,20 @@ public class FabricacaoQueijo {
         this.coletaLeite_idColetaLeite = coletaLeite_idColetaLeite;
     }
 
-    public Processamento getProcessamento_idProcessamento() {
-        return processamento_idProcessamento;
+    public double getQtdLeiteUtilizada() {
+        return qtdLeiteUtilizada;
     }
 
-    public void setProcessamento_idProcessamento(Processamento processamento_idProcessamento) {
-        this.processamento_idProcessamento = processamento_idProcessamento;
+    public void setQtdLeiteUtilizada(double qtdLeiteUtilizada) {
+        this.qtdLeiteUtilizada = qtdLeiteUtilizada;
+    }
+
+    public String getTipoLeite() {
+        return tipoLeite;
+    }
+
+    public void setTipoLeite(String tipoLeite) {
+        this.tipoLeite = tipoLeite;
     }
 
     public Integer getTempoProcessamento() {
@@ -139,16 +140,6 @@ public class FabricacaoQueijo {
         this.temperaturaPreMaturacao = temperaturaPreMaturacao;
     }
 
-    public String getFermento() {
-        return fermento;
-    }
-
-    public void setFermento(String fermento) {
-        this.fermento = fermento;
-    }
-
-    
-
     public double getQtdFermento() {
         return qtdFermento;
     }
@@ -157,20 +148,36 @@ public class FabricacaoQueijo {
         this.qtdFermento = qtdFermento;
     }
 
-    public Integer getTempoMaturacao() {
-        return tempoMaturacao;
+    public Integer getTempoFermentacao() {
+        return tempoFermentacao;
     }
 
-    public void setTempoMaturacao(Integer tempoMaturacao) {
-        this.tempoMaturacao = tempoMaturacao;
+    public void setTempoFermentacao(Integer tempoFermentacao) {
+        this.tempoFermentacao = tempoFermentacao;
     }
 
-    public double getPhMaturacao() {
-        return phMaturacao;
+    public String getFermento() {
+        return fermento;
     }
 
-    public void setPhMaturacao(double phMaturacao) {
-        this.phMaturacao = phMaturacao;
+    public void setFermento(String fermento) {
+        this.fermento = fermento;
+    }
+
+    public String getMarcaFermento() {
+        return marcaFermento;
+    }
+
+    public void setMarcaFermento(String marcaFermento) {
+        this.marcaFermento = marcaFermento;
+    }
+
+    public Integer getPhPreMaturacao() {
+        return phPreMaturacao;
+    }
+
+    public void setPhPreMaturacao(Integer phPreMaturacao) {
+        this.phPreMaturacao = phPreMaturacao;
     }
 
     public Integer getTemperaturaCoagulacao() {
@@ -221,12 +228,12 @@ public class FabricacaoQueijo {
         this.phEnformagem = phEnformagem;
     }
 
-    public double getPhFinal() {
-        return phFinal;
+    public Integer getPh24() {
+        return ph24;
     }
 
-    public void setPhFinal(double phFinal) {
-        this.phFinal = phFinal;
+    public void setPh24(Integer ph24) {
+        this.ph24 = ph24;
     }
 
     public Integer getDessoragem() {
@@ -243,6 +250,134 @@ public class FabricacaoQueijo {
 
     public void setTemperaturaDessoragem(Integer temperaturaDessoragem) {
         this.temperaturaDessoragem = temperaturaDessoragem;
+    }
+
+    public String getDataSalga() {
+        return dataSalga;
+    }
+
+    public void setDataSalga(String dataSalga) {
+        this.dataSalga = dataSalga;
+    }
+
+    public String getTemperaturaSalga() {
+        return temperaturaSalga;
+    }
+
+    public void setTemperaturaSalga(String temperaturaSalga) {
+        this.temperaturaSalga = temperaturaSalga;
+    }
+
+    public String getTempoTratamentoSalga() {
+        return tempoTratamentoSalga;
+    }
+
+    public void setTempoTratamentoSalga(String tempoTratamentoSalga) {
+        this.tempoTratamentoSalga = tempoTratamentoSalga;
+    }
+
+    public String getDataTratamentoCasca() {
+        return dataTratamentoCasca;
+    }
+
+    public void setDataTratamentoCasca(String dataTratamentoCasca) {
+        this.dataTratamentoCasca = dataTratamentoCasca;
+    }
+
+    public String getTipoTratamentoCasca() {
+        return tipoTratamentoCasca;
+    }
+
+    public void setTipoTratamentoCasca(String tipoTratamentoCasca) {
+        this.tipoTratamentoCasca = tipoTratamentoCasca;
+    }
+
+    public Integer getQtdPecas() {
+        return qtdPecas;
+    }
+
+    public void setQtdPecas(Integer qtdPecas) {
+        this.qtdPecas = qtdPecas;
+    }
+
+    public double getPesoTotal() {
+        return pesoTotal;
+    }
+
+    public void setPesoTotal(double pesoTotal) {
+        this.pesoTotal = pesoTotal;
+    }
+
+    public double getPesoMedioPecas() {
+        return pesoMedioPecas;
+    }
+
+    public void setPesoMedioPecas(double pesoMedioPecas) {
+        this.pesoMedioPecas = pesoMedioPecas;
+    }
+
+    public String getLoteAcabado() {
+        return LoteAcabado;
+    }
+
+    public void setLoteAcabado(String LoteAcabado) {
+        this.LoteAcabado = LoteAcabado;
+    }
+
+    public Pessoa getResponsavel_idResponsavel() {
+        return Responsavel_idResponsavel;
+    }
+
+    public void setResponsavel_idResponsavel(Pessoa Responsavel_idResponsavel) {
+        this.Responsavel_idResponsavel = Responsavel_idResponsavel;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
+    public Integer getTempoMaturacao() {
+        return tempoMaturacao;
+    }
+
+    public void setTempoMaturacao(Integer tempoMaturacao) {
+        this.tempoMaturacao = tempoMaturacao;
+    }
+
+    public Date getDataFabricacao() {
+        return dataFabricacao;
+    }
+
+    public void setDataFabricacao(Date dataFabricacao) {
+        this.dataFabricacao = dataFabricacao;
+    }
+
+    public Processamento getProcessamento_idProcessamento() {
+        return processamento_idProcessamento;
+    }
+
+    public void setProcessamento_idProcessamento(Processamento processamento_idProcessamento) {
+        this.processamento_idProcessamento = processamento_idProcessamento;
+    }
+
+    public double getPhMaturacao() {
+        return phMaturacao;
+    }
+
+    public void setPhMaturacao(double phMaturacao) {
+        this.phMaturacao = phMaturacao;
+    }
+
+    public double getPhFinal() {
+        return phFinal;
+    }
+
+    public void setPhFinal(double phFinal) {
+        this.phFinal = phFinal;
     }
 
     public String getTipoSalga() {
@@ -277,52 +412,12 @@ public class FabricacaoQueijo {
         this.dataLavagem = dataLavagem;
     }
 
-    public String getTipoTratamento() {
-        return tipoTratamento;
-    }
-
-    public void setTipoTratamento(String tipoTratamento) {
-        this.tipoTratamento = tipoTratamento;
-    }
-
     public Integer getTempoTratamento() {
         return tempoTratamento;
     }
 
     public void setTempoTratamento(Integer tempoTratamento) {
         this.tempoTratamento = tempoTratamento;
-    }
-
-    public Integer getQtdPecas() {
-        return qtdPecas;
-    }
-
-    public void setQtdPecas(Integer qtdPecas) {
-        this.qtdPecas = qtdPecas;
-    }
-
-    public double getPesoMPecas() {
-        return pesoMPecas;
-    }
-
-    public void setPesoMPecas(double pesoMPecas) {
-        this.pesoMPecas = pesoMPecas;
-    }
-
-    public double getPesoTotal() {
-        return pesoTotal;
-    }
-
-    public void setPesoTotal(double pesoTotal) {
-        this.pesoTotal = pesoTotal;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
     }
 
     public String getFabricacaoQueijocol() {
@@ -332,54 +427,8 @@ public class FabricacaoQueijo {
     public void setFabricacaoQueijocol(String fabricacaoQueijocol) {
         this.fabricacaoQueijocol = fabricacaoQueijocol;
     }
+    
 
-    public double getQtdLeiteUtilizada() {
-        return qtdLeiteUtilizada;
-    }
-
-    public void setQtdLeiteUtilizada(double qtdLeiteUtilizada) {
-        this.qtdLeiteUtilizada = qtdLeiteUtilizada;
-    }
-
-    public String getTipoLeite() {
-        return tipoLeite;
-    }
-
-    public void setTipoLeite(String tipoLeite) {
-        this.tipoLeite = tipoLeite;
-    }
-
-    public Integer getTempoFermentacao() {
-        return tempoFermentacao;
-    }
-
-    public void setTempoFermentacao(Integer tempoFermentacao) {
-        this.tempoFermentacao = tempoFermentacao;
-    }
-
-    public String getMarcaFermento() {
-        return marcaFermento;
-    }
-
-    public void setMarcaFermento(String marcaFermento) {
-        this.marcaFermento = marcaFermento;
-    }
-
-    public Integer getPhPreMaturacao() {
-        return phPreMaturacao;
-    }
-
-    public void setPhPreMaturacao(Integer phPreMaturacao) {
-        this.phPreMaturacao = phPreMaturacao;
-    }
-
-    public Integer getPh24() {
-        return ph24;
-    }
-
-    public void setPh24(Integer ph24) {
-        this.ph24 = ph24;
-    }
     
     
     
