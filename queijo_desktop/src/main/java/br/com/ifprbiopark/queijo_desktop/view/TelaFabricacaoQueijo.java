@@ -11,6 +11,7 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
+import com.google.common.base.Strings;
 import java.awt.Dimension;
 import java.util.HashSet;
 import java.util.List;
@@ -897,7 +898,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
 
     private int parseInteiro(String value) {
 
-        if (value == null || value.isBlank() || value.isEmpty()) {
+        if (Strings.isNullOrEmpty(value)) {
             return 0;
         }
         return Integer.parseInt(value);
