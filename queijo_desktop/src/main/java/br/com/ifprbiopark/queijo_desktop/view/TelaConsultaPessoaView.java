@@ -9,13 +9,14 @@ import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableConsultaPesssoa;
 import com.google.common.base.Strings;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  *
  * @author jhona
  */
-public class TelaConsultaPessoaView extends javax.swing.JInternalFrame {
+public class TelaConsultaPessoaView extends javax.swing.JDialog {
     
     private TelaPessoaView TelaCadastro;
     
@@ -24,26 +25,26 @@ public class TelaConsultaPessoaView extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaConsultaPessoaView
      */
-    public TelaConsultaPessoaView() {
+    public TelaConsultaPessoaView(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         tblPessoas.setModel(tableModel);
         
-        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
-
-        public void keyReleased(java.awt.event.KeyEvent evt) {
-            try {
-                int number = Integer.parseInt(txtID.getText());
-            } catch (Exception ex) {;
-                evt.setKeyChar('\b');
+        txtID.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                e.consume(); // consume non-numbers
             }
         }
     });
+
     }
-    
-        public void setPosicao() {
-        Dimension d = this.getDesktopPane().getSize();
-        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
-    }
+ 
+//    public void setPosicao() {
+//        Dimension d = this.getDesktopPane().getSize();
+//        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+//    }
 
     public void setTelaCadastro(TelaPessoaView TelaCadastro) {
         this.TelaCadastro = TelaCadastro;
@@ -80,7 +81,9 @@ public class TelaConsultaPessoaView extends javax.swing.JInternalFrame {
             TelaCadastro.setId(id);            
             this.dispose();
         }
-    }   
+    }
+    
+    
     
 
     /**
@@ -100,8 +103,6 @@ public class TelaConsultaPessoaView extends javax.swing.JInternalFrame {
         tblPessoas = new javax.swing.JTable();
         btnAbrir = new javax.swing.JToggleButton();
 
-        setClosable(true);
-        setIconifiable(true);
         setTitle("Consulta");
 
         btnConsultar.setText("Consultar");
@@ -115,7 +116,7 @@ public class TelaConsultaPessoaView extends javax.swing.JInternalFrame {
 
         txtNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Fornecedor", "Funcionário", "Cliente" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Fornecedor", "Funcionário" }));
         cmbTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Pessoa"));
 
         tblPessoas.setModel(new javax.swing.table.DefaultTableModel(
@@ -151,27 +152,27 @@ public class TelaConsultaPessoaView extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(32, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConsultar)
-                        .addGap(45, 45, 45))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(32, Short.MAX_VALUE))))
+                        .addGap(45, 45, 45))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultar)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,6 +183,7 @@ public class TelaConsultaPessoaView extends javax.swing.JInternalFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed

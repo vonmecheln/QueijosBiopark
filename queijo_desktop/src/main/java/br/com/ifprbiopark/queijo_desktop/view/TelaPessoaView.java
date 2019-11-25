@@ -335,11 +335,10 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNomeKeyPressed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        TelaConsultaPessoaView consulta = new TelaConsultaPessoaView();
-        QueijoDesktop.telaPrincipal.getPainelDesktop().add(consulta);
-        consulta.setPosicao();
+        TelaConsultaPessoaView consulta = new TelaConsultaPessoaView(QueijoDesktop.telaPrincipal, true);
         consulta.setTelaCadastro(this);
-        consulta.setVisible(true);
+        consulta.show();    
+                
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
