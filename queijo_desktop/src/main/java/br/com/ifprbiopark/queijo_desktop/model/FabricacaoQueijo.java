@@ -23,7 +23,7 @@ public class FabricacaoQueijo {
     //fermento;
     private double qtdFermento;
     private Integer tempoFermentacao;
-    private Fermento fermento_idFermento;
+    private String fermento;
     private String marcaFermento;
     private Integer phPreMaturacao;
     
@@ -133,13 +133,15 @@ public class FabricacaoQueijo {
         this.temperaturaPreMaturacao = temperaturaPreMaturacao;
     }
 
-    public Fermento getFermento_idFermento() {
-        return fermento_idFermento;
+    public String getFermento() {
+        return fermento;
     }
 
-    public void setFermento_idFermento(Fermento fermento_idFermento) {
-        this.fermento_idFermento = fermento_idFermento;
+    public void setFermento(String fermento) {
+        this.fermento = fermento;
     }
+
+    
 
     public double getQtdFermento() {
         return qtdFermento;

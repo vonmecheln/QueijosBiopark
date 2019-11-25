@@ -376,7 +376,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtTempoFermentacao" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtItemFerm" min="-2" pref="244" max="-2" attributes="0"/>
+                  <Component id="txtTipoFermento" min="-2" pref="244" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="txtMarcaFerm" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -394,7 +394,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtQuantFerm" pref="45" max="32767" attributes="0"/>
                               <Component id="txtTempoFermentacao" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtItemFerm" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtTipoFermento" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="txtPhPreMatura" alignment="0" max="32767" attributes="0"/>
@@ -430,16 +430,16 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMarcaFermActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtItemFerm">
+        <Component class="javax.swing.JTextField" name="txtTipoFermento">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Item:"/>
+                <TitledBorder title="Item(Tipo de Fermento)"/>
               </Border>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtItemFermActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTipoFermentoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTempoFermentacao">

@@ -98,7 +98,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         txtQuantFerm = new javax.swing.JTextField();
         txtMarcaFerm = new javax.swing.JTextField();
-        txtItemFerm = new javax.swing.JTextField();
+        txtTipoFermento = new javax.swing.JTextField();
         txtTempoFermentacao = new javax.swing.JTextField();
         txtPhPreMatura = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
@@ -268,10 +268,10 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             }
         });
 
-        txtItemFerm.setBorder(javax.swing.BorderFactory.createTitledBorder("Item:"));
-        txtItemFerm.addActionListener(new java.awt.event.ActionListener() {
+        txtTipoFermento.setBorder(javax.swing.BorderFactory.createTitledBorder("Item(Tipo de Fermento)"));
+        txtTipoFermento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtItemFermActionPerformed(evt);
+                txtTipoFermentoActionPerformed(evt);
             }
         });
 
@@ -299,7 +299,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtTempoFermentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtItemFerm, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTipoFermento, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtMarcaFerm, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -315,7 +315,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtQuantFerm, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                             .addComponent(txtTempoFermentacao)
-                            .addComponent(txtItemFerm)))
+                            .addComponent(txtTipoFermento)))
                     .addComponent(txtPhPreMatura)
                     .addComponent(txtMarcaFerm))
                 .addContainerGap())
@@ -701,9 +701,9 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMarcaFermActionPerformed
 
-    private void txtItemFermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemFermActionPerformed
+    private void txtTipoFermentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoFermentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtItemFermActionPerformed
+    }//GEN-LAST:event_txtTipoFermentoActionPerformed
 
     private void txtTempoFermentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoFermentacaoActionPerformed
         // TODO add your handling code here:
@@ -808,11 +808,11 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setTemperaturaPreMaturacao(Integer.parseInt(txtTempPreMat.getText()));
         
         //Insercao de Fermento
-//        queijo.setQtdFermento(Integer.parseInt(txtQuantFerm.getText()));
-//        queijo.setTempoFermentacao(Integer.parseInt(txtTempoFermento.getText()));
-//        queijo.setFermento_idFermento(txtItemFerm.getText());
-//        queijo.setMarcaFermento(txtMarcaFerm.getText());
-//        queijo.setPhPreMaturacao(txtPhPreMaturacao.getText());
+        queijo.setQtdFermento(Integer.parseInt(txtQuantFerm.getText()));
+        queijo.setTempoFermentacao(Integer.parseInt(txtTempoFermento.getText()));
+        queijo.setFermento(txtTipoFermento.getText());
+        queijo.setMarcaFermento(txtMarcaFerm.getText());
+        queijo.setPhPreMaturacao(Integer.parseInt(txtPhPreMatura.getText()));
         
 //        //Coagulacao
 //        queijo.setTemperaturaCoagulacao(txtTemperatura.getText());
@@ -876,7 +876,6 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCoagulante;
     private javax.swing.JFormattedTextField txtDataSalga;
     private javax.swing.JTextField txtDessoragem;
-    private javax.swing.JTextField txtItemFerm;
     private javax.swing.JTextField txtLote;
     private javax.swing.JTextField txtMarcaFerm;
     private javax.swing.JTextField txtPh24;
@@ -894,5 +893,6 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTempoFermentacao;
     private javax.swing.JTextField txtTempoFermento;
     private javax.swing.JTextField txtTempoTratamento;
+    private javax.swing.JTextField txtTipoFermento;
     // End of variables declaration//GEN-END:variables
 }
