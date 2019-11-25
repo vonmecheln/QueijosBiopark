@@ -27,19 +27,25 @@ public class FabricacaoQueijo {
     private String marcaFermento;
     private Integer phPreMaturacao;
     
-    private Integer tempoMaturacao;
-    private Date dataFabricacao;
-    private Processamento processamento_idProcessamento;
-    private double phMaturacao;
+    //Coagulacao
+    
     private Integer temperaturaCoagulacao;
     private double qtdClCalcio;
     private double qtdCoagulante;
     private Integer tempoCoagulacao;
     private double phCorte;
     private double phEnformagem;
-    private double phFinal;
+    private Integer ph24;
     private Integer dessoragem;
     private Integer temperaturaDessoragem;
+    
+    //
+    
+    private Integer tempoMaturacao;
+    private Date dataFabricacao;
+    private Processamento processamento_idProcessamento;
+    private double phMaturacao;
+    private double phFinal;
     private String tipoSalga;
     private Date dataMaturacao;
     private Integer temperaturaMaturacao;
@@ -365,6 +371,14 @@ public class FabricacaoQueijo {
 
     public void setPhPreMaturacao(Integer phPreMaturacao) {
         this.phPreMaturacao = phPreMaturacao;
+    }
+
+    public Integer getPh24() {
+        return ph24;
+    }
+
+    public void setPh24(Integer ph24) {
+        this.ph24 = ph24;
     }
     
     

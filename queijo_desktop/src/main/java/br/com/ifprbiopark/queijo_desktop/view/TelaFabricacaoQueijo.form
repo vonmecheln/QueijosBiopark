@@ -486,7 +486,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="txtTemperatura" min="-2" pref="106" max="-2" attributes="0"/>
+                          <Component id="txtTemperaturaCoagula" min="-2" pref="106" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtCloretoCalcio" min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
@@ -499,7 +499,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="txtCoagulante" min="-2" pref="132" max="-2" attributes="0"/>
+                          <Component id="txtQtdCoagulante" min="-2" pref="132" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtTempoCoagulacao" min="-2" pref="132" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -520,9 +520,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtTemperatura" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="txtTemperaturaCoagula" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="txtCloretoCalcio" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="txtCoagulante" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="txtQtdCoagulante" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="txtTempoCoagulacao" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="txtPhCorte" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="txtPhEsformagem" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
@@ -574,7 +574,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoCoagulacaoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCoagulante">
+        <Component class="javax.swing.JTextField" name="txtQtdCoagulante">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -583,7 +583,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCoagulanteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQtdCoagulanteActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPhCorte">
@@ -634,7 +634,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperatura24ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTemperatura">
+        <Component class="javax.swing.JTextField" name="txtTemperaturaCoagula">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -643,7 +643,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperaturaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperaturaCoagulaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
