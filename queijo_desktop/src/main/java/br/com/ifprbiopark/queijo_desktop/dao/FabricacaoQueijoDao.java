@@ -98,7 +98,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
             nps.setInt("tempoProcessamento", fq.getTempoProcessamento());
             nps.setInt("temperaturaProcessamento", fq.getTemperaturaProcessamento());
             nps.setInt("temperaturaPreMaturacao", fq.getTemperaturaPreMaturacao());
-            nps.setInt("Fermento_idFermento", fq.getFermento_idFermento().getIdFermento());
+            nps.setString("Fermento_idFermento", fq.getFermento());
             nps.setDouble("qtdFermento", fq.getQtdFermento());
             nps.setInt("tempoMaturacao", fq.getTempoMaturacao());
             nps.setDouble("phMaturacao", fq.getPhMaturacao());
@@ -115,10 +115,10 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
             nps.setDate("dataMaturacao", fq.getDataMaturacao()); 
             nps.setInt("temperaturaMaturacao", fq.getTemperaturaMaturacao()); 
             nps.setDate("dataLavagem", fq.getDataLavagem()); 
-            nps.setString("tipoTratamento", fq.getTipoTratamento()); 
+            nps.setString("tipoTratamento", fq.getTipoTratamentoCasca()); 
             nps.setInt("tempoTratamento", fq.getTempoTratamento()); 
             nps.setInt("qtdPecas", fq.getQtdPecas()); 
-            nps.setDouble("pesoMPecas", fq.getPesoMPecas()); 
+            nps.setDouble("pesoMPecas", fq.getPesoMedioPecas()); 
             nps.setDouble("pesoTotal", fq.getPesoTotal()); 
             nps.setString("observacoes", fq.getObservacoes()); 
             nps.setString("FabricacaoQueijocol", fq.getFabricacaoQueijocol()); 
