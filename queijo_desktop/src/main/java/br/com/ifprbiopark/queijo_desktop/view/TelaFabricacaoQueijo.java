@@ -835,13 +835,13 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setDataTratamentoCasca(tfDataTratamentoCasca.getText());
         queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
         
-//        //Rendimento
-//        queijo.setQuantidadeProduzida(tfQuantidadeProduzida.getText());
-//        queijo.setPesoTotalLote(tfPesoTotalLote.getText());
-//        queijo.setPesoMedioLote(tfPesoMedioLote.getText());
-//        queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
-//        queijo.setFuncionario(cbFuncionario);
-//        queijo.setObservacoes(tfObservacao.getText());
+        //Rendimento
+        queijo.setQtdPecas(Integer.parseInt(tfQueijoProduzido.getText()));
+        queijo.setPesoTotal(Double.parseDouble(tfPesoTotalLote.getText()));
+        queijo.setPesoMedioPecas(Double.parseDouble(tfPesoMedioLote.getText()));
+        queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
+        //queijo.setFuncionario(cbFuncionario);
+        queijo.setObservacoes(tfObservacao.getText());
        
                 
     
