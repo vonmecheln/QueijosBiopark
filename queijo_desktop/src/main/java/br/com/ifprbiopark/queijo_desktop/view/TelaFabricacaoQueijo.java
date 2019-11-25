@@ -26,49 +26,48 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaProcessamentoView
      */
-    
     //lista de receitas do queijo
     ControleReceitaQueijo rqControl;
     List<ReceitaQueijo> listaReceitaQueijo;
-    
+
     //lista de coletas de leite;
     ControleColetaLeite cleite;
     List<ColetaLeite> listaColetaLeite;
-    
+
     public TelaFabricacaoQueijo() {
         initComponents();
-        
+
         //carregar as receitas
         rqControl = new ControleReceitaQueijo();
         try {
             listaReceitaQueijo = rqControl.listaReceitaQueijo();
             jcTipoQueijo.removeAll();
             jcTipoQueijo.addItem("");
-            for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {                
+            for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {
                 jcTipoQueijo.addItem(receitaQueijo.getNomeTipo());
             }
-          
+
         } catch (DbException ex) {
             Logger.getLogger(TelaFabricacaoQueijo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //carregar as coletas de leite
         cleite = new ControleColetaLeite();
-        
+
         try {
             listaColetaLeite = cleite.listaColeta();
             jcColeta.removeAll();
             jcColeta.addItem("");
-            for (ColetaLeite coletaLeite : listaColetaLeite){
+            for (ColetaLeite coletaLeite : listaColetaLeite) {
                 jcColeta.addItem(coletaLeite.getLoteColeta());
-            } 
-        
+            }
+
         } catch (DbException ex) {
             Logger.getLogger(TelaFabricacaoQueijo.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -790,30 +789,30 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfDataTratamentoCascaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
+
         FabricacaoQueijo queijo = new FabricacaoQueijo();
-      
+
         //informacoes iniciais de processamento        
-        queijo.setTipoQueijo_idTipoQueijo(listaReceitaQueijo.get(jcTipoQueijo.getSelectedIndex()));     
+        queijo.setTipoQueijo_idTipoQueijo(listaReceitaQueijo.get(jcTipoQueijo.getSelectedIndex()));
         queijo.setLoteQueijo(txtLote.getText());
         queijo.setColetaLeite_idColetaLeite((listaColetaLeite.get(jcColeta.getSelectedIndex())));
         queijo.setQtdLeiteUtilizada(Double.parseDouble(txtQuantidadeLeiteUtilizada.getText()));
-        
+
         //Processamento
         queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
-        queijo.setTempoProcessamento(Integer.parseInt(txtTempoFermento.getText())); 
-        queijo.setTemperaturaProcessamento(Integer.parseInt(txtTemperaturaPross.getText())); 
-        
-         //Prematuracao
+        queijo.setTempoProcessamento(parseInteiro(txtTempoFermento.getText()));
+        queijo.setTemperaturaProcessamento(Integer.parseInt(txtTemperaturaPross.getText()));
+
+        //Prematuracao
         queijo.setTemperaturaPreMaturacao(Integer.parseInt(txtTempPreMat.getText()));
-        
+
         //Insercao de Fermento
         queijo.setQtdFermento(Integer.parseInt(txtQuantFerm.getText()));
         queijo.setTempoFermentacao(Integer.parseInt(txtTempoFermento.getText()));
         queijo.setFermento(txtTipoFermento.getText());
         queijo.setMarcaFermento(txtMarcaFerm.getText());
         queijo.setPhPreMaturacao(Integer.parseInt(txtPhPreMatura.getText()));
-        
+
         //Coagulacao
         queijo.setTemperaturaCoagulacao(Integer.parseInt(txtTemperaturaCoagula.getText()));
         queijo.setQtdClCalcio(Double.parseDouble(txtCloretoCalcio.getText()));
@@ -824,17 +823,16 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setPh24(Integer.parseInt(txtPh24.getText()));
         queijo.setDessoragem(Integer.parseInt(txtDessoragem.getText()));
         queijo.setTemperaturaDessoragem(Integer.parseInt(txtTemperatura24.getText()));
-        
-        
+
         //Etapa de Salga
         queijo.setDataSalga(txtDataSalga.getText());
         queijo.setTemperaturaSalga(txtTemperaturaSalga.getText());
         queijo.setTempoTratamentoSalga(txtTempoTratamento.getText());
-        
+
         //tratamento casca
         queijo.setDataTratamentoCasca(tfDataTratamentoCasca.getText());
         queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
-        
+
         //Rendimento
         queijo.setQtdPecas(Integer.parseInt(tfQueijoProduzido.getText()));
         queijo.setPesoTotal(Double.parseDouble(tfPesoTotalLote.getText()));
@@ -842,9 +840,8 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
         //queijo.setFuncionario(cbFuncionario);
         queijo.setObservacoes(tfObservacao.getText());
-       
-                
-    
+
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
 
@@ -897,4 +894,12 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTempoTratamento;
     private javax.swing.JTextField txtTipoFermento;
     // End of variables declaration//GEN-END:variables
+
+    private int parseInteiro(String value) {
+
+        if (value == null || value.isBlank() || value.isEmpty()) {
+            return 0;
+        }
+        return Integer.parseInt(value);
+    }
 }
