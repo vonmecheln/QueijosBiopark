@@ -159,7 +159,6 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Processamento");
         setMinimumSize(new java.awt.Dimension(976, 694));
-        setPreferredSize(new java.awt.Dimension(976, 694));
         setRequestFocusEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -241,7 +240,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jcTipoLeite)
-                    .addComponent(txtTempoFermento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                    .addComponent(txtTempoFermento, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTemperaturaPross, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -570,7 +569,6 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        cmbFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbFuncionario.setBorder(javax.swing.BorderFactory.createTitledBorder("Funcionario"));
 
         tfLoteProdutoAcabado.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote (Produto Acabado):"));
