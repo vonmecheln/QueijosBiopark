@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class TelaFermentoView extends javax.swing.JInternalFrame {
     
     TableFermento tableFermento = new TableFermento();
-    
+
     /**
      * Creates new form TelaFermento
      */
@@ -50,6 +50,7 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbFermento = new javax.swing.JTable();
+        btnNovo = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,6 +155,13 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
             tbFermento.getColumnModel().getColumn(2).setPreferredWidth(130);
         }
 
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,6 +173,8 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
                     .addComponent(txtMarca)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,10 +197,11 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnNovo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,42 +212,54 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
-       txtTipo.setText("");
-       txtMarca.setText("");
+        
+        txtTipo.setText("");
+        txtMarca.setText("");
         
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Fermento item = new Fermento();
         try {
-            item.setIdFermento (Integer.parseInt(txtId.getText()));
-        }catch (NumberFormatException e ){}
+            item.setIdFermento(Integer.parseInt(txtId.getText()));
+        } catch (NumberFormatException e) {
+            item.setIdFermento(0); //setando o Id = zero
+        }
         item.setTipoFermento(txtTipo.getText());
         item.setMarca(txtMarca.getText());
         ControleFermento controleFermento = new ControleFermento();
         try {
-            if(item.getIdFermento() > 0){
+            if (item.getIdFermento() > 0) {
                 controleFermento.alterar(item);
-            }else
-            controleFermento.salvar(item);
+            } else {
+                controleFermento.salvar(item);
+            }
         } catch (DbException ex) {
             Logger.getLogger(TelaFermentoView.class.getName()).log(Level.SEVERE, null, ex);
         }
         tableFermento.recarregar();
         tableFermento.fireTableDataChanged();
     }//GEN-LAST:event_btnSalvarActionPerformed
-
+    
     private void tbFermentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbFermentoMouseClicked
         tbFermento.getSelectedRow();
-        txtId.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(),0))); 
-        txtTipo.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(),1))); 
-        txtMarca.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(),2))); 
+        txtId.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 0)));        
+        txtTipo.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 1)));        
+        txtMarca.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 2)));        
     }//GEN-LAST:event_tbFermentoMouseClicked
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        txtId.setText("");
+        txtTipo.setText("");
+        txtMarca.setText("");
+        // btnSalvar.setText("Salvar");
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnNovoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
