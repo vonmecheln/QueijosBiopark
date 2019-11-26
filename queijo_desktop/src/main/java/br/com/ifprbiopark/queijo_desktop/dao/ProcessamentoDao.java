@@ -30,7 +30,6 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
 
             String sql = "INSERT INTO processamento(TipoProcessamento) VALUES(:TipoProcessamento)";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("TipoProcessamento", p.getTipoProcessamento());
 
@@ -59,7 +58,6 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
 
             String sql = "DELETE processamento WHERE idProcessamento = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("id", p.getIdProcesamento());
 
@@ -85,7 +83,6 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
         try {
             String sql = "UPDATE processamento SET TipoProcessamento = :TipoProcessamento WHERE idProcessamento = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("TipoProcessamento", p.getTipoProcessamento());
             nps.setInt("id", p.getIdProcesamento());
@@ -109,7 +106,6 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
             //String SQL;
             String sql = "SELECT idProcessamento, TipoProcessamento FROM processamento WHERE idProcessamento = :id ";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             nps.setInt("id", id);
@@ -133,7 +129,6 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
             //String SQL;
             String sql = "SELECT idProcessamento, TipoProcessamento FROM processamento";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             ResultSet consulta = nps.executeQuery();

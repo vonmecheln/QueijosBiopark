@@ -22,7 +22,6 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             String sql = "INSERT INTO coletaLeite( loteColeta, dtColeta, qtdLeite, produtor_id, funcionario_id, situacao) "
                     + "VALUES (:loteColeta, :dtColeta, :qtdLeite, :produtor_id, :funcionario_id, :situacao)";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             nps.setString("loteColeta", c.getLoteColeta());
@@ -55,7 +54,6 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     public boolean excluir(ColetaLeite objeto) throws DbException {
         try {
             String sql = " delete from coletaLeite where idColetaLeite = :idColetaLeite";
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("idColetaLeite", objeto.getIdColetaLeite());
             int exec = nps.executeUpdate();
@@ -86,7 +84,6 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             String sql = "SELECT idColetaLeite, loteColeta, dtColeta, produtor_id, qtdLeite, situacao, "
                     + "funcionario_id FROM coletaleite";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             PessoaDao pessoaDao = new PessoaDao();
@@ -139,7 +136,6 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
             String sql = "SELECT idColetaLeite, loteColeta, dtColeta, produtor_id, qtdLeite, situacao, "
                     + "funcionario_id FROM coletaleite WHERE idColetaLeite = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             nps.setInt("id", id);

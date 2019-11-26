@@ -35,7 +35,6 @@ public class FermentoDao extends AbstractDao<Fermento> {
                     + ") VALUES ("
                     + " (select count(*) + 1 from fermento),  :tipoFermento, :marca)";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("tipoFermento", fermento.getTipoFermento());
             nps.setString("marca", fermento.getMarca());
@@ -65,7 +64,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
         String sql = "delete from fermento where idFermento = :idFermento";
 
         try {
-            Conexao con = Conexao.getInstance();
+            
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("idFermento", fermento.getIdFermento());
             int exec = nps.executeUpdate();
@@ -93,7 +92,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
         String sql = "update fermento set tipoFermento = :tipoFermento, marca = :marca where idFermento = :idFermento";
 
         try {
-            Conexao con = Conexao.getInstance();
+            
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("idFermento", fermento.getIdFermento());
             nps.setString("tipoFermento", fermento.getTipoFermento());
@@ -115,7 +114,6 @@ public class FermentoDao extends AbstractDao<Fermento> {
             //String SQL;
             String sql = "SELECT idFermento, tipoFermento,marca FROM fermento WHERE idFermento = :idFermento";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("idFermento", id);
             ResultSet consulta = nps.executeQuery();
@@ -140,7 +138,6 @@ public class FermentoDao extends AbstractDao<Fermento> {
             //String SQL;
             String sql = "SELECT idFermento, tipoFermento,marca FROM fermento";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {

@@ -30,7 +30,6 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
             String sql = "INSERT INTO receitaqueijo(nomeReceita) VALUES(:nomeReceita)";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nomeReceita", tq.getNomeTipo());
 
@@ -59,7 +58,6 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
             String sql = "DELETE receitaqueijo WHERE idReceita = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("id", tq.getIdTipoQueijo());
 
@@ -86,7 +84,6 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
             String sql = "UPDATE receitaqueijo SET nomeReceita = :nomeReceita WHERE idReceita = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nomeReceita", tq.getNomeTipo());
             nps.setInt("id", tq.getIdTipoQueijo());
@@ -110,7 +107,6 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             //String SQL;
             String sql = "SELECT idReceita, nomeReceita FROM receitaqueijo WHERE idReceita = :id ";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             nps.setInt("id", id);
@@ -134,7 +130,6 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             //String SQL;
             String sql = "SELECT idReceita, nomeReceita FROM receitaqueijo";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             ResultSet consulta = nps.executeQuery();
@@ -158,7 +153,6 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             //String SQL;
             String sql = "SELECT idReceita, nomeReceita FROM receitaqueijo WHERE nomeReceita LIKE '%:nomeReceita%'";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nomeReceita", nome);
 
@@ -181,7 +175,6 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             List<ReceitaQueijo> tipoQueijo = new ArrayList<>();
             String sql = "SELECT idReceita, nomeReceita FROM receitaqueijo";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             ResultSet consulta = nps.executeQuery();

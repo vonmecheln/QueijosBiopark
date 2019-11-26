@@ -33,7 +33,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
                     + ") VALUES ("
                     + ":nome, :endereco, :tipoFiscal, :documento, :tipoPessoa, :telefone)";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nome", p.getNome());
             nps.setString("endereco", p.getEndereco());
@@ -67,7 +66,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
 
             String sql = "DELETE pessoa WHERE idPessoa = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("id", p.getIdPessoa());
 
@@ -100,7 +98,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
                     + " WHERE "
                     + "idPessoa = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nome", p.getNome());
             nps.setString("endereco", p.getEndereco());
@@ -128,7 +125,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
             //String SQL;
             String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, documento, tipoPessoa, telefone FROM pessoa WHERE idPessoa = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             nps.setInt("id", id);
@@ -159,7 +155,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
 
             String sql = "SELECT idPessoa, nome FROM pessoa WHERE tipoPessoa = 'Fornecedor' ORDER BY nome ASC";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             ResultSet consulta = nps.executeQuery();
@@ -183,7 +178,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
 
             String sql = "SELECT idPessoa, nome FROM pessoa WHERE tipoPessoa = 'Funcionário' ORDER BY nome ASC";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             ResultSet consulta = nps.executeQuery();
@@ -208,7 +202,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
             //String SQL;
             String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, documento, tipoPessoa, telefone FROM pessoa WHERE nome LIKE '%:nome%'";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             nps.setString("nome", nome);
@@ -246,7 +239,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
                 sql += "nome LIKE '%" + nome + "%'";
             }
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
 //            if (nome != null && tipo != null){
@@ -282,7 +274,6 @@ public class PessoaDao extends AbstractDao<Pessoa> {
             List<Pessoa> pessoas = new ArrayList<Pessoa>();
             String sql = "SELECT idPessoa, nome, endereco, tipoFiscal, documento, tipoPessoa, telefone FROM pessoa";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             ResultSet consulta = nps.executeQuery();

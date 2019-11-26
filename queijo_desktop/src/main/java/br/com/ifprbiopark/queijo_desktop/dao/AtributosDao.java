@@ -29,7 +29,6 @@ public class AtributosDao extends AbstractDao<Atributos> {
         try {
             String sql = "INSERT INTO atributos(nomeAtributo) VALUES(:nomeAtributo)";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nomeAtributo", a.getNomeAtributo());
 
@@ -57,7 +56,6 @@ public class AtributosDao extends AbstractDao<Atributos> {
         try {
             String sql = "DELETE atributos WHERE idAtributo = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("id", a.getIdAtributo());
 
@@ -78,7 +76,6 @@ public class AtributosDao extends AbstractDao<Atributos> {
         try {
             String sql = "UPDATE atributos SET nomeTipo = :nomeAtributo WHERE idTipoQueijo = :id";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nomeAtributo", a.getNomeAtributo());
             nps.setInt("id", a.getIdAtributo());
@@ -107,7 +104,6 @@ public class AtributosDao extends AbstractDao<Atributos> {
             //String SQL;
             String sql = "SELECT idAtributo, nomeAtributo FROM atributos WHERE idAtributo = :id ";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             nps.setInt("id", id);
@@ -131,7 +127,6 @@ public class AtributosDao extends AbstractDao<Atributos> {
             //String SQL;
             String sql = "SELECT idAtributo, nomeAtributo FROM atributos";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             ResultSet consulta = nps.executeQuery();

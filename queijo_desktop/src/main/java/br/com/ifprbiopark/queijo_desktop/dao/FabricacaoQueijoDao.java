@@ -98,7 +98,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                     + ":observacoes, "
                     + ":FabricacaoQueijocol, "
                     + ":Responsavel_idResponsavel) ";
-            Conexao con = Conexao.getInstance();
+            
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("TipoQueijo_idTipoQueijo", fq.getTipoQueijo_idTipoQueijo().getIdTipoQueijo());
             nps.setDate("dataFabricacao", fq.getDataFabricacao());
@@ -225,7 +225,6 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
 
             sql += " ORDER BY nome ASC";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             ResultSet consulta = nps.executeQuery();
@@ -342,7 +341,6 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
 
             sql += " ORDER BY nome ASC";
 
-            Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
             nps.setInt("id", idTipoQueijo);
