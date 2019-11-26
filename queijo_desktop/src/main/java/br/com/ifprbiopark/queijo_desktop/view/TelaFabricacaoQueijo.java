@@ -797,7 +797,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setTipoQueijo_idTipoQueijo(listaReceitaQueijo.get(jcTipoQueijo.getSelectedIndex()));
         queijo.setLoteQueijo(txtLote.getText());
         queijo.setColetaLeite_idColetaLeite((listaColetaLeite.get(jcColeta.getSelectedIndex())));
-        queijo.setQtdLeiteUtilizada(Double.parseDouble(txtQuantidadeLeiteUtilizada.getText()));
+        queijo.setQtdLeiteUtilizada(parseDoubles(txtQuantidadeLeiteUtilizada.getText()));
 
         //Processamento
         queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
@@ -808,7 +808,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setTemperaturaPreMaturacao(parseInteiro(txtTempPreMat.getText()));
 
         //Insercao de Fermento
-        queijo.setQtdFermento(parseInteiro(txtQuantFerm.getText()));
+        queijo.setQtdFermento(parseDoubles(txtQuantFerm.getText()));
         queijo.setTempoFermentacao(parseInteiro(txtTempoFermento.getText()));
         queijo.setFermento(txtTipoFermento.getText());
         queijo.setMarcaFermento(txtMarcaFerm.getText());
@@ -816,11 +816,11 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
 
         //Coagulacao
         queijo.setTemperaturaCoagulacao(parseInteiro(txtTemperaturaCoagula.getText()));
-        queijo.setQtdClCalcio(Double.parseDouble(txtCloretoCalcio.getText()));
-        queijo.setQtdCoagulante(Double.parseDouble(txtQtdCoagulante.getText()));
+        queijo.setQtdClCalcio(parseDoubles(txtCloretoCalcio.getText()));
+        queijo.setQtdCoagulante(parseDoubles(txtQtdCoagulante.getText()));
         queijo.setTempoCoagulacao(parseInteiro(txtTempoCoagulacao.getText()));
-        queijo.setPhCorte(Double.parseDouble(txtPhCorte.getText()));
-        queijo.setPhEnformagem(Double.parseDouble(txtPhEsformagem.getText()));
+        queijo.setPhCorte(parseDoubles(txtPhCorte.getText()));
+        queijo.setPhEnformagem(parseDoubles(txtPhEsformagem.getText()));
         queijo.setPh24(parseInteiro(txtPh24.getText()));
         queijo.setDessoragem(parseInteiro(txtDessoragem.getText()));
         queijo.setTemperaturaDessoragem(parseInteiro(txtTemperatura24.getText()));
@@ -836,8 +836,8 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
 
         //Rendimento
         queijo.setQtdPecas(parseInteiro(tfQueijoProduzido.getText()));
-        queijo.setPesoTotal(Double.parseDouble(tfPesoTotalLote.getText()));
-        queijo.setPesoMedioPecas(Double.parseDouble(tfPesoMedioLote.getText()));
+        queijo.setPesoTotal(parseDoubles(tfPesoTotalLote.getText()));
+        queijo.setPesoMedioPecas(parseDoubles(tfPesoMedioLote.getText()));
         queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
         //queijo.setFuncionario(cbFuncionario);
         queijo.setObservacoes(tfObservacao.getText());
@@ -902,5 +902,13 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             return null;
         }
         return Integer.parseInt(value);
+    }
+    
+    private Double parseDoubles(String value) {
+
+        if (Strings.isNullOrEmpty(value)) {
+            return null;
+        }
+        return Double.parseDouble(value);
     }
 }
