@@ -19,8 +19,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         initComponents();
 
     }
-    
-    public JDesktopPane getPainelDesktop(){
+
+    public JDesktopPane getPainelDesktop() {
         return painelDesktop;
     }
 
@@ -40,13 +40,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         painelDesktop = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         pnlMenuSelecionado = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbPessoas = new javax.swing.JLabel();
+        lbReceitas = new javax.swing.JLabel();
+        lbFermentos = new javax.swing.JLabel();
+        lbEntrada = new javax.swing.JLabel();
+        lbClassificacao = new javax.swing.JLabel();
+        lbProcessamento = new javax.swing.JLabel();
+        lbRelatorios = new javax.swing.JLabel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         pnlBgGeral = new javax.swing.JPanel();
         imgDesktop = new javax.swing.JLabel();
@@ -96,94 +96,124 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         pnlMenuSelecionado.setOpaque(false);
         pnlMenuSelecionado.setPreferredSize(new java.awt.Dimension(1280, 730));
 
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbPessoas.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
+        lbPessoas.setForeground(new java.awt.Color(255, 255, 255));
+        lbPessoas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPessoas.setText("PESSOAS");
+        lbPessoas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbPessoas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                lbPessoasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel2MouseEntered(evt);
+                lbPessoasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel2MouseExited(evt);
+                lbPessoasMouseExited(evt);
             }
         });
 
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbReceitas.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
+        lbReceitas.setForeground(new java.awt.Color(255, 255, 255));
+        lbReceitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReceitas.setText("RECEITAS");
+        lbReceitas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceitas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                lbReceitasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
+                lbReceitasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
+                lbReceitasMouseExited(evt);
             }
         });
 
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbFermentos.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
+        lbFermentos.setForeground(new java.awt.Color(255, 255, 255));
+        lbFermentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbFermentos.setText("FERMENTOS");
+        lbFermentos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbFermentos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lbFermentosMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel4MouseEntered(evt);
+                lbFermentosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel4MouseExited(evt);
+                lbFermentosMouseExited(evt);
             }
         });
 
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbEntrada.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
+        lbEntrada.setForeground(new java.awt.Color(255, 255, 255));
+        lbEntrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEntrada.setText("ENTRADA");
+        lbEntrada.setToolTipText("");
+        lbEntrada.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbEntrada.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                lbEntradaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
+                lbEntradaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel5MouseExited(evt);
+                lbEntradaMouseExited(evt);
             }
         });
 
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbClassificacao.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
+        lbClassificacao.setForeground(new java.awt.Color(255, 255, 255));
+        lbClassificacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbClassificacao.setText("CLASSISFICAÇÃO");
+        lbClassificacao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbClassificacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                lbClassificacaoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel6MouseEntered(evt);
+                lbClassificacaoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel6MouseExited(evt);
+                lbClassificacaoMouseExited(evt);
             }
         });
 
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbProcessamento.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
+        lbProcessamento.setForeground(new java.awt.Color(255, 255, 255));
+        lbProcessamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbProcessamento.setText("PROCESSAMENTO");
+        lbProcessamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbProcessamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                lbProcessamentoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel7MouseEntered(evt);
+                lbProcessamentoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel7MouseExited(evt);
+                lbProcessamentoMouseExited(evt);
             }
         });
 
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbRelatorios.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
+        lbRelatorios.setForeground(new java.awt.Color(255, 255, 255));
+        lbRelatorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbRelatorios.setText("RELATÓRIOS");
+        lbRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbRelatorios.setPreferredSize(new java.awt.Dimension(50, 12));
+        lbRelatorios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                lbRelatoriosMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel8MouseEntered(evt);
+                lbRelatoriosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel8MouseExited(evt);
+                lbRelatoriosMouseExited(evt);
             }
         });
 
@@ -191,38 +221,35 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         pnlMenuSelecionado.setLayout(pnlMenuSelecionadoLayout);
         pnlMenuSelecionadoLayout.setHorizontalGroup(
             pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+            .addGroup(pnlMenuSelecionadoLayout.createSequentialGroup()
+                .addGroup(pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbProcessamento, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(lbClassificacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbFermentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbReceitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1100, Short.MAX_VALUE))
         );
         pnlMenuSelecionadoLayout.setVerticalGroup(
             pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMenuSelecionadoLayout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addGroup(pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMenuSelecionadoLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuSelecionadoLayout.createSequentialGroup()
+                .addContainerGap(278, Short.MAX_VALUE)
+                .addComponent(lbPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
-            .addGroup(pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuSelecionadoLayout.createSequentialGroup()
-                    .addContainerGap(551, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(131, Short.MAX_VALUE)))
+                .addComponent(lbReceitas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(lbFermentos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(lbEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(lbProcessamento, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
         );
 
         jLayeredPane2.setPreferredSize(new java.awt.Dimension(1366, 720));
@@ -254,7 +281,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGap(0, 749, Short.MAX_VALUE)
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane2Layout.createSequentialGroup()
                     .addComponent(pnlBgGeral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,19 +314,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGap(0, 749, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addComponent(painelDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 38, Short.MAX_VALUE)))
+                    .addGap(0, 57, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlMenuSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlMenuSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 706, Short.MAX_VALUE)
+                    .addGap(0, 725, Short.MAX_VALUE)
                     .addComponent(pnlMenssagem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE))
+                .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
         );
 
         pnlInicio.add(jPanel1, "card2");
@@ -316,7 +343,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGap(0, 749, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -327,67 +354,65 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
-        jLabel7.setIcon(null); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(211, 243));// TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7MouseExited
+    private void lbFermentosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFermentosMouseExited
 
-    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btFermentos.jpg")));
-        jLabel7.setPreferredSize(new java.awt.Dimension(211, 243));   // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7MouseEntered
+        lbFermentos.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_lbFermentosMouseExited
 
-    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
-        jLabel6.setIcon(null); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(211, 243));// TODO add your handling code here:
-    }//GEN-LAST:event_jLabel6MouseExited
+    private void lbFermentosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFermentosMouseEntered
+        lbFermentos.setForeground(new java.awt.Color(218, 1, 68));
 
-    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btReceitas.jpg")));
-        jLabel6.setPreferredSize(new java.awt.Dimension(211, 243));    // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel6MouseEntered
+    }//GEN-LAST:event_lbFermentosMouseEntered
 
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        jLabel5.setIcon(null); // NOI18N
-        jLabel5.setPreferredSize(new java.awt.Dimension(211, 243));// TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5MouseExited
+    private void lbReceitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceitasMouseExited
 
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btPessoas.jpg")));
-        jLabel5.setPreferredSize(new java.awt.Dimension(211, 243));    // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5MouseEntered
+        lbReceitas.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_lbReceitasMouseExited
 
-    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
-        jLabel4.setIcon(null); // NOI18N
-        jLabel4.setPreferredSize(new java.awt.Dimension(211, 243));// TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MouseExited
+    private void lbReceitasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceitasMouseEntered
+        lbReceitas.setForeground(new java.awt.Color(218, 1, 68));
 
-    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btProcessamento.jpg")));
-        jLabel4.setPreferredSize(new java.awt.Dimension(211, 243));   // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MouseEntered
+    }//GEN-LAST:event_lbReceitasMouseEntered
 
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
-        jLabel3.setIcon(null); // NOI18N
-        jLabel3.setPreferredSize(new java.awt.Dimension(211, 243));// TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MouseExited
+    private void lbPessoasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPessoasMouseExited
+        lbPessoas.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_lbPessoasMouseExited
 
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btClassificacao.jpg")));
-        jLabel3.setPreferredSize(new java.awt.Dimension(211, 243));    // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MouseEntered
+    private void lbPessoasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPessoasMouseEntered
+        lbPessoas.setForeground(new java.awt.Color(218, 1, 68));
+    }//GEN-LAST:event_lbPessoasMouseEntered
 
-    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-        jLabel2.setIcon(null); // NOI18N
-        jLabel2.setPreferredSize(new java.awt.Dimension(211, 243));     // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel2MouseExited
+    private void lbProcessamentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbProcessamentoMouseExited
 
-    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btEntrada.jpg")));
-        jLabel2.setPreferredSize(new java.awt.Dimension(211, 243));
-    }//GEN-LAST:event_jLabel2MouseEntered
+        lbProcessamento.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_lbProcessamentoMouseExited
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void lbProcessamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbProcessamentoMouseEntered
+        lbProcessamento.setForeground(new java.awt.Color(218, 1, 68));
+
+    }//GEN-LAST:event_lbProcessamentoMouseEntered
+
+    private void lbClassificacaoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbClassificacaoMouseExited
+
+        lbClassificacao.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_lbClassificacaoMouseExited
+
+    private void lbClassificacaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbClassificacaoMouseEntered
+        lbClassificacao.setForeground(new java.awt.Color(218, 1, 68));
+
+    }//GEN-LAST:event_lbClassificacaoMouseEntered
+
+    private void lbEntradaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEntradaMouseExited
+
+        lbEntrada.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_lbEntradaMouseExited
+
+    private void lbEntradaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEntradaMouseEntered
+        lbEntrada.setForeground(new java.awt.Color(218, 1, 68));
+
+    }//GEN-LAST:event_lbEntradaMouseEntered
+
+    private void lbEntradaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEntradaMouseClicked
 
         TelaColetaLeiteView formEntrada;
         try {
@@ -402,26 +427,26 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_lbEntradaMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void lbClassificacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbClassificacaoMouseClicked
         TelaClassificacaoLeiteView formClassificacao = new TelaClassificacaoLeiteView();
         painelDesktop.add(formClassificacao);
         formClassificacao.setPosicao();
         formClassificacao.setVisible(true);
 
 
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_lbClassificacaoMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void lbProcessamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbProcessamentoMouseClicked
         TelaFabricacaoQueijo formProcessamento = new TelaFabricacaoQueijo();
         painelDesktop.add(formProcessamento);
         formProcessamento.setPosicao();
         formProcessamento.setVisible(true);
 
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_lbProcessamentoMouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void lbPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPessoasMouseClicked
         TelaPessoaView formPessoa;
         try {
             formPessoa = new TelaPessoaView();
@@ -432,38 +457,38 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_lbPessoasMouseClicked
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void lbReceitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceitasMouseClicked
         TelaReceitaQueijoView formItem = new TelaReceitaQueijoView();
         painelDesktop.add(formItem);
         formItem.setPosicao();
         formItem.setVisible(true);
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_lbReceitasMouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void lbFermentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFermentosMouseClicked
         TelaFermentoView formFermento = new TelaFermentoView();
         painelDesktop.add(formFermento);
         //formRelatorio.setPosicao();
         formFermento.setVisible(true);
-    }//GEN-LAST:event_jLabel7MouseClicked
+    }//GEN-LAST:event_lbFermentosMouseClicked
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+    private void lbRelatoriosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRelatoriosMouseClicked
         TelaRelatorio formRelatorio = new TelaRelatorio();
         painelDesktop.add(formRelatorio);
         //formRelatorio.setPosicao();
         formRelatorio.setVisible(true);  // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel8MouseClicked
+    }//GEN-LAST:event_lbRelatoriosMouseClicked
 
-    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btRelatorios.jpg")));
-        jLabel8.setPreferredSize(new java.awt.Dimension(211, 243));        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel8MouseEntered
+    private void lbRelatoriosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRelatoriosMouseEntered
+        lbRelatorios.setForeground(new java.awt.Color(218, 1, 68));
 
-    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-        jLabel8.setIcon(null);
-        jLabel8.setPreferredSize(new java.awt.Dimension(211, 243));   // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel8MouseExited
+    }//GEN-LAST:event_lbRelatoriosMouseEntered
+
+    private void lbRelatoriosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRelatoriosMouseExited
+
+        lbRelatorios.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_lbRelatoriosMouseExited
 
     public void setMenssagem(String menssagem, Color corFundo) {
         lblMenssagem.setText(menssagem);
@@ -487,15 +512,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgDesktop;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbClassificacao;
+    private javax.swing.JLabel lbEntrada;
+    private javax.swing.JLabel lbFermentos;
+    private javax.swing.JLabel lbPessoas;
+    private javax.swing.JLabel lbProcessamento;
+    private javax.swing.JLabel lbReceitas;
+    private javax.swing.JLabel lbRelatorios;
     private javax.swing.JLabel lblMenssagem;
     private javax.swing.JDesktopPane painelDesktop;
     private javax.swing.JPanel pnlBgGeral;
