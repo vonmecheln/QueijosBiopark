@@ -49,7 +49,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         rqControl = new ControleReceitaQueijo();
         try {
             listaReceitaQueijo = rqControl.listaReceitaQueijo();
-            jcTipoQueijo.removeAll();
+            //jcTipoQueijo.removeAll();
             jcTipoQueijo.addItem("");
             for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {
                 jcTipoQueijo.addItem(receitaQueijo.getNomeTipo());
@@ -64,7 +64,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
 
         try {
             listaColetaLeite = cleite.listaColeta();
-            jcColeta.removeAll();
+            //jcColeta.removeAll();
             jcColeta.addItem("");
             for (ColetaLeite coletaLeite : listaColetaLeite) {
                 jcColeta.addItem(coletaLeite.getLoteColeta());
@@ -78,7 +78,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         cPessoa = new ControlePessoa();
         try {
             listaFuncionarios = cPessoa.listaFuncionarios();
-            cmbFuncionario.removeAll();
+            //cmbFuncionario.removeAll();
             cmbFuncionario.addItem("");
             for (Pessoa pessoas : listaFuncionarios) {                
                 cmbFuncionario.addItem(pessoas.getNome());
