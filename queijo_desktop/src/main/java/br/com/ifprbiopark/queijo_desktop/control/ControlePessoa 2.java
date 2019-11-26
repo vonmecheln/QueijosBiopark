@@ -3,11 +3,7 @@ package br.com.ifprbiopark.queijo_desktop.control;
 import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
 import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
 import br.com.ifprbiopark.queijo_desktop.exception.RequiredFieldException;
-import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
-import com.google.common.base.Strings;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ControlePessoa {
 
@@ -16,12 +12,12 @@ public class ControlePessoa {
         
     public void salvar(Pessoa p) throws PessoaException, Exception {       
         if (p.getTipoFiscal() == "0"){            
-            if(!isValidCPF(p.getDocumento().replace(".", "").replace("-", ""))){
+            if(!isValidCPF(p.getCadastro().replace(".", "").replace("-", ""))){
                 throw new Exception("CPF não válido.");
             }
         }
         else if (p.getTipoFiscal() == "1"){
-            if(!isValidCNPJ(p.getDocumento().replace(".", "").replace("-", "").replace("/", ""))){
+            if(!isValidCNPJ(p.getCadastro().replace(".", "").replace("-", "").replace("/", ""))){
                 throw new Exception("CNPJ não válido.");
             }
         }        
@@ -81,29 +77,4 @@ public class ControlePessoa {
       Integer digito2 = calcularDigito(cnpj.substring(0,12) + digito1, pesoCNPJ);
       return cnpj.equals(cnpj.substring(0,12) + digito1.toString() + digito2.toString());
    }
-
-    public List<Pessoa> consultar(int id, String nome, String tipo) throws Exception {
-        try {
-            PessoaDao p = new PessoaDao();
-            List<Pessoa> lista = new ArrayList<Pessoa>();
-            if (id != 0){
-                lista.add(p.consultar(id));
-            }
-            else if(!Strings.isNullOrEmpty(nome) || !Strings.isNullOrEmpty(tipo)){
-                lista = p.consultar(nome, tipo);
-            }
-            else{
-                lista = p.consultar();
-            }
-            return lista;
-        } catch (Exception ex) {
-            throw new Exception(ex.getMessage());
-        }
-    }
-   
-   public List<Pessoa> listaFuncionarios() throws DbException {
-       PessoaDao p = new PessoaDao(); 
-       return p.consultarFuncionarios();
-    }
-   
 }
