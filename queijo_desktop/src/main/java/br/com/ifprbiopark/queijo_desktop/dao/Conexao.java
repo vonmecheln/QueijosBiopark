@@ -126,7 +126,7 @@ public class Conexao {
                     statement.executeUpdate("INSERT INTO pessoa (nome, endereco, telefone, tipoFiscal, documento, tipoPessoa) VALUES ('Gilvan', 'Rua Azul nr 98','45 3333-3333','F', '44444444444','Fornecedor');  ");
                     statement.executeUpdate("INSERT INTO pessoa (nome, endereco, telefone, tipoFiscal, documento, tipoPessoa) VALUES ('Marlova Bombardelli', 'Rua Vermelho nr 20','45 3333-3333','F', '55555555555','Fornecedor');  ");
                     statement.executeUpdate("INSERT INTO pessoa (nome, endereco, telefone, tipoFiscal, documento, tipoPessoa) VALUES ('Ronaldo', 'Rua Laranja nr 78','45 3333-3333','F', '66666666666','Fornecedor');  ");
-                    statement.executeUpdate("INSERT INTO pessoa (nome, endereco, telefone, tipoFiscal, documento, tipoPessoa) VALUES ('Maike T. M. Montanhini', 'Rua Branca nr 54','45 3333-3333','F', '77777777777','Funcionario');  ");
+                    statement.executeUpdate("INSERT INTO pessoa (nome, endereco, telefone, tipoFiscal, documento, tipoPessoa) VALUES ('Maike T. M. Montanhini', 'Rua Branca nr 54','45 3333-3333','F', '77777777777','Funcionário');  ");
 
                     //-- Populando tabela Atributo 
                     statement.executeUpdate("INSERT INTO atributo (nomeAtributo) VALUES ('pH'); ");

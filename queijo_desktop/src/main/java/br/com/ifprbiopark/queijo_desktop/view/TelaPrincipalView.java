@@ -118,6 +118,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         lbReceitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbReceitas.setText("RECEITAS");
         lbReceitas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbReceitas.setMaximumSize(new java.awt.Dimension(56, 15));
+        lbReceitas.setMinimumSize(new java.awt.Dimension(56, 15));
+        lbReceitas.setPreferredSize(new java.awt.Dimension(56, 15));
         lbReceitas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbReceitasMouseClicked(evt);
@@ -135,6 +138,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         lbFermentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbFermentos.setText("FERMENTOS");
         lbFermentos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbFermentos.setMaximumSize(new java.awt.Dimension(56, 15));
+        lbFermentos.setMinimumSize(new java.awt.Dimension(56, 15));
+        lbFermentos.setPreferredSize(new java.awt.Dimension(56, 15));
         lbFermentos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbFermentosMouseClicked(evt);
@@ -153,6 +159,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         lbEntrada.setText("ENTRADA");
         lbEntrada.setToolTipText("");
         lbEntrada.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbEntrada.setMaximumSize(new java.awt.Dimension(56, 15));
+        lbEntrada.setMinimumSize(new java.awt.Dimension(56, 15));
+        lbEntrada.setPreferredSize(new java.awt.Dimension(56, 15));
         lbEntrada.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbEntradaMouseClicked(evt);
@@ -168,8 +177,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         lbClassificacao.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
         lbClassificacao.setForeground(new java.awt.Color(255, 255, 255));
         lbClassificacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbClassificacao.setText("CLASSISFICAÇÃO");
+        lbClassificacao.setText("CLASSIFICAÇÃO");
         lbClassificacao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbClassificacao.setMaximumSize(new java.awt.Dimension(56, 15));
+        lbClassificacao.setMinimumSize(new java.awt.Dimension(56, 15));
+        lbClassificacao.setPreferredSize(new java.awt.Dimension(56, 15));
         lbClassificacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbClassificacaoMouseClicked(evt);
@@ -187,6 +199,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         lbProcessamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbProcessamento.setText("PROCESSAMENTO");
         lbProcessamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbProcessamento.setMaximumSize(new java.awt.Dimension(56, 15));
+        lbProcessamento.setMinimumSize(new java.awt.Dimension(56, 15));
+        lbProcessamento.setPreferredSize(new java.awt.Dimension(56, 15));
         lbProcessamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbProcessamentoMouseClicked(evt);
@@ -204,7 +219,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         lbRelatorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbRelatorios.setText("RELATÓRIOS");
         lbRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lbRelatorios.setPreferredSize(new java.awt.Dimension(50, 12));
+        lbRelatorios.setMaximumSize(new java.awt.Dimension(56, 15));
+        lbRelatorios.setMinimumSize(new java.awt.Dimension(56, 15));
+        lbRelatorios.setPreferredSize(new java.awt.Dimension(56, 15));
         lbRelatorios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbRelatoriosMouseClicked(evt);
