@@ -802,28 +802,28 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         //Processamento
         queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
         queijo.setTempoProcessamento(parseInteiro(txtTempoFermento.getText()));
-        queijo.setTemperaturaProcessamento(Integer.parseInt(txtTemperaturaPross.getText()));
+        queijo.setTemperaturaProcessamento(parseInteiro(txtTemperaturaPross.getText()));
 
         //Prematuracao
-        queijo.setTemperaturaPreMaturacao(Integer.parseInt(txtTempPreMat.getText()));
+        queijo.setTemperaturaPreMaturacao(parseInteiro(txtTempPreMat.getText()));
 
         //Insercao de Fermento
-        queijo.setQtdFermento(Integer.parseInt(txtQuantFerm.getText()));
-        queijo.setTempoFermentacao(Integer.parseInt(txtTempoFermento.getText()));
+        queijo.setQtdFermento(parseInteiro(txtQuantFerm.getText()));
+        queijo.setTempoFermentacao(parseInteiro(txtTempoFermento.getText()));
         queijo.setFermento(txtTipoFermento.getText());
         queijo.setMarcaFermento(txtMarcaFerm.getText());
-        queijo.setPhPreMaturacao(Integer.parseInt(txtPhPreMatura.getText()));
+        queijo.setPhPreMaturacao(parseInteiro(txtPhPreMatura.getText()));
 
         //Coagulacao
-        queijo.setTemperaturaCoagulacao(Integer.parseInt(txtTemperaturaCoagula.getText()));
+        queijo.setTemperaturaCoagulacao(parseInteiro(txtTemperaturaCoagula.getText()));
         queijo.setQtdClCalcio(Double.parseDouble(txtCloretoCalcio.getText()));
         queijo.setQtdCoagulante(Double.parseDouble(txtQtdCoagulante.getText()));
-        queijo.setTempoCoagulacao(Integer.parseInt(txtTempoCoagulacao.getText()));
+        queijo.setTempoCoagulacao(parseInteiro(txtTempoCoagulacao.getText()));
         queijo.setPhCorte(Double.parseDouble(txtPhCorte.getText()));
         queijo.setPhEnformagem(Double.parseDouble(txtPhEsformagem.getText()));
-        queijo.setPh24(Integer.parseInt(txtPh24.getText()));
-        queijo.setDessoragem(Integer.parseInt(txtDessoragem.getText()));
-        queijo.setTemperaturaDessoragem(Integer.parseInt(txtTemperatura24.getText()));
+        queijo.setPh24(parseInteiro(txtPh24.getText()));
+        queijo.setDessoragem(parseInteiro(txtDessoragem.getText()));
+        queijo.setTemperaturaDessoragem(parseInteiro(txtTemperatura24.getText()));
 
         //Etapa de Salga
         queijo.setDataSalga(txtDataSalga.getText());
@@ -835,7 +835,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
 
         //Rendimento
-        queijo.setQtdPecas(Integer.parseInt(tfQueijoProduzido.getText()));
+        queijo.setQtdPecas(parseInteiro(tfQueijoProduzido.getText()));
         queijo.setPesoTotal(Double.parseDouble(tfPesoTotalLote.getText()));
         queijo.setPesoMedioPecas(Double.parseDouble(tfPesoMedioLote.getText()));
         queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
@@ -896,10 +896,10 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTipoFermento;
     // End of variables declaration//GEN-END:variables
 
-    private int parseInteiro(String value) {
+    private Integer parseInteiro(String value) {
 
         if (Strings.isNullOrEmpty(value)) {
-            return 0;
+            return null;
         }
         return Integer.parseInt(value);
     }
