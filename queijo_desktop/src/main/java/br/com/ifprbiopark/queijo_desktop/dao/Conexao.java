@@ -98,7 +98,7 @@ public class Conexao {
             ResultSet consulta = statement.executeQuery("SELECT count(1) as qtd FROM pessoa");
             if (consulta.next()) {
                 if (consulta.getInt("qtd") == 0) {
-                    
+
                     //-- Populando tabela de ReceitaQueijo 
                     statement.executeUpdate("INSERT INTO receitaqueijo (nomeReceita) VALUES ('Saint Paulin'); ");
                     statement.executeUpdate("INSERT INTO receitaqueijo (nomeReceita) VALUES ('Queijo Gouda'); ");

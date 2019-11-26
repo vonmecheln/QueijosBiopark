@@ -13,10 +13,11 @@ import br.com.ifprbiopark.queijo_desktop.model.Processamento;
  * @author jhona
  */
 public class ControleProcessamento {
-    public Processamento consultar(int id) throws Exception{
+
+    public Processamento consultar(int id) throws Exception {
         try {
             ProcessamentoDao p = new ProcessamentoDao();
-            return p.consultar(id);            
+            return p.consultar(id);
         } catch (Exception ex) {
             throw new Exception(ex.getMessage());
         }

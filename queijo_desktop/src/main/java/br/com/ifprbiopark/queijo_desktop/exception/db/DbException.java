@@ -12,6 +12,5 @@ public class DbException extends BasicException {
     public DbException(SQLException ex) {
         super(ex);
     }
-    
-    
+
 }

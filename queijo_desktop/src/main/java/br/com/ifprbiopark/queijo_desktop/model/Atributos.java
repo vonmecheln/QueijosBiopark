@@ -1,9 +1,7 @@
-
 package br.com.ifprbiopark.queijo_desktop.model;
 
-
 public class Atributos {
-    
+
     private Integer idAtributo;
     private String nomeAtributo;
 
@@ -22,6 +20,5 @@ public class Atributos {
     public void setNomeAtributo(String nomeAtributo) {
         this.nomeAtributo = nomeAtributo;
     }
-    
-    
+
 }

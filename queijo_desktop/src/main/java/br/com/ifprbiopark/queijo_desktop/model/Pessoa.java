@@ -1,12 +1,10 @@
-
 package br.com.ifprbiopark.queijo_desktop.model;
 
-
 public class Pessoa {
-    
+
     private Integer idPessoa;
     private String nome;
-    private String endereco;    
+    private String endereco;
     private String tipoFiscal;
     private String documento;
     private String tipoPessoa;
@@ -16,7 +14,6 @@ public class Pessoa {
         idPessoa = 0;
     }
 
-    
     public Integer getIdPessoa() {
         return idPessoa;
     }
@@ -72,6 +69,5 @@ public class Pessoa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
-    
+
 }

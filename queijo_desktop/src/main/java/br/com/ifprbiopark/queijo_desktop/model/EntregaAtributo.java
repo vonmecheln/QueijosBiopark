@@ -1,9 +1,7 @@
-
 package br.com.ifprbiopark.queijo_desktop.model;
 
-
 public class EntregaAtributo {
-    
+
     private Integer idEntregaAtributo;
     private String valor;
     private Atributos atributo_idAtributo;
@@ -40,7 +38,5 @@ public class EntregaAtributo {
     public void setColetaLeite_idColetaLeite(ColetaLeite ColetaLeite_idColetaLeite) {
         this.coletaLeite_idColetaLeite = ColetaLeite_idColetaLeite;
     }
-    
-    
-    
+
 }

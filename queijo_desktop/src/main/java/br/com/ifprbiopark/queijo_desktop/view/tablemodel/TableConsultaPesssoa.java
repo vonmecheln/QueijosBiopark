@@ -16,11 +16,11 @@ import javax.swing.table.AbstractTableModel;
  * @author jhona
  */
 public class TableConsultaPesssoa extends AbstractTableModel {
-    
+
     private ControlePessoa c = new ControlePessoa();
     private List<Pessoa> dados = new ArrayList<Pessoa>();
     private String[] colunas = {"ID", "Nome", "Tipo"};
-    
+
     @Override
     public String getColumnName(int column) {
         return colunas[column];
@@ -38,7 +38,7 @@ public class TableConsultaPesssoa extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int linha, int coluna) {
-        switch(coluna){
+        switch (coluna) {
             case 0:
                 return dados.get(linha).getIdPessoa();
             case 1:
@@ -48,20 +48,17 @@ public class TableConsultaPesssoa extends AbstractTableModel {
         }
         return null;
     }
-    
-    public void consultar(int id, String nome, String tipo) throws Exception{
-        try{
+
+    public void consultar(int id, String nome, String tipo) throws Exception {
+        try {
             List<Pessoa> lista = c.consultar(id, nome, tipo);
-        
+
             dados = lista;
             this.fireTableDataChanged();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception(ex.getMessage());
         }
 
     }
-            
 
-    
 }

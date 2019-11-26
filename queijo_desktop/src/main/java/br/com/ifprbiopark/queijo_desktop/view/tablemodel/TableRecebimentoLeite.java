@@ -6,23 +6,21 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-
 public class TableRecebimentoLeite extends AbstractTableModel {
-    
+
     ColetaLeiteDao coleta = new ColetaLeiteDao();
-   
+
     List<ColetaLeite> listaEntregas = coleta.listarColetas();
-    
-     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
     private String[] nomeColunas = {"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote", "Situação"};
-   
+
     @Override
     public String getColumnName(int column) {
         return nomeColunas[column];
     }
-    
-        
+
     @Override
     public int getRowCount() {
         return listaEntregas.size();
@@ -35,7 +33,7 @@ public class TableRecebimentoLeite extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int linha, int coluna) {
-        switch(coluna){
+        switch (coluna) {
             case 0:
                 return listaEntregas.get(linha).getIdColetaLeite();
             case 1:
@@ -43,7 +41,7 @@ public class TableRecebimentoLeite extends AbstractTableModel {
             case 2:
                 return listaEntregas.get(linha).getQtdLeite();
             case 3:
-                if(listaEntregas.get(linha).getDtColeta() != null){
+                if (listaEntregas.get(linha).getDtColeta() != null) {
                     return sdf.format(listaEntregas.get(linha).getDtColeta());
                 }
                 return listaEntregas.get(linha).getDtColeta();
@@ -51,27 +49,27 @@ public class TableRecebimentoLeite extends AbstractTableModel {
                 return listaEntregas.get(linha).getPessoa_idPessoa().getNome();
             case 5:
                 return listaEntregas.get(linha).getLoteColeta();
-             case 6:
+            case 6:
                 return listaEntregas.get(linha).getSituacao();
-                                    
+
         }
-        
+
         return null;
-        
+
     }
-    
-    public void addRow(ColetaLeite c){
+
+    public void addRow(ColetaLeite c) {
         this.listaEntregas.add(c);
         this.fireTableDataChanged();
     }
-    
-    public void removeRow(int linha){
+
+    public void removeRow(int linha) {
         this.listaEntregas.remove(linha);
         this.fireTableRowsDeleted(linha, linha);
     }
-    
-    public void updateRow(){
+
+    public void updateRow() {
         this.fireTableDataChanged();
     }
-    
+
 }

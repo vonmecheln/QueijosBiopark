@@ -16,9 +16,9 @@ import javax.swing.table.AbstractTableModel;
  * @author jhona
  */
 public class TableConsultaFabricacao extends AbstractTableModel {
-    
+
     private ControleFabricacaoQueijo c = new ControleFabricacaoQueijo();
-    private List<FabricacaoQueijo> dados = new ArrayList<FabricacaoQueijo>();    
+    private List<FabricacaoQueijo> dados = new ArrayList<FabricacaoQueijo>();
     private String[] colunas = {"ID", "Receita do queijo", "Lote do processamento", "Lote do leite", "Quantidade de leite"};
 
     @Override
@@ -30,7 +30,7 @@ public class TableConsultaFabricacao extends AbstractTableModel {
     public int getColumnCount() {
         return dados.size();
     }
-    
+
     @Override
     public String getColumnName(int column) {
         return colunas[column];
@@ -38,7 +38,7 @@ public class TableConsultaFabricacao extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int linha, int coluna) {
-        switch(coluna){
+        switch (coluna) {
             case 0:
                 return dados.get(linha).getIdFabricacaoQueijo();
             case 1:
@@ -52,18 +52,17 @@ public class TableConsultaFabricacao extends AbstractTableModel {
         }
         return null;
     }
-    
-    public void consultar(int idTipoQueijo, boolean inativos) throws Exception{
-        try{
+
+    public void consultar(int idTipoQueijo, boolean inativos) throws Exception {
+        try {
             List<FabricacaoQueijo> lista = c.consultarTabela(idTipoQueijo, inativos);
-        
+
             dados = lista;
             this.fireTableDataChanged();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new Exception(ex.getMessage());
         }
 
     }
-    
+
 }

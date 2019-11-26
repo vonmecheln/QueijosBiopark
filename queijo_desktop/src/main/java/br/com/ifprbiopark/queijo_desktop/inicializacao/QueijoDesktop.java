@@ -26,7 +26,7 @@ public class QueijoDesktop {
             java.util.logging.Logger.getLogger(TelaPrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             telaPrincipal = new TelaPrincipalView();

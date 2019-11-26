@@ -1,9 +1,7 @@
-
 package br.com.ifprbiopark.queijo_desktop.model;
 
-
 public class Fermento {
-    
+
     private Integer idFermento;
     private String tipoFermento;
     private String marca;
@@ -31,7 +29,5 @@ public class Fermento {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-    
-    
-    
+
 }

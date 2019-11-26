@@ -22,78 +22,78 @@ import java.util.List;
  *
  * @author jhona
  */
-public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
-    
+public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
+
     @Override
     public void inserir(FabricacaoQueijo fq) throws DbException {
         try {
-            
-            String sql = "INSERT INTO FabricacaoQueijo( TipoQueijo_idTipoQueijo, " +
-                                                        "dataFabricacao, " +
-                                                        "loteQueijo, " +
-                                                        "ColetaLeite_idColetaLeite, " +
-                                                        "Processamento_idProcessamento, " +
-                                                        "tempoProcessamento, " +
-                                                        "temperaturaProcessamento, " +
-                                                        "temperaturaPreMaturacao, " +
-                                                        "Fermento_idFermento, " +
-                                                        "qtdFermento, " +
-                                                        "tempoMaturacao, " +
-                                                        "phMaturacao, " +
-                                                        "temperaturaCoagulacao, " +
-                                                        "qtdClCalcio, " +
-                                                        "qtdCoagulante, " +
-                                                        "tempoCoagulacao, " +
-                                                        "phCorte, " +
-                                                        "phEnformagem, " +
-                                                        "phFinal, " +
-                                                        "dessoragem, " +
-                                                        "temperaturaDessoragem, " +
-                                                        "tipoSalga, " +
-                                                        "dataMaturacao, " +
-                                                        "temperaturaMaturacao, " +
-                                                        "dataLavagem, " +
-                                                        "tipoTratamento, " +
-                                                        "tempoTratamento, " +
-                                                        "qtdPecas, " +
-                                                        "pesoMPecas, " +
-                                                        "pesoTotal, " +
-                                                        "observacoes, " +
-                                                        "FabricacaoQueijocol, " +
-                                                        "Responsavel_idResponsavel) " +
-                                               "VALUES ( :TipoQueijo_idTipoQueijo, " +
-                                                        ":dataFabricacao, " +
-                                                        ":loteQueijo, " +
-                                                        ":ColetaLeite_idColetaLeite, " +
-                                                        ":Processamento_idProcessamento, " +
-                                                        ":tempoProcessamento, " +
-                                                        ":temperaturaProcessamento, " +
-                                                        ":temperaturaPreMaturacao, " +
-                                                        ":Fermento_idFermento, " +
-                                                        ":qtdFermento, " +
-                                                        ":tempoMaturacao, " +
-                                                        ":phMaturacao, " +
-                                                        ":temperaturaCoagulacao, " +
-                                                        ":qtdClCalcio, " +
-                                                        ":qtdCoagulante, " +
-                                                        ":tempoCoagulacao, " +
-                                                        ":phCorte, " +
-                                                        ":phEnformagem, " +
-                                                        ":phFinal, " +
-                                                        ":dessoragem, " +
-                                                        ":temperaturaDessoragem, " +
-                                                        ":tipoSalga, " +
-                                                        ":dataMaturacao, " +
-                                                        ":temperaturaMaturacao, " +
-                                                        ":dataLavagem, " +
-                                                        ":tipoTratamento, " +
-                                                        ":tempoTratamento, " +
-                                                        ":qtdPecas, " +
-                                                        ":pesoMPecas, " +
-                                                        ":pesoTotal, " +
-                                                        ":observacoes, " +
-                                                        ":FabricacaoQueijocol, " +
-                                                        ":Responsavel_idResponsavel) ";
+
+            String sql = "INSERT INTO FabricacaoQueijo( TipoQueijo_idTipoQueijo, "
+                    + "dataFabricacao, "
+                    + "loteQueijo, "
+                    + "ColetaLeite_idColetaLeite, "
+                    + "Processamento_idProcessamento, "
+                    + "tempoProcessamento, "
+                    + "temperaturaProcessamento, "
+                    + "temperaturaPreMaturacao, "
+                    + "Fermento_idFermento, "
+                    + "qtdFermento, "
+                    + "tempoMaturacao, "
+                    + "phMaturacao, "
+                    + "temperaturaCoagulacao, "
+                    + "qtdClCalcio, "
+                    + "qtdCoagulante, "
+                    + "tempoCoagulacao, "
+                    + "phCorte, "
+                    + "phEnformagem, "
+                    + "phFinal, "
+                    + "dessoragem, "
+                    + "temperaturaDessoragem, "
+                    + "tipoSalga, "
+                    + "dataMaturacao, "
+                    + "temperaturaMaturacao, "
+                    + "dataLavagem, "
+                    + "tipoTratamento, "
+                    + "tempoTratamento, "
+                    + "qtdPecas, "
+                    + "pesoMPecas, "
+                    + "pesoTotal, "
+                    + "observacoes, "
+                    + "FabricacaoQueijocol, "
+                    + "Responsavel_idResponsavel) "
+                    + "VALUES ( :TipoQueijo_idTipoQueijo, "
+                    + ":dataFabricacao, "
+                    + ":loteQueijo, "
+                    + ":ColetaLeite_idColetaLeite, "
+                    + ":Processamento_idProcessamento, "
+                    + ":tempoProcessamento, "
+                    + ":temperaturaProcessamento, "
+                    + ":temperaturaPreMaturacao, "
+                    + ":Fermento_idFermento, "
+                    + ":qtdFermento, "
+                    + ":tempoMaturacao, "
+                    + ":phMaturacao, "
+                    + ":temperaturaCoagulacao, "
+                    + ":qtdClCalcio, "
+                    + ":qtdCoagulante, "
+                    + ":tempoCoagulacao, "
+                    + ":phCorte, "
+                    + ":phEnformagem, "
+                    + ":phFinal, "
+                    + ":dessoragem, "
+                    + ":temperaturaDessoragem, "
+                    + ":tipoSalga, "
+                    + ":dataMaturacao, "
+                    + ":temperaturaMaturacao, "
+                    + ":dataLavagem, "
+                    + ":tipoTratamento, "
+                    + ":tempoTratamento, "
+                    + ":qtdPecas, "
+                    + ":pesoMPecas, "
+                    + ":pesoTotal, "
+                    + ":observacoes, "
+                    + ":FabricacaoQueijocol, "
+                    + ":Responsavel_idResponsavel) ";
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("TipoQueijo_idTipoQueijo", fq.getTipoQueijo_idTipoQueijo().getIdTipoQueijo());
@@ -115,21 +115,21 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
             nps.setDouble("phCorte", fq.getPhCorte());
             nps.setDouble("phEnformagem", fq.getPhEnformagem());
             nps.setDouble("phFinal", fq.getPhFinal());
-            nps.setInt("dessoragem", fq.getDessoragem()); 
-            nps.setInt("temperaturaDessoragem", fq.getTemperaturaDessoragem()); 
-            nps.setString("tipoSalga", fq.getTipoSalga()); 
-            nps.setDate("dataMaturacao", fq.getDataMaturacao()); 
-            nps.setInt("temperaturaMaturacao", fq.getTemperaturaMaturacao()); 
-            nps.setDate("dataLavagem", fq.getDataLavagem()); 
-            nps.setString("tipoTratamento", fq.getTipoTratamentoCasca()); 
-            nps.setInt("tempoTratamento", fq.getTempoTratamento()); 
-            nps.setInt("qtdPecas", fq.getQtdPecas()); 
-            nps.setDouble("pesoMPecas", fq.getPesoMedioPecas()); 
-            nps.setDouble("pesoTotal", fq.getPesoTotal()); 
-            nps.setString("observacoes", fq.getObservacoes()); 
-            nps.setString("FabricacaoQueijocol", fq.getFabricacaoQueijocol()); 
-            nps.setInt("Responsavel_idResponsavel", fq.getResponsavel_idResponsavel().getIdPessoa()); 
-            
+            nps.setInt("dessoragem", fq.getDessoragem());
+            nps.setInt("temperaturaDessoragem", fq.getTemperaturaDessoragem());
+            nps.setString("tipoSalga", fq.getTipoSalga());
+            nps.setDate("dataMaturacao", fq.getDataMaturacao());
+            nps.setInt("temperaturaMaturacao", fq.getTemperaturaMaturacao());
+            nps.setDate("dataLavagem", fq.getDataLavagem());
+            nps.setString("tipoTratamento", fq.getTipoTratamentoCasca());
+            nps.setInt("tempoTratamento", fq.getTempoTratamento());
+            nps.setInt("qtdPecas", fq.getQtdPecas());
+            nps.setDouble("pesoMPecas", fq.getPesoMedioPecas());
+            nps.setDouble("pesoTotal", fq.getPesoTotal());
+            nps.setString("observacoes", fq.getObservacoes());
+            nps.setString("FabricacaoQueijocol", fq.getFabricacaoQueijocol());
+            nps.setInt("Responsavel_idResponsavel", fq.getResponsavel_idResponsavel().getIdPessoa());
+
             int exec = nps.executeUpdate();
             if (exec == 0) {
                 throw new NotExecuteInsertException();
@@ -169,7 +169,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<FabricacaoQueijo> consultarListaTodos(boolean inativos) throws Exception{
+    public List<FabricacaoQueijo> consultarListaTodos(boolean inativos) throws Exception {
         try {
             ControleReceitaQueijo crq = new ControleReceitaQueijo();
             ControleColetaLeite ccl = new ControleColetaLeite();
@@ -178,48 +178,47 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
 
             List<FabricacaoQueijo> fabricacoes = new ArrayList<FabricacaoQueijo>();
 
-            String sql = "SELECT idFabricacaoQueijo, " +
-                                "TipoQueijo_idTipoQueijo, " +
-                                "dataFabricacao, " +
-                                "loteQueijo, " +
-                                "ColetaLeite_idColetaLeite, " +
-                                "Processamento_idProcessamento, " +
-                                "tempoProcessamento, " +
-                                "temperaturaProcessamento, " +
-                                "temperaturaPreMaturacao, " +
-                                "Fermento_idFermento, " +
-                                "qtdFermento, " +
-                                "tempoMaturacao, " +
-                                "phMaturacao, " +
-                                "temperaturaCoagulacao, " +
-                                "qtdClCalcio, " +
-                                "qtdCoagulante, " +
-                                "tempoCoagulacao, " +
-                                "phCorte, " +
-                                "phEnformagem, " +
-                                "phFinal, " +
-                                "dessoragem, " +
-                                "temperaturaDessoragem, " +
-                                "tipoSalga, " +
-                                "dataMaturacao, " +
-                                "temperaturaMaturacao, " +
-                                "dataLavagem, " +
-                                "tipoTratamento, " +
-                                "tempoTratamento, " +
-                                "qtdPecas, " +
-                                "pesoMPecas, " +
-                                "pesoTotal, " +
-                                "observacoes, " +
-                                "FabricacaoQueijocol, " +
-                                "Responsavel_idResponsavel " + 
-                                "FROM fabricacaoqueijo";
-            if(inativos){
+            String sql = "SELECT idFabricacaoQueijo, "
+                    + "TipoQueijo_idTipoQueijo, "
+                    + "dataFabricacao, "
+                    + "loteQueijo, "
+                    + "ColetaLeite_idColetaLeite, "
+                    + "Processamento_idProcessamento, "
+                    + "tempoProcessamento, "
+                    + "temperaturaProcessamento, "
+                    + "temperaturaPreMaturacao, "
+                    + "Fermento_idFermento, "
+                    + "qtdFermento, "
+                    + "tempoMaturacao, "
+                    + "phMaturacao, "
+                    + "temperaturaCoagulacao, "
+                    + "qtdClCalcio, "
+                    + "qtdCoagulante, "
+                    + "tempoCoagulacao, "
+                    + "phCorte, "
+                    + "phEnformagem, "
+                    + "phFinal, "
+                    + "dessoragem, "
+                    + "temperaturaDessoragem, "
+                    + "tipoSalga, "
+                    + "dataMaturacao, "
+                    + "temperaturaMaturacao, "
+                    + "dataLavagem, "
+                    + "tipoTratamento, "
+                    + "tempoTratamento, "
+                    + "qtdPecas, "
+                    + "pesoMPecas, "
+                    + "pesoTotal, "
+                    + "observacoes, "
+                    + "FabricacaoQueijocol, "
+                    + "Responsavel_idResponsavel "
+                    + "FROM fabricacaoqueijo";
+            if (inativos) {
                 sql += " WHERE inativo = 1";
-            }
-            else{
+            } else {
                 sql += " WHERE inativo = 0";
             }
-            
+
             sql += " ORDER BY nome ASC";
 
             Conexao con = Conexao.getInstance();
@@ -277,7 +276,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
                 fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
                 fq.setFabricacaoQueijocol(consulta.getString("fabricacaoQueijocol"));
                 fq.setInativo(consulta.getInt("inativo"));
-      
+
                 fabricacoes.add(fq);
             }
             return fabricacoes;
@@ -287,8 +286,8 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
         }
     }
 
-    public List<FabricacaoQueijo> consultarTabela(int idTipoQueijo, boolean inativos) throws Exception{
-                try {
+    public List<FabricacaoQueijo> consultarTabela(int idTipoQueijo, boolean inativos) throws Exception {
+        try {
             ControleReceitaQueijo crq = new ControleReceitaQueijo();
             ControleColetaLeite ccl = new ControleColetaLeite();
             ControlePessoa cp = new ControlePessoa();
@@ -296,53 +295,52 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
 
             List<FabricacaoQueijo> fabricacoes = new ArrayList<FabricacaoQueijo>();
 
-            String sql = "SELECT idFabricacaoQueijo, " +
-                                "TipoQueijo_idTipoQueijo, " +
-                                "dataFabricacao, " +
-                                "loteQueijo, " +
-                                "ColetaLeite_idColetaLeite, " +
-                                "Processamento_idProcessamento, " +
-                                "tempoProcessamento, " +
-                                "temperaturaProcessamento, " +
-                                "temperaturaPreMaturacao, " +
-                                "Fermento_idFermento, " +
-                                "qtdFermento, " +
-                                "tempoMaturacao, " +
-                                "phMaturacao, " +
-                                "temperaturaCoagulacao, " +
-                                "qtdClCalcio, " +
-                                "qtdCoagulante, " +
-                                "tempoCoagulacao, " +
-                                "phCorte, " +
-                                "phEnformagem, " +
-                                "phFinal, " +
-                                "dessoragem, " +
-                                "temperaturaDessoragem, " +
-                                "tipoSalga, " +
-                                "dataMaturacao, " +
-                                "temperaturaMaturacao, " +
-                                "dataLavagem, " +
-                                "tipoTratamento, " +
-                                "tempoTratamento, " +
-                                "qtdPecas, " +
-                                "pesoMPecas, " +
-                                "pesoTotal, " +
-                                "observacoes, " +
-                                "FabricacaoQueijocol, " +
-                                "Responsavel_idResponsavel " + 
-                                "FROM fabricacaoqueijo";
-            if(inativos){
+            String sql = "SELECT idFabricacaoQueijo, "
+                    + "TipoQueijo_idTipoQueijo, "
+                    + "dataFabricacao, "
+                    + "loteQueijo, "
+                    + "ColetaLeite_idColetaLeite, "
+                    + "Processamento_idProcessamento, "
+                    + "tempoProcessamento, "
+                    + "temperaturaProcessamento, "
+                    + "temperaturaPreMaturacao, "
+                    + "Fermento_idFermento, "
+                    + "qtdFermento, "
+                    + "tempoMaturacao, "
+                    + "phMaturacao, "
+                    + "temperaturaCoagulacao, "
+                    + "qtdClCalcio, "
+                    + "qtdCoagulante, "
+                    + "tempoCoagulacao, "
+                    + "phCorte, "
+                    + "phEnformagem, "
+                    + "phFinal, "
+                    + "dessoragem, "
+                    + "temperaturaDessoragem, "
+                    + "tipoSalga, "
+                    + "dataMaturacao, "
+                    + "temperaturaMaturacao, "
+                    + "dataLavagem, "
+                    + "tipoTratamento, "
+                    + "tempoTratamento, "
+                    + "qtdPecas, "
+                    + "pesoMPecas, "
+                    + "pesoTotal, "
+                    + "observacoes, "
+                    + "FabricacaoQueijocol, "
+                    + "Responsavel_idResponsavel "
+                    + "FROM fabricacaoqueijo";
+            if (inativos) {
                 sql += " WHERE inativo = 1 AND TipoQueijo_idTipoQueijo = :id";
-            }
-            else{
+            } else {
                 sql += " WHERE inativo = 0 AND TipoQueijo_idTipoQueijo = :id";
             }
-            
+
             sql += " ORDER BY nome ASC";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            
+
             nps.setInt("id", idTipoQueijo);
 
             ResultSet consulta = nps.executeQuery();
@@ -397,7 +395,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
                 fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
                 fq.setFabricacaoQueijocol(consulta.getString("fabricacaoQueijocol"));
                 fq.setInativo(consulta.getInt("inativo"));
-      
+
                 fabricacoes.add(fq);
             }
             return fabricacoes;
@@ -405,5 +403,5 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
         } catch (Exception ex) {
             throw new Exception(ex);
         }
-    }    
+    }
 }

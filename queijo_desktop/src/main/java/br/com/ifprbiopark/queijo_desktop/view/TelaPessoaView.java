@@ -23,26 +23,26 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
      */
     public TelaPessoaView() throws ParseException {
         initComponents();
-        
+
         //mascara situacao fiscal (documento)        
         alteraMascara();
-        try{
+        try {
             txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
-        }        
+        }
     }
-    
-    public void setId(int id){
+
+    public void setId(int id) {
         txtID.setText(String.valueOf(id));
         consultar();
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -203,40 +203,38 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void alteraMascara(){
-        try{
+    private void alteraMascara() {
+        try {
             txtDoc.setText("");
-            if (cmbTipoDoc.getSelectedItem()== "CPF"){
-                    txtDoc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            if (cmbTipoDoc.getSelectedItem() == "CPF") {
+                txtDoc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
 
+            } else if (cmbTipoDoc.getSelectedItem() == "CNPJ") {
+                txtDoc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###/####-##")));
             }
-            else if (cmbTipoDoc.getSelectedItem() == "CNPJ"){
-                    txtDoc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###/####-##")));
-            }            
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
         }
     }
-    
-    private void salvar(){
+
+    private void salvar() {
         try {
             boolean salvamentoLiberado = true;
-            if (Strings.isNullOrEmpty(txtNome.getText())){
+            if (Strings.isNullOrEmpty(txtNome.getText())) {
                 salvamentoLiberado = false;
                 txtNome.setBackground(Color.pink);
-            }            
-            if ( Strings.isNullOrEmpty(txtDoc.getText())||txtDoc.getText().equals("   .   .   -  ") || txtDoc.getText().equals("   .   .   /    -  ")){
+            }
+            if (Strings.isNullOrEmpty(txtDoc.getText()) || txtDoc.getText().equals("   .   .   -  ") || txtDoc.getText().equals("   .   .   /    -  ")) {
                 salvamentoLiberado = false;
                 txtDoc.setBackground(Color.pink);
             }
-            if (Strings.isNullOrEmpty(txtEndereco.getText())){
+            if (Strings.isNullOrEmpty(txtEndereco.getText())) {
                 salvamentoLiberado = false;
                 txtEndereco.setBackground(Color.pink);
             }
-            
-            if (salvamentoLiberado){
-                if(!Strings.isNullOrEmpty(txtID.getText())){
+
+            if (salvamentoLiberado) {
+                if (!Strings.isNullOrEmpty(txtID.getText())) {
                     pessoa.setIdPessoa(Integer.parseInt(txtID.getText()));
                 }
                 pessoa.setNome(txtNome.getText());
@@ -244,14 +242,13 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                 pessoa.setDocumento(txtDoc.getText());
                 pessoa.setTelefone(txtTelefone.getText());
 
-                if (cmbTipoDoc.getSelectedItem().equals("CPF")){
+                if (cmbTipoDoc.getSelectedItem().equals("CPF")) {
                     pessoa.setTipoFiscal("0");
-                }
-                else if (cmbTipoDoc.getSelectedItem().equals("CNPJ")){
+                } else if (cmbTipoDoc.getSelectedItem().equals("CNPJ")) {
                     pessoa.setTipoFiscal("1");
-                }            
+                }
 
-                pessoa.setTipoPessoa((String)cmbTipo.getSelectedItem());
+                pessoa.setTipoPessoa((String) cmbTipo.getSelectedItem());
 
                 ControlePessoa controle = new ControlePessoa();
                 controle.salvar(pessoa);
@@ -259,63 +256,59 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
                 QueijoDesktop.telaPrincipal.setMenssagem("Salvo com sucesso.", Color.GREEN);
 
                 txtID.setText(String.valueOf(pessoa.getIdPessoa()));
-            }
-            else{
+            } else {
                 QueijoDesktop.telaPrincipal.setMenssagem("Por favor, preencha os campos", Color.yellow);
-            }                  
+            }
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
         }
     }
-    
-    private void consultar(){
-        try{
+
+    private void consultar() {
+        try {
             Pessoa p = new Pessoa();
             ControlePessoa cp = new ControlePessoa();
-            if (!Strings.isNullOrEmpty(txtID.getText())){            
+            if (!Strings.isNullOrEmpty(txtID.getText())) {
 
                 p = cp.consultar(Integer.parseInt(txtID.getText()));
             }
-            
-            if (!Strings.isNullOrEmpty(p.getNome())){
+
+            if (!Strings.isNullOrEmpty(p.getNome())) {
                 txtNome.setText(p.getNome());
                 txtEndereco.setText(p.getEndereco());
-                
-                if (p.getTipoFiscal().equals("0")){
+
+                if (p.getTipoFiscal().equals("0")) {
                     cmbTipoDoc.setSelectedIndex(0);
-                }
-                else if (p.getTipoFiscal().equals("1")){
+                } else if (p.getTipoFiscal().equals("1")) {
                     cmbTipoDoc.setSelectedIndex(1);
                 }
-                
+
                 txtDoc.setText(p.getDocumento());
-                
+
                 txtTelefone.setText(p.getTelefone());
-                
+
                 cmbTipo.setSelectedItem(p.getTipoPessoa());
             }
-            
-            btnSalvar.setText("Atualizar");            
-        }
-        catch (Exception ex){
+
+            btnSalvar.setText("Atualizar");
+        } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
-        }        
+        }
     }
-    
+
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        if (!Strings.isNullOrEmpty(txtNome.getText()) || !Strings.isNullOrEmpty(txtEndereco.getText())){
-            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair sem salvar?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if (!Strings.isNullOrEmpty(txtNome.getText()) || !Strings.isNullOrEmpty(txtEndereco.getText())) {
+            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair sem salvar?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 this.dispose();
             }
-        }
-        else{
+        } else {
             this.dispose();;
         }
-        
+
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtDocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDocKeyPressed
@@ -337,8 +330,8 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         TelaConsultaPessoaView consulta = new TelaConsultaPessoaView(QueijoDesktop.telaPrincipal, true);
         consulta.setTelaCadastro(this);
-        consulta.show();    
-                
+        consulta.show();
+
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -349,7 +342,6 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         txtDoc.setText("");
         btnSalvar.setText("Salvar");
     }//GEN-LAST:event_btnNovoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

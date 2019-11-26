@@ -16,7 +16,7 @@ public class Relatorio {
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     //chamada de formatação no GETTER
-    
+
     private int idColetaLeite;
     private Date dtColeta;
     private String loteColeta;
@@ -41,13 +41,9 @@ public class Relatorio {
     }
 
     public String getLoteColeta() {
-       
-            return loteColeta;
-        }
 
-    
-
-    
+        return loteColeta;
+    }
 
     public void setLoteColeta(String loteColeta) {
         this.loteColeta = loteColeta;

@@ -35,7 +35,7 @@ public class ControleReceitaQueijo {
         return dao.consultar();
     }
 
-    public ReceitaQueijo consultar(int i) throws Exception{
+    public ReceitaQueijo consultar(int i) throws Exception {
         return dao.consultar(i);
     }
 

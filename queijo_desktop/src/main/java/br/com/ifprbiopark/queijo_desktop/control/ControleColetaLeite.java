@@ -6,28 +6,28 @@ import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import java.util.List;
 
 public class ControleColetaLeite {
-    
+
     ColetaLeiteDao coleta = new ColetaLeiteDao();
 
-    public void salvar(ColetaLeite c) throws DbException{
+    public void salvar(ColetaLeite c) throws DbException {
         coleta.inserir(c);
     }
-    
-    public void excluir (ColetaLeite c) throws DbException{
+
+    public void excluir(ColetaLeite c) throws DbException {
         coleta.excluir(c);
     }
-    
+
     public void alterar(ColetaLeite c) throws DbException {
         coleta.alterar(c);
     }
-    
-    public List<ColetaLeite> listaColeta() throws DbException{
+
+    public List<ColetaLeite> listaColeta() throws DbException {
         return coleta.listarColetas();
 
-}
+    }
 
     public ColetaLeite consultar(int aInt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

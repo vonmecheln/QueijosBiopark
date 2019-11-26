@@ -155,29 +155,29 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
             atualizarPesquisaRelatorio();
         }
     }//GEN-LAST:event_btPesquisa2KeyPressed
- private void atualizarPesquisaRelatorio() {
+    private void atualizarPesquisaRelatorio() {
         ControleRelatorio controle = new ControleRelatorio();
         DefaultTableModel model = (DefaultTableModel) tblRelatorio.getModel();
         model.setNumRows(0);
 
         try {
             this.resultadoPesquisaRelatorio = controle.pesquisar(tfPesquisaLote.getText().trim());
-  
+
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Falha ao Pesquisar!", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
         for (Relatorio relatorio : this.resultadoPesquisaRelatorio) {
-            model.addRow(new Object[]{      
-              relatorio.getIdColetaLeite(), 
-              //relatorio.getDtColeta(),
-              relatorio.getLoteColeta(),
-              relatorio.getProdutor_id(),
-              relatorio.getQtdLeite(),
-              relatorio.getSituacao()
+            model.addRow(new Object[]{
+                relatorio.getIdColetaLeite(),
+                //relatorio.getDtColeta(),
+                relatorio.getLoteColeta(),
+                relatorio.getProdutor_id(),
+                relatorio.getQtdLeite(),
+                relatorio.getSituacao()
             });
         }
- }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btPesquisa2;

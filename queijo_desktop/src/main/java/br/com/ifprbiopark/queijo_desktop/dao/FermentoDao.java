@@ -20,19 +20,19 @@ import java.util.logging.Logger;
  *
  * @author jhona
  */
-public class FermentoDao extends AbstractDao<Fermento>{
+public class FermentoDao extends AbstractDao<Fermento> {
 
     @Override
     public void inserir(Fermento fermento) throws DbException {
-       try {
-            
+        try {
+
             String sql = "INSERT INTO fermento( idFermento, "
                     + "tipoFermento, marca "
                     + ") VALUES ("
                     + " (select count(*) + 1 from fermento),  :tipoFermento, :marca)";
-            
+
             Conexao con = Conexao.getInstance();
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);  
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("tipoFermento", fermento.getTipoFermento());
             nps.setString("marca", fermento.getMarca());
 
@@ -48,7 +48,7 @@ public class FermentoDao extends AbstractDao<Fermento>{
             } else {
                 throw new GeneratedKeysException();
             }
-           fermento.setIdFermento(key);
+            fermento.setIdFermento(key);
 
         } catch (SQLException ex) {
             throw new DbException(ex);
@@ -58,9 +58,8 @@ public class FermentoDao extends AbstractDao<Fermento>{
 
     @Override
     public boolean excluir(Fermento fermento) throws DbException {
-     String sql = "delete from fermento where idFermento = :idFermento";
-     
-        
+        String sql = "delete from fermento where idFermento = :idFermento";
+
         try {
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -74,23 +73,21 @@ public class FermentoDao extends AbstractDao<Fermento>{
             return false;
         }
         return true;
-    
+
     }
 
     @Override
     public Fermento consultar(Fermento fermento) throws DbException {
-        if(fermento == null){
+        if (fermento == null) {
             return null;
         }
         return consultar(fermento.getIdFermento());
     }
-    
 
     @Override
     public Fermento alterar(Fermento fermento) throws DbException {
-           String sql = "update fermento set tipoFermento = :tipoFermento, marca = :marca where idFermento = :idFermento";
-     
-        
+        String sql = "update fermento set tipoFermento = :tipoFermento, marca = :marca where idFermento = :idFermento";
+
         try {
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
@@ -110,7 +107,7 @@ public class FermentoDao extends AbstractDao<Fermento>{
     @Override
     public Fermento consultar(int id) throws DbException {
         try {
-            
+
             //String SQL;
             String sql = "SELECT idFermento, tipoFermento,marca FROM fermento WHERE idFermento = :idFermento";
 
@@ -125,17 +122,17 @@ public class FermentoDao extends AbstractDao<Fermento>{
                 fermento.setMarca(consulta.getString("marca"));
 
                 return fermento;
-                
+
             }
             return null;
         } catch (SQLException ex) {
             throw new DbException(ex);
         }
     }
-    
+
     public List<Fermento> listar() {
         try {
-            List <Fermento> retornoFermento = new ArrayList<>(); 
+            List<Fermento> retornoFermento = new ArrayList<>();
             //String SQL;
             String sql = "SELECT idFermento, tipoFermento,marca FROM fermento";
 
@@ -149,14 +146,14 @@ public class FermentoDao extends AbstractDao<Fermento>{
                 fermento.setMarca(consulta.getString("marca"));
 
                 retornoFermento.add(fermento);
-                
+
             }
             return retornoFermento;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
-        
-    }   
+
+    }
 
 }

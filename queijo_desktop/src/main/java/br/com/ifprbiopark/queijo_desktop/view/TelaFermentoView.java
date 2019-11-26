@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author marcos.andre
  */
 public class TelaFermentoView extends javax.swing.JInternalFrame {
-    
+
     TableFermento tableFermento = new TableFermento();
 
     /**
@@ -212,10 +212,10 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+
         txtTipo.setText("");
         txtMarca.setText("");
-        
+
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -240,12 +240,12 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
         tableFermento.recarregar();
         tableFermento.fireTableDataChanged();
     }//GEN-LAST:event_btnSalvarActionPerformed
-    
+
     private void tbFermentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbFermentoMouseClicked
         tbFermento.getSelectedRow();
-        txtId.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 0)));        
-        txtTipo.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 1)));        
-        txtMarca.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 2)));        
+        txtId.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 0)));
+        txtTipo.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 1)));
+        txtMarca.setText(String.valueOf(tableFermento.getValueAt(tbFermento.getSelectedRow(), 2)));
     }//GEN-LAST:event_tbFermentoMouseClicked
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -255,7 +255,6 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
         // btnSalvar.setText("Salvar");
 // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

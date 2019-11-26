@@ -159,7 +159,7 @@ public class NamedParameterStatement {
             statement.setDate(position, value);
         }
     }
-    
+
     /**
      * Sets a parameter.
      *
@@ -169,8 +169,8 @@ public class NamedParameterStatement {
      * @throws IllegalArgumentException if the parameter does not exist
      * @see PreparedStatement#setDate(int, java.util.Date)
      */
-    public void setDate(String name, java.util.Date value) throws SQLException {        
-        setDate(name, new Date(value.getTime()));        
+    public void setDate(String name, java.util.Date value) throws SQLException {
+        setDate(name, new Date(value.getTime()));
     }
 
     /**

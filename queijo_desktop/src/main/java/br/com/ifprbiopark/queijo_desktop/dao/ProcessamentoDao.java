@@ -18,14 +18,14 @@ import java.util.List;
  *
  * @author jhona
  */
-public class ProcessamentoDao extends AbstractDao<Processamento>{
+public class ProcessamentoDao extends AbstractDao<Processamento> {
 
     @Override
     public void inserir(Processamento p) throws DbException {
         try {
-            
+
             String sql = "INSERT INTO processamento(TipoProcessamento) VALUES(:TipoProcessamento)";
-            
+
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("TipoProcessamento", p.getTipoProcessamento());
@@ -52,9 +52,9 @@ public class ProcessamentoDao extends AbstractDao<Processamento>{
     @Override
     public boolean excluir(Processamento p) throws DbException {
         try {
-            
+
             String sql = "DELETE processamento WHERE idProcessamento = :id";
-            
+
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("id", p.getIdProcesamento());
@@ -62,10 +62,9 @@ public class ProcessamentoDao extends AbstractDao<Processamento>{
             boolean exec = nps.execute();
             if (!exec) {
                 throw new SQLException();
-            }
-            else{
+            } else {
                 return exec;
-            }          
+            }
 
         } catch (SQLException ex) {
             throw new DbException(ex);
@@ -79,9 +78,9 @@ public class ProcessamentoDao extends AbstractDao<Processamento>{
 
     @Override
     public Processamento alterar(Processamento p) throws DbException {
-                try {            
+        try {
             String sql = "UPDATE processamento SET TipoProcessamento = :TipoProcessamento WHERE idProcessamento = :id";
-            
+
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("TipoProcessamento", p.getTipoProcessamento());
@@ -90,7 +89,7 @@ public class ProcessamentoDao extends AbstractDao<Processamento>{
             int exec = nps.executeUpdate();
             if (exec == 0) {
                 throw new NotExecuteInsertException();
-            }            
+            }
             return p;
 
         } catch (SQLException ex) {
@@ -102,13 +101,13 @@ public class ProcessamentoDao extends AbstractDao<Processamento>{
     public Processamento consultar(int id) throws DbException {
         try {
             Processamento p = new Processamento();
-            
+
             //String SQL;
             String sql = "SELECT idProcessamento, TipoProcessamento FROM processamento WHERE idProcessamento = :id ";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            
+
             nps.setInt("id", id);
 
             ResultSet consulta = nps.executeQuery();
@@ -122,17 +121,17 @@ public class ProcessamentoDao extends AbstractDao<Processamento>{
             throw new DbException(ex);
         }
     }
-    
+
     public List<Processamento> consultar() throws DbException {
         try {
             List<Processamento> lista = new ArrayList<Processamento>();
-            
+
             //String SQL;
             String sql = "SELECT idProcessamento, TipoProcessamento FROM processamento";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            
+
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 Processamento p = new Processamento();

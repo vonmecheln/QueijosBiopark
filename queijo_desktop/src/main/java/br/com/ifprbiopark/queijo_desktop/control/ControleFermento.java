@@ -15,25 +15,25 @@ import java.util.List;
  * @author UnioestePROEX
  */
 public class ControleFermento {
-    
+
     //inserir dao correspondente;
     FermentoDao dao = new FermentoDao();
-    
-    public void salvar(Fermento c) throws DbException{
+
+    public void salvar(Fermento c) throws DbException {
         dao.inserir(c);
     }
-    
-    public void excluir (Fermento c) throws DbException{
+
+    public void excluir(Fermento c) throws DbException {
         dao.excluir(c);
     }
-    
+
     public void alterar(Fermento c) throws DbException {
         dao.alterar(c);
     }
-    
-    public List<Fermento> listaColeta(Fermento c) throws DbException{
-        return  null;
 
-}
-    
+    public List<Fermento> listaColeta(Fermento c) throws DbException {
+        return null;
+
+    }
+
 }

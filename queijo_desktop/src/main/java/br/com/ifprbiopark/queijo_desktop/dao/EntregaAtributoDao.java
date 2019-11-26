@@ -12,7 +12,7 @@ import br.com.ifprbiopark.queijo_desktop.model.EntregaAtributo;
  *
  * @author jhona
  */
-public class EntregaAtributoDao extends AbstractDao<EntregaAtributo>{
+public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
 
     @Override
     public void inserir(EntregaAtributo objeto) throws DbException {
@@ -38,5 +38,5 @@ public class EntregaAtributoDao extends AbstractDao<EntregaAtributo>{
     public EntregaAtributo consultar(int id) throws DbException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

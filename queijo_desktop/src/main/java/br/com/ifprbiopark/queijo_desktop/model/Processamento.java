@@ -1,9 +1,7 @@
-
 package br.com.ifprbiopark.queijo_desktop.model;
 
-
 public class Processamento {
-    
+
     private Integer idProcesamento;
     private String tipoProcessamento;
 
@@ -22,7 +20,5 @@ public class Processamento {
     public void setTipoProcessamento(String tipoProcessamento) {
         this.tipoProcessamento = tipoProcessamento;
     }
-    
-    
-    
+
 }

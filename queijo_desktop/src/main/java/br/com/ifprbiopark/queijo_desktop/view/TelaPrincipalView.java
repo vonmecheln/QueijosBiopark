@@ -443,7 +443,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
     }//GEN-LAST:event_lbEntradaMouseClicked
 
     private void lbClassificacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbClassificacaoMouseClicked
@@ -451,7 +450,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         painelDesktop.add(formClassificacao);
         formClassificacao.setPosicao();
         formClassificacao.setVisible(true);
-
 
     }//GEN-LAST:event_lbClassificacaoMouseClicked
 

@@ -22,9 +22,9 @@ public class AtributosDao extends AbstractDao<Atributos> {
 
     @Override
     public void inserir(Atributos a) throws DbException {
-        try {            
+        try {
             String sql = "INSERT INTO atributos(nomeAtributo) VALUES(:nomeAtributo)";
-            
+
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nomeAtributo", a.getNomeAtributo());
@@ -50,9 +50,9 @@ public class AtributosDao extends AbstractDao<Atributos> {
 
     @Override
     public boolean excluir(Atributos a) throws DbException {
-        try {            
+        try {
             String sql = "DELETE atributos WHERE idAtributo = :id";
-            
+
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("id", a.getIdAtributo());
@@ -60,10 +60,9 @@ public class AtributosDao extends AbstractDao<Atributos> {
             boolean exec = nps.execute();
             if (!exec) {
                 throw new SQLException();
-            }
-            else{
+            } else {
                 return exec;
-            }          
+            }
 
         } catch (SQLException ex) {
             throw new DbException(ex);
@@ -72,9 +71,9 @@ public class AtributosDao extends AbstractDao<Atributos> {
 
     @Override
     public Atributos alterar(Atributos a) throws DbException {
-        try {            
+        try {
             String sql = "UPDATE atributos SET nomeTipo = :nomeAtributo WHERE idTipoQueijo = :id";
-            
+
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setString("nomeAtributo", a.getNomeAtributo());
@@ -83,7 +82,7 @@ public class AtributosDao extends AbstractDao<Atributos> {
             int exec = nps.executeUpdate();
             if (exec == 0) {
                 throw new NotExecuteInsertException();
-            }            
+            }
             return a;
 
         } catch (SQLException ex) {
@@ -100,13 +99,13 @@ public class AtributosDao extends AbstractDao<Atributos> {
     public Atributos consultar(int id) throws DbException {
         try {
             Atributos a = new Atributos();
-            
+
             //String SQL;
             String sql = "SELECT idAtributo, nomeAtributo FROM atributos WHERE idAtributo = :id ";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            
+
             nps.setInt("id", id);
 
             ResultSet consulta = nps.executeQuery();
@@ -120,17 +119,17 @@ public class AtributosDao extends AbstractDao<Atributos> {
             throw new DbException(ex);
         }
     }
-    
-        public List<Atributos> consultar() throws DbException {
+
+    public List<Atributos> consultar() throws DbException {
         try {
             List<Atributos> lista = new ArrayList<Atributos>();
-            
+
             //String SQL;
             String sql = "SELECT idAtributo, nomeAtributo FROM atributos";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            
+
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 Atributos a = new Atributos();
@@ -143,5 +142,5 @@ public class AtributosDao extends AbstractDao<Atributos> {
         } catch (SQLException ex) {
             throw new DbException(ex);
         }
-    }    
+    }
 }

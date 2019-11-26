@@ -17,9 +17,9 @@ import java.awt.event.KeyEvent;
  * @author jhona
  */
 public class TelaConsultaPessoaView extends javax.swing.JDialog {
-    
+
     private TelaPessoaView TelaCadastro;
-    
+
     private TableConsultaPesssoa tableModel = new TableConsultaPesssoa();
 
     /**
@@ -29,62 +29,58 @@ public class TelaConsultaPessoaView extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         tblPessoas.setModel(tableModel);
-        
+
         txtID.addKeyListener(new KeyAdapter() {
-        public void keyTyped(KeyEvent e) {
-            char c = e.getKeyChar();
-            if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
-                e.consume(); // consume non-numbers
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume(); // consume non-numbers
+                }
             }
-        }
-    });
+        });
 
     }
- 
+
 //    public void setPosicao() {
 //        Dimension d = this.getDesktopPane().getSize();
 //        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
 //    }
-
     public void setTelaCadastro(TelaPessoaView TelaCadastro) {
         this.TelaCadastro = TelaCadastro;
     }
-    
-    private void consultar(){
+
+    private void consultar() {
         try {
             int id;
             String nome = null;
             String tipo = null;
-            
-            if(Strings.isNullOrEmpty(txtID.getText()))
+
+            if (Strings.isNullOrEmpty(txtID.getText())) {
                 id = 0;
-            else{
+            } else {
                 id = Integer.parseInt(txtID.getText());
             }
-            
+
             nome = txtNome.getText();
-            
-            if (!cmbTipo.getSelectedItem().equals("Todos")){
-                tipo = (String)cmbTipo.getSelectedItem();
-            }            
+
+            if (!cmbTipo.getSelectedItem().equals("Todos")) {
+                tipo = (String) cmbTipo.getSelectedItem();
+            }
             tableModel.consultar(id, nome, tipo);
-            
+
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.red);
         }
-        
+
     }
-    
-    private void definirID(){
-        if (tblPessoas.getSelectedRow() != -1){
-            int id = (int)tableModel.getValueAt(tblPessoas.getSelectedRow(), 0);                
-            TelaCadastro.setId(id);            
+
+    private void definirID() {
+        if (tblPessoas.getSelectedRow() != -1) {
+            int id = (int) tableModel.getValueAt(tblPessoas.getSelectedRow(), 0);
+            TelaCadastro.setId(id);
             this.dispose();
         }
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -200,7 +196,6 @@ public class TelaConsultaPessoaView extends javax.swing.JDialog {
     private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
         definirID();
     }//GEN-LAST:event_btnAbrirActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAbrir;

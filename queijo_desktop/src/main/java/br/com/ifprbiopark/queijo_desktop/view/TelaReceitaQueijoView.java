@@ -20,12 +20,12 @@ import java.util.logging.Logger;
 public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
 
     TableReceitaQueijo listaItem = new TableReceitaQueijo();
-    
+
     public TelaReceitaQueijoView() {
         initComponents();
-       tblItem.setModel( listaItem);
+        tblItem.setModel(listaItem);
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -143,14 +143,13 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
         } catch (DbException ex) {
             Logger.getLogger(TelaReceitaQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tblItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemMouseClicked
         tblItem.getSelectedRow();
-        tfDescricao.setText(String.valueOf(listaItem.getValueAt(tblItem.getSelectedRow(),1)));
+        tfDescricao.setText(String.valueOf(listaItem.getValueAt(tblItem.getSelectedRow(), 1)));
     }//GEN-LAST:event_tblItemMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

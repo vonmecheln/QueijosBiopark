@@ -88,7 +88,7 @@ public class PessoaDao extends AbstractDao<Pessoa> {
     }
 
     @Override
-    public Pessoa alterar(Pessoa p) throws Exception {
+    public Pessoa alterar(Pessoa p) throws DbException {
         try {
 
             String sql = "UPDATE pessoa SET "
@@ -113,7 +113,7 @@ public class PessoaDao extends AbstractDao<Pessoa> {
 
             return p;
         } catch (Exception ex) {
-            throw new Exception(ex);
+            throw new DbException(ex.getMessage());
         }
     }
 

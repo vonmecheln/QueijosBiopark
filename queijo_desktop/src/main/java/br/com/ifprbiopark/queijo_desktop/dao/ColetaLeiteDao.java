@@ -129,16 +129,16 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
      * @throws Exception
      */
     @Override
-    public ColetaLeite consultar(int id) throws Exception {
-        try{
+    public ColetaLeite consultar(int id) throws DbException {
+        try {
             PessoaDao pessoaDao = new PessoaDao();
             String sql = "SELECT idColetaLeite, loteColeta, dtColeta, produtor_id, qtdLeite, situacao, "
                     + "funcionario_id FROM coletaleite WHERE idColetaLeite = :id";
 
             Conexao con = Conexao.getInstance();
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            
-            nps.setInt("id", id);          
+
+            nps.setInt("id", id);
 
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
@@ -164,12 +164,11 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 coleta.setQtdLeite(consulta.getDouble("qtdLeite"));
                 coleta.setSituacao(consulta.getString("situacao"));
 
-                return coleta;            
+                return coleta;
             }
             return null;
+        } catch (Exception ex) {
+            throw new DbException(ex.getMessage());
         }
-        catch (Exception ex){
-             throw new Exception(ex.getMessage());
-        }      
     }
 }

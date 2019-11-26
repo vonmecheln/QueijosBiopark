@@ -1,13 +1,10 @@
-
 package br.com.ifprbiopark.queijo_desktop.model;
 
-
 public class ReceitaQueijo {
-    
+
     private Integer idTipoQueijo;
     private String nomeTipo;
 
-    
     public Integer getIdTipoQueijo() {
         return idTipoQueijo;
     }
@@ -23,7 +20,5 @@ public class ReceitaQueijo {
     public void setNomeTipo(String nomeTipo) {
         this.nomeTipo = nomeTipo;
     }
-    
-    
-    
+
 }

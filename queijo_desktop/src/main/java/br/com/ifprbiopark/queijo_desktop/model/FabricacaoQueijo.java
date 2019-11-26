@@ -1,19 +1,17 @@
-
 package br.com.ifprbiopark.queijo_desktop.model;
 
 import java.util.Date;
 
-
 public class FabricacaoQueijo {
-    
+
     private Integer idFabricacaoQueijo;
-    
+
     //informacoes basicas de processamento;
     private ReceitaQueijo tipoQueijo_idTipoQueijo;
     private String loteQueijo;
     private ColetaLeite coletaLeite_idColetaLeite;
     private Double qtdLeiteUtilizada;
-    
+
     //processamento;
     private String tipoLeite;
     private Integer tempoProcessamento;
@@ -26,7 +24,7 @@ public class FabricacaoQueijo {
     private String fermento;
     private String marcaFermento;
     private Integer phPreMaturacao;
-    
+
     //Coagulacao;
     private Integer temperaturaCoagulacao;
     private Double qtdClCalcio;
@@ -37,17 +35,16 @@ public class FabricacaoQueijo {
     private Integer ph24;
     private Integer dessoragem;
     private Integer temperaturaDessoragem;
-    
+
     //Salga;
     private String dataSalga;
     private String temperaturaSalga;
     private String tempoTratamentoSalga;
-    
+
     //Casca
     private String dataTratamentoCasca;
     private String tipoTratamentoCasca;
-    
-    
+
     //Rendimento;
     private Integer qtdPecas;
     private Double pesoTotal;
@@ -55,7 +52,7 @@ public class FabricacaoQueijo {
     private String LoteAcabado;
     private Pessoa Responsavel_idResponsavel;
     private String observacoes;
-    
+
     private Integer tempoMaturacao;
     private Date dataFabricacao;
     private Processamento processamento_idProcessamento;
@@ -436,9 +433,5 @@ public class FabricacaoQueijo {
     public void setFabricacaoQueijocol(String fabricacaoQueijocol) {
         this.fabricacaoQueijocol = fabricacaoQueijocol;
     }
-    
 
-    
-    
-    
 }

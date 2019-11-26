@@ -3,6 +3,7 @@ package br.com.ifprbiopark.queijo_desktop.model;
 import java.util.Date;
 
 public class EntregaLeite {
+
     private int id;
     private Date data;
     private double litros;
@@ -83,5 +84,5 @@ public class EntregaLeite {
 
     public void setFornecedor(Pessoa fornecedor) {
         this.fornecedor = fornecedor;
-    } 
+    }
 }
