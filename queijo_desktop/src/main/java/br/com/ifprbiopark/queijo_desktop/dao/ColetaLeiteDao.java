@@ -11,6 +11,10 @@ import java.util.List;
 
 public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
+    public ColetaLeiteDao() {
+        super("coletaleite");
+    }
+
     @Override
     public void inserir(ColetaLeite c) throws DbException {
         try {

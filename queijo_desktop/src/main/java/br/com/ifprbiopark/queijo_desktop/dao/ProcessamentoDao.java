@@ -20,6 +20,10 @@ import java.util.List;
  */
 public class ProcessamentoDao extends AbstractDao<Processamento> {
 
+    public ProcessamentoDao() {
+        super("processamento");
+    }
+
     @Override
     public void inserir(Processamento p) throws DbException {
         try {

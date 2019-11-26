@@ -20,6 +20,10 @@ import java.util.List;
  */
 public class AtributosDao extends AbstractDao<Atributos> {
 
+    public AtributosDao() {
+        super("atributos");
+    }
+
     @Override
     public void inserir(Atributos a) throws DbException {
         try {

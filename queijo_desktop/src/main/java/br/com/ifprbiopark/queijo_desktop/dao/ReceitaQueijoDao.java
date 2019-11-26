@@ -20,6 +20,10 @@ import java.util.List;
  */
 public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
+    public ReceitaQueijoDao() {
+        super("receitaqueijo");
+    }
+
     @Override
     public void inserir(ReceitaQueijo tq) throws DbException {
         try {

@@ -14,6 +14,10 @@ import br.com.ifprbiopark.queijo_desktop.model.EntregaAtributo;
  */
 public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
 
+    public EntregaAtributoDao() {
+        super("entradaatributo");
+    }
+
     @Override
     public void inserir(EntregaAtributo objeto) throws DbException {
         throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.

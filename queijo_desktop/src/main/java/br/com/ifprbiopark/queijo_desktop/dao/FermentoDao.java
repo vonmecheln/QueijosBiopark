@@ -22,6 +22,10 @@ import java.util.logging.Logger;
  */
 public class FermentoDao extends AbstractDao<Fermento> {
 
+    public FermentoDao() {
+        super("fermento");
+    }
+
     @Override
     public void inserir(Fermento fermento) throws DbException {
         try {
