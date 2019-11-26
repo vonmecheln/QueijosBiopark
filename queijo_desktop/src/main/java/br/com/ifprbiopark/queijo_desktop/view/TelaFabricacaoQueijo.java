@@ -816,7 +816,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setTipoQueijo_idTipoQueijo(listaReceitaQueijo.get(jcTipoQueijo.getSelectedIndex()));
         queijo.setLoteQueijo(txtLote.getText());
         queijo.setColetaLeite_idColetaLeite((listaColetaLeite.get(jcColeta.getSelectedIndex())));
-        queijo.setQtdLeiteUtilizada(parseDoubles(txtQuantidadeLeiteUtilizada.getText()));
+        queijo.setQtdLeiteUtilizada(Double.parseDouble(txtQuantidadeLeiteUtilizada.getText()));
 
         //Processamento
         queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
@@ -858,7 +858,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
         queijo.setPesoTotal(parseDoubles(tfPesoTotalLote.getText()));
         queijo.setPesoMedioPecas(parseDoubles(tfPesoMedioLote.getText()));
         queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
-        //queijo.setFuncionario(cbFuncionario);
+        queijo.setResponsavel_idResponsavel(listaFuncionarios.get(cmbFuncionario.getSelectedIndex()));
         queijo.setObservacoes(tfObservacao.getText());
 
 
