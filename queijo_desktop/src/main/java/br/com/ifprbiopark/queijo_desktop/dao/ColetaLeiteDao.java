@@ -122,9 +122,54 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @Override
-    public ColetaLeite consultar(int id) throws DbException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public ColetaLeite consultar(int id) throws Exception {
+        try{
+            PessoaDao pessoaDao = new PessoaDao();
+            String sql = "SELECT idColetaLeite, loteColeta, dtColeta, produtor_id, qtdLeite, situacao, "
+                    + "funcionario_id FROM coletaleite WHERE idColetaLeite = :id";
 
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            
+            nps.setInt("id", id);          
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                ColetaLeite coleta = new ColetaLeite();
+                coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
+                coleta.setLoteColeta(consulta.getString("loteColeta"));
+                java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dtColeta"));
+                coleta.setDtColeta(d);
+
+//                //seta funcionario;
+//                Pessoa f = new Pessoa();
+//                f.setIdPessoa(consulta.getInt("Pessoa_idPessoa"));
+//                coleta.setPessoa_idPessoa(f);
+//
+//                //seta produtor;
+//                Pessoa p = new Pessoa();
+//                p.setIdPessoa(consulta.getInt("Produtor_idProdutor"));
+//                coleta.setProdutor_idProdutor(p);
+                //
+                coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("produtor_id")));
+
+                coleta.setPessoa_idPessoa(pessoaDao.consultar(consulta.getInt("funcionario_id")));
+                coleta.setQtdLeite(consulta.getDouble("qtdLeite"));
+                coleta.setSituacao(consulta.getString("situacao"));
+
+                return coleta;            
+            }
+            return null;
+        }
+        catch (Exception ex){
+             throw new Exception(ex.getMessage());
+        }      
+    }
 }

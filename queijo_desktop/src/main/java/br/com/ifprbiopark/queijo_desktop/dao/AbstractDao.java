@@ -18,9 +18,9 @@ public abstract class AbstractDao<T> {
      
     public abstract boolean excluir(T objeto) throws DbException;
     
-    public abstract T consultar(T objeto) throws DbException;  
+    public abstract T consultar(T objeto) throws Exception;  
 
     public abstract T alterar(T objeto) throws Exception;   
     
-    public abstract T consultar(int id) throws DbException; 
+    public abstract T consultar(int id) throws Exception; 
 }
