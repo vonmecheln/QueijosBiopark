@@ -5,19 +5,17 @@
  */
 package br.com.ifprbiopark.queijo_desktop.dao;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
+import br.com.ifprbiopark.queijo_desktop.control.ControleProcessamento;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
-import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
-import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
-import br.com.ifprbiopark.queijo_desktop.model.Processamento;
-import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -174,6 +172,9 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
     public List<FabricacaoQueijo> consultarListaTodos(boolean inativos) throws Exception{
         try {
             ControleReceitaQueijo crq = new ControleReceitaQueijo();
+            ControleColetaLeite ccl = new ControleColetaLeite();
+            ControlePessoa cp = new ControlePessoa();
+            ControleProcessamento cPros = new ControleProcessamento();
 
             List<FabricacaoQueijo> fabricacoes = new ArrayList<FabricacaoQueijo>();
 
@@ -229,70 +230,54 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
                 FabricacaoQueijo fq = new FabricacaoQueijo();
                 fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
                 fq.setTipoQueijo_idTipoQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
-                        
-
-//    private String loteQueijo;
-//    private ColetaLeite coletaLeite_idColetaLeite;
-//    private double qtdLeiteUtilizada;
-//    
-//    //processamento;
-//    private String tipoLeite;
-//    private Integer tempoProcessamento;
-//    private Integer temperaturaProcessamento;
-//    private Integer temperaturaPreMaturacao;
-//
-//    //fermento;
-//    private double qtdFermento;
-//    private Integer tempoFermentacao;
-//    private String fermento;
-//    private String marcaFermento;
-//    private Integer phPreMaturacao;
-//    
-//    //Coagulacao;
-//    private Integer temperaturaCoagulacao;
-//    private double qtdClCalcio;
-//    private double qtdCoagulante;
-//    private Integer tempoCoagulacao;
-//    private double phCorte;
-//    private double phEnformagem;
-//    private Integer ph24;
-//    private Integer dessoragem;
-//    private Integer temperaturaDessoragem;
-//    
-//    //Salga;
-//    private String dataSalga;
-//    private String temperaturaSalga;
-//    private String tempoTratamentoSalga;
-//    
-//    //Casca
-//    private String dataTratamentoCasca;
-//    private String tipoTratamentoCasca;
-//    
-//    
-//    //Rendimento;
-//    private Integer qtdPecas;
-//    private double pesoTotal;
-//    private double pesoMedioPecas;
-//    private String LoteAcabado;
-//    private Pessoa Responsavel_idResponsavel;
-//    private String observacoes;
-//    
-//    private Integer tempoMaturacao;
-//    private Date dataFabricacao;
-//    private Processamento processamento_idProcessamento;
-//    private double phMaturacao;
-//    private double phFinal;
-//    private String tipoSalga;
-//    private Date dataMaturacao;
-//    private Integer temperaturaMaturacao;
-//    private Date dataLavagem;
-//    private Integer tempoTratamento;
-//    private String fabricacaoQueijocol;
-//    private Integer inativo;
-                        
-                
-                
-                
+                fq.setLoteQueijo(consulta.getString("loteQueijo"));
+                fq.setColetaLeite_idColetaLeite(ccl.consultar(consulta.getInt("coletaLeite_idColetaLeite")));
+                fq.setQtdLeiteUtilizada(consulta.getDouble("qtdLeiteUtilizada"));
+                fq.setTipoLeite(consulta.getString("tipoLeite"));
+                fq.setTempoProcessamento(consulta.getInt("tempoProcessamento"));
+                fq.setTemperaturaProcessamento(consulta.getInt("temperaturaProcessamento"));
+                fq.setTemperaturaPreMaturacao(consulta.getInt("temperaturaPreMaturacao"));
+                fq.setQtdFermento(consulta.getDouble("qtdFermento"));
+                fq.setTempoFermentacao(consulta.getInt("tempoFermentacao"));
+                fq.setFermento(consulta.getString("fermento"));
+                fq.setMarcaFermento(consulta.getString("marcaFermento"));
+                fq.setPhPreMaturacao(consulta.getInt("phPreMaturacao"));
+                fq.setTemperaturaCoagulacao(consulta.getInt("temperaturaCoagulacao"));
+                fq.setQtdClCalcio(consulta.getDouble("qtdClCalcio"));
+                fq.setQtdCoagulante(consulta.getDouble("qtdCoagulante"));
+                fq.setTempoCoagulacao(consulta.getInt("tempoCoagulacao"));
+                fq.setPhCorte(consulta.getDouble("phCorte"));
+                fq.setPhEnformagem(consulta.getDouble("phEnformagem"));
+                fq.setPh24(consulta.getInt("ph24"));
+                fq.setDessoragem(consulta.getInt("dessoragem"));
+                fq.setTemperaturaDessoragem(consulta.getInt("temperaturaDessoragem"));
+                fq.setDataSalga(consulta.getString("dataSalga"));
+                fq.setDataSalga(consulta.getString("temperaturaSalga"));
+                fq.setTempoTratamentoSalga(consulta.getString("tempoTratamentoSalga"));
+                fq.setDataTratamentoCasca(consulta.getString("dataTratamentoCasca"));
+                fq.setTipoTratamentoCasca(consulta.getString("tipoTratamentoCasca"));
+                fq.setQtdPecas(consulta.getInt("qtdPecas"));
+                fq.setPesoTotal(consulta.getDouble("pesoTotal"));
+                fq.setPesoMedioPecas(consulta.getDouble("pesoMedioPecas"));
+                fq.setLoteAcabado(consulta.getString("LoteAcabado"));
+                fq.setResponsavel_idResponsavel(cp.consultar(consulta.getInt("Responsavel_idResponsavel")));
+                fq.setObservacoes(consulta.getString("observacoes"));
+                fq.setTempoMaturacao(consulta.getInt("tempoMaturacao"));
+                java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dataFabricacao"));
+                fq.setDataFabricacao(d);
+                fq.setProcessamento_idProcessamento(cPros.consultar(consulta.getInt("processamento_idProcessamento")));
+                fq.setPhMaturacao(consulta.getDouble("phMaturacao"));
+                fq.setPhFinal(consulta.getDouble("phFinal"));
+                fq.setTipoSalga(consulta.getString("tipoSalga"));
+                java.sql.Date d2 = java.sql.Date.valueOf(consulta.getString("dataMaturacao"));
+                fq.setDataMaturacao(d2);
+                fq.setTemperaturaMaturacao(consulta.getInt("temperaturaMaturacao"));
+                java.sql.Date d3 = java.sql.Date.valueOf(consulta.getString("dataLavagem"));
+                fq.setDataLavagem(d3);
+                fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
+                fq.setFabricacaoQueijocol(consulta.getString("fabricacaoQueijocol"));
+                fq.setInativo(consulta.getInt("inativo"));
+      
                 fabricacoes.add(fq);
             }
             return fabricacoes;
@@ -302,8 +287,123 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
         }
     }
 
-    public List<FabricacaoQueijo> consultarTabela(int idTipoQueijo, boolean inativos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    public List<FabricacaoQueijo> consultarTabela(int idTipoQueijo, boolean inativos) throws Exception{
+                try {
+            ControleReceitaQueijo crq = new ControleReceitaQueijo();
+            ControleColetaLeite ccl = new ControleColetaLeite();
+            ControlePessoa cp = new ControlePessoa();
+            ControleProcessamento cPros = new ControleProcessamento();
+
+            List<FabricacaoQueijo> fabricacoes = new ArrayList<FabricacaoQueijo>();
+
+            String sql = "SELECT idFabricacaoQueijo, " +
+                                "TipoQueijo_idTipoQueijo, " +
+                                "dataFabricacao, " +
+                                "loteQueijo, " +
+                                "ColetaLeite_idColetaLeite, " +
+                                "Processamento_idProcessamento, " +
+                                "tempoProcessamento, " +
+                                "temperaturaProcessamento, " +
+                                "temperaturaPreMaturacao, " +
+                                "Fermento_idFermento, " +
+                                "qtdFermento, " +
+                                "tempoMaturacao, " +
+                                "phMaturacao, " +
+                                "temperaturaCoagulacao, " +
+                                "qtdClCalcio, " +
+                                "qtdCoagulante, " +
+                                "tempoCoagulacao, " +
+                                "phCorte, " +
+                                "phEnformagem, " +
+                                "phFinal, " +
+                                "dessoragem, " +
+                                "temperaturaDessoragem, " +
+                                "tipoSalga, " +
+                                "dataMaturacao, " +
+                                "temperaturaMaturacao, " +
+                                "dataLavagem, " +
+                                "tipoTratamento, " +
+                                "tempoTratamento, " +
+                                "qtdPecas, " +
+                                "pesoMPecas, " +
+                                "pesoTotal, " +
+                                "observacoes, " +
+                                "FabricacaoQueijocol, " +
+                                "Responsavel_idResponsavel " + 
+                                "FROM fabricacaoqueijo";
+            if(inativos){
+                sql += " WHERE inativo = 1 AND TipoQueijo_idTipoQueijo = :id";
+            }
+            else{
+                sql += " WHERE inativo = 0 AND TipoQueijo_idTipoQueijo = :id";
+            }
+            
+            sql += " ORDER BY nome ASC";
+
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            
+            nps.setInt("id", idTipoQueijo);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                FabricacaoQueijo fq = new FabricacaoQueijo();
+                fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
+                fq.setTipoQueijo_idTipoQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
+                fq.setLoteQueijo(consulta.getString("loteQueijo"));
+                fq.setColetaLeite_idColetaLeite(ccl.consultar(consulta.getInt("coletaLeite_idColetaLeite")));
+                fq.setQtdLeiteUtilizada(consulta.getDouble("qtdLeiteUtilizada"));
+                fq.setTipoLeite(consulta.getString("tipoLeite"));
+                fq.setTempoProcessamento(consulta.getInt("tempoProcessamento"));
+                fq.setTemperaturaProcessamento(consulta.getInt("temperaturaProcessamento"));
+                fq.setTemperaturaPreMaturacao(consulta.getInt("temperaturaPreMaturacao"));
+                fq.setQtdFermento(consulta.getDouble("qtdFermento"));
+                fq.setTempoFermentacao(consulta.getInt("tempoFermentacao"));
+                fq.setFermento(consulta.getString("fermento"));
+                fq.setMarcaFermento(consulta.getString("marcaFermento"));
+                fq.setPhPreMaturacao(consulta.getInt("phPreMaturacao"));
+                fq.setTemperaturaCoagulacao(consulta.getInt("temperaturaCoagulacao"));
+                fq.setQtdClCalcio(consulta.getDouble("qtdClCalcio"));
+                fq.setQtdCoagulante(consulta.getDouble("qtdCoagulante"));
+                fq.setTempoCoagulacao(consulta.getInt("tempoCoagulacao"));
+                fq.setPhCorte(consulta.getDouble("phCorte"));
+                fq.setPhEnformagem(consulta.getDouble("phEnformagem"));
+                fq.setPh24(consulta.getInt("ph24"));
+                fq.setDessoragem(consulta.getInt("dessoragem"));
+                fq.setTemperaturaDessoragem(consulta.getInt("temperaturaDessoragem"));
+                fq.setDataSalga(consulta.getString("dataSalga"));
+                fq.setDataSalga(consulta.getString("temperaturaSalga"));
+                fq.setTempoTratamentoSalga(consulta.getString("tempoTratamentoSalga"));
+                fq.setDataTratamentoCasca(consulta.getString("dataTratamentoCasca"));
+                fq.setTipoTratamentoCasca(consulta.getString("tipoTratamentoCasca"));
+                fq.setQtdPecas(consulta.getInt("qtdPecas"));
+                fq.setPesoTotal(consulta.getDouble("pesoTotal"));
+                fq.setPesoMedioPecas(consulta.getDouble("pesoMedioPecas"));
+                fq.setLoteAcabado(consulta.getString("LoteAcabado"));
+                fq.setResponsavel_idResponsavel(cp.consultar(consulta.getInt("Responsavel_idResponsavel")));
+                fq.setObservacoes(consulta.getString("observacoes"));
+                fq.setTempoMaturacao(consulta.getInt("tempoMaturacao"));
+                java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dataFabricacao"));
+                fq.setDataFabricacao(d);
+                fq.setProcessamento_idProcessamento(cPros.consultar(consulta.getInt("processamento_idProcessamento")));
+                fq.setPhMaturacao(consulta.getDouble("phMaturacao"));
+                fq.setPhFinal(consulta.getDouble("phFinal"));
+                fq.setTipoSalga(consulta.getString("tipoSalga"));
+                java.sql.Date d2 = java.sql.Date.valueOf(consulta.getString("dataMaturacao"));
+                fq.setDataMaturacao(d2);
+                fq.setTemperaturaMaturacao(consulta.getInt("temperaturaMaturacao"));
+                java.sql.Date d3 = java.sql.Date.valueOf(consulta.getString("dataLavagem"));
+                fq.setDataLavagem(d3);
+                fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
+                fq.setFabricacaoQueijocol(consulta.getString("fabricacaoQueijocol"));
+                fq.setInativo(consulta.getInt("inativo"));
+      
+                fabricacoes.add(fq);
+            }
+            return fabricacoes;
+
+        } catch (Exception ex) {
+            throw new Exception(ex);
+        }
+    }    
 }

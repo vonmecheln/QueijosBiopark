@@ -12,7 +12,7 @@ public class FabricacaoQueijo {
     private ReceitaQueijo tipoQueijo_idTipoQueijo;
     private String loteQueijo;
     private ColetaLeite coletaLeite_idColetaLeite;
-    private double qtdLeiteUtilizada;
+    private Double qtdLeiteUtilizada;
     
     //processamento;
     private String tipoLeite;
@@ -21,7 +21,7 @@ public class FabricacaoQueijo {
     private Integer temperaturaPreMaturacao;
 
     //fermento;
-    private double qtdFermento;
+    private Double qtdFermento;
     private Integer tempoFermentacao;
     private String fermento;
     private String marcaFermento;
@@ -29,11 +29,11 @@ public class FabricacaoQueijo {
     
     //Coagulacao;
     private Integer temperaturaCoagulacao;
-    private double qtdClCalcio;
-    private double qtdCoagulante;
+    private Double qtdClCalcio;
+    private Double qtdCoagulante;
     private Integer tempoCoagulacao;
-    private double phCorte;
-    private double phEnformagem;
+    private Double phCorte;
+    private Double phEnformagem;
     private Integer ph24;
     private Integer dessoragem;
     private Integer temperaturaDessoragem;
@@ -50,8 +50,8 @@ public class FabricacaoQueijo {
     
     //Rendimento;
     private Integer qtdPecas;
-    private double pesoTotal;
-    private double pesoMedioPecas;
+    private Double pesoTotal;
+    private Double pesoMedioPecas;
     private String LoteAcabado;
     private Pessoa Responsavel_idResponsavel;
     private String observacoes;
@@ -59,8 +59,8 @@ public class FabricacaoQueijo {
     private Integer tempoMaturacao;
     private Date dataFabricacao;
     private Processamento processamento_idProcessamento;
-    private double phMaturacao;
-    private double phFinal;
+    private Double phMaturacao;
+    private Double phFinal;
     private String tipoSalga;
     private Date dataMaturacao;
     private Integer temperaturaMaturacao;
@@ -109,11 +109,11 @@ public class FabricacaoQueijo {
         this.coletaLeite_idColetaLeite = coletaLeite_idColetaLeite;
     }
 
-    public double getQtdLeiteUtilizada() {
+    public Double getQtdLeiteUtilizada() {
         return qtdLeiteUtilizada;
     }
 
-    public void setQtdLeiteUtilizada(double qtdLeiteUtilizada) {
+    public void setQtdLeiteUtilizada(Double qtdLeiteUtilizada) {
         this.qtdLeiteUtilizada = qtdLeiteUtilizada;
     }
 
@@ -149,11 +149,11 @@ public class FabricacaoQueijo {
         this.temperaturaPreMaturacao = temperaturaPreMaturacao;
     }
 
-    public double getQtdFermento() {
+    public Double getQtdFermento() {
         return qtdFermento;
     }
 
-    public void setQtdFermento(double qtdFermento) {
+    public void setQtdFermento(Double qtdFermento) {
         this.qtdFermento = qtdFermento;
     }
 
@@ -197,19 +197,19 @@ public class FabricacaoQueijo {
         this.temperaturaCoagulacao = temperaturaCoagulacao;
     }
 
-    public double getQtdClCalcio() {
+    public Double getQtdClCalcio() {
         return qtdClCalcio;
     }
 
-    public void setQtdClCalcio(double qtdClCalcio) {
+    public void setQtdClCalcio(Double qtdClCalcio) {
         this.qtdClCalcio = qtdClCalcio;
     }
 
-    public double getQtdCoagulante() {
+    public Double getQtdCoagulante() {
         return qtdCoagulante;
     }
 
-    public void setQtdCoagulante(double qtdCoagulante) {
+    public void setQtdCoagulante(Double qtdCoagulante) {
         this.qtdCoagulante = qtdCoagulante;
     }
 
@@ -221,19 +221,19 @@ public class FabricacaoQueijo {
         this.tempoCoagulacao = tempoCoagulacao;
     }
 
-    public double getPhCorte() {
+    public Double getPhCorte() {
         return phCorte;
     }
 
-    public void setPhCorte(double phCorte) {
+    public void setPhCorte(Double phCorte) {
         this.phCorte = phCorte;
     }
 
-    public double getPhEnformagem() {
+    public Double getPhEnformagem() {
         return phEnformagem;
     }
 
-    public void setPhEnformagem(double phEnformagem) {
+    public void setPhEnformagem(Double phEnformagem) {
         this.phEnformagem = phEnformagem;
     }
 
@@ -309,19 +309,19 @@ public class FabricacaoQueijo {
         this.qtdPecas = qtdPecas;
     }
 
-    public double getPesoTotal() {
+    public Double getPesoTotal() {
         return pesoTotal;
     }
 
-    public void setPesoTotal(double pesoTotal) {
+    public void setPesoTotal(Double pesoTotal) {
         this.pesoTotal = pesoTotal;
     }
 
-    public double getPesoMedioPecas() {
+    public Double getPesoMedioPecas() {
         return pesoMedioPecas;
     }
 
-    public void setPesoMedioPecas(double pesoMedioPecas) {
+    public void setPesoMedioPecas(Double pesoMedioPecas) {
         this.pesoMedioPecas = pesoMedioPecas;
     }
 
@@ -373,19 +373,19 @@ public class FabricacaoQueijo {
         this.processamento_idProcessamento = processamento_idProcessamento;
     }
 
-    public double getPhMaturacao() {
+    public Double getPhMaturacao() {
         return phMaturacao;
     }
 
-    public void setPhMaturacao(double phMaturacao) {
+    public void setPhMaturacao(Double phMaturacao) {
         this.phMaturacao = phMaturacao;
     }
 
-    public double getPhFinal() {
+    public Double getPhFinal() {
         return phFinal;
     }
 
-    public void setPhFinal(double phFinal) {
+    public void setPhFinal(Double phFinal) {
         this.phFinal = phFinal;
     }
 
