@@ -830,6 +830,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             queijo.setTemperaturaPreMaturacao(parseInteiro(txtTempPreMat.getText()));
             
             //Insercao de Fermento
+            //fermento_id
             queijo.setQtdFermento(parseDoubles(txtQuantFerm.getText()));
             queijo.setTempoFermentacao(parseInteiro(txtTempoFermento.getText()));
             queijo.setFermento(txtTipoFermento.getText());
@@ -843,7 +844,7 @@ public class TelaFabricacaoQueijo extends javax.swing.JInternalFrame {
             queijo.setTempoCoagulacao(parseInteiro(txtTempoCoagulacao.getText()));
             queijo.setPhCorte(parseDoubles(txtPhCorte.getText()));
             queijo.setPhEnformagem(parseDoubles(txtPhEsformagem.getText()));
-            queijo.setPh24(parseInteiro(txtPh24.getText()));
+            queijo.setPhMaturacao(parseDoubles(txtPhPreMatura.getText()));
             queijo.setDessoragem(parseInteiro(txtDessoragem.getText()));
             queijo.setTemperaturaDessoragem(parseInteiro(txtTemperatura24.getText()));
             
