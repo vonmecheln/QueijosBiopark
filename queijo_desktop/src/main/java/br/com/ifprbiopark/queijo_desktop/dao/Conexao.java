@@ -91,7 +91,8 @@ public class Conexao {
                     + "    tempoTratamento INTEGER, "
                     + "    qtdPecas INTEGER, "
                     + "    pesoMPecas NUMERIC(14,2), "
-                    + "    observacoes TEXT);");
+                    + "    observacoes TEXT, "
+                    + "    inativo INTEGER);");
 
             //verifica se a tabela de pessoas não tem registros para o insert inicial
             ResultSet consulta = statement.executeQuery("SELECT count(1) as qtd FROM pessoa");
