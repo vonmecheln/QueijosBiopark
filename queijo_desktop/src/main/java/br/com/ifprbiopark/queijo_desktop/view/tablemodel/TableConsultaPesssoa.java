@@ -59,9 +59,9 @@ public class TableConsultaPesssoa extends AbstractTableModel {
         catch (Exception ex){
             throw new Exception(ex.getMessage());
         }
-        
+
     }
-    
+            
 
     
 }

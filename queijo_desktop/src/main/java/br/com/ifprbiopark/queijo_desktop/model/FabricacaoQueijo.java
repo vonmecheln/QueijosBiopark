@@ -67,6 +67,15 @@ public class FabricacaoQueijo {
     private Date dataLavagem;
     private Integer tempoTratamento;
     private String fabricacaoQueijocol;
+    private Integer inativo;
+
+    public Integer getInativo() {
+        return inativo;
+    }
+
+    public void setInativo(Integer inativo) {
+        this.inativo = inativo;
+    }
 
     public Integer getIdFabricacaoQueijo() {
         return idFabricacaoQueijo;

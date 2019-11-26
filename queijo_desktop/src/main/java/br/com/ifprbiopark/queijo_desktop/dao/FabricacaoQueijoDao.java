@@ -5,12 +5,20 @@
  */
 package br.com.ifprbiopark.queijo_desktop.dao;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
+import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
+import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
+import br.com.ifprbiopark.queijo_desktop.model.Processamento;
+import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -160,6 +168,141 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo>{
 
     @Override
     public FabricacaoQueijo consultar(int id) throws DbException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<FabricacaoQueijo> consultarListaTodos(boolean inativos) throws Exception{
+        try {
+            ControleReceitaQueijo crq = new ControleReceitaQueijo();
+
+            List<FabricacaoQueijo> fabricacoes = new ArrayList<FabricacaoQueijo>();
+
+            String sql = "SELECT idFabricacaoQueijo, " +
+                                "TipoQueijo_idTipoQueijo, " +
+                                "dataFabricacao, " +
+                                "loteQueijo, " +
+                                "ColetaLeite_idColetaLeite, " +
+                                "Processamento_idProcessamento, " +
+                                "tempoProcessamento, " +
+                                "temperaturaProcessamento, " +
+                                "temperaturaPreMaturacao, " +
+                                "Fermento_idFermento, " +
+                                "qtdFermento, " +
+                                "tempoMaturacao, " +
+                                "phMaturacao, " +
+                                "temperaturaCoagulacao, " +
+                                "qtdClCalcio, " +
+                                "qtdCoagulante, " +
+                                "tempoCoagulacao, " +
+                                "phCorte, " +
+                                "phEnformagem, " +
+                                "phFinal, " +
+                                "dessoragem, " +
+                                "temperaturaDessoragem, " +
+                                "tipoSalga, " +
+                                "dataMaturacao, " +
+                                "temperaturaMaturacao, " +
+                                "dataLavagem, " +
+                                "tipoTratamento, " +
+                                "tempoTratamento, " +
+                                "qtdPecas, " +
+                                "pesoMPecas, " +
+                                "pesoTotal, " +
+                                "observacoes, " +
+                                "FabricacaoQueijocol, " +
+                                "Responsavel_idResponsavel " + 
+                                "FROM fabricacaoqueijo";
+            if(inativos){
+                sql += " WHERE inativo = 1";
+            }
+            else{
+                sql += " WHERE inativo = 0";
+            }
+            
+            sql += " ORDER BY nome ASC";
+
+            Conexao con = Conexao.getInstance();
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                FabricacaoQueijo fq = new FabricacaoQueijo();
+                fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
+                fq.setTipoQueijo_idTipoQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
+                        
+
+//    private String loteQueijo;
+//    private ColetaLeite coletaLeite_idColetaLeite;
+//    private double qtdLeiteUtilizada;
+//    
+//    //processamento;
+//    private String tipoLeite;
+//    private Integer tempoProcessamento;
+//    private Integer temperaturaProcessamento;
+//    private Integer temperaturaPreMaturacao;
+//
+//    //fermento;
+//    private double qtdFermento;
+//    private Integer tempoFermentacao;
+//    private String fermento;
+//    private String marcaFermento;
+//    private Integer phPreMaturacao;
+//    
+//    //Coagulacao;
+//    private Integer temperaturaCoagulacao;
+//    private double qtdClCalcio;
+//    private double qtdCoagulante;
+//    private Integer tempoCoagulacao;
+//    private double phCorte;
+//    private double phEnformagem;
+//    private Integer ph24;
+//    private Integer dessoragem;
+//    private Integer temperaturaDessoragem;
+//    
+//    //Salga;
+//    private String dataSalga;
+//    private String temperaturaSalga;
+//    private String tempoTratamentoSalga;
+//    
+//    //Casca
+//    private String dataTratamentoCasca;
+//    private String tipoTratamentoCasca;
+//    
+//    
+//    //Rendimento;
+//    private Integer qtdPecas;
+//    private double pesoTotal;
+//    private double pesoMedioPecas;
+//    private String LoteAcabado;
+//    private Pessoa Responsavel_idResponsavel;
+//    private String observacoes;
+//    
+//    private Integer tempoMaturacao;
+//    private Date dataFabricacao;
+//    private Processamento processamento_idProcessamento;
+//    private double phMaturacao;
+//    private double phFinal;
+//    private String tipoSalga;
+//    private Date dataMaturacao;
+//    private Integer temperaturaMaturacao;
+//    private Date dataLavagem;
+//    private Integer tempoTratamento;
+//    private String fabricacaoQueijocol;
+//    private Integer inativo;
+                        
+                
+                
+                
+                fabricacoes.add(fq);
+            }
+            return fabricacoes;
+
+        } catch (Exception ex) {
+            throw new Exception(ex);
+        }
+    }
+
+    public List<FabricacaoQueijo> consultarTabela(int idTipoQueijo, boolean inativos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
