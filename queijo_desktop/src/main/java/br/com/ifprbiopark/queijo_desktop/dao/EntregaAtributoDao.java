@@ -14,7 +14,7 @@ import br.com.ifprbiopark.queijo_desktop.model.EntregaAtributo;
  */
 public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
 
-    public EntregaAtributoDao() {
+    public EntregaAtributoDao() throws DbException {
         super("entradaatributo");
     }
 

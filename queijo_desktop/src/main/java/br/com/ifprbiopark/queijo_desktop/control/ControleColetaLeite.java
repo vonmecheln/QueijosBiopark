@@ -4,10 +4,20 @@ import br.com.ifprbiopark.queijo_desktop.dao.ColetaLeiteDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControleColetaLeite {
 
-    ColetaLeiteDao coleta = new ColetaLeiteDao();
+    ColetaLeiteDao coleta;
+
+    public ControleColetaLeite() {
+        try {
+            this.coleta = new ColetaLeiteDao();
+        } catch (DbException ex) {
+            Logger.getLogger(ControleColetaLeite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void salvar(ColetaLeite c) throws DbException {
         coleta.inserir(c);

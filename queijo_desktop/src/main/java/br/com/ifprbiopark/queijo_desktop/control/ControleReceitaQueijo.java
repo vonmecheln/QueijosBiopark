@@ -9,15 +9,23 @@ import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author UnioestePROEX
  */
 public class ControleReceitaQueijo {
+    ReceitaQueijoDao dao;
 
-    //inserir dao correspondente;
-    ReceitaQueijoDao dao = new ReceitaQueijoDao();
+    public ControleReceitaQueijo() {
+        try {
+            this.dao = new ReceitaQueijoDao();
+        } catch (DbException ex) {
+            Logger.getLogger(ControleReceitaQueijo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void salvar(ReceitaQueijo c) throws DbException {
         dao.inserir(c);

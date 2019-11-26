@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class PessoaDao extends AbstractDao<Pessoa> {
 
-    public PessoaDao() {
+    public PessoaDao() throws DbException {
         super("pessoa");
     }
 

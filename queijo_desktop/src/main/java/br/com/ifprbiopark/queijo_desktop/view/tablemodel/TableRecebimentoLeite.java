@@ -1,20 +1,31 @@
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
 import br.com.ifprbiopark.queijo_desktop.dao.*;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 public class TableRecebimentoLeite extends AbstractTableModel {
 
-    ColetaLeiteDao coleta = new ColetaLeiteDao();
+    ColetaLeiteDao coleta;
 
     List<ColetaLeite> listaEntregas = coleta.listarColetas();
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     private String[] nomeColunas = {"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote", "Situação"};
+
+    public TableRecebimentoLeite() {
+        try {
+            this.coleta = new ColetaLeiteDao();
+        } catch (DbException ex) {
+            Logger.getLogger(TableRecebimentoLeite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @Override
     public String getColumnName(int column) {

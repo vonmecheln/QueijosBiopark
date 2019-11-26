@@ -9,6 +9,8 @@ import br.com.ifprbiopark.queijo_desktop.dao.FermentoDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,8 +18,15 @@ import java.util.List;
  */
 public class ControleFermento {
 
-    //inserir dao correspondente;
-    FermentoDao dao = new FermentoDao();
+    FermentoDao dao;
+
+    public ControleFermento() {
+        try {
+            this.dao = new FermentoDao();
+        } catch (DbException ex) {
+            Logger.getLogger(ControleFermento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void salvar(Fermento c) throws DbException {
         dao.inserir(c);

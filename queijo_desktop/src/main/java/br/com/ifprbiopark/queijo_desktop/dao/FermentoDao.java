@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class FermentoDao extends AbstractDao<Fermento> {
 
-    public FermentoDao() {
+    public FermentoDao() throws DbException {
         super("fermento");
     }
 

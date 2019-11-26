@@ -4,11 +4,20 @@ import br.com.ifprbiopark.queijo_desktop.dao.FabricacaoQueijoDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControleFabricacaoQueijo {
 
-    //inserir a instancia dao correspondente;
-    FabricacaoQueijoDao dao = new FabricacaoQueijoDao();
+    FabricacaoQueijoDao dao;
+
+    public ControleFabricacaoQueijo() {
+        try {
+            this.dao = new FabricacaoQueijoDao();
+        } catch (DbException ex) {
+            Logger.getLogger(ControleFabricacaoQueijo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void salvar(FabricacaoQueijo c) throws DbException {
         dao.inserir(c);

@@ -6,8 +6,11 @@
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
 import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -16,11 +19,19 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TableReceitaQueijo extends AbstractTableModel {
 
-    ReceitaQueijoDao tipo = new ReceitaQueijoDao();
+    ReceitaQueijoDao tipo;
 
     List<ReceitaQueijo> tiposQueijo = tipo.listarColetas();
 
     private String[] nomeColunas = {"Código", "Descrição"};
+
+    public TableReceitaQueijo() {
+        try {
+            this.tipo = new ReceitaQueijoDao();
+        } catch (DbException ex) {
+            Logger.getLogger(TableReceitaQueijo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public String getColumnName(int column) {
         return nomeColunas[column];

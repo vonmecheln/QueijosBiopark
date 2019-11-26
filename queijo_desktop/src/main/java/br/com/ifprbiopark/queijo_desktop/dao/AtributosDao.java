@@ -20,10 +20,16 @@ import java.util.List;
  */
 public class AtributosDao extends AbstractDao<Atributos> {
 
-    public AtributosDao() {
+    public AtributosDao() throws DbException {
         super("atributos");
     }
 
+    @Override
+    protected void confStantementInsert(NamedParameterStatement nps, Atributos objeto) throws SQLException {
+        nps.setString("nomeAtributo", objeto.getNomeAtributo());
+    }
+  
+    
     @Override
     public void inserir(Atributos a) throws DbException {
         try {

@@ -6,8 +6,11 @@
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
 import br.com.ifprbiopark.queijo_desktop.dao.FermentoDao;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -16,11 +19,19 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TableFermento extends AbstractTableModel {
 
-    FermentoDao tipo = new FermentoDao();
+    FermentoDao tipo;
 
     List<Fermento> fermentos = tipo.listar();
 
     private String[] nomeColunas = {"Código", "Tipo", "Marca"};
+
+    public TableFermento() {
+        try {
+            this.tipo = new FermentoDao();
+        } catch (DbException ex) {
+            Logger.getLogger(TableFermento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void recarregar() {
         fermentos = tipo.listar();
