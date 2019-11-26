@@ -9,10 +9,10 @@ import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.model.EntregaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableRecebimentoLeite;
 import java.awt.Component;
-
 import java.awt.Dimension;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,6 +28,7 @@ import javax.swing.text.MaskFormatter;
  * @author marcos.andre
  */
 public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
+
     private List<Pessoa> fornecedores;
     private List<Pessoa> funcionarios;
 
@@ -36,38 +37,38 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
     public TelaColetaLeiteView() throws ParseException, DbException {
         initComponents();
         load();
-        
-        MaskFormatter coletaLeite = new MaskFormatter("##/##/####");  
+        MaskFormatter coletaLeite = new MaskFormatter("##/##/####");
         coletaLeite.install(jfData);
-        
+        //TableRecebimentoLeite tableRecebimento = new TableRecebimentoLeite();
+        //tblEntradaLeite.setModel(tableRecebimento);
+        tblEntradaLeite.setModel(listaColetas);
+
         //inicio - > Botao fornecedor
         PessoaDao p = new PessoaDao();
         fornecedores = p.consultarFornecedores();
 
-        jcFornecedor.removeAll();
-        
+        //jcFornecedor.removeAll();
         for (int i = 0; i < fornecedores.size(); i++) {
             jcFornecedor.addItem(fornecedores.get(i).getNome());
         }
+        jcFornecedor.setSelectedIndex(-1);
         //fim;
-        
+
         //inicio - > Botao funcioario
         PessoaDao f = new PessoaDao();
         funcionarios = f.consultarFuncionarios();
 
-        jcFuncionario.removeAll();
-        
+        //jcFuncionario.removeAll();
         for (int i = 0; i < funcionarios.size(); i++) {
             jcFuncionario.addItem(funcionarios.get(i).getNome());
         }
-        
-        
+        jcFuncionario.setSelectedIndex(-1);
+
     }
-    
-    private void load() throws ParseException, DbException{
+
+    private void load() throws ParseException, DbException {
         tblEntradaLeite.setModel(listaColetas);
-        
-        
+
     }
 
     public void setPosicao() {
@@ -107,6 +108,12 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Fornecedor"));
 
+        jcFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcFornecedorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,7 +152,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
             }
         });
 
-        jbExcluir.setText("Editar");
+        jbExcluir.setText("Cancelar");
         jbExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbExcluirActionPerformed(evt);
@@ -185,6 +192,11 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblEntradaLeite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEntradaLeiteMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblEntradaLeite);
 
         jcbSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pago", "Pendente" }));
@@ -261,10 +273,10 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfQuantidadeActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        
+
         ColetaLeite coleta = new ColetaLeite();
-        ControleColetaLeite cColeta  = new ControleColetaLeite();
-        
+        ControleColetaLeite cColeta = new ControleColetaLeite();
+
         //ajusta o botao
         if (jbSalvar.getText().equals("Atualizar")) {
             jbSalvar.setText("Salvar");
@@ -283,7 +295,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                 try {
 
                     int row = tblEntradaLeite.getSelectedRow();
-                    
+
                     //"Id", "Produtor", "Quantidade", "Data Coleta", "Funcionario", "Lote";
                     Object id = tblEntradaLeite.getValueAt(row, 0);
                     Object produtor = tblEntradaLeite.getValueAt(row, 1);
@@ -292,31 +304,28 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     Object funcionario = tblEntradaLeite.getValueAt(row, 4);
                     Object lote = tblEntradaLeite.getValueAt(row, 5);
                     Object situacao = tblEntradaLeite.getValueAt(row, 6);
-                    
+
                     coleta.setIdColetaLeite((Integer) id);
                     //coleta.setProdutor_idProdutor((Pessoa) produtor);
                     coleta.setQtdLeite((double) quantidade);
                     coleta.setDtColeta((Date) data);
-                    coleta.setSituacao((String)situacao);
-                    
+                    coleta.setSituacao((String) situacao);
+
                     //funcionario
                     Pessoa p = new Pessoa();
                     p.setIdPessoa(coleta.getPessoa_idPessoa().getIdPessoa());
-                    
+
                     coleta.setLoteColeta((String) lote);
-                    
-                    
+
                     try {
                         cColeta.salvar(coleta);
                     } catch (DbException ex) {
                         Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                     load();
                     listaColetas.updateRow();
-                    
-                    
-                    
+
                 } catch (ParseException ex) {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DbException ex) {
@@ -327,7 +336,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
                 try {
                     //coleta dados do formulario da tela "ColetaLeite";
-                    
+
                     //fornecedor na tela;
                     coleta.setProdutor_idProdutor(fornecedores.get(jcFornecedor.getSelectedIndex()));
                     //Funcionario na tela;
@@ -338,63 +347,55 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                 } catch (ParseException ex) {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                    coleta.setSituacao((String) jcbSituacao.getSelectedItem());
-                
-                               
+                coleta.setSituacao((String) jcbSituacao.getSelectedItem());
+
                 coleta.setQtdLeite(Double.parseDouble(tfQuantidade.getText()));
                 coleta.setLoteColeta(tfLote.getText());
-                
-                
-                
+
                 listaColetas.addRow(coleta);
-                
+
                 //limpar campos;
-                    jfData.setText("");
-                    tfQuantidade.setText("");
-                    tfLote.setText("");
+                jfData.setText("");
+                tfQuantidade.setText("");
+                tfLote.setText("");
                 try {
                     cColeta.salvar(coleta);
                 } catch (DbException ex) {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                        
+
             }
 
         }
-        
-        
+
+
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
-        
-        ControleColetaLeite cColeta = new ControleColetaLeite();
-        ColetaLeite c = new ColetaLeite();
-        
-        if (tblEntradaLeite.getSelectedRow() != -1) {
-
-            if (JOptionPane.showConfirmDialog(null, "Deseja excluir este cadastro?", "Atenção!",
-                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
-                int row = tblEntradaLeite.getSelectedRow();
-                if (row > -1) {
-
-                    //para selecionar o ID a coluna deve ser setada com valor 0;
-                    Object id = tblEntradaLeite.getValueAt(row, 0);
-                    
-                    c.setIdColetaLeite((Integer) id);
-                    
-                    try {
-                        cColeta.excluir(c);
-                    } catch (DbException ex) {
-                        Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    listaColetas.removeRow(tblEntradaLeite.getSelectedRow());
-
-                }
-            }
-        }
+        jcFornecedor.setSelectedItem(-1);
+        tfQuantidade.setText("");
+        jfData.setText("");
+        jcFuncionario.setSelectedItem(0);
+        tfLote.setText("");
+        jcbSituacao.setSelectedItem(-1);
     }//GEN-LAST:event_jbExcluirActionPerformed
+
+    private void jcFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcFornecedorActionPerformed
+
+    private void tblEntradaLeiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEntradaLeiteMouseClicked
+
+        tblEntradaLeite.getSelectedRow();
+        jcFornecedor.setSelectedItem(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 1)));
+        tfQuantidade.setText(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 2)));
+       //jfData.setText(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 3)));
+        jcFuncionario.setSelectedItem(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 4)));
+        tfLote.setText(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 5)));
+        jcbSituacao.setSelectedItem(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 6)));
+
+
+    }//GEN-LAST:event_tblEntradaLeiteMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
