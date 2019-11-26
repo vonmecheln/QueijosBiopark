@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
@@ -12,10 +7,6 @@ import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableFermento;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author marcos.andre
- */
 public class TelaFermentoView extends javax.swing.JInternalFrame {
 
     TableFermento tableFermento = new TableFermento();

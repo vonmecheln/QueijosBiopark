@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.ifprbiopark.queijo_desktop.dao;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
@@ -18,10 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author jhona
- */
 public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
 
     public FabricacaoQueijoDao() throws DbException {
@@ -98,7 +89,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                     + ":observacoes, "
                     + ":FabricacaoQueijocol, "
                     + ":Responsavel_idResponsavel) ";
-            
+
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("TipoQueijo_idTipoQueijo", fq.getTipoQueijo_idTipoQueijo().getIdTipoQueijo());
             nps.setDate("dataFabricacao", fq.getDataFabricacao());

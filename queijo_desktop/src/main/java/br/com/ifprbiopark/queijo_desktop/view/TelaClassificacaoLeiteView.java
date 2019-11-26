@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import java.awt.Dimension;
 
-/**
- *
- * @author marcos.andre
- */
 public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
 
     /**

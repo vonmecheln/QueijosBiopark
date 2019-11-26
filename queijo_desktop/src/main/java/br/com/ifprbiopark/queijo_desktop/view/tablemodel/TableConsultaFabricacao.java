@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
@@ -11,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author jhona
- */
 public class TableConsultaFabricacao extends AbstractTableModel {
 
     private ControleFabricacaoQueijo c = new ControleFabricacaoQueijo();

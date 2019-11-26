@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
@@ -12,10 +7,6 @@ import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-/**
- *
- * @author jhona
- */
 public class TelaConsultaPessoaView extends javax.swing.JDialog {
 
     private TelaPessoaView TelaCadastro;

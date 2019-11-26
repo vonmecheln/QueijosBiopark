@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.ifprbiopark.queijo_desktop.dao;
 
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
@@ -16,10 +11,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author jhona
- */
 public class FermentoDao extends AbstractDao<Fermento> {
 
     public FermentoDao() throws DbException {
@@ -64,7 +55,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
         String sql = "delete from fermento where idFermento = :idFermento";
 
         try {
-            
+
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("idFermento", fermento.getIdFermento());
             int exec = nps.executeUpdate();
@@ -92,7 +83,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
         String sql = "update fermento set tipoFermento = :tipoFermento, marca = :marca where idFermento = :idFermento";
 
         try {
-            
+
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
             nps.setInt("idFermento", fermento.getIdFermento());
             nps.setString("tipoFermento", fermento.getTipoFermento());

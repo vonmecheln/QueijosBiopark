@@ -16,10 +16,10 @@ public abstract class AbstractDao<T> {
 
     public AbstractDao(String tableName) throws DbException {
         this.tableName = tableName;
-        if(tableName == null || tableName.isEmpty()){
+        if (tableName == null || tableName.isEmpty()) {
             throw new NotTableNameDefinedException();
         }
-        
+
         this.con = Conexao.getInstance();
     }
 
@@ -33,8 +33,8 @@ public abstract class AbstractDao<T> {
 
     public abstract T consultar(int id) throws DbException;
 
-    protected void InserirDefault(T objeto) throws DbException, SQLException{
-        
+    protected void InserirDefault(T objeto) throws DbException, SQLException {
+
         StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO ");
         sql.append(this.tableName);
@@ -43,18 +43,18 @@ public abstract class AbstractDao<T> {
         sql.append(" ) VALUES( ");
         sql.append(":nomeAtributo");
         sql.append(" )");
-        
+
         NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
         confStantementInsert(nps, objeto);
-        
+
         int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-        
+        if (exec == 0) {
+            throw new NotExecuteInsertException();
+        }
+
     }
-    
-    protected void confStantementInsert(NamedParameterStatement nps, T objeto) throws SQLException{
-        
+
+    protected void confStantementInsert(NamedParameterStatement nps, T objeto) throws SQLException {
+
     }
 }
