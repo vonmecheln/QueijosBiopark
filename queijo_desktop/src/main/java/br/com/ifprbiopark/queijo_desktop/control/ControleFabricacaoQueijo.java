@@ -38,7 +38,7 @@ public class ControleFabricacaoQueijo {
 
     public List<FabricacaoQueijo> consultarTabela(int idTipoQueijo, boolean inativos) throws Exception {
         try {
-            if (idTipoQueijo != 0) {
+            if (idTipoQueijo == 0) {
                 return dao.consultarListaTodos(inativos);
             } else {
                 return dao.consultarTabela(idTipoQueijo, inativos);

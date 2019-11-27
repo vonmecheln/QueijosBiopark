@@ -21,7 +21,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
     public TelaConsultaFrabricacaoView() {
         initComponents();
         
-        tblFrabricacoes.setModel(tableModel);
+        tblFabricacoes.setModel(tableModel);
         
         try {
             listaReceitaQueijo = rqControl.listaReceitaQueijo();
@@ -47,7 +47,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
 
         btnNovo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblFrabricacoes = new javax.swing.JTable();
+        tblFabricacoes = new javax.swing.JTable();
         btnFiltrar = new javax.swing.JButton();
         cmbTipoQueijo = new javax.swing.JComboBox<>();
         btnAbrir = new javax.swing.JButton();
@@ -59,7 +59,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
 
         btnNovo.setText("Novo");
 
-        tblFrabricacoes.setModel(new javax.swing.table.DefaultTableModel(
+        tblFabricacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,7 +70,12 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblFrabricacoes);
+        tblFabricacoes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblFabricacoesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblFabricacoes);
 
         btnFiltrar.setText("Filtrar");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +87,11 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         cmbTipoQueijo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de queijo"));
 
         btnAbrir.setText("Abrir");
+        btnAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirActionPerformed(evt);
+            }
+        });
 
         chkInativo.setText("Inativos");
 
@@ -120,7 +130,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbrir)
-                .addGap(24, 24, 24))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -130,6 +140,17 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         consultar();
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
+    private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
+        abrirFabricacao();
+    }//GEN-LAST:event_btnAbrirActionPerformed
+
+    private void tblFabricacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFabricacoesMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+            evt.consume();
+            abrirFabricacao();
+        }
+    }//GEN-LAST:event_tblFabricacoesMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnFiltrar;
@@ -137,7 +158,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chkInativo;
     private javax.swing.JComboBox<String> cmbTipoQueijo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblFrabricacoes;
+    private javax.swing.JTable tblFabricacoes;
     // End of variables declaration//GEN-END:variables
 
     private void consultar() {
@@ -149,5 +170,18 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
         }       
+    }
+
+    private void abrirFabricacao() {
+        if (tblFabricacoes.getSelectedRow() != -1) {
+            int id = (int) tableModel.getValueAt(tblFabricacoes.getSelectedRow(), 0);
+            
+            TelaFabricacaoQueijoView form = new TelaFabricacaoQueijoView();
+            form.setID(id);
+            QueijoDesktop.telaPrincipal.getPainelDesktop().add(form);
+            form.setPosicao();
+            form.setVisible(true);         
+            this.dispose();
+        }
     }
 }

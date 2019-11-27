@@ -1,7 +1,9 @@
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
+import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -9,8 +11,17 @@ import javax.swing.table.AbstractTableModel;
 public class TableConsultaFabricacao extends AbstractTableModel {
 
     private ControleFabricacaoQueijo c = new ControleFabricacaoQueijo();
-    private List<FabricacaoQueijo> dados = new ArrayList<FabricacaoQueijo>();
+    private List<FabricacaoQueijo> dados;
     private String[] colunas = {"ID", "Receita do queijo", "Lote do processamento", "Lote do leite", "Quantidade de leite"};
+    
+    public TableConsultaFabricacao(){
+        try{
+            dados = c.consultarTabela(0, false);
+        }
+        catch (Exception ex){
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
+        }        
+    }
 
     @Override
     public int getRowCount() {
