@@ -1,5 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.dao;
 
+import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteDeleteException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotColumnNamesDefinedException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotTableNameDefinedException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
@@ -45,7 +46,7 @@ public abstract class AbstractDao<T extends AbstractModel> {
 
     public abstract T consultar(int id) throws DbException;
 
-     public void InserirDefault(T objeto) throws DbException {
+    public void InserirDefault(T objeto) throws DbException {
 
         StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO ");
@@ -86,6 +87,34 @@ public abstract class AbstractDao<T extends AbstractModel> {
             }
 
             objeto.setId(key);
+
+        } catch (SQLException ex) {
+            throw new DbException(ex);
+        }
+
+    }
+
+    public boolean excluirDefault(T objeto) throws DbException {
+
+        try {
+
+            StringBuilder sql = new StringBuilder();
+
+            sql.append("DELETE ");
+            sql.append(this.tableName);
+            sql.append(" WHERE ");
+            sql.append(this.columnNames.get(0));
+            sql.append(" = :id");
+
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
+            nps.setInt("id", objeto.getId());
+
+            boolean exec = nps.execute();
+            if (!exec) {
+                throw new NotExecuteDeleteException();
+            } else {
+                return exec;
+            }
 
         } catch (SQLException ex) {
             throw new DbException(ex);

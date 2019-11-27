@@ -39,18 +39,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
     @Override
     public boolean excluir(ColetaLeite objeto) throws DbException {
-        try {
-            String sql = " delete from coletaLeite where idColetaLeite = :idColetaLeite";
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setInt("idColetaLeite", objeto.getIdColetaLeite());
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
-        return true;
+        return excluirDefault(objeto);
     }
 
     @Override

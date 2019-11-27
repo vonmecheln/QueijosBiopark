@@ -18,52 +18,18 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
     }
 
     @Override
+    protected void confStantementInsert(NamedParameterStatement nps, Processamento objeto) throws SQLException {
+        nps.setString("TipoProcessamento", objeto.getTipoProcessamento());
+    }
+
+    @Override
     public void inserir(Processamento p) throws DbException {
-        try {
-
-            String sql = "INSERT INTO processamento(TipoProcessamento) VALUES(:TipoProcessamento)";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("TipoProcessamento", p.getTipoProcessamento());
-
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-
-            int key = 0;
-            ResultSet retorno = nps.getGeneratedKeys();
-            if (retorno != null && retorno.next()) {
-                key = retorno.getInt(1);
-            } else {
-                throw new GeneratedKeysException();
-            }
-            p.setIdProcesamento(key);
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+        InserirDefault(p);
     }
 
     @Override
     public boolean excluir(Processamento p) throws DbException {
-        try {
-
-            String sql = "DELETE processamento WHERE idProcessamento = :id";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setInt("id", p.getIdProcesamento());
-
-            boolean exec = nps.execute();
-            if (!exec) {
-                throw new SQLException();
-            } else {
-                return exec;
-            }
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+        return excluirDefault(p);
     }
 
     @Override

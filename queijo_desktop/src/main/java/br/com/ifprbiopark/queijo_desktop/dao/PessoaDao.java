@@ -1,8 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.dao;
 
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
-import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
-import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,23 +37,7 @@ public class PessoaDao extends AbstractDao<Pessoa> {
 
     @Override
     public boolean excluir(Pessoa p) throws DbException {
-        try {
-
-            String sql = "DELETE pessoa WHERE idPessoa = :id";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setInt("id", p.getIdPessoa());
-
-            boolean exec = nps.execute();
-            if (!exec) {
-                throw new SQLException();
-            } else {
-                return exec;
-            }
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+        return excluirDefault(p);
     }
 
     @Override

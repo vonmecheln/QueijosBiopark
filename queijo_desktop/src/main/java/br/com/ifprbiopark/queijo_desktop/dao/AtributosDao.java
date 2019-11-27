@@ -1,7 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.dao;
 
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
-import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.Atributos;
 import java.sql.ResultSet;
@@ -24,49 +23,12 @@ public class AtributosDao extends AbstractDao<Atributos> {
 
     @Override
     public void inserir(Atributos a) throws DbException {
-        try {
-            String sql = "INSERT INTO atributos(nomeAtributo) VALUES(:nomeAtributo)";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("nomeAtributo", a.getNomeAtributo());
-
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-
-            int key = 0;
-            ResultSet retorno = nps.getGeneratedKeys();
-            if (retorno != null && retorno.next()) {
-                key = retorno.getInt(1);
-            } else {
-                throw new GeneratedKeysException();
-            }
-            a.setIdAtributo(key);
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+        InserirDefault(a);
     }
 
     @Override
     public boolean excluir(Atributos a) throws DbException {
-        try {
-            String sql = "DELETE atributos WHERE idAtributo = :id";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setInt("id", a.getIdAtributo());
-
-            boolean exec = nps.execute();
-            if (!exec) {
-                throw new SQLException();
-            } else {
-                return exec;
-            }
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+        return excluirDefault(a);
     }
 
     @Override
