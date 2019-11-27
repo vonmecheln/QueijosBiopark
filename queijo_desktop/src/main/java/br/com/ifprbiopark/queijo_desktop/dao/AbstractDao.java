@@ -45,7 +45,7 @@ public abstract class AbstractDao<T extends AbstractModel> {
 
     public abstract T consultar(int id) throws DbException;
 
-    public void InserirDefault(T objeto) throws DbException {
+     public void InserirDefault(T objeto) throws DbException {
 
         StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO ");
@@ -94,6 +94,6 @@ public abstract class AbstractDao<T extends AbstractModel> {
     }
 
     protected void confStantementInsert(NamedParameterStatement nps, T objeto) throws SQLException {
-
+        // TODO: ao converter todas as DAOs para insertDefaul tornar este método abstrato
     }
 }
