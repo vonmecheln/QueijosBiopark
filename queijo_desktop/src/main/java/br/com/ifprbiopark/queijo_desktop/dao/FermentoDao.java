@@ -14,7 +14,10 @@ import java.util.logging.Logger;
 public class FermentoDao extends AbstractDao<Fermento> {
 
     public FermentoDao() throws DbException {
-        super("fermento");
+        super("fermento", new ArrayList<>(List.of(
+                "idFermento",
+                "tipoFermento",
+                "marca")));
     }
 
     @Override

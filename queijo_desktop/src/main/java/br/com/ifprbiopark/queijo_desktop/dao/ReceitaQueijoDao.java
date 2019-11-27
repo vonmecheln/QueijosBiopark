@@ -12,7 +12,9 @@ import java.util.List;
 public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
     public ReceitaQueijoDao() throws DbException {
-        super("receitaqueijo");
+        super("receitaqueijo", new ArrayList<>(List.of(
+                "idReceita",
+                "nomeReceita")));
     }
 
     @Override

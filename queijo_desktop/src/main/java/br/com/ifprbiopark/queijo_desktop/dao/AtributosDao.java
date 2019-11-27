@@ -12,7 +12,9 @@ import java.util.List;
 public class AtributosDao extends AbstractDao<Atributos> {
 
     public AtributosDao() throws DbException {
-        super("atributos");
+        super("atributos", new ArrayList<>(List.of(
+                "idAtributo",
+                "nomeAtributo")));
     }
 
     @Override

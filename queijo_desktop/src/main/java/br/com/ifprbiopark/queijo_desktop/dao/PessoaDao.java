@@ -12,7 +12,14 @@ import java.util.List;
 public class PessoaDao extends AbstractDao<Pessoa> {
 
     public PessoaDao() throws DbException {
-        super("pessoa");
+        super("pessoa", new ArrayList<>(List.of(
+                "idPessoa",
+                "nome",
+                "endereco",
+                "tipoFiscal",
+                "documento",
+                "tipoPessoa",
+                "telefone")));
     }
 
     @Override

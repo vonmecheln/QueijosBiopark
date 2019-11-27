@@ -2,11 +2,17 @@ package br.com.ifprbiopark.queijo_desktop.dao;
 
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.EntregaAtributo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
 
     public EntregaAtributoDao() throws DbException {
-        super("entradaatributo");
+        super("entradaatributo", new ArrayList<>(List.of(
+                "idEntradaAtributo",
+                "valor",
+                "atributo_id",
+                "coleta_id")));
     }
 
     @Override

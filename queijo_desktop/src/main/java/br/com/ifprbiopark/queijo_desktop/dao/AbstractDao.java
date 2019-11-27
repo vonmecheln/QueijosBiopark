@@ -1,9 +1,11 @@
 package br.com.ifprbiopark.queijo_desktop.dao;
 
+import br.com.ifprbiopark.queijo_desktop.exception.db.NotColumnNamesDefinedException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotTableNameDefinedException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -11,14 +13,22 @@ import java.sql.SQLException;
  */
 public abstract class AbstractDao<T> {
 
-    private String tableName;
+    private final String tableName;
+    private final List<String> columnNames;
     protected Conexao con;
 
-    public AbstractDao(String tableName) throws DbException {
+    public AbstractDao(String tableName, List<String> columnNames) throws DbException {
         this.tableName = tableName;
+        this.columnNames = columnNames;
+        
         if (tableName == null || tableName.isEmpty()) {
             throw new NotTableNameDefinedException();
         }
+        
+        if (columnNames == null || columnNames.isEmpty()) {
+            throw new NotColumnNamesDefinedException();
+        }
+
 
         this.con = Conexao.getInstance();
     }

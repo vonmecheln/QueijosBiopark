@@ -12,7 +12,14 @@ import java.util.List;
 public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
     public ColetaLeiteDao() throws DbException {
-        super("coletaleite");
+        super("coletaleite", new ArrayList<>(List.of(
+                "idColetaLeite",
+                "loteColeta",
+                "dtColeta",
+                "qtdLeite",
+                "produtor_id",
+                "funcionario_id",
+                "situacao")));
     }
 
     @Override

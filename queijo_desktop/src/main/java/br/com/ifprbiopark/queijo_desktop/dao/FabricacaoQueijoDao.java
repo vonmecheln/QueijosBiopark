@@ -16,7 +16,8 @@ import java.util.List;
 public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
 
     public FabricacaoQueijoDao() throws DbException {
-        super("fabricacaoqueijo");
+        super("fabricacaoqueijo", new ArrayList<>(List.of(
+                "idFabricacaoQueijo")));
     }
 
     @Override
