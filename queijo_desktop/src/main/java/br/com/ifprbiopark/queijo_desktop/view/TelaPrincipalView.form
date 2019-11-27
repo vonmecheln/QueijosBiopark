@@ -204,7 +204,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="lbRelatorios" max="32767" attributes="0"/>
-                              <Component id="lbProcessamento" alignment="0" pref="180" max="32767" attributes="0"/>
+                              <Component id="lbFabricacao" alignment="0" pref="180" max="32767" attributes="0"/>
                               <Component id="lbClassificacao" alignment="0" max="32767" attributes="0"/>
                               <Component id="lbEntrada" alignment="0" max="32767" attributes="0"/>
                               <Component id="lbFermentos" alignment="0" max="32767" attributes="0"/>
@@ -229,7 +229,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="lbClassificacao" min="-2" pref="44" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="lbProcessamento" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="lbFabricacao" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lbRelatorios" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
@@ -375,7 +375,7 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbClassificacaoMouseExited"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lbProcessamento">
+                <Component class="javax.swing.JLabel" name="lbFabricacao">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Nexa Bold" size="12" style="0"/>
@@ -384,7 +384,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="PROCESSAMENTO"/>
+                    <Property name="text" type="java.lang.String" value="FABRICA&#xc7;&#xc3;O"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Cursor Padr&#xe3;o"/>
                     </Property>
@@ -399,9 +399,9 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbProcessamentoMouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbProcessamentoMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbProcessamentoMouseExited"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbFabricacaoMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbFabricacaoMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbFabricacaoMouseExited"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbRelatorios">

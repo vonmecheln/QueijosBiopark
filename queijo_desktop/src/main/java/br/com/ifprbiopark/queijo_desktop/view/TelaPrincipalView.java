@@ -45,7 +45,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         lbFermentos = new javax.swing.JLabel();
         lbEntrada = new javax.swing.JLabel();
         lbClassificacao = new javax.swing.JLabel();
-        lbProcessamento = new javax.swing.JLabel();
+        lbFabricacao = new javax.swing.JLabel();
         lbRelatorios = new javax.swing.JLabel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         pnlBgGeral = new javax.swing.JPanel();
@@ -194,23 +194,23 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
-        lbProcessamento.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
-        lbProcessamento.setForeground(new java.awt.Color(255, 255, 255));
-        lbProcessamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbProcessamento.setText("PROCESSAMENTO");
-        lbProcessamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lbProcessamento.setMaximumSize(new java.awt.Dimension(56, 15));
-        lbProcessamento.setMinimumSize(new java.awt.Dimension(56, 15));
-        lbProcessamento.setPreferredSize(new java.awt.Dimension(56, 15));
-        lbProcessamento.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbFabricacao.setFont(new java.awt.Font("Nexa Bold", 0, 12)); // NOI18N
+        lbFabricacao.setForeground(new java.awt.Color(255, 255, 255));
+        lbFabricacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbFabricacao.setText("FABRICAÇÃO");
+        lbFabricacao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbFabricacao.setMaximumSize(new java.awt.Dimension(56, 15));
+        lbFabricacao.setMinimumSize(new java.awt.Dimension(56, 15));
+        lbFabricacao.setPreferredSize(new java.awt.Dimension(56, 15));
+        lbFabricacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbProcessamentoMouseClicked(evt);
+                lbFabricacaoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbProcessamentoMouseEntered(evt);
+                lbFabricacaoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbProcessamentoMouseExited(evt);
+                lbFabricacaoMouseExited(evt);
             }
         });
 
@@ -241,13 +241,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addGroup(pnlMenuSelecionadoLayout.createSequentialGroup()
                 .addGroup(pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbProcessamento, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(lbFabricacao, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                     .addComponent(lbClassificacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbFermentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbReceitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(1100, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlMenuSelecionadoLayout.setVerticalGroup(
             pnlMenuSelecionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,7 +263,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(lbProcessamento, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbFabricacao, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
@@ -399,15 +399,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         lbPessoas.setForeground(new java.awt.Color(218, 1, 68));
     }//GEN-LAST:event_lbPessoasMouseEntered
 
-    private void lbProcessamentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbProcessamentoMouseExited
+    private void lbFabricacaoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFabricacaoMouseExited
 
-        lbProcessamento.setForeground(new java.awt.Color(255, 255, 255));
-    }//GEN-LAST:event_lbProcessamentoMouseExited
+        lbFabricacao.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_lbFabricacaoMouseExited
 
-    private void lbProcessamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbProcessamentoMouseEntered
-        lbProcessamento.setForeground(new java.awt.Color(218, 1, 68));
+    private void lbFabricacaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFabricacaoMouseEntered
+        lbFabricacao.setForeground(new java.awt.Color(218, 1, 68));
 
-    }//GEN-LAST:event_lbProcessamentoMouseEntered
+    }//GEN-LAST:event_lbFabricacaoMouseEntered
 
     private void lbClassificacaoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbClassificacaoMouseExited
 
@@ -453,13 +453,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lbClassificacaoMouseClicked
 
-    private void lbProcessamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbProcessamentoMouseClicked
-        TelaFabricacaoQueijo formProcessamento = new TelaFabricacaoQueijo();
+    private void lbFabricacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFabricacaoMouseClicked
+        TelaFabricacaoQueijoView formProcessamento = new TelaFabricacaoQueijoView();
         painelDesktop.add(formProcessamento);
         formProcessamento.setPosicao();
         formProcessamento.setVisible(true);
 
-    }//GEN-LAST:event_lbProcessamentoMouseClicked
+    }//GEN-LAST:event_lbFabricacaoMouseClicked
 
     private void lbPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPessoasMouseClicked
         TelaPessoaView formPessoa;
@@ -531,9 +531,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbClassificacao;
     private javax.swing.JLabel lbEntrada;
+    private javax.swing.JLabel lbFabricacao;
     private javax.swing.JLabel lbFermentos;
     private javax.swing.JLabel lbPessoas;
-    private javax.swing.JLabel lbProcessamento;
     private javax.swing.JLabel lbReceitas;
     private javax.swing.JLabel lbRelatorios;
     private javax.swing.JLabel lblMenssagem;
