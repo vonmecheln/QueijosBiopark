@@ -23,38 +23,18 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     }
 
     @Override
+    protected void confStantementInsert(NamedParameterStatement nps, ColetaLeite objeto) throws SQLException {
+        nps.setString("loteColeta", objeto.getLoteColeta());
+        nps.setDate("dtColeta", new java.sql.Date(objeto.getDtColeta().getTime()));
+        nps.setDouble("qtdLeite", objeto.getQtdLeite());
+        nps.setInt("produtor_id", objeto.getProdutor_idProdutor().getIdPessoa());
+        nps.setInt("funcionario_id", objeto.getPessoa_idPessoa().getIdPessoa());
+        nps.setString("situacao", objeto.getSituacao());
+    }
+
+    @Override
     public void inserir(ColetaLeite c) throws DbException {
-        try {
-
-            String sql = "INSERT INTO coletaLeite( loteColeta, dtColeta, qtdLeite, produtor_id, funcionario_id, situacao) "
-                    + "VALUES (:loteColeta, :dtColeta, :qtdLeite, :produtor_id, :funcionario_id, :situacao)";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-
-            nps.setString("loteColeta", c.getLoteColeta());
-            nps.setDate("dtColeta", new java.sql.Date(c.getDtColeta().getTime()));
-            nps.setDouble("qtdLeite", c.getQtdLeite());
-            nps.setInt("produtor_id", c.getProdutor_idProdutor().getIdPessoa());
-            nps.setInt("funcionario_id", c.getPessoa_idPessoa().getIdPessoa());
-            nps.setString("situacao", c.getSituacao());
-
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-
-            int key = 0;
-            ResultSet retorno = nps.getGeneratedKeys();
-            if (retorno != null && retorno.next()) {
-                key = retorno.getInt(1);
-            } else {
-                throw new GeneratedKeysException();
-            }
-            c.setIdColetaLeite(key);
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+        InserirDefault(c);
     }
 
     @Override
