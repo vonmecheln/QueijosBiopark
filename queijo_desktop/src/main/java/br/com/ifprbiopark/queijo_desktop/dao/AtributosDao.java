@@ -17,7 +17,7 @@ public class AtributosDao extends AbstractDao<Atributos> {
     }
 
     @Override
-    protected void confStantementInsert(NamedParameterStatement nps, Atributos objeto) throws SQLException {
+    protected void confStantement(NamedParameterStatement nps, Atributos objeto) throws SQLException {
         nps.setString("nomeAtributo", objeto.getNomeAtributo());
     }
 
@@ -33,22 +33,8 @@ public class AtributosDao extends AbstractDao<Atributos> {
 
     @Override
     public Atributos alterar(Atributos a) throws DbException {
-        try {
-            String sql = "UPDATE atributos SET nomeTipo = :nomeAtributo WHERE idTipoQueijo = :id";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("nomeAtributo", a.getNomeAtributo());
-            nps.setInt("id", a.getIdAtributo());
-
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-            return a;
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+        alterarDefault(a);
+        return a;
     }
 
     @Override

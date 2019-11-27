@@ -17,7 +17,7 @@ public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
     }
 
     @Override
-    protected void confStantementInsert(NamedParameterStatement nps, EntregaAtributo objeto) throws SQLException {
+    protected void confStantement(NamedParameterStatement nps, EntregaAtributo objeto) throws SQLException {
         nps.setString("valor", objeto.getValor());
         nps.setInt("atributo_id", objeto.getAtributo_idAtributo().getId());
         nps.setInt("coleta_id", objeto.getColetaLeite_idColetaLeite().getId());
@@ -40,7 +40,8 @@ public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
 
     @Override
     public EntregaAtributo alterar(EntregaAtributo objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+        alterarDefault(objeto);
+        return objeto;
     }
 
     @Override

@@ -21,7 +21,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
     }
 
     @Override
-    protected void confStantementInsert(NamedParameterStatement nps, Fermento objeto) throws SQLException {
+    protected void confStantement(NamedParameterStatement nps, Fermento objeto) throws SQLException {
         nps.setString("tipoFermento", objeto.getTipoFermento());
         nps.setString("marca", objeto.getMarca());
     }
@@ -46,21 +46,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
 
     @Override
     public Fermento alterar(Fermento fermento) throws DbException {
-        String sql = "update fermento set tipoFermento = :tipoFermento, marca = :marca where idFermento = :idFermento";
-
-        try {
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setInt("idFermento", fermento.getIdFermento());
-            nps.setString("tipoFermento", fermento.getTipoFermento());
-            nps.setString("marca", fermento.getMarca());
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(FermentoDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        alterarDefault(fermento);
         return fermento;
     }
 

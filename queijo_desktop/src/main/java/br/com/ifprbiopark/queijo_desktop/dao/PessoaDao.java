@@ -21,7 +21,7 @@ public class PessoaDao extends AbstractDao<Pessoa> {
     }
 
     @Override
-    protected void confStantementInsert(NamedParameterStatement nps, Pessoa objeto) throws SQLException {
+    protected void confStantement(NamedParameterStatement nps, Pessoa objeto) throws SQLException {
         nps.setString("nome", objeto.getNome());
         nps.setString("endereco", objeto.getEndereco());
         nps.setString("tipoFiscal", objeto.getTipoFiscal());
@@ -50,31 +50,8 @@ public class PessoaDao extends AbstractDao<Pessoa> {
 
     @Override
     public Pessoa alterar(Pessoa p) throws DbException {
-        try {
-
-            String sql = "UPDATE pessoa SET "
-                    + "nome = :nome, endereco = :endereco, tipoFiscal = :tipoFiscal, documento = :documento, tipoPessoa = :tipoPessoa, telefone = :telefone"
-                    + " WHERE "
-                    + "idPessoa = :id";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("nome", p.getNome());
-            nps.setString("endereco", p.getEndereco());
-            nps.setString("tipoFiscal", p.getTipoFiscal());
-            nps.setString("documento", p.getDocumento());
-            nps.setString("tipoPessoa", p.getTipoPessoa());
-            nps.setString("telefone", p.getTelefone());
-            nps.setInt("id", p.getIdPessoa());
-
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new Exception("Erro ao alterar dados.");
-            }
-
-            return p;
-        } catch (Exception ex) {
-            throw new DbException(ex.getMessage());
-        }
+        alterarDefault(p);
+        return p;
     }
 
     @Override

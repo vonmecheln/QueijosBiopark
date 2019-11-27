@@ -23,7 +23,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     }
 
     @Override
-    protected void confStantementInsert(NamedParameterStatement nps, ColetaLeite objeto) throws SQLException {
+    protected void confStantement(NamedParameterStatement nps, ColetaLeite objeto) throws SQLException {
         nps.setString("loteColeta", objeto.getLoteColeta());
         nps.setDate("dtColeta", new java.sql.Date(objeto.getDtColeta().getTime()));
         nps.setDouble("qtdLeite", objeto.getQtdLeite());
@@ -49,7 +49,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
     @Override
     public ColetaLeite alterar(ColetaLeite objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+        alterarDefault(objeto);
+        return objeto;
     }
 
     public List<ColetaLeite> listarColetas() {

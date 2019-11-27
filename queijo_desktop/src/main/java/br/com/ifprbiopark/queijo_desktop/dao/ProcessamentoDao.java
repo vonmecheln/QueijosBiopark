@@ -18,7 +18,7 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
     }
 
     @Override
-    protected void confStantementInsert(NamedParameterStatement nps, Processamento objeto) throws SQLException {
+    protected void confStantement(NamedParameterStatement nps, Processamento objeto) throws SQLException {
         nps.setString("TipoProcessamento", objeto.getTipoProcessamento());
     }
 
@@ -39,22 +39,8 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
 
     @Override
     public Processamento alterar(Processamento p) throws DbException {
-        try {
-            String sql = "UPDATE processamento SET TipoProcessamento = :TipoProcessamento WHERE idProcessamento = :id";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("TipoProcessamento", p.getTipoProcessamento());
-            nps.setInt("id", p.getIdProcesamento());
-
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-            return p;
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+        alterarDefault(p);
+        return p;
     }
 
     @Override

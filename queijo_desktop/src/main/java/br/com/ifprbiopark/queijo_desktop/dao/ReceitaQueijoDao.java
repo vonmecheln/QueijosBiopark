@@ -18,7 +18,7 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
     }
 
     @Override
-    protected void confStantementInsert(NamedParameterStatement nps, ReceitaQueijo objeto) throws SQLException {
+    protected void confStantement(NamedParameterStatement nps, ReceitaQueijo objeto) throws SQLException {
         nps.setString("nomeReceita", objeto.getNomeTipo());
     }
 
@@ -38,24 +38,9 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
     }
 
     @Override
-    public ReceitaQueijo alterar(ReceitaQueijo tq) throws DbException {
-        try {
-
-            String sql = "UPDATE receitaqueijo SET nomeReceita = :nomeReceita WHERE idReceita = :id";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setString("nomeReceita", tq.getNomeTipo());
-            nps.setInt("id", tq.getIdTipoQueijo());
-
-            int exec = nps.executeUpdate();
-            if (exec == 0) {
-                throw new NotExecuteInsertException();
-            }
-            return tq;
-
-        } catch (SQLException ex) {
-            throw new DbException(ex);
-        }
+    public ReceitaQueijo alterar(ReceitaQueijo objeto) throws DbException {
+        alterarDefault(objeto);
+        return objeto;
     }
 
     @Override

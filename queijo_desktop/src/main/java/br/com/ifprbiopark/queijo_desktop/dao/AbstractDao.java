@@ -6,6 +6,7 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.NotTableNameDefinedExcepti
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
+import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteUpdateException;
 import br.com.ifprbiopark.queijo_desktop.model.AbstractModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,7 +72,7 @@ public abstract class AbstractDao<T extends AbstractModel> {
 
         try {
             NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
-            confStantementInsert(nps, objeto);
+            confStantement(nps, objeto);
 
             int exec = nps.executeUpdate();
             if (exec == 0) {
@@ -89,6 +90,43 @@ public abstract class AbstractDao<T extends AbstractModel> {
             objeto.setId(key);
 
         } catch (SQLException ex) {
+            System.out.println(sql.toString());
+            throw new DbException(ex);
+        }
+
+    }
+
+    public void alterarDefault(T objeto) throws DbException {
+
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE ");
+        sql.append(this.tableName);
+        sql.append(" SET ");
+        //começa em 1 para não pegar o id
+        for (int i = 1; i < columnNames.size(); i++) {
+            sql.append(columnNames.get(i));
+            sql.append(" = :");
+            sql.append(columnNames.get(i));
+            if (i < columnNames.size() - 1) {
+                sql.append(", ");
+            }
+        }
+        sql.append(" WHERE ");
+        sql.append(this.columnNames.get(0));
+        sql.append(" = :id");
+
+        try {
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
+            confStantement(nps, objeto);
+            nps.setInt("id", objeto.getId());
+
+            int exec = nps.executeUpdate();
+            if (exec == 0) {
+                throw new NotExecuteUpdateException();
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(sql.toString());
             throw new DbException(ex);
         }
 
@@ -96,9 +134,8 @@ public abstract class AbstractDao<T extends AbstractModel> {
 
     public boolean excluirDefault(T objeto) throws DbException {
 
+        StringBuilder sql = new StringBuilder();
         try {
-
-            StringBuilder sql = new StringBuilder();
 
             sql.append("DELETE ");
             sql.append(this.tableName);
@@ -117,12 +154,13 @@ public abstract class AbstractDao<T extends AbstractModel> {
             }
 
         } catch (SQLException ex) {
+            System.out.println(sql.toString());
             throw new DbException(ex);
         }
 
     }
 
-    protected void confStantementInsert(NamedParameterStatement nps, T objeto) throws SQLException {
+    protected void confStantement(NamedParameterStatement nps, T objeto) throws SQLException {
         // TODO: ao converter todas as DAOs para insertDefaul tornar este método abstrato
     }
 }
