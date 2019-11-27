@@ -1,15 +1,11 @@
 package br.com.ifprbiopark.queijo_desktop.dao;
 
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
-import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
-import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class FermentoDao extends AbstractDao<Fermento> {
 
