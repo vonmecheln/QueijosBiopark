@@ -2,7 +2,7 @@ package br.com.ifprbiopark.queijo_desktop.model;
 
 import java.util.Date;
 
-public class FabricacaoQueijo {
+public class FabricacaoQueijo extends AbstractModel {
 
     private Integer idFabricacaoQueijo;
 
@@ -432,6 +432,16 @@ public class FabricacaoQueijo {
 
     public void setFabricacaoQueijocol(String fabricacaoQueijocol) {
         this.fabricacaoQueijocol = fabricacaoQueijocol;
+    }
+
+    @Override
+    public int getId() {
+        return getIdFabricacaoQueijo();
+    }
+
+    @Override
+    public void setId(int id) {
+        setIdFabricacaoQueijo(id);
     }
 
 }

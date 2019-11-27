@@ -2,7 +2,7 @@ package br.com.ifprbiopark.queijo_desktop.model;
 
 import java.util.Date;
 
-public class EntregaLeite {
+public class EntregaLeite extends AbstractModel {
 
     private int id;
     private Date data;

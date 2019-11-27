@@ -2,7 +2,7 @@ package br.com.ifprbiopark.queijo_desktop.model;
 
 import java.util.Date;
 
-public class ColetaLeite {
+public class ColetaLeite extends AbstractModel {
 
     private Integer idColetaLeite;
     private String loteColeta;
@@ -66,6 +66,16 @@ public class ColetaLeite {
 
     public void setQtdLeite(double qtdLeite) {
         this.qtdLeite = qtdLeite;
+    }
+
+    @Override
+    public int getId() {
+        return getIdColetaLeite();
+    }
+
+    @Override
+    public void setId(int id) {
+        setIdColetaLeite(id);
     }
 
 }

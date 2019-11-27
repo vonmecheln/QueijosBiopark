@@ -1,6 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.model;
 
-public class Pessoa {
+public class Pessoa extends AbstractModel {
 
     private Integer idPessoa;
     private String nome;
@@ -68,6 +68,16 @@ public class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    @Override
+    public int getId() {
+        return getIdPessoa();
+    }
+
+    @Override
+    public void setId(int id) {
+        setIdPessoa(id);
     }
 
 }

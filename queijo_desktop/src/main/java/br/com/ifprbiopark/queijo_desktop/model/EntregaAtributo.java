@@ -1,6 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.model;
 
-public class EntregaAtributo {
+public class EntregaAtributo extends AbstractModel {
 
     private Integer idEntregaAtributo;
     private String valor;
@@ -37,6 +37,16 @@ public class EntregaAtributo {
 
     public void setColetaLeite_idColetaLeite(ColetaLeite ColetaLeite_idColetaLeite) {
         this.coletaLeite_idColetaLeite = ColetaLeite_idColetaLeite;
+    }
+
+    @Override
+    public int getId() {
+        return getIdEntregaAtributo();
+    }
+
+    @Override
+    public void setId(int id) {
+        setIdEntregaAtributo(id);
     }
 
 }

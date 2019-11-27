@@ -3,7 +3,10 @@ package br.com.ifprbiopark.queijo_desktop.dao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotColumnNamesDefinedException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotTableNameDefinedException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
+import br.com.ifprbiopark.queijo_desktop.model.AbstractModel;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,7 +14,7 @@ import java.util.List;
  *
  * @param <T>
  */
-public abstract class AbstractDao<T> {
+public abstract class AbstractDao<T extends AbstractModel> {
 
     private final String tableName;
     private final List<String> columnNames;
@@ -20,15 +23,14 @@ public abstract class AbstractDao<T> {
     public AbstractDao(String tableName, List<String> columnNames) throws DbException {
         this.tableName = tableName;
         this.columnNames = columnNames;
-        
+
         if (tableName == null || tableName.isEmpty()) {
             throw new NotTableNameDefinedException();
         }
-        
+
         if (columnNames == null || columnNames.isEmpty()) {
             throw new NotColumnNamesDefinedException();
         }
-
 
         this.con = Conexao.getInstance();
     }
@@ -43,23 +45,50 @@ public abstract class AbstractDao<T> {
 
     public abstract T consultar(int id) throws DbException;
 
-    protected void InserirDefault(T objeto) throws DbException, SQLException {
+    public void InserirDefault(T objeto) throws DbException {
 
         StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO ");
         sql.append(this.tableName);
         sql.append(" ( ");
-        sql.append("nomeAtributo");
+        //começa em 1 para não pegar o id
+        for (int i = 1; i < columnNames.size(); i++) {
+            sql.append(columnNames.get(i));
+            if (i < columnNames.size() - 1) {
+                sql.append(", ");
+            }
+        }
         sql.append(" ) VALUES( ");
-        sql.append(":nomeAtributo");
+        for (int i = 1; i < columnNames.size(); i++) {
+            sql.append(":");
+            sql.append(columnNames.get(i));
+            if (i < columnNames.size() - 1) {
+                sql.append(", ");
+            }
+        }
         sql.append(" )");
 
-        NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
-        confStantementInsert(nps, objeto);
+        try {
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
+            confStantementInsert(nps, objeto);
 
-        int exec = nps.executeUpdate();
-        if (exec == 0) {
-            throw new NotExecuteInsertException();
+            int exec = nps.executeUpdate();
+            if (exec == 0) {
+                throw new NotExecuteInsertException();
+            }
+
+            int key = 0;
+            ResultSet retorno = nps.getGeneratedKeys();
+            if (retorno != null && retorno.next()) {
+                key = retorno.getInt(1);
+            } else {
+                throw new GeneratedKeysException();
+            }
+
+            objeto.setId(key);
+
+        } catch (SQLException ex) {
+            throw new DbException(ex);
         }
 
     }

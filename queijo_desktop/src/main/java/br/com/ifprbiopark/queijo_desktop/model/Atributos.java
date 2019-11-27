@@ -1,6 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.model;
 
-public class Atributos {
+public class Atributos extends AbstractModel {
 
     private Integer idAtributo;
     private String nomeAtributo;
@@ -19,6 +19,16 @@ public class Atributos {
 
     public void setNomeAtributo(String nomeAtributo) {
         this.nomeAtributo = nomeAtributo;
+    }
+
+    @Override
+    public int getId() {
+        return getIdAtributo();
+    }
+
+    @Override
+    public void setId(int id) {
+        setIdAtributo(id);
     }
 
 }

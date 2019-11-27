@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ProcessamentoDao extends AbstractDao<Processamento> {
 
-    public ProcessamentoDao() throws DbException {        
-       super("processamento", new ArrayList<>(List.of(
+    public ProcessamentoDao() throws DbException {
+        super("processamento", new ArrayList<>(List.of(
                 "idProcessamento",
                 "TipoProcessamento")));
     }

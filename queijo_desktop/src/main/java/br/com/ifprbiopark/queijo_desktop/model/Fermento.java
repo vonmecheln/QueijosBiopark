@@ -1,6 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.model;
 
-public class Fermento {
+public class Fermento extends AbstractModel {
 
     private Integer idFermento;
     private String tipoFermento;
@@ -28,6 +28,16 @@ public class Fermento {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    @Override
+    public int getId() {
+        return getIdFermento();
+    }
+
+    @Override
+    public void setId(int id) {
+        setIdFermento(id);
     }
 
 }

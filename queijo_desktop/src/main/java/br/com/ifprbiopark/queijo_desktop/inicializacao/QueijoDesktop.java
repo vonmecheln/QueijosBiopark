@@ -33,5 +33,6 @@ public class QueijoDesktop {
             //telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
             telaPrincipal.setVisible(true);
         });
+
     }
 }
