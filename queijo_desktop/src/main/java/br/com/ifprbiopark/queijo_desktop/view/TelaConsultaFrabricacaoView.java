@@ -1,12 +1,39 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
+import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
+import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableConsultaFabricacao;
+import java.awt.Color;
+import java.util.List;
+
 public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
+    
+    private ControleReceitaQueijo rqControl;
+    private List<ReceitaQueijo> listaReceitaQueijo;
+    private TableConsultaFabricacao tableModel = new TableConsultaFabricacao();
+    private ControleFabricacaoQueijo cp;
 
     /**
      * Creates new form TelaConsultaFrabricacaoView
      */
     public TelaConsultaFrabricacaoView() {
         initComponents();
+        
+        tblFrabricacoes.setModel(tableModel);
+        
+        try {
+            listaReceitaQueijo = rqControl.listaReceitaQueijo();
+            //jcTipoQueijo.removeAll();
+            //cmbTipoQueijo.addItem("");
+            for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {
+                cmbTipoQueijo.addItem(receitaQueijo.getNomeTipo());
+            }
+
+        } catch (Exception ex) {
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
+        }
     }
 
     /**
@@ -20,18 +47,19 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
 
         btnNovo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblFrabricacoes = new javax.swing.JTable();
         btnFiltrar = new javax.swing.JButton();
         cmbTipoQueijo = new javax.swing.JComboBox<>();
         btnAbrir = new javax.swing.JButton();
         chkInativo = new javax.swing.JCheckBox();
 
         setClosable(true);
-        setTitle("Consultar processamentos");
+        setResizable(true);
+        setTitle("Consultar fabricações");
 
         btnNovo.setText("Novo");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblFrabricacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -42,11 +70,15 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblFrabricacoes);
 
         btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
 
-        cmbTipoQueijo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbTipoQueijo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de queijo"));
 
         btnAbrir.setText("Abrir");
@@ -94,6 +126,10 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        consultar();
+    }//GEN-LAST:event_btnFiltrarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnFiltrar;
@@ -101,6 +137,17 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chkInativo;
     private javax.swing.JComboBox<String> cmbTipoQueijo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblFrabricacoes;
     // End of variables declaration//GEN-END:variables
+
+    private void consultar() {
+        try {
+            int id = listaReceitaQueijo.get(cmbTipoQueijo.getSelectedIndex()).getId();        
+            boolean inativo = Boolean.valueOf(chkInativo.getText());
+        
+            tableModel.consultar(id, inativo);
+        } catch (Exception ex) {
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
+        }       
+    }
 }
