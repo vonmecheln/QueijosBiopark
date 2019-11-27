@@ -40,12 +40,12 @@ public class EntregaAtributo extends AbstractModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return getIdEntregaAtributo();
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(Integer id) {
         setIdEntregaAtributo(id);
     }
 

@@ -22,12 +22,12 @@ public class ReceitaQueijo extends AbstractModel {
     }
 
     @Override
-    public int getId() {
-        return getIdTipoQueijo();
+    public Integer getId() {
+        return getIdTipoQueijo() != null ? getIdTipoQueijo() : 0;
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(Integer id) {
         setIdTipoQueijo(id);
     }
 

@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+
 /**
  *
  * @param <T>
@@ -70,10 +71,10 @@ public abstract class AbstractDao<T extends AbstractModel> {
         }
         sql.append(" )");
 
-        try {
+        try {            
             NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
             confStantement(nps, objeto);
-
+            
             int exec = nps.executeUpdate();
             if (exec == 0) {
                 throw new NotExecuteInsertException();
@@ -137,7 +138,7 @@ public abstract class AbstractDao<T extends AbstractModel> {
         StringBuilder sql = new StringBuilder();
         try {
 
-            sql.append("DELETE ");
+            sql.append("DELETE FROM ");
             sql.append(this.tableName);
             sql.append(" WHERE ");
             sql.append(this.columnNames.get(0));
@@ -146,11 +147,11 @@ public abstract class AbstractDao<T extends AbstractModel> {
             NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
             nps.setInt("id", objeto.getId());
 
-            boolean exec = nps.execute();
-            if (!exec) {
+            int exec = nps.executeUpdate();
+            if (exec == 0) {
                 throw new NotExecuteDeleteException();
             } else {
-                return exec;
+                return true;
             }
 
         } catch (SQLException ex) {
@@ -162,5 +163,20 @@ public abstract class AbstractDao<T extends AbstractModel> {
 
     protected void confStantement(NamedParameterStatement nps, T objeto) throws SQLException {
         // TODO: ao converter todas as DAOs para insertDefaul tornar este método abstrato
+    }
+
+    StringBuilder getConsultaBasica() {
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT ");
+        for (int i = 0; i < columnNames.size(); i++) {
+            sql.append(columnNames.get(i));
+            if (i < columnNames.size() - 1) {
+                sql.append(", ");
+            }
+        }
+        sql.append(" FROM ");
+        sql.append(this.tableName);
+        sql.append(" ");
+        return sql;
     }
 }

@@ -22,12 +22,12 @@ public class Processamento extends AbstractModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return getIdProcesamento();
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(Integer id) {
         setIdProcesamento(id);
     }
 

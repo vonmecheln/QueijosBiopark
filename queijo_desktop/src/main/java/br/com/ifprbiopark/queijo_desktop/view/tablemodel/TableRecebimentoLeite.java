@@ -13,7 +13,7 @@ public class TableRecebimentoLeite extends AbstractTableModel {
 
     ColetaLeiteDao coleta;
 
-    List<ColetaLeite> listaEntregas = coleta.listarColetas();
+    List<ColetaLeite> listaEntregas;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -22,6 +22,7 @@ public class TableRecebimentoLeite extends AbstractTableModel {
     public TableRecebimentoLeite() {
         try {
             this.coleta = new ColetaLeiteDao();
+            this.listaEntregas = coleta.listarColetas();
         } catch (DbException ex) {
             Logger.getLogger(TableRecebimentoLeite.class.getName()).log(Level.SEVERE, null, ex);
         }

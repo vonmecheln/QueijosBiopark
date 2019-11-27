@@ -12,13 +12,14 @@ public class TableFermento extends AbstractTableModel {
 
     FermentoDao tipo;
 
-    List<Fermento> fermentos = tipo.listar();
+    List<Fermento> fermentos;
 
     private String[] nomeColunas = {"Código", "Tipo", "Marca"};
 
     public TableFermento() {
         try {
             this.tipo = new FermentoDao();
+            this.fermentos = tipo.listar();
         } catch (DbException ex) {
             Logger.getLogger(TableFermento.class.getName()).log(Level.SEVERE, null, ex);
         }

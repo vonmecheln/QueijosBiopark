@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class EntregaLeite extends AbstractModel {
 
-    private int id;
+    private Integer idEntregaLeite;
     private Date data;
     private double litros;
     private double gordura;
@@ -14,13 +14,14 @@ public class EntregaLeite extends AbstractModel {
     private String situacao;
     private Pessoa fornecedor;
 
-    public int getId() {
-        return id;
+    public Integer getIdEntregaLeite() {
+        return idEntregaLeite;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEntregaLeite(Integer idEntregaLeite) {
+        this.idEntregaLeite = idEntregaLeite;
     }
+    
 
     public Date getData() {
         return data;
@@ -84,5 +85,15 @@ public class EntregaLeite extends AbstractModel {
 
     public void setFornecedor(Pessoa fornecedor) {
         this.fornecedor = fornecedor;
+    }
+
+    @Override
+    public Integer getId() {
+        return getIdEntregaLeite();
+    }
+
+    @Override
+    public void setId(Integer id) {
+        setIdEntregaLeite(id);
     }
 }

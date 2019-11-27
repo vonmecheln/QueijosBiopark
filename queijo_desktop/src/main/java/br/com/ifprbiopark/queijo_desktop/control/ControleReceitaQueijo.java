@@ -1,8 +1,16 @@
 package br.com.ifprbiopark.queijo_desktop.control;
 
+import static br.com.ifprbiopark.queijo_desktop.control.ControlePessoa.isValidCNPJ;
+import static br.com.ifprbiopark.queijo_desktop.control.ControlePessoa.isValidCPF;
 import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
+import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
+import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
+import br.com.ifprbiopark.queijo_desktop.exception.RequiredFieldException;
+import br.com.ifprbiopark.queijo_desktop.exception.UniqueRegisterException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
+import com.google.common.base.Strings;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,18 +27,28 @@ public class ControleReceitaQueijo {
         }
     }
 
-    public void salvar(ReceitaQueijo c) throws DbException {
-        dao.inserir(c);
+    public void salvar(ReceitaQueijo r) throws ReceitaQueijoException {
+        if (Strings.isNullOrEmpty(r.getNomeTipo())) {
+            throw new ReceitaQueijoException(new RequiredFieldException("Nome"));
+        }
+               
+        try {
+            if (r.getId() == 0) {
+                dao.inserir(r);
+            } else {
+                dao.alterar(r);
+            }
+
+        } catch (DbException ex) {
+            throw new ReceitaQueijoException(ex);
+        }
     }
 
     public void excluir(ReceitaQueijo c) throws DbException {
         dao.excluir(c);
     }
 
-    public void alterar(ReceitaQueijo c) throws DbException {
-        dao.alterar(c);
-    }
-
+    
     public List<ReceitaQueijo> listaReceitaQueijo() throws DbException {
         return dao.consultar();
     }

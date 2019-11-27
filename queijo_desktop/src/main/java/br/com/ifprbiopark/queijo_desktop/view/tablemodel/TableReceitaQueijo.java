@@ -12,13 +12,14 @@ public class TableReceitaQueijo extends AbstractTableModel {
 
     ReceitaQueijoDao tipo;
 
-    List<ReceitaQueijo> tiposQueijo = tipo.listarColetas();
+    List<ReceitaQueijo> tiposQueijo;
 
     private String[] nomeColunas = {"Código", "Descrição"};
 
     public TableReceitaQueijo() {
         try {
             this.tipo = new ReceitaQueijoDao();
+            this.tiposQueijo = tipo.listarColetas();
         } catch (DbException ex) {
             Logger.getLogger(TableReceitaQueijo.class.getName()).log(Level.SEVERE, null, ex);
         }

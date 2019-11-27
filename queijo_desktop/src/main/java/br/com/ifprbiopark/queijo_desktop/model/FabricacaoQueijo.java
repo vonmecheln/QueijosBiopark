@@ -435,12 +435,12 @@ public class FabricacaoQueijo extends AbstractModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return getIdFabricacaoQueijo();
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(Integer id) {
         setIdFabricacaoQueijo(id);
     }
 

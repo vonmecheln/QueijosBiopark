@@ -22,12 +22,12 @@ public class Atributos extends AbstractModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return getIdAtributo();
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(Integer id) {
         setIdAtributo(id);
     }
 

@@ -3,44 +3,102 @@ package br.com.ifprbiopark.queijo_desktop.control;
 import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
 import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
 import br.com.ifprbiopark.queijo_desktop.exception.RequiredFieldException;
+import br.com.ifprbiopark.queijo_desktop.exception.UniqueRegisterException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import com.google.common.base.Strings;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControlePessoa {
+    
+    PessoaDao dao;
 
-    private static final int[] pesoCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
-    private static final int[] pesoCNPJ = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+    private static final int[] PESO_CPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
+    private static final int[] PESO_CNPJ = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
 
-    public void salvar(Pessoa p) throws PessoaException, Exception {
-        if (p.getTipoFiscal() == "0") {
+    public ControlePessoa() {
+        try {
+            this.dao = new PessoaDao();
+        } catch (DbException ex) {
+            Logger.getLogger(ControlePessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private enum TipoPessoa {
+        FUNC("Funcionário"), 
+        FORN("Fornecedor");
+        private String nomenclatura;
+        private TipoPessoa(String nome) {
+            this.nomenclatura = nome;
+        }
+       
+        @Override
+        public String toString(){
+            return nomenclatura;
+        }
+        
+        public static String toWord(){
+            
+            String t = "";
+            TipoPessoa[] tipos = TipoPessoa.values(); 
+            for (TipoPessoa i : tipos) {
+                t += i.nomenclatura;
+                t += "/";
+            }
+            return t.substring(0, t.length()-1);
+        }
+    } 
+
+    public void salvar(Pessoa p) throws PessoaException {
+        
+
+        if (Strings.isNullOrEmpty(p.getNome())) {
+            throw new PessoaException(new RequiredFieldException("Nome"));
+        }
+        
+        if (Strings.isNullOrEmpty(p.getTipoFiscal())) {
+            throw new PessoaException(new RequiredFieldException("Tipo Fiscal(CPF/CNPJ)"));
+        }
+        
+        if (Strings.isNullOrEmpty(p.getDocumento())) {
+            throw new PessoaException(new RequiredFieldException("Documento"));
+        }
+        
+        if (Strings.isNullOrEmpty(p.getTipoPessoa())) {
+            throw new PessoaException(new RequiredFieldException("Tipo de Pessoa("+TipoPessoa.toWord()+")"));
+        }
+        
+        if (Strings.isNullOrEmpty(p.getEndereco())) {
+            p.setEndereco("");
+            //throw new PessoaException(new RequiredFieldException("Endereço"));
+        }
+
+        if ("0".equals(p.getTipoFiscal())) {
             if (!isValidCPF(p.getDocumento().replace(".", "").replace("-", ""))) {
-                throw new Exception("CPF não válido.");
+                throw new PessoaException("CPF não válido.");
             }
-        } else if (p.getTipoFiscal() == "1") {
+        } else if ("1".equals(p.getTipoFiscal())) {
             if (!isValidCNPJ(p.getDocumento().replace(".", "").replace("-", "").replace("/", ""))) {
-                throw new Exception("CNPJ não válido.");
+                throw new PessoaException("CNPJ não válido.");
             }
         }
-
-        if (p.getNome().trim().isEmpty()) {
-            throw new PessoaException(new RequiredFieldException("nome"));
-        }
-
-        PessoaDao dao = new PessoaDao();
-
+        
         try {
 
             if (p.getIdPessoa() == 0) {
-                // TODO: #466                
+                Pessoa consulta = dao.consultarPorDocumento(p.getDocumento());
+                if(consulta != null){
+                    throw new PessoaException(new UniqueRegisterException(p.getDocumento()));
+                }
                 dao.inserir(p);
             } else {
                 dao.alterar(p);
             }
 
-        } catch (Exception ex) {
+        } catch (PessoaException | DbException ex) {
             throw new PessoaException(ex);
         }
 
@@ -70,8 +128,8 @@ public class ControlePessoa {
             return false;
         }
 
-        Integer digito1 = calcularDigito(cpf.substring(0, 9), pesoCPF);
-        Integer digito2 = calcularDigito(cpf.substring(0, 9) + digito1, pesoCPF);
+        Integer digito1 = calcularDigito(cpf.substring(0, 9), PESO_CPF);
+        Integer digito2 = calcularDigito(cpf.substring(0, 9) + digito1, PESO_CPF);
         return cpf.equals(cpf.substring(0, 9) + digito1.toString() + digito2.toString());
     }
 
@@ -80,8 +138,8 @@ public class ControlePessoa {
             return false;
         }
 
-        Integer digito1 = calcularDigito(cnpj.substring(0, 12), pesoCNPJ);
-        Integer digito2 = calcularDigito(cnpj.substring(0, 12) + digito1, pesoCNPJ);
+        Integer digito1 = calcularDigito(cnpj.substring(0, 12), PESO_CNPJ);
+        Integer digito2 = calcularDigito(cnpj.substring(0, 12) + digito1, PESO_CNPJ);
         return cnpj.equals(cnpj.substring(0, 12) + digito1.toString() + digito2.toString());
     }
 

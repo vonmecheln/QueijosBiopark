@@ -71,12 +71,12 @@ public class Pessoa extends AbstractModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return getIdPessoa();
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(Integer id) {
         setIdPessoa(id);
     }
 

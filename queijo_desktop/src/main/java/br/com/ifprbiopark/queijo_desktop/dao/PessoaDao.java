@@ -231,4 +231,31 @@ public class PessoaDao extends AbstractDao<Pessoa> {
         }
     }
 
+    public Pessoa consultarPorDocumento(String documento) throws DbException {
+        try {
+
+            StringBuilder sql = super.getConsultaBasica();
+            sql.append(" WHERE documento = :doc");
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
+
+            nps.setString("doc", documento);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Pessoa pessoa = new Pessoa();
+                pessoa.setIdPessoa(consulta.getInt("idPessoa"));
+                pessoa.setNome(consulta.getString("nome"));
+                pessoa.setEndereco(consulta.getString("endereco"));
+                pessoa.setTipoFiscal(consulta.getString("tipoFiscal"));
+                pessoa.setDocumento(consulta.getString("documento"));
+                pessoa.setTipoPessoa(consulta.getString("tipoPessoa"));
+                pessoa.setTelefone(consulta.getString("telefone"));
+                return pessoa;
+            }
+            return null;
+        } catch (SQLException ex) {
+            throw new DbException(ex);
+        }
+    }
+
 }

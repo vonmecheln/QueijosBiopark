@@ -1,6 +1,7 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableReceitaQueijo;
@@ -131,7 +132,7 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
         ControleReceitaQueijo controleQueijo = new ControleReceitaQueijo();
         try {
             controleQueijo.salvar(item);
-        } catch (DbException ex) {
+        } catch (ReceitaQueijoException ex) {
             Logger.getLogger(TelaReceitaQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
