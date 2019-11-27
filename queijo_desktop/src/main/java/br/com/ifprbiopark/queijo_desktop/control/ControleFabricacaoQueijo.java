@@ -48,4 +48,8 @@ public class ControleFabricacaoQueijo {
         }
     }
 
+    public FabricacaoQueijo consultar(int parseInt) {
+        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

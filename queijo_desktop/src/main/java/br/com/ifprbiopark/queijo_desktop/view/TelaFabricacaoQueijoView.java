@@ -42,6 +42,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     ControlePessoa cPessoa;
     List<Pessoa> listaFuncionarios;
     FabricacaoQueijo fq = new FabricacaoQueijo();
+    ControleFabricacaoQueijo cfq = new ControleFabricacaoQueijo();
 
     public TelaFabricacaoQueijoView() {
         initComponents();
@@ -88,7 +89,11 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         } catch (DbException ex) {
             Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+    }
+    
+    public void setID(int id){
+        txtID.setText(String.valueOf(id));
+        consultar();
     }
 
     public void setPosicao() {
@@ -992,5 +997,9 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             return null;
         }
         return Double.parseDouble(value);
+    }
+
+    private void consultar() {
+        fq = cfq.consultar(Integer.parseInt(txtID.getText()));
     }
 }
