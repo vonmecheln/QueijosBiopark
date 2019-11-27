@@ -5,12 +5,13 @@ import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
     public ColetaLeiteDao() throws DbException {
-        super("coletaleite", new ArrayList<>(List.of(
+        super("coletaleite", new ArrayList<>(Arrays.asList(
                 "idColetaLeite",
                 "loteColeta",
                 "dtColeta",

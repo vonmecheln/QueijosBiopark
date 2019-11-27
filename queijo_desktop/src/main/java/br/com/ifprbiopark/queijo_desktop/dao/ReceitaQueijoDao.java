@@ -7,12 +7,13 @@ import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
     public ReceitaQueijoDao() throws DbException {
-        super("receitaqueijo", new ArrayList<>(List.of(
+        super("receitaqueijo", new ArrayList<>(Arrays.asList(
                 "idReceita",
                 "nomeReceita")));
     }

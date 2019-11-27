@@ -5,12 +5,13 @@ import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FermentoDao extends AbstractDao<Fermento> {
 
     public FermentoDao() throws DbException {
-        super("fermento", new ArrayList<>(List.of(
+        super("fermento", new ArrayList<>(Arrays.asList(
                 "idFermento",
                 "tipoFermento",
                 "marca")));

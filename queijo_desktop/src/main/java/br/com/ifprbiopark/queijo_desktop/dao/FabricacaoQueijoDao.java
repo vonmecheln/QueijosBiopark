@@ -11,12 +11,13 @@ import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
 
     public FabricacaoQueijoDao() throws DbException {
-        super("fabricacaoqueijo", new ArrayList<>(List.of(
+        super("fabricacaoqueijo", new ArrayList<>(Arrays.asList(
                 "idFabricacaoQueijo")));
     }
 

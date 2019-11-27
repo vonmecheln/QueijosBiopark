@@ -4,12 +4,13 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.EntregaAtributo;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
 
     public EntregaAtributoDao() throws DbException {
-        super("entradaatributo", new ArrayList<>(List.of(
+        super("entradaatributo", new ArrayList<>(Arrays.asList(
                 "idEntradaAtributo",
                 "valor",
                 "atributo_id",

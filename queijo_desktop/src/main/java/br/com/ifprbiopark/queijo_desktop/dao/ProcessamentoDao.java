@@ -5,12 +5,13 @@ import br.com.ifprbiopark.queijo_desktop.model.Processamento;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ProcessamentoDao extends AbstractDao<Processamento> {
 
     public ProcessamentoDao() throws DbException {
-        super("processamento", new ArrayList<>(List.of(
+        super("processamento", new ArrayList<>(Arrays.asList(
                 "idProcessamento",
                 "TipoProcessamento")));
     }

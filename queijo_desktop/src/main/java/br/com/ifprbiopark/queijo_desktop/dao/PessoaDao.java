@@ -5,12 +5,13 @@ import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PessoaDao extends AbstractDao<Pessoa> {
 
     public PessoaDao() throws DbException {
-        super("pessoa", new ArrayList<>(List.of(
+        super("pessoa", new ArrayList<>(Arrays.asList(
                 "idPessoa",
                 "nome",
                 "endereco",

@@ -5,12 +5,13 @@ import br.com.ifprbiopark.queijo_desktop.model.Atributos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AtributosDao extends AbstractDao<Atributos> {
 
     public AtributosDao() throws DbException {
-        super("atributos", new ArrayList<>(List.of(
+        super("atributos",new ArrayList<String>(Arrays.asList(
                 "idAtributo",
                 "nomeAtributo")));
     }
