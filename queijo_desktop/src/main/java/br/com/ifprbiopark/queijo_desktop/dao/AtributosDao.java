@@ -22,7 +22,7 @@ public class AtributosDao extends AbstractDao<Atributos> {
 
     @Override
     public void inserir(Atributos a) throws DbException {
-        InserirDefault(a);
+        inserirDefault(a);
     }
 
     @Override

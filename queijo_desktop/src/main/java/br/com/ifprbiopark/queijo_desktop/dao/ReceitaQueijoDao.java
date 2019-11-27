@@ -24,7 +24,7 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
     @Override
     public void inserir(ReceitaQueijo objeto) throws DbException {
-        InserirDefault(objeto);
+        inserirDefault(objeto);
     }
 
     @Override

@@ -32,7 +32,7 @@ public class PessoaDao extends AbstractDao<Pessoa> {
 
     @Override
     public void inserir(Pessoa p) throws DbException {
-        InserirDefault(p);
+        inserirDefault(p);
     }
 
     @Override

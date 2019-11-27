@@ -25,7 +25,7 @@ public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
 
     @Override
     public void inserir(EntregaAtributo objeto) throws DbException {
-        InserirDefault(objeto);
+        inserirDefault(objeto);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class ProcessamentoDao extends AbstractDao<Processamento> {
 
     @Override
     public void inserir(Processamento p) throws DbException {
-        InserirDefault(p);
+        inserirDefault(p);
     }
 
     @Override

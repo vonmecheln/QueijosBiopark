@@ -47,7 +47,7 @@ public abstract class AbstractDao<T extends AbstractModel> {
 
     public abstract T consultar(int id) throws DbException;
 
-    public void InserirDefault(T objeto) throws DbException {
+    public void inserirDefault(T objeto) throws DbException {
 
         StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO ");

@@ -24,7 +24,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
 
     @Override
     public void inserir(Fermento fermento) throws DbException {
-        InserirDefault(fermento);
+        inserirDefault(fermento);
     }
 
     @Override

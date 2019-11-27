@@ -32,7 +32,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 
     @Override
     public void inserir(ColetaLeite c) throws DbException {
-        InserirDefault(c);
+        inserirDefault(c);
     }
 
     @Override
