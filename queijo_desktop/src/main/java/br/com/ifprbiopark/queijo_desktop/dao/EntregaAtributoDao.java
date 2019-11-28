@@ -19,17 +19,17 @@ public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
     @Override
     protected void confStantement(NamedParameterStatement nps, EntregaAtributo objeto) throws SQLException {
         nps.setString("valor", objeto.getValor());
-        
-        nps.setInt("atributo_id", 
-                (objeto.getAtributo_idAtributo() != null && 
-                 objeto.getAtributo_idAtributo().getId() != null) ? 
-                        objeto.getAtributo_idAtributo().getId() : 0);
-                
-        nps.setInt("coleta_id", 
-                (objeto.getColetaLeite_idColetaLeite() != null && 
-                 objeto.getColetaLeite_idColetaLeite().getId() != null) ? 
-                        objeto.getColetaLeite_idColetaLeite().getId() : 0);
-                
+
+        nps.setInt("atributo_id",
+                (objeto.getAtributo_idAtributo() != null
+                && objeto.getAtributo_idAtributo().getId() != null)
+                ? objeto.getAtributo_idAtributo().getId() : 0);
+
+        nps.setInt("coleta_id",
+                (objeto.getColetaLeite_idColetaLeite() != null
+                && objeto.getColetaLeite_idColetaLeite().getId() != null)
+                ? objeto.getColetaLeite_idColetaLeite().getId() : 0);
+
     }
 
     @Override

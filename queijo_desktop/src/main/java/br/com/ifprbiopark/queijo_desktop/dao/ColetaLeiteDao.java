@@ -26,17 +26,17 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
         nps.setString("loteColeta", objeto.getLoteColeta());
         nps.setDate("dtColeta", objeto.getDtColeta() != null ? new java.sql.Date(objeto.getDtColeta().getTime()) : null);
         nps.setDouble("qtdLeite", objeto.getQtdLeite() != null ? objeto.getQtdLeite() : 0);
-        
-        nps.setInt("produtor_id", 
-                (objeto.getProdutor_idPessoa() != null && 
-                 objeto.getProdutor_idPessoa().getId() != null) ? 
-                        objeto.getProdutor_idPessoa().getId() : 0);
-        
-        nps.setInt("funcionario_id", 
-                (objeto.getFuncionario_idPessoa() != null && 
-                 objeto.getFuncionario_idPessoa().getId() != null) ? 
-                        objeto.getFuncionario_idPessoa().getId() : 0);
-        
+
+        nps.setInt("produtor_id",
+                (objeto.getProdutor_idPessoa() != null
+                && objeto.getProdutor_idPessoa().getId() != null)
+                ? objeto.getProdutor_idPessoa().getId() : 0);
+
+        nps.setInt("funcionario_id",
+                (objeto.getFuncionario_idPessoa() != null
+                && objeto.getFuncionario_idPessoa().getId() != null)
+                ? objeto.getFuncionario_idPessoa().getId() : 0);
+
         nps.setString("situacao", objeto.getSituacao());
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 public class AtributosDao extends AbstractDao<Atributos> {
 
     public AtributosDao() throws DbException {
-        super("atributos",new ArrayList<String>(Arrays.asList(
+        super("atributos", new ArrayList<String>(Arrays.asList(
                 "idAtributo",
                 "nomeAtributo")));
     }

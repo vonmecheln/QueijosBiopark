@@ -10,8 +10,8 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteUpdateException;
 import br.com.ifprbiopark.queijo_desktop.model.AbstractModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 import java.util.List;
-
 
 /**
  *
@@ -71,10 +71,10 @@ public abstract class AbstractDao<T extends AbstractModel> {
         }
         sql.append(" )");
 
-        try {            
+        try {
             NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
             confStantement(nps, objeto);
-            
+
             int exec = nps.executeUpdate();
             if (exec == 0) {
                 throw new NotExecuteInsertException();
@@ -161,9 +161,7 @@ public abstract class AbstractDao<T extends AbstractModel> {
 
     }
 
-    protected void confStantement(NamedParameterStatement nps, T objeto) throws SQLException {
-        // TODO: ao converter todas as DAOs para insertDefaul tornar este método abstrato
-    }
+    protected abstract void confStantement(NamedParameterStatement nps, T objeto) throws SQLException;
 
     StringBuilder getConsultaBasica() {
         StringBuilder sql = new StringBuilder();
@@ -179,4 +177,27 @@ public abstract class AbstractDao<T extends AbstractModel> {
         sql.append(" ");
         return sql;
     }
+
+    private int nullint;
+
+    protected int nullInt(Integer value) {
+        return value != null ? value.intValue() : nullint;
+    }
+
+    private double nulldouble;
+
+    protected double nullDouble(Double value) {
+        return value != null ? value.doubleValue() : nulldouble;
+    }
+    
+    protected int nullId(AbstractModel value) {
+        return value != null ? value.getId() : nullint;
+    }
+
+    private java.sql.Date nulldate;
+
+    protected java.sql.Date nullDate(java.util.Date value) {
+        return value != null ? new Date(value.getTime()) : nulldate;
+    }
+    
 }

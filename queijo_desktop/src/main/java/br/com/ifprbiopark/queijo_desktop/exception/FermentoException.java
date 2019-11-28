@@ -5,7 +5,7 @@ public class FermentoException extends BasicException {
     public FermentoException(Exception ex) {
         super("Fermento: " + ex.getMessage());
     }
-    
+
     public FermentoException(String ex) {
         super("Fermento: " + ex);
     }

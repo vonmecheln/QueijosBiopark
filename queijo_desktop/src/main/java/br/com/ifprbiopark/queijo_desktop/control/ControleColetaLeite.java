@@ -24,27 +24,27 @@ public class ControleColetaLeite {
     }
 
     public void salvar(ColetaLeite c) throws ColetaLeiteException {
-        
+
         if (Strings.isNullOrEmpty(c.getLoteColeta())) {
             throw new ColetaLeiteException(new RequiredFieldException("Lote"));
         }
-        
+
         if (c.getDtColeta() == null) {
             throw new ColetaLeiteException(new RequiredFieldException("Data de Coleta"));
         }
-        
+
         if (c.getQtdLeite() == null || c.getQtdLeite() == 0) {
             throw new ColetaLeiteException(new RequiredFieldException("Quantidade"));
         }
-        
-        if (c.getProdutor_idPessoa()== null) {
+
+        if (c.getProdutor_idPessoa() == null) {
             throw new ColetaLeiteException(new RequiredFieldException("Produtor"));
         }
-               
-        if (c.getFuncionario_idPessoa()== null) {
+
+        if (c.getFuncionario_idPessoa() == null) {
             throw new ColetaLeiteException(new RequiredFieldException("Funcionário"));
         }
-        
+
         try {
             if (c.getId() == 0) {
                 dao.inserir(c);
@@ -55,7 +55,7 @@ public class ControleColetaLeite {
         } catch (DbException ex) {
             throw new ColetaLeiteException(ex);
         }
-                
+
     }
 
     public void excluir(ColetaLeite c) throws ColetaLeiteException {

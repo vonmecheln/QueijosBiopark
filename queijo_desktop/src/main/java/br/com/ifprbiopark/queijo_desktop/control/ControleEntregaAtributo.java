@@ -22,19 +22,19 @@ public class ControleEntregaAtributo {
     }
 
     public void salvar(EntregaAtributo e) throws EntregaAtributoException {
-        
+
         if (Strings.isNullOrEmpty(e.getValor())) {
             throw new EntregaAtributoException(new RequiredFieldException("Valor"));
         }
-        
+
         if (e.getAtributo_idAtributo() == null) {
             throw new EntregaAtributoException(new RequiredFieldException("Atributo"));
         }
-        
+
         if (e.getColetaLeite_idColetaLeite() == null) {
             throw new EntregaAtributoException(new RequiredFieldException("Coleta de Leite"));
         }
-        
+
         try {
             if (e.getId() == 0) {
                 dao.inserir(e);
@@ -45,7 +45,7 @@ public class ControleEntregaAtributo {
         } catch (DbException ex) {
             throw new EntregaAtributoException(ex);
         }
-                
+
     }
 
     public void excluir(EntregaAtributo e) throws EntregaAtributoException {
@@ -56,5 +56,4 @@ public class ControleEntregaAtributo {
         }
     }
 
-    
 }

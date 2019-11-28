@@ -7,9 +7,9 @@ public class FabricacaoQueijo extends AbstractModel {
     private Integer idFabricacaoQueijo;
 
     //informacoes basicas de processamento;
-    private ReceitaQueijo tipoQueijo_idTipoQueijo;
+    private ReceitaQueijo receitaQueijo;
     private String loteQueijo;
-    private ColetaLeite coletaLeite_idColetaLeite;
+    private ColetaLeite coletaLeite;
     private Double qtdLeiteUtilizada;
 
     //processamento;
@@ -82,12 +82,12 @@ public class FabricacaoQueijo extends AbstractModel {
         this.idFabricacaoQueijo = idFabricacaoQueijo;
     }
 
-    public ReceitaQueijo getTipoQueijo_idTipoQueijo() {
-        return tipoQueijo_idTipoQueijo;
+    public ReceitaQueijo getReceitaQueijo() {
+        return receitaQueijo;
     }
 
-    public void setTipoQueijo_idTipoQueijo(ReceitaQueijo tipoQueijo_idTipoQueijo) {
-        this.tipoQueijo_idTipoQueijo = tipoQueijo_idTipoQueijo;
+    public void setReceitaQueijo(ReceitaQueijo receitaQueijo) {
+        this.receitaQueijo = receitaQueijo;
     }
 
     public String getLoteQueijo() {
@@ -98,12 +98,12 @@ public class FabricacaoQueijo extends AbstractModel {
         this.loteQueijo = loteQueijo;
     }
 
-    public ColetaLeite getColetaLeite_idColetaLeite() {
-        return coletaLeite_idColetaLeite;
+    public ColetaLeite getColetaLeite() {
+        return coletaLeite;
     }
 
-    public void setColetaLeite_idColetaLeite(ColetaLeite coletaLeite_idColetaLeite) {
-        this.coletaLeite_idColetaLeite = coletaLeite_idColetaLeite;
+    public void setColetaLeite(ColetaLeite coletaLeite) {
+        this.coletaLeite = coletaLeite;
     }
 
     public Double getQtdLeiteUtilizada() {

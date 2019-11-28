@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.util.List;
 
 public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
-    
+
     private ControleReceitaQueijo rqControl;
     private List<ReceitaQueijo> listaReceitaQueijo;
     private TableConsultaFabricacao tableModel = new TableConsultaFabricacao();
@@ -20,9 +20,9 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
      */
     public TelaConsultaFrabricacaoView() {
         initComponents();
-        
+
         tblFabricacoes.setModel(tableModel);
-        
+
         try {
             listaReceitaQueijo = rqControl.listaReceitaQueijo();
             //jcTipoQueijo.removeAll();
@@ -163,24 +163,24 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
 
     private void consultar() {
         try {
-            int id = listaReceitaQueijo.get(cmbTipoQueijo.getSelectedIndex()).getId();        
+            int id = listaReceitaQueijo.get(cmbTipoQueijo.getSelectedIndex()).getId();
             boolean inativo = Boolean.valueOf(chkInativo.getText());
-        
+
             tableModel.consultar(id, inativo);
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
-        }       
+        }
     }
 
     private void abrirFabricacao() {
         if (tblFabricacoes.getSelectedRow() != -1) {
             int id = (int) tableModel.getValueAt(tblFabricacoes.getSelectedRow(), 0);
-            
+
             TelaFabricacaoQueijoView form = new TelaFabricacaoQueijoView();
             form.setID(id);
             QueijoDesktop.telaPrincipal.getPainelDesktop().add(form);
             form.setPosicao();
-            form.setVisible(true);         
+            form.setVisible(true);
             this.dispose();
         }
     }

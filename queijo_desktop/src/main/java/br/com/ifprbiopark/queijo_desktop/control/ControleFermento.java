@@ -31,7 +31,7 @@ public class ControleFermento {
         if (Strings.isNullOrEmpty(f.getMarca())) {
             throw new FermentoException(new RequiredFieldException("Marca"));
         }
-        
+
         try {
             if (f.getId() == 0) {
                 dao.inserir(f);
@@ -44,7 +44,7 @@ public class ControleFermento {
         }
     }
 
-    public void excluir(Fermento c) throws FermentoException  {
+    public void excluir(Fermento c) throws FermentoException {
         try {
             dao.excluir(c);
         } catch (DbException ex) {

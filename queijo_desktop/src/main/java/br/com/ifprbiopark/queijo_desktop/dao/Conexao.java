@@ -61,37 +61,43 @@ public class Conexao {
 
             statement.execute("CREATE TABLE IF NOT EXISTS fabricacaoqueijo ( "
                     + "    idFabricacaoQueijo INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    //informacoes basicas de processamento;
                     + "    receita_id INTEGER NOT NULL REFERENCES receitaqueijo(idReceita), "
                     + "    dataFabricacao DATE, "
                     + "    loteQueijo VARCHAR(45), "
                     + "    coleta_id INTEGER NOT NULL REFERENCES coletaleite(idColetaLeite), "
                     + "    qtdLeite NUMERIC(14,2) NOT NULL, "
-                    + "    TipoProcessamento VARCHAR(45) NOT NULL, "
+                    //processamento
+                    + "    tipoLeite VARCHAR(45) NOT NULL, "
                     + "    tempoProcessamento INTEGER, "
                     + "    temperaturaProcessamento INTEGER, "
                     + "    temperaturaPreMaturacao INTEGER, "
-                    + "    fermento_id INTEGER NOT NULL REFERENCES fermento(idFermento), "
-                    + "    qtdFermento NUMERIC(14,2), "
-                    + "    tempoMaturacao INTEGER, "
-                    + "    phMaturacao NUMERIC(14,2), "
-                    + "    temperaturaCoagulacao INTEGER, "
-                    + "    qtdClCalcio NUMERIC(14,2), "
-                    + "    qtdCoagulante NUMERIC(14,2), "
-                    + "    tempoCoagulacao INTEGER, "
-                    + "    phCorte NUMERIC(14,2), "
-                    + "    phEnformagem NUMERIC(14,2), "
-                    + "    phFinal NUMERIC(14,2), "
-                    + "    dessoragem INTEGER, "
-                    + "    temperaturaDessoragem INTEGER, "
-                    + "    tipoSalga VARCHAR(45), "
-                    + "    dataMaturacao DATE, "
-                    + "    temperaturaMaturacao INTEGER, "
-                    + "    dataLavagem DATE, "
-                    + "    tipoTratamento VARCHAR(45), "
-                    + "    tempoTratamento INTEGER, "
-                    + "    qtdPecas INTEGER, "
-                    + "    pesoMPecas NUMERIC(14,2), "
-                    + "    observacoes TEXT, "
+                    // as colunas acima já foram mapeadas e configuradas na DAO
+                    // as colunas abaixo precisam ser acertadas de acordo com a Model
+                    // começando pelas colunas de fermento
+                    
+                    //                    + "    fermento_id INTEGER NOT NULL REFERENCES fermento(idFermento), "
+                    //                    + "    qtdFermento NUMERIC(14,2), "
+                    //                    + "    tempoMaturacao INTEGER, "
+                    //                    + "    phMaturacao NUMERIC(14,2), "
+                    //                    + "    temperaturaCoagulacao INTEGER, "
+                    //                    + "    qtdClCalcio NUMERIC(14,2), "
+                    //                    + "    qtdCoagulante NUMERIC(14,2), "
+                    //                    + "    tempoCoagulacao INTEGER, "
+                    //                    + "    phCorte NUMERIC(14,2), "
+                    //                    + "    phEnformagem NUMERIC(14,2), "
+                    //                    + "    phFinal NUMERIC(14,2), "
+                    //                    + "    dessoragem INTEGER, "
+                    //                    + "    temperaturaDessoragem INTEGER, "
+                    //                    + "    tipoSalga VARCHAR(45), "
+                    //                    + "    dataMaturacao DATE, "
+                    //                    + "    temperaturaMaturacao INTEGER, "
+                    //                    + "    dataLavagem DATE, "
+                    //                    + "    tipoTratamento VARCHAR(45), "
+                    //                    + "    tempoTratamento INTEGER, "
+                    //                    + "    qtdPecas INTEGER, "
+                    //                    + "    pesoMPecas NUMERIC(14,2), "
+                    //                    + "    observacoes TEXT, "
                     + "    inativo INTEGER);");
 
             //verifica se a tabela de pessoas não tem registros para o insert inicial
@@ -164,12 +170,11 @@ public class Conexao {
                     statement.executeUpdate("INSERT INTO entradaatributo (valor, atributo_id, coleta_id) VALUES ('3,24',4,5); ");
 
                     //-- Populando tabela FabricacaoQueijo 
-                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (1,'2019-06-27','270919SP',1,30,'Pasteurizado',30,63,36,1,1.5,60,6.81,0,14.4,21,40,6.87,0,0,0,0,'Salmora','2019-06-28',12,'2019-06-29','Outro',60,7,800,'Utilizado 10L de agua aquecida e retirado 15L de soro'); ");
-                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (2,'2019-07-02','0207196D',2,30,'Pasteurizado',30,65,36,1,1.5,60,6.71,34,14.5,21,40,6.68,6.69,0,0,0,'Nenhuma','2019-07-03',12,'2019-07-03','Outro',60,1,3000,''); ");
-                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (3,'2019-07-04','040719TOMME',3,31,'Leite Cru',0,0,38,2,1.5,60,6.53,0,0,18,40,6.54,0,0,0,0,'Nenhuma','2019-06-28',12,'2019-07-05','Outro',60,1,3100,'Corte com faca, adição de sal na superfície, colocado na cerveja dia 05/07'); ");
-                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (4,'2019-07-09','090719MB',3,30,'Pasteurizado',30,65,38,2,1.5,60,6.73,34,13.75,19.25,40,6.45,6.35,4.99,0,0,'Nenhuma','2019-07-10',12,'2019-07-11','Diário',60,3,980,'Utilização de leite de Jersey'); ");
-                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (5,'2019-07-11','110719',1,30,'Pasteurizado',30,65,36,3,1.5,60,6.69,34,14.5,21,40,6.72,6.7,6.52,0,0,'Salmora','2019-07-12',14,'2019-07-12','Outro',60,12,491,'10 peças de 290g + 2 peças de 1,5kg'); ");
-
+//                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (1,'2019-06-27','270919SP',1,30,'Pasteurizado',30,63,36,1,1.5,60,6.81,0,14.4,21,40,6.87,0,0,0,0,'Salmora','2019-06-28',12,'2019-06-29','Outro',60,7,800,'Utilizado 10L de agua aquecida e retirado 15L de soro'); ");
+//                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (2,'2019-07-02','0207196D',2,30,'Pasteurizado',30,65,36,1,1.5,60,6.71,34,14.5,21,40,6.68,6.69,0,0,0,'Nenhuma','2019-07-03',12,'2019-07-03','Outro',60,1,3000,''); ");
+//                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (3,'2019-07-04','040719TOMME',3,31,'Leite Cru',0,0,38,2,1.5,60,6.53,0,0,18,40,6.54,0,0,0,0,'Nenhuma','2019-06-28',12,'2019-07-05','Outro',60,1,3100,'Corte com faca, adição de sal na superfície, colocado na cerveja dia 05/07'); ");
+//                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (4,'2019-07-09','090719MB',3,30,'Pasteurizado',30,65,38,2,1.5,60,6.73,34,13.75,19.25,40,6.45,6.35,4.99,0,0,'Nenhuma','2019-07-10',12,'2019-07-11','Diário',60,3,980,'Utilização de leite de Jersey'); ");
+//                    statement.executeUpdate("INSERT INTO fabricacaoqueijo (receita_id, dataFabricacao, loteQueijo, coleta_id, qtdLeite, TipoProcessamento, tempoProcessamento, temperaturaProcessamento,temperaturaPreMaturacao, fermento_id, qtdFermento, tempoMaturacao, phMaturacao, temperaturaCoagulacao, qtdClCalcio, qtdCoagulante, tempoCoagulacao, phCorte,phEnformagem, phFinal, dessoragem, temperaturaDessoragem, tipoSalga, dataMaturacao, temperaturaMaturacao, dataLavagem, tipoTratamento, tempoTratamento, qtdPecas,pesoMPecas, observacoes) VALUES (5,'2019-07-11','110719',1,30,'Pasteurizado',30,65,36,3,1.5,60,6.69,34,14.5,21,40,6.72,6.7,6.52,0,0,'Salmora','2019-07-12',14,'2019-07-12','Outro',60,12,491,'10 peças de 290g + 2 peças de 1,5kg'); ");
                 }
 
             }

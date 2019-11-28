@@ -4,7 +4,6 @@ import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -13,14 +12,13 @@ public class TableConsultaFabricacao extends AbstractTableModel {
     private ControleFabricacaoQueijo c = new ControleFabricacaoQueijo();
     private List<FabricacaoQueijo> dados;
     private String[] colunas = {"ID", "Receita do queijo", "Lote do processamento", "Lote do leite", "Quantidade de leite"};
-    
-    public TableConsultaFabricacao(){
-        try{
+
+    public TableConsultaFabricacao() {
+        try {
             dados = c.consultarTabela(0, false);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
-        }        
+        }
     }
 
     @Override
@@ -44,7 +42,7 @@ public class TableConsultaFabricacao extends AbstractTableModel {
             case 0:
                 return dados.get(linha).getIdFabricacaoQueijo();
             case 1:
-                return dados.get(linha).getTipoQueijo_idTipoQueijo().getNomeTipo();
+                return dados.get(linha).getReceitaQueijo().getNomeTipo();
             case 2:
                 return dados.get(linha).getLoteAcabado();
             case 3:

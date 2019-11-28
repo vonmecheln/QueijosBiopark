@@ -2,16 +2,19 @@ package br.com.ifprbiopark.queijo_desktop.inicializacao;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.control.ControleEntregaAtributo;
+import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.dao.ColetaLeiteDao;
 import br.com.ifprbiopark.queijo_desktop.dao.EntregaAtributoDao;
+import br.com.ifprbiopark.queijo_desktop.dao.FabricacaoQueijoDao;
 import br.com.ifprbiopark.queijo_desktop.dao.FermentoDao;
 import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
 import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
 import br.com.ifprbiopark.queijo_desktop.exception.ColetaLeiteException;
 import br.com.ifprbiopark.queijo_desktop.exception.EntregaAtributoException;
+import br.com.ifprbiopark.queijo_desktop.exception.FabricacaoException;
 import br.com.ifprbiopark.queijo_desktop.exception.FermentoException;
 import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
 import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
@@ -19,6 +22,7 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Atributos;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.EntregaAtributo;
+import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
@@ -28,22 +32,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class QueijoDesktop {
-
+    
     public static TelaPrincipalView telaPrincipal;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-
-        if (true) {
+        
+        if (false) {
             Pessoa p = new Pessoa();
             p.setNome("");
             p.setEndereco("");
             p.setTipoFiscal("");
             p.setDocumento("");
             p.setTipoPessoa("");
-
+            
             try {
                 PessoaDao pd = new PessoaDao();
                 pd.inserir(p);
@@ -52,7 +56,7 @@ public class QueijoDesktop {
             } catch (DbException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             try {
                 p = new Pessoa();
                 p.setNome("-");
@@ -62,14 +66,14 @@ public class QueijoDesktop {
                 ControlePessoa cp = new ControlePessoa();
                 cp.salvar(p);
                 cp.salvar(p);
-
+                
             } catch (PessoaException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             ReceitaQueijo r = new ReceitaQueijo();
             r.setNomeTipo("");
-
+            
             try {
                 ReceitaQueijoDao rd = new ReceitaQueijoDao();
                 rd.inserir(r);
@@ -78,7 +82,7 @@ public class QueijoDesktop {
             } catch (DbException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             r = new ReceitaQueijo();
             r.setNomeTipo("--");
             ControleReceitaQueijo cr = new ControleReceitaQueijo();
@@ -86,22 +90,22 @@ public class QueijoDesktop {
                 cr.salvar(r);
                 cr.salvar(r);
                 cr.excluir(r);
-
+                
             } catch (ReceitaQueijoException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             Fermento f;
             try {
                 f = new Fermento();
                 f.setNome("");
                 f.setMarca("");
                 FermentoDao fd = new FermentoDao();
-
+                
                 fd.inserir(f);
                 fd.alterar(f);
                 fd.excluir(f);
-
+                
                 ControleFermento cf = new ControleFermento();
                 f = new Fermento();
                 f.setNome("-");
@@ -109,14 +113,14 @@ public class QueijoDesktop {
                 cf.salvar(f);
                 cf.salvar(f);
                 cf.excluir(f);
-
+                
             } catch (FermentoException | DbException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             ColetaLeite cl;
             try {
-
+                
                 cl = new ColetaLeite();
                 cl.setLoteColeta("");
                 cl.setDtColeta(new Date("01/01/2020"));                
@@ -141,7 +145,7 @@ public class QueijoDesktop {
             
             EntregaAtributo ea;
             try {
-                ea = new EntregaAtributo(); 
+                ea = new EntregaAtributo();                
                 ea.setValor("0");
                 
                 EntregaAtributoDao ead = new EntregaAtributoDao();
@@ -149,7 +153,7 @@ public class QueijoDesktop {
                 ead.alterar(ea);
                 ead.excluir(ea);
                 
-                ea = new EntregaAtributo(); 
+                ea = new EntregaAtributo();                
                 ea.setValor("0");
                 ea.setAtributo_idAtributo(new Atributos());
                 ea.setColetaLeite_idColetaLeite(new ColetaLeite());
@@ -162,7 +166,52 @@ public class QueijoDesktop {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-
+            FabricacaoQueijo fb;
+            try {
+                
+                fb = new FabricacaoQueijo();
+                fb.setReceitaQueijo(new ReceitaQueijo());
+                fb.setColetaLeite(new ColetaLeite());
+                fb.setTipoLeite("");
+                FabricacaoQueijoDao fbd = new FabricacaoQueijoDao();
+                fbd.inserir(fb);
+                fbd.alterar(fb);
+                fbd.excluir(fb);
+                
+                fb = new FabricacaoQueijo();
+                fb.setReceitaQueijo(new ReceitaQueijo());
+                fb.setColetaLeite(new ColetaLeite());
+                fb.setDataFabricacao(new Date("31/12/2020"));
+                fb.setQtdLeiteUtilizada(40.5);
+                fb.setLoteQueijo("AAABBB");
+                fb.setTipoLeite("");
+                fb.setTempoProcessamento(1);
+                fb.setTemperaturaProcessamento(2);
+                fb.setTemperaturaPreMaturacao(3);
+                fbd.inserir(fb);
+                fbd.alterar(fb);
+                fbd.excluir(fb);
+                
+                fb = new FabricacaoQueijo();
+                fb.setLoteQueijo("AAABBB");
+                fb.setDataFabricacao(new Date("31/12/2020"));
+                fb.setQtdLeiteUtilizada(40.5);
+                fb.setTempoProcessamento(1);
+                fb.setTemperaturaProcessamento(2);
+                fb.setTemperaturaPreMaturacao(3);
+                fb.setReceitaQueijo(new ReceitaQueijo());
+                fb.setColetaLeite(new ColetaLeite());
+                fb.setTipoLeite("");
+                
+                ControleFabricacaoQueijo fbc = new ControleFabricacaoQueijo();
+                fbc.salvar(fb);
+                fbc.salvar(fb);
+                fbc.excluir(fb);
+                
+            } catch (DbException | FabricacaoException ex) {
+                Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } else {
 
             /* Set the Nimbus look and feel */
@@ -189,7 +238,7 @@ public class QueijoDesktop {
                 telaPrincipal.setVisible(true);
             });
         }
-
+        
     }
     
 }

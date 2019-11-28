@@ -18,11 +18,40 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
 
     public FabricacaoQueijoDao() throws DbException {
         super("fabricacaoqueijo", new ArrayList<>(Arrays.asList(
-                "idFabricacaoQueijo")));
+                "idFabricacaoQueijo",
+                "receita_id",
+                "dataFabricacao",
+                "loteQueijo",
+                "coleta_id",
+                "qtdLeite",
+                "tipoLeite",
+                "tempoProcessamento",
+                "temperaturaProcessamento",
+                "temperaturaPreMaturacao"
+        )));
+    }
+
+    @Override
+    protected void confStantement(NamedParameterStatement nps, FabricacaoQueijo objeto) throws SQLException {
+
+        nps.setInt("receita_id", nullId(objeto.getReceitaQueijo()));        
+        nps.setDate("dataFabricacao", nullDate(objeto.getDataFabricacao()));
+        nps.setString("loteQueijo", objeto.getLoteQueijo());
+        nps.setInt("coleta_id", nullId(objeto.getColetaLeite()));        
+        nps.setDouble("qtdLeite", nullDouble(objeto.getQtdLeiteUtilizada()));
+        nps.setString("tipoLeite", objeto.getTipoLeite());
+        nps.setInt("tempoProcessamento", nullInt(objeto.getTempoProcessamento()));
+        nps.setInt("temperaturaProcessamento", nullInt(objeto.getTemperaturaProcessamento()));
+        nps.setInt("temperaturaPreMaturacao", nullInt(objeto.getTemperaturaPreMaturacao()));
+        
     }
 
     @Override
     public void inserir(FabricacaoQueijo fq) throws DbException {
+        inserirDefault(fq);
+    }
+
+    public void inserir2(FabricacaoQueijo fq) throws DbException {
         try {
 
             String sql = "INSERT INTO FabricacaoQueijo( TipoQueijo_idTipoQueijo, "
@@ -93,10 +122,10 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                     + ":Responsavel_idResponsavel) ";
 
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
-            nps.setInt("TipoQueijo_idTipoQueijo", fq.getTipoQueijo_idTipoQueijo().getIdTipoQueijo());
+            nps.setInt("TipoQueijo_idTipoQueijo", fq.getReceitaQueijo().getIdTipoQueijo());
             nps.setDate("dataFabricacao", fq.getDataFabricacao());
             nps.setString("loteQueijo", fq.getLoteQueijo());
-            nps.setInt("ColetaLeite_idColetaLeite", fq.getColetaLeite_idColetaLeite().getIdColetaLeite());
+            nps.setInt("ColetaLeite_idColetaLeite", fq.getColetaLeite().getIdColetaLeite());
             nps.setInt("Processamento_idProcessamento", fq.getProcessamento_idProcessamento().getIdProcesamento());
             nps.setInt("tempoProcessamento", fq.getTempoProcessamento());
             nps.setInt("temperaturaProcessamento", fq.getTemperaturaProcessamento());
@@ -148,16 +177,17 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
 
     @Override
     public boolean excluir(FabricacaoQueijo objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public FabricacaoQueijo consultar(FabricacaoQueijo objeto) throws DbException {
-        throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
+        return excluirDefault(objeto);
     }
 
     @Override
     public FabricacaoQueijo alterar(FabricacaoQueijo objeto) throws DbException {
+        alterarDefault(objeto);
+        return objeto;
+    }
+
+    @Override
+    public FabricacaoQueijo consultar(FabricacaoQueijo objeto) throws DbException {
         throw new UnsupportedOperationException("Não suportado ainda."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -224,9 +254,9 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
             while (consulta.next()) {
                 FabricacaoQueijo fq = new FabricacaoQueijo();
                 fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
-                fq.setTipoQueijo_idTipoQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
+                fq.setReceitaQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
-                fq.setColetaLeite_idColetaLeite(ccl.consultar(consulta.getInt("coletaLeite_idColetaLeite")));
+                fq.setColetaLeite(ccl.consultar(consulta.getInt("coletaLeite_idColetaLeite")));
                 fq.setQtdLeiteUtilizada(consulta.getDouble("qtdLeiteUtilizada"));
                 fq.setTipoLeite(consulta.getString("tipoLeite"));
                 fq.setTempoProcessamento(consulta.getInt("tempoProcessamento"));
@@ -342,9 +372,9 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
             while (consulta.next()) {
                 FabricacaoQueijo fq = new FabricacaoQueijo();
                 fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
-                fq.setTipoQueijo_idTipoQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
+                fq.setReceitaQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
-                fq.setColetaLeite_idColetaLeite(ccl.consultar(consulta.getInt("coletaLeite_idColetaLeite")));
+                fq.setColetaLeite(ccl.consultar(consulta.getInt("coletaLeite_idColetaLeite")));
                 fq.setQtdLeiteUtilizada(consulta.getDouble("qtdLeiteUtilizada"));
                 fq.setTipoLeite(consulta.getString("tipoLeite"));
                 fq.setTempoProcessamento(consulta.getInt("tempoProcessamento"));
@@ -399,4 +429,5 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
             throw new Exception(ex);
         }
     }
+
 }

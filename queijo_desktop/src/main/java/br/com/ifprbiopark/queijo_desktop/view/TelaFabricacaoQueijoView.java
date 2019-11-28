@@ -9,6 +9,7 @@ import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.exception.FabricacaoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
@@ -16,7 +17,6 @@ import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import com.google.common.base.Strings;
 import java.awt.Dimension;
-import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -868,9 +868,9 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             ControleFabricacaoQueijo cQueijo = new ControleFabricacaoQueijo();
 
             //informacoes iniciais de processamento
-            queijo.setTipoQueijo_idTipoQueijo(listaReceitaQueijo.get(fq.getTipoQueijo_idTipoQueijo().getIdTipoQueijo()));
+            queijo.setReceitaQueijo(listaReceitaQueijo.get(fq.getReceitaQueijo().getIdTipoQueijo()));
             queijo.setLoteQueijo(txtLote.getText());
-            queijo.setColetaLeite_idColetaLeite((listaColetaLeite.get(fq.getColetaLeite_idColetaLeite().getIdColetaLeite())));
+            queijo.setColetaLeite((listaColetaLeite.get(fq.getColetaLeite().getIdColetaLeite())));
             queijo.setQtdLeiteUtilizada(parseDoubles(txtQuantidadeLeiteUtilizada.getText()));
 
             //Processamento
@@ -918,7 +918,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             queijo.setObservacoes(tfObservacao.getText());
 
             cQueijo.salvar(queijo);
-        } catch (DbException ex) {
+        } catch (FabricacaoException ex) {
             Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
 

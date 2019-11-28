@@ -26,7 +26,7 @@ public class ControleReceitaQueijo {
         if (Strings.isNullOrEmpty(r.getNomeTipo())) {
             throw new ReceitaQueijoException(new RequiredFieldException("Nome"));
         }
-               
+
         try {
             if (r.getId() == 0) {
                 dao.inserir(r);
@@ -47,7 +47,6 @@ public class ControleReceitaQueijo {
         }
     }
 
-    
     public List<ReceitaQueijo> listaReceitaQueijo() throws DbException {
         return dao.consultar();
     }

@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ControlePessoa {
-    
+
     PessoaDao dao;
 
     private static final int[] PESO_CPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
@@ -26,51 +26,51 @@ public class ControlePessoa {
             Logger.getLogger(ControlePessoa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private enum TipoPessoa {
-        FUNC("Funcionário"), 
+        FUNC("Funcionário"),
         FORN("Fornecedor");
         private String nomenclatura;
+
         private TipoPessoa(String nome) {
             this.nomenclatura = nome;
         }
-       
+
         @Override
-        public String toString(){
+        public String toString() {
             return nomenclatura;
         }
-        
-        public static String toWord(){
-            
+
+        public static String toWord() {
+
             String t = "";
-            TipoPessoa[] tipos = TipoPessoa.values(); 
+            TipoPessoa[] tipos = TipoPessoa.values();
             for (TipoPessoa i : tipos) {
                 t += i.nomenclatura;
                 t += "/";
             }
-            return t.substring(0, t.length()-1);
+            return t.substring(0, t.length() - 1);
         }
-    } 
+    }
 
     public void salvar(Pessoa p) throws PessoaException {
-        
 
         if (Strings.isNullOrEmpty(p.getNome())) {
             throw new PessoaException(new RequiredFieldException("Nome"));
         }
-        
+
         if (Strings.isNullOrEmpty(p.getTipoFiscal())) {
             throw new PessoaException(new RequiredFieldException("Tipo Fiscal(CPF/CNPJ)"));
         }
-        
+
         if (Strings.isNullOrEmpty(p.getDocumento())) {
             throw new PessoaException(new RequiredFieldException("Documento"));
         }
-        
+
         if (Strings.isNullOrEmpty(p.getTipoPessoa())) {
-            throw new PessoaException(new RequiredFieldException("Tipo de Pessoa("+TipoPessoa.toWord()+")"));
+            throw new PessoaException(new RequiredFieldException("Tipo de Pessoa(" + TipoPessoa.toWord() + ")"));
         }
-        
+
         if (Strings.isNullOrEmpty(p.getEndereco())) {
             p.setEndereco("");
             //throw new PessoaException(new RequiredFieldException("Endereço"));
@@ -85,12 +85,12 @@ public class ControlePessoa {
                 throw new PessoaException("CNPJ não válido.");
             }
         }
-        
+
         try {
 
             if (p.getIdPessoa() == 0) {
                 Pessoa consulta = dao.consultarPorDocumento(p.getDocumento());
-                if(consulta != null){
+                if (consulta != null) {
                     throw new PessoaException(new UniqueRegisterException(p.getDocumento()));
                 }
                 dao.inserir(p);
