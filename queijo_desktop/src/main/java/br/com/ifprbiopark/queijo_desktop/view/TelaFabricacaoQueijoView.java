@@ -46,6 +46,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
     public TelaFabricacaoQueijoView() {
         initComponents();
+        
+         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
 
         //carregar as receitas
         rqControl = new ControleReceitaQueijo();

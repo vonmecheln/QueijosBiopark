@@ -16,6 +16,8 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
     public TelaReceitaQueijoView() {
         initComponents();
         tblItem.setModel(listaItem);
+        
+        
     }
 
     public void setPosicao() {

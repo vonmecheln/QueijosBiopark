@@ -18,6 +18,8 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
      */
     public TelaNovaFabricacaoView() {
         initComponents();
+        
+         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
     }
     
     public void setPosicao() {

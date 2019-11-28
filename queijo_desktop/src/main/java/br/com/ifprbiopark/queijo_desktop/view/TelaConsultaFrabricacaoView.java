@@ -35,6 +35,8 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
         }
+        
+         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
     }
     
     public void setPosicao() {

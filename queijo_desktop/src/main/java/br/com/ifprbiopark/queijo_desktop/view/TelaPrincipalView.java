@@ -2,11 +2,15 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.Timer;
 
@@ -17,6 +21,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
      */
     public TelaPrincipalView() {
         initComponents();
+        
+         URL url = this.getClass().getResource("/iconeQueijos.png"); 
+         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(url); this.setIconImage(iconeTitulo);
 
     }
 

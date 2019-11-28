@@ -1,14 +1,28 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.beans.PropertyVetoException;
+import java.net.URL;
 
 public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
+    
+    
 
+    @Override
+    public void setIcon(boolean b) throws PropertyVetoException {
+        super.setIcon(b); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
     /**
      * Creates new form TelaClassificacaoLeiteView
      */
     public TelaClassificacaoLeiteView() {
         initComponents();
+        
+       setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
     }
 
     public void setPosicao() {
@@ -55,7 +69,6 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
-        setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Classificação do Leite");
@@ -178,6 +191,10 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
