@@ -312,6 +312,11 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         });
 
         jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         txtQuantFerm.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantidade (g):"));
         txtQuantFerm.addActionListener(new java.awt.event.ActionListener() {
@@ -452,7 +457,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             }
         });
 
-        txtTemperatura24.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura:"));
+        txtTemperatura24.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura dessoragem (°C):"));
         txtTemperatura24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTemperatura24ActionPerformed(evt);
@@ -530,14 +535,14 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             }
         });
 
-        tfDataTratamentoCasca.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Inicial"));
+        tfDataTratamentoCasca.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de lavagem:"));
         tfDataTratamentoCasca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfDataTratamentoCascaActionPerformed(evt);
             }
         });
 
-        txtTempoTratamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de tratamento:"));
+        txtTempoTratamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de tratamento (min):"));
         txtTempoTratamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTempoTratamentoActionPerformed(evt);
@@ -566,14 +571,14 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 .addGap(4, 4, 4))
         );
 
-        txtTemperaturaSalga.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura:"));
+        txtTemperaturaSalga.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura (°C):"));
         txtTemperaturaSalga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTemperaturaSalgaActionPerformed(evt);
             }
         });
 
-        txtDataSalga.setBorder(javax.swing.BorderFactory.createTitledBorder("Data inicial"));
+        txtDataSalga.setBorder(javax.swing.BorderFactory.createTitledBorder("Data:"));
         txtDataSalga.setToolTipText("");
 
         javax.swing.GroupLayout pnlMaturacaoLayout = new javax.swing.GroupLayout(pnlMaturacao);
@@ -656,7 +661,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
         pnlObsevacao.setBackground(new java.awt.Color(255, 255, 255));
 
-        tfObservacao.setBackground(new java.awt.Color(255, 255, 255));
         tfObservacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Observações:"));
         jScrollPane1.setViewportView(tfObservacao);
 
@@ -746,8 +750,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         );
 
         guia.getAccessibleContext().setAccessibleName("Processamento");
-
-        getAccessibleContext().setAccessibleName("Fabricação");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -927,6 +929,10 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     private void jcTipoLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcTipoLeiteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcTipoLeiteActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCancelar;
