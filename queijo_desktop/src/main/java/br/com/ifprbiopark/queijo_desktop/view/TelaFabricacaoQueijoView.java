@@ -873,7 +873,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             queijo.setReceitaQueijo(listaReceitaQueijo.get(fq.getReceitaQueijo().getIdTipoQueijo()));
             queijo.setLoteQueijo(txtLote.getText());
             queijo.setColetaLeite((listaColetaLeite.get(fq.getColetaLeite().getIdColetaLeite())));
-            queijo.setQtdLeiteUtilizada(parseDoubles(txtQuantidadeLeiteUtilizada.getText()));
+            queijo.setQtdLeite(parseDoubles(txtQuantidadeLeiteUtilizada.getText()));
 
             //Processamento
             queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
@@ -887,8 +887,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             //fermento_id
             queijo.setQtdFermento(parseDoubles(txtQuantFerm.getText()));
             queijo.setTempoFermentacao(parseInteiro(txtTempoFermento.getText()));
-            queijo.setFermento(txtTipoFermento.getText());
-            queijo.setMarcaFermento(txtMarcaFerm.getText());
+            //queijo.setFermento(txtTipoFermento.getText());
+            //queijo.setMarcaFermento(txtMarcaFerm.getText());
             queijo.setPhPreMaturacao(parseInteiro(txtPhPreMatura.getText()));
 
             //Coagulacao
@@ -898,25 +898,25 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             queijo.setTempoCoagulacao(parseInteiro(txtTempoCoagulacao.getText()));
             queijo.setPhCorte(parseDoubles(txtPhCorte.getText()));
             queijo.setPhEnformagem(parseDoubles(txtPhEsformagem.getText()));
-            queijo.setPhMaturacao(parseDoubles(txtPhPreMatura.getText()));
+            //queijo.setPhMaturacao(parseDoubles(txtPhPreMatura.getText()));
             queijo.setDessoragem(parseInteiro(txtDessoragem.getText()));
             queijo.setTemperaturaDessoragem(parseInteiro(txtTemperatura24.getText()));
 
             //Etapa de Salga
-            queijo.setDataSalga(txtDataSalga.getText());
-            queijo.setTemperaturaSalga(txtTemperaturaSalga.getText());
-            queijo.setTempoTratamentoSalga(txtTempoTratamento.getText());
+            //queijo.setDataSalga(txtDataSalga.getText());
+            //queijo.setTemperaturaSalga(txtTemperaturaSalga.getText());
+            //queijo.setTempoTratamentoSalga(txtTempoTratamento.getText());
 
             //tratamento casca
-            queijo.setDataTratamentoCasca(tfDataTratamentoCasca.getText());
-            queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
+            //queijo.setDataTratamentoCasca(tfDataTratamentoCasca.getText());
+            //queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
 
             //Rendimento
             queijo.setQtdPecas(parseInteiro(tfQueijoProduzido.getText()));
             queijo.setPesoTotal(parseDoubles(tfPesoTotalLote.getText()));
             queijo.setPesoMedioPecas(parseDoubles(tfPesoMedioLote.getText()));
             queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
-            queijo.setResponsavel_idResponsavel(listaFuncionarios.get(cmbFuncionario.getSelectedIndex()));
+            queijo.setResponsavel(listaFuncionarios.get(cmbFuncionario.getSelectedIndex()));
             queijo.setObservacoes(tfObservacao.getText());
 
             cQueijo.salvar(queijo);

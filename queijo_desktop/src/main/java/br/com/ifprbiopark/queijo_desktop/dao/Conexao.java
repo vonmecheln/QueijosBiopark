@@ -63,41 +63,49 @@ public class Conexao {
                     + "    idFabricacaoQueijo INTEGER PRIMARY KEY AUTOINCREMENT, "
                     //informacoes basicas de processamento;
                     + "    receita_id INTEGER NOT NULL REFERENCES receitaqueijo(idReceita), "
-                    + "    dataFabricacao DATE, "
+                    + "    dataFabricacao DATE NOT NULL,"
                     + "    loteQueijo VARCHAR(45), "
                     + "    coleta_id INTEGER NOT NULL REFERENCES coletaleite(idColetaLeite), "
                     + "    qtdLeite NUMERIC(14,2) NOT NULL, "
                     //processamento
-                    + "    tipoLeite VARCHAR(45) NOT NULL, "
+                    + "    tipoLeite VARCHAR(45), "
                     + "    tempoProcessamento INTEGER, "
                     + "    temperaturaProcessamento INTEGER, "
+                    //Prematuração
                     + "    temperaturaPreMaturacao INTEGER, "
-                    // as colunas acima já foram mapeadas e configuradas na DAO
-                    // as colunas abaixo precisam ser acertadas de acordo com a Model
-                    // começando pelas colunas de fermento
-                    
-                    //                    + "    fermento_id INTEGER NOT NULL REFERENCES fermento(idFermento), "
-                    //                    + "    qtdFermento NUMERIC(14,2), "
-                    //                    + "    tempoMaturacao INTEGER, "
-                    //                    + "    phMaturacao NUMERIC(14,2), "
-                    //                    + "    temperaturaCoagulacao INTEGER, "
-                    //                    + "    qtdClCalcio NUMERIC(14,2), "
-                    //                    + "    qtdCoagulante NUMERIC(14,2), "
-                    //                    + "    tempoCoagulacao INTEGER, "
-                    //                    + "    phCorte NUMERIC(14,2), "
-                    //                    + "    phEnformagem NUMERIC(14,2), "
-                    //                    + "    phFinal NUMERIC(14,2), "
-                    //                    + "    dessoragem INTEGER, "
-                    //                    + "    temperaturaDessoragem INTEGER, "
-                    //                    + "    tipoSalga VARCHAR(45), "
-                    //                    + "    dataMaturacao DATE, "
-                    //                    + "    temperaturaMaturacao INTEGER, "
-                    //                    + "    dataLavagem DATE, "
-                    //                    + "    tipoTratamento VARCHAR(45), "
-                    //                    + "    tempoTratamento INTEGER, "
-                    //                    + "    qtdPecas INTEGER, "
-                    //                    + "    pesoMPecas NUMERIC(14,2), "
-                    //                    + "    observacoes TEXT, "
+                    + "    phMaturacao NUMERIC(14,2), "
+                    //fermento
+                    + "    fermento_id INTEGER REFERENCES fermento(idFermento), "
+                    + "    qtdFermento NUMERIC(14,2), "
+                    + "    tempoMaturacao INTEGER, "
+                    //caogulação
+                    + "    temperaturaCoagulacao INTEGER, "
+                    + "    qtdClCalcio NUMERIC(14,2), "
+                    + "    qtdCoagulante NUMERIC(14,2), "
+                    + "    tempoCoagulacao INTEGER, "
+                    + "    phCorte NUMERIC(14,2), "
+                    + "    phEnformagem NUMERIC(14,2), "
+                    + "    phFinal NUMERIC(14,2), "//ph24
+                    + "    dessoragem INTEGER, "
+                    + "    temperaturaDessoragem INTEGER, "
+                    //salga
+                    + "    tipoSalga VARCHAR(45), "
+                    //maturação
+                    + "    dataMaturacao DATE, "
+                    + "    temperaturaMaturacao INTEGER, "
+                    //tratamento da casca
+                    + "    dataLavagem DATE, "
+                    + "    tipoTratamento VARCHAR(45), "
+                    + "    tempoTratamento INTEGER, "
+                    //rendimento
+                    + "    qtdPecas INTEGER, "
+                    + "    pesoMPecas NUMERIC(14,2), "
+                    + "    pesoTotal NUMERIC(14,2), "
+                    //observações
+                    + "    observacoes TEXT, "
+                    //finalizção
+                    + "    loteAcabado VARCHAR(45), "
+                    + "    responsavel_id INTEGER REFERENCES pessoa(idPessoa), "
                     + "    inativo INTEGER);");
 
             //verifica se a tabela de pessoas não tem registros para o insert inicial

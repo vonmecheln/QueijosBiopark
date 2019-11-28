@@ -27,7 +27,32 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 "tipoLeite",
                 "tempoProcessamento",
                 "temperaturaProcessamento",
-                "temperaturaPreMaturacao"
+                "temperaturaPreMaturacao",
+                "phMaturacao",
+                "fermento_id",
+                "qtdFermento",
+                "tempoMaturacao",
+                "temperaturaCoagulacao",
+                "qtdClCalcio",
+                "qtdCoagulante",
+                "tempoCoagulacao",
+                "phCorte",
+                "phEnformagem",
+                "phFinal",
+                "dessoragem",
+                "temperaturaDessoragem",
+                "tipoSalga",
+                "dataMaturacao",
+                "temperaturaMaturacao",
+                "dataLavagem",
+                "tipoTratamento",
+                "tempoTratamento",
+                "qtdPecas",
+                "pesoMPecas",
+                "observacoes",
+                "loteAcabado",
+                "responsavel_id",
+                "inativo"                
         )));
     }
 
@@ -38,7 +63,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
         nps.setDate("dataFabricacao", nullDate(objeto.getDataFabricacao()));
         nps.setString("loteQueijo", objeto.getLoteQueijo());
         nps.setInt("coleta_id", nullId(objeto.getColetaLeite()));        
-        nps.setDouble("qtdLeite", nullDouble(objeto.getQtdLeiteUtilizada()));
+        nps.setDouble("qtdLeite", nullDouble(objeto.getQtdLeite()));
         nps.setString("tipoLeite", objeto.getTipoLeite());
         nps.setInt("tempoProcessamento", nullInt(objeto.getTempoProcessamento()));
         nps.setInt("temperaturaProcessamento", nullInt(objeto.getTemperaturaProcessamento()));
@@ -126,35 +151,35 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
             nps.setDate("dataFabricacao", fq.getDataFabricacao());
             nps.setString("loteQueijo", fq.getLoteQueijo());
             nps.setInt("ColetaLeite_idColetaLeite", fq.getColetaLeite().getIdColetaLeite());
-            nps.setInt("Processamento_idProcessamento", fq.getProcessamento_idProcessamento().getIdProcesamento());
+            //nps.setInt("Processamento_idProcessamento", fq.getProcessamento_idProcessamento().getIdProcesamento());
             nps.setInt("tempoProcessamento", fq.getTempoProcessamento());
             nps.setInt("temperaturaProcessamento", fq.getTemperaturaProcessamento());
             nps.setInt("temperaturaPreMaturacao", fq.getTemperaturaPreMaturacao());
-            nps.setString("Fermento_idFermento", fq.getFermento());
+            //nps.setString("Fermento_idFermento", fq.getFermento());
             nps.setDouble("qtdFermento", fq.getQtdFermento());
-            nps.setInt("tempoMaturacao", fq.getTempoMaturacao());
-            nps.setDouble("phMaturacao", fq.getPhMaturacao());
+            //nps.setInt("tempoMaturacao", fq.getTempoMaturacao());
+            //nps.setDouble("phMaturacao", fq.getPhMaturacao());
             nps.setInt("temperaturaCoagulacao", fq.getTemperaturaCoagulacao());
             nps.setDouble("qtdClCalcio", fq.getQtdClCalcio());
             nps.setDouble("qtdCoagulante", fq.getQtdCoagulante());
             nps.setInt("tempoCoagulacao", fq.getTempoCoagulacao());
             nps.setDouble("phCorte", fq.getPhCorte());
             nps.setDouble("phEnformagem", fq.getPhEnformagem());
-            nps.setDouble("phFinal", fq.getPhFinal());
+            //nps.setDouble("phFinal", fq.getPhFinal());
             nps.setInt("dessoragem", fq.getDessoragem());
             nps.setInt("temperaturaDessoragem", fq.getTemperaturaDessoragem());
             nps.setString("tipoSalga", fq.getTipoSalga());
             nps.setDate("dataMaturacao", fq.getDataMaturacao());
             nps.setInt("temperaturaMaturacao", fq.getTemperaturaMaturacao());
             nps.setDate("dataLavagem", fq.getDataLavagem());
-            nps.setString("tipoTratamento", fq.getTipoTratamentoCasca());
+            //nps.setString("tipoTratamento", fq.getTipoTratamentoCasca());
             nps.setInt("tempoTratamento", fq.getTempoTratamento());
             nps.setInt("qtdPecas", fq.getQtdPecas());
             nps.setDouble("pesoMPecas", fq.getPesoMedioPecas());
             nps.setDouble("pesoTotal", fq.getPesoTotal());
             nps.setString("observacoes", fq.getObservacoes());
-            nps.setString("FabricacaoQueijocol", fq.getFabricacaoQueijocol());
-            nps.setInt("Responsavel_idResponsavel", fq.getResponsavel_idResponsavel().getIdPessoa());
+            //nps.setString("FabricacaoQueijocol", fq.getFabricacaoQueijocol());
+            nps.setInt("Responsavel_idResponsavel", fq.getResponsavel().getIdPessoa());
 
             int exec = nps.executeUpdate();
             if (exec == 0) {
@@ -257,15 +282,15 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setReceitaQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
                 fq.setColetaLeite(ccl.consultar(consulta.getInt("coletaLeite_idColetaLeite")));
-                fq.setQtdLeiteUtilizada(consulta.getDouble("qtdLeiteUtilizada"));
+                fq.setQtdLeite(consulta.getDouble("qtdLeiteUtilizada"));
                 fq.setTipoLeite(consulta.getString("tipoLeite"));
                 fq.setTempoProcessamento(consulta.getInt("tempoProcessamento"));
                 fq.setTemperaturaProcessamento(consulta.getInt("temperaturaProcessamento"));
                 fq.setTemperaturaPreMaturacao(consulta.getInt("temperaturaPreMaturacao"));
                 fq.setQtdFermento(consulta.getDouble("qtdFermento"));
                 fq.setTempoFermentacao(consulta.getInt("tempoFermentacao"));
-                fq.setFermento(consulta.getString("fermento"));
-                fq.setMarcaFermento(consulta.getString("marcaFermento"));
+                //fq.setFermento(consulta.getString("fermento"));
+                //fq.setMarcaFermento(consulta.getString("marcaFermento"));
                 fq.setPhPreMaturacao(consulta.getInt("phPreMaturacao"));
                 fq.setTemperaturaCoagulacao(consulta.getInt("temperaturaCoagulacao"));
                 fq.setQtdClCalcio(consulta.getDouble("qtdClCalcio"));
@@ -276,23 +301,23 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setPh24(consulta.getInt("ph24"));
                 fq.setDessoragem(consulta.getInt("dessoragem"));
                 fq.setTemperaturaDessoragem(consulta.getInt("temperaturaDessoragem"));
-                fq.setDataSalga(consulta.getString("dataSalga"));
-                fq.setDataSalga(consulta.getString("temperaturaSalga"));
-                fq.setTempoTratamentoSalga(consulta.getString("tempoTratamentoSalga"));
-                fq.setDataTratamentoCasca(consulta.getString("dataTratamentoCasca"));
-                fq.setTipoTratamentoCasca(consulta.getString("tipoTratamentoCasca"));
+                //fq.setDataSalga(consulta.getString("dataSalga"));
+                //fq.setDataSalga(consulta.getString("temperaturaSalga"));
+                //fq.setTempoTratamentoSalga(consulta.getString("tempoTratamentoSalga"));
+                //fq.setDataTratamentoCasca(consulta.getString("dataTratamentoCasca"));
+                //fq.setTipoTratamentoCasca(consulta.getString("tipoTratamentoCasca"));
                 fq.setQtdPecas(consulta.getInt("qtdPecas"));
                 fq.setPesoTotal(consulta.getDouble("pesoTotal"));
                 fq.setPesoMedioPecas(consulta.getDouble("pesoMedioPecas"));
                 fq.setLoteAcabado(consulta.getString("LoteAcabado"));
-                fq.setResponsavel_idResponsavel(cp.consultar(consulta.getInt("Responsavel_idResponsavel")));
+                fq.setResponsavel(cp.consultar(consulta.getInt("Responsavel_idResponsavel")));
                 fq.setObservacoes(consulta.getString("observacoes"));
-                fq.setTempoMaturacao(consulta.getInt("tempoMaturacao"));
+                //fq.setTempoMaturacao(consulta.getInt("tempoMaturacao"));
                 java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dataFabricacao"));
                 fq.setDataFabricacao(d);
-                fq.setProcessamento_idProcessamento(cPros.consultar(consulta.getInt("processamento_idProcessamento")));
-                fq.setPhMaturacao(consulta.getDouble("phMaturacao"));
-                fq.setPhFinal(consulta.getDouble("phFinal"));
+                //fq.setProcessamento_idProcessamento(cPros.consultar(consulta.getInt("processamento_idProcessamento")));
+                //fq.setPhMaturacao(consulta.getDouble("phMaturacao"));
+                //fq.setPhFinal(consulta.getDouble("phFinal"));
                 fq.setTipoSalga(consulta.getString("tipoSalga"));
                 java.sql.Date d2 = java.sql.Date.valueOf(consulta.getString("dataMaturacao"));
                 fq.setDataMaturacao(d2);
@@ -300,7 +325,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 java.sql.Date d3 = java.sql.Date.valueOf(consulta.getString("dataLavagem"));
                 fq.setDataLavagem(d3);
                 fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
-                fq.setFabricacaoQueijocol(consulta.getString("fabricacaoQueijocol"));
+                //fq.setFabricacaoQueijocol(consulta.getString("fabricacaoQueijocol"));
                 fq.setInativo(consulta.getInt("inativo"));
 
                 fabricacoes.add(fq);
@@ -375,15 +400,15 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setReceitaQueijo(crq.consultar((consulta.getInt("idFabricacaoQueijo"))));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
                 fq.setColetaLeite(ccl.consultar(consulta.getInt("coletaLeite_idColetaLeite")));
-                fq.setQtdLeiteUtilizada(consulta.getDouble("qtdLeiteUtilizada"));
+                fq.setQtdLeite(consulta.getDouble("qtdLeiteUtilizada"));
                 fq.setTipoLeite(consulta.getString("tipoLeite"));
                 fq.setTempoProcessamento(consulta.getInt("tempoProcessamento"));
                 fq.setTemperaturaProcessamento(consulta.getInt("temperaturaProcessamento"));
                 fq.setTemperaturaPreMaturacao(consulta.getInt("temperaturaPreMaturacao"));
                 fq.setQtdFermento(consulta.getDouble("qtdFermento"));
                 fq.setTempoFermentacao(consulta.getInt("tempoFermentacao"));
-                fq.setFermento(consulta.getString("fermento"));
-                fq.setMarcaFermento(consulta.getString("marcaFermento"));
+                //fq.setFermento(consulta.getString("fermento"));
+                //fq.setMarcaFermento(consulta.getString("marcaFermento"));
                 fq.setPhPreMaturacao(consulta.getInt("phPreMaturacao"));
                 fq.setTemperaturaCoagulacao(consulta.getInt("temperaturaCoagulacao"));
                 fq.setQtdClCalcio(consulta.getDouble("qtdClCalcio"));
@@ -394,23 +419,23 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setPh24(consulta.getInt("ph24"));
                 fq.setDessoragem(consulta.getInt("dessoragem"));
                 fq.setTemperaturaDessoragem(consulta.getInt("temperaturaDessoragem"));
-                fq.setDataSalga(consulta.getString("dataSalga"));
-                fq.setDataSalga(consulta.getString("temperaturaSalga"));
-                fq.setTempoTratamentoSalga(consulta.getString("tempoTratamentoSalga"));
-                fq.setDataTratamentoCasca(consulta.getString("dataTratamentoCasca"));
-                fq.setTipoTratamentoCasca(consulta.getString("tipoTratamentoCasca"));
+                //fq.setDataSalga(consulta.getString("dataSalga"));
+                //fq.setDataSalga(consulta.getString("temperaturaSalga"));
+                //fq.setTempoTratamentoSalga(consulta.getString("tempoTratamentoSalga"));
+                //fq.setDataTratamentoCasca(consulta.getString("dataTratamentoCasca"));
+                //fq.setTipoTratamentoCasca(consulta.getString("tipoTratamentoCasca"));
                 fq.setQtdPecas(consulta.getInt("qtdPecas"));
                 fq.setPesoTotal(consulta.getDouble("pesoTotal"));
                 fq.setPesoMedioPecas(consulta.getDouble("pesoMedioPecas"));
                 fq.setLoteAcabado(consulta.getString("LoteAcabado"));
-                fq.setResponsavel_idResponsavel(cp.consultar(consulta.getInt("Responsavel_idResponsavel")));
+                fq.setResponsavel(cp.consultar(consulta.getInt("Responsavel_idResponsavel")));
                 fq.setObservacoes(consulta.getString("observacoes"));
-                fq.setTempoMaturacao(consulta.getInt("tempoMaturacao"));
+                //fq.setTempoMaturacao(consulta.getInt("tempoMaturacao"));
                 java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dataFabricacao"));
                 fq.setDataFabricacao(d);
-                fq.setProcessamento_idProcessamento(cPros.consultar(consulta.getInt("processamento_idProcessamento")));
-                fq.setPhMaturacao(consulta.getDouble("phMaturacao"));
-                fq.setPhFinal(consulta.getDouble("phFinal"));
+                //fq.setProcessamento_idProcessamento(cPros.consultar(consulta.getInt("processamento_idProcessamento")));
+                //fq.setPhMaturacao(consulta.getDouble("phMaturacao"));
+                //fq.setPhFinal(consulta.getDouble("phFinal"));
                 fq.setTipoSalga(consulta.getString("tipoSalga"));
                 java.sql.Date d2 = java.sql.Date.valueOf(consulta.getString("dataMaturacao"));
                 fq.setDataMaturacao(d2);
@@ -418,7 +443,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 java.sql.Date d3 = java.sql.Date.valueOf(consulta.getString("dataLavagem"));
                 fq.setDataLavagem(d3);
                 fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
-                fq.setFabricacaoQueijocol(consulta.getString("fabricacaoQueijocol"));
+                //fq.setFabricacaoQueijocol(consulta.getString("fabricacaoQueijocol"));
                 fq.setInativo(consulta.getInt("inativo"));
 
                 fabricacoes.add(fq);

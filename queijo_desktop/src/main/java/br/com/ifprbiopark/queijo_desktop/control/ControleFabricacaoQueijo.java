@@ -33,7 +33,7 @@ public class ControleFabricacaoQueijo {
             throw new FabricacaoException(new RequiredFieldException("Data de Fabricação"));
         }
 
-        if (f.getQtdLeiteUtilizada()== null || f.getQtdLeiteUtilizada()== 0) {
+        if (f.getQtdLeite()== null || f.getQtdLeite()== 0) {
             throw new FabricacaoException(new RequiredFieldException("Quantidade Utilizada"));
         }
 
