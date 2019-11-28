@@ -27,7 +27,7 @@ public class ControleEntregaAtributo {
             throw new EntregaAtributoException(new RequiredFieldException("Valor"));
         }
 
-        if (e.getAtributo_idAtributo() == null) {
+        if (e.getAtributo() == null) {
             throw new EntregaAtributoException(new RequiredFieldException("Atributo"));
         }
 

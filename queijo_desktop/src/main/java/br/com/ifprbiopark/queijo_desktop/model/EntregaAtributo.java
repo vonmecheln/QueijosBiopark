@@ -4,7 +4,7 @@ public class EntregaAtributo extends AbstractModel {
 
     private Integer idEntregaAtributo;
     private String valor;
-    private Atributos atributo_idAtributo;
+    private Atributos atributo;
     private ColetaLeite coletaLeite_idColetaLeite;
 
     public Integer getIdEntregaAtributo() {
@@ -23,12 +23,12 @@ public class EntregaAtributo extends AbstractModel {
         this.valor = valor;
     }
 
-    public Atributos getAtributo_idAtributo() {
-        return atributo_idAtributo;
+    public Atributos getAtributo() {
+        return atributo;
     }
 
-    public void setAtributo_idAtributo(Atributos Atributo_idAtributo) {
-        this.atributo_idAtributo = Atributo_idAtributo;
+    public void setAtributo(Atributos atributo) {
+        this.atributo = atributo;
     }
 
     public ColetaLeite getColetaLeite_idColetaLeite() {

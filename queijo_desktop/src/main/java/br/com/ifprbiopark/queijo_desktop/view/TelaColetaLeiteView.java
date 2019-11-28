@@ -324,9 +324,9 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     //coleta dados do formulario da tela "ColetaLeite";
 
                     //fornecedor na tela;
-                    coleta.setProdutor_idPessoa(fornecedores.get(jcFornecedor.getSelectedIndex()));
+                    coleta.setProdutor(fornecedores.get(jcFornecedor.getSelectedIndex()));
                     //Funcionario na tela;
-                    coleta.setFuncionario_idPessoa(funcionarios.get(jcFuncionario.getSelectedIndex()));
+                    coleta.setFuncionario(funcionarios.get(jcFuncionario.getSelectedIndex()));
                     //data da coleta;
                     Date leiteColeta = new SimpleDateFormat("dd/MM/yyyy").parse(jfData.getText());
                     coleta.setDtColeta(leiteColeta);

@@ -133,8 +133,8 @@ public class QueijoDesktop {
                 cl.setLoteColeta("-");
                 cl.setDtColeta(new Date("31/12/2020"));
                 cl.setQtdLeite(1.5);
-                cl.setFuncionario_idPessoa(new Pessoa());
-                cl.setProdutor_idPessoa(new Pessoa());
+                cl.setFuncionario(new Pessoa());
+                cl.setProdutor(new Pessoa());
                 ControleColetaLeite cc = new ControleColetaLeite();
                 cc.salvar(cl);
                 cc.excluir(cl);
@@ -155,7 +155,7 @@ public class QueijoDesktop {
                 
                 ea = new EntregaAtributo();                
                 ea.setValor("0");
-                ea.setAtributo_idAtributo(new Atributos());
+                ea.setAtributo(new Atributos());
                 ea.setColetaLeite_idColetaLeite(new ColetaLeite());
                 
                 ControleEntregaAtributo cea = new ControleEntregaAtributo();

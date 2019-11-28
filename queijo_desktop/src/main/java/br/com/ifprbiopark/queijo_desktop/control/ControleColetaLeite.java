@@ -37,7 +37,7 @@ public class ControleColetaLeite {
             throw new ColetaLeiteException(new RequiredFieldException("Quantidade"));
         }
 
-        if (c.getProdutor_idPessoa() == null) {
+        if (c.getProdutor() == null) {
             throw new ColetaLeiteException(new RequiredFieldException("Produtor"));
         }
 

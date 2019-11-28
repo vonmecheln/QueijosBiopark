@@ -7,13 +7,13 @@ public class ColetaLeite extends AbstractModel {
     private Integer idColetaLeite;
     private String loteColeta;
     private Date dtColeta;
-    private Pessoa produtor_idPessoa;
-    private Pessoa funcionario_idPessoa;
+    private Pessoa produtor;
+    private Pessoa funcionario;
     private Double qtdLeite;
     private String situacao;
 
     public Pessoa getFuncionario_idPessoa() {
-        return funcionario_idPessoa;
+        return funcionario;
     }
 
     public String getSituacao() {
@@ -24,8 +24,8 @@ public class ColetaLeite extends AbstractModel {
         this.situacao = situacao;
     }
 
-    public void setFuncionario_idPessoa(Pessoa funcionarioIdPessoa) {
-        this.funcionario_idPessoa = funcionarioIdPessoa;
+    public void setFuncionario(Pessoa funcionario) {
+        this.funcionario = funcionario;
     }
 
     public Integer getIdColetaLeite() {
@@ -52,12 +52,12 @@ public class ColetaLeite extends AbstractModel {
         this.dtColeta = dtColeta;
     }
 
-    public Pessoa getProdutor_idPessoa() {
-        return produtor_idPessoa;
+    public Pessoa getProdutor() {
+        return produtor;
     }
 
-    public void setProdutor_idPessoa(Pessoa produtorIdPessoa) {
-        this.produtor_idPessoa = produtorIdPessoa;
+    public void setProdutor(Pessoa produtor) {
+        this.produtor = produtor;
     }
 
     public Double getQtdLeite() {
