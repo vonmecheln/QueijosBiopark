@@ -42,9 +42,9 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="749" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="730" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="pnlInicio" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlInicio" alignment="0" pref="730" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,8 +86,8 @@
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="191" max="32767" attributes="0"/>
-                          <Component id="pnlMenssagem" min="-2" pref="1181" max="-2" attributes="0"/>
+                          <EmptySpace pref="190" max="32767" attributes="0"/>
+                          <Component id="pnlMenssagem" min="-2" pref="1182" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -101,24 +101,25 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="749" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="730" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="painelDesktop" min="-2" pref="692" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                      <Component id="pnlMenuSelecionado" alignment="0" pref="749" max="32767" attributes="0"/>
+                      <Component id="pnlMenuSelecionado" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="725" max="32767" attributes="0"/>
-                          <Component id="pnlMenssagem" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="695" max="-2" attributes="0"/>
+                          <Component id="pnlMenssagem" min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
-                      <Component id="jLayeredPane2" alignment="0" pref="749" max="32767" attributes="0"/>
+                      <Component id="jLayeredPane2" alignment="0" pref="730" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -456,7 +457,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="749" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="730" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="pnlBgGeral" min="-2" max="-2" attributes="0"/>
