@@ -5,17 +5,24 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author jhona
  */
-public class TalaNovaFabricacaoView extends javax.swing.JInternalFrame {
+public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form TalaNovaFabricacaoView
      */
-    public TalaNovaFabricacaoView() {
+    public TelaNovaFabricacaoView() {
         initComponents();
+    }
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**

@@ -6,11 +6,11 @@ import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableConsultaFabricacao;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.List;
 
 public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
-
-    private ControleReceitaQueijo rqControl;
+    private ControleReceitaQueijo rqControl = new ControleReceitaQueijo();
     private List<ReceitaQueijo> listaReceitaQueijo;
     private TableConsultaFabricacao tableModel = new TableConsultaFabricacao();
     private ControleFabricacaoQueijo cp;
@@ -27,6 +27,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
             listaReceitaQueijo = rqControl.listaReceitaQueijo();
             //jcTipoQueijo.removeAll();
             //cmbTipoQueijo.addItem("");
+            cmbTipoQueijo.addItem("Todos");
             for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {
                 cmbTipoQueijo.addItem(receitaQueijo.getNomeTipo());
             }
@@ -34,6 +35,11 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
         }
+    }
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -53,11 +59,17 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         btnAbrir = new javax.swing.JButton();
         chkInativo = new javax.swing.JCheckBox();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setResizable(true);
         setTitle("Consultar fabricações");
 
         btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         tblFabricacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +105,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
             }
         });
 
+        chkInativo.setBackground(new java.awt.Color(255, 255, 255));
         chkInativo.setText("Inativos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,13 +130,11 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnNovo)
-                        .addComponent(btnFiltrar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cmbTipoQueijo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbTipoQueijo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltrar)
+                    .addComponent(btnNovo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkInativo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,6 +161,10 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
             abrirFabricacao();
         }
     }//GEN-LAST:event_tblFabricacoesMouseClicked
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        novaFabricacao();
+    }//GEN-LAST:event_btnNovoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrir;
@@ -183,5 +198,13 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
             form.setVisible(true);
             this.dispose();
         }
+    }
+    
+    private void novaFabricacao(){
+            TelaNovaFabricacaoView form = new TelaNovaFabricacaoView();
+            QueijoDesktop.telaPrincipal.getPainelDesktop().add(form);
+            form.setPosicao();
+            form.setVisible(true);         
+            this.dispose();
     }
 }

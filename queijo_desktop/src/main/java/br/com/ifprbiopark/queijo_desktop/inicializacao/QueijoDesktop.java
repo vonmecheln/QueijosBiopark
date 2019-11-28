@@ -39,7 +39,6 @@ public class QueijoDesktop {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
         if (false) {
             Pessoa p = new Pessoa();
             p.setNome("");

@@ -455,10 +455,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_lbClassificacaoMouseClicked
 
     private void lbFabricacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFabricacaoMouseClicked
-        TelaFabricacaoQueijoView formProcessamento = new TelaFabricacaoQueijoView();
-        painelDesktop.add(formProcessamento);
-        formProcessamento.setPosicao();
-        formProcessamento.setVisible(true);
+        TelaConsultaFrabricacaoView formFabricacao = new TelaConsultaFrabricacaoView();
+        painelDesktop.add(formFabricacao);
+        formFabricacao.setPosicao();
+        formFabricacao.setVisible(true);
 
     }//GEN-LAST:event_lbFabricacaoMouseClicked
 
