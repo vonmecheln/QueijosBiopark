@@ -51,7 +51,7 @@ public class TableConsultaFabricacao extends AbstractTableModel {
             case 3:
                 return dados.get(linha).getLoteQueijo();
             case 4:
-                return dados.get(linha).getQtdLeiteUtilizada();
+                return dados.get(linha).getQtdLeite();
         }
         return null;
     }

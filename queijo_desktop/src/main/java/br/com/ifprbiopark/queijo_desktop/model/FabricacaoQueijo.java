@@ -8,22 +8,23 @@ public class FabricacaoQueijo extends AbstractModel {
 
     //informacoes basicas de processamento;
     private ReceitaQueijo receitaQueijo;
+    private Date dataFabricacao;
     private String loteQueijo;
     private ColetaLeite coletaLeite;
-    private Double qtdLeiteUtilizada;
+    private Double qtdLeite;    
 
     //processamento;
     private String tipoLeite;
     private Integer tempoProcessamento;
-    private Integer temperaturaProcessamento;
+    private Integer temperaturaProcessamento;    
+    
+    //Prematuração
     private Integer temperaturaPreMaturacao;
-
-    //fermento;
-    private Double qtdFermento;
-    private Integer tempoFermentacao;
-    private String fermento;
-    private String marcaFermento;
     private Integer phPreMaturacao;
+        //fermento;
+        private Fermento fermento;
+        private Double qtdFermento;
+        private Integer tempoFermentacao;    
 
     //Coagulacao;
     private Integer temperaturaCoagulacao;
@@ -35,35 +36,28 @@ public class FabricacaoQueijo extends AbstractModel {
     private Integer ph24;
     private Integer dessoragem;
     private Integer temperaturaDessoragem;
-
-    //Salga;
-    private String dataSalga;
-    private String temperaturaSalga;
-    private String tempoTratamentoSalga;
-
-    //Casca
-    private String dataTratamentoCasca;
-    private String tipoTratamentoCasca;
+        //Salga
+        private String tipoSalga;
+    
+    //Maturação    
+    private Date dataMaturacao;
+    private Integer temperaturaMaturacao;
+        //Tratamento da casca    
+        private Date dataLavagem;
+        private String tipoTratamento;
+        private Integer tempoTratamento;
 
     //Rendimento;
     private Integer qtdPecas;
-    private Double pesoTotal;
     private Double pesoMedioPecas;
-    private String LoteAcabado;
-    private Pessoa Responsavel_idResponsavel;
-    private String observacoes;
+    private Double pesoTotal;
 
-    private Integer tempoMaturacao;
-    private Date dataFabricacao;
-    private Processamento processamento_idProcessamento;
-    private Double phMaturacao;
-    private Double phFinal;
-    private String tipoSalga;
-    private Date dataMaturacao;
-    private Integer temperaturaMaturacao;
-    private Date dataLavagem;
-    private Integer tempoTratamento;
-    private String fabricacaoQueijocol;
+    //Obeservações
+    private String observacoes;
+    
+    //Finalização
+    private String loteAcabado;
+    private Pessoa responsavel;
     private Integer inativo;
 
     public Integer getInativo() {
@@ -106,12 +100,12 @@ public class FabricacaoQueijo extends AbstractModel {
         this.coletaLeite = coletaLeite;
     }
 
-    public Double getQtdLeiteUtilizada() {
-        return qtdLeiteUtilizada;
+    public Double getQtdLeite() {
+        return qtdLeite;
     }
 
-    public void setQtdLeiteUtilizada(Double qtdLeiteUtilizada) {
-        this.qtdLeiteUtilizada = qtdLeiteUtilizada;
+    public void setQtdLeite(Double qtdLeite) {
+        this.qtdLeite = qtdLeite;
     }
 
     public String getTipoLeite() {
@@ -160,23 +154,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     public void setTempoFermentacao(Integer tempoFermentacao) {
         this.tempoFermentacao = tempoFermentacao;
-    }
-
-    public String getFermento() {
-        return fermento;
-    }
-
-    public void setFermento(String fermento) {
-        this.fermento = fermento;
-    }
-
-    public String getMarcaFermento() {
-        return marcaFermento;
-    }
-
-    public void setMarcaFermento(String marcaFermento) {
-        this.marcaFermento = marcaFermento;
-    }
+    }    
 
     public Integer getPhPreMaturacao() {
         return phPreMaturacao;
@@ -256,86 +234,14 @@ public class FabricacaoQueijo extends AbstractModel {
 
     public void setTemperaturaDessoragem(Integer temperaturaDessoragem) {
         this.temperaturaDessoragem = temperaturaDessoragem;
+    }    
+
+    public Pessoa getResponsavel() {
+        return responsavel;
     }
 
-    public String getDataSalga() {
-        return dataSalga;
-    }
-
-    public void setDataSalga(String dataSalga) {
-        this.dataSalga = dataSalga;
-    }
-
-    public String getTemperaturaSalga() {
-        return temperaturaSalga;
-    }
-
-    public void setTemperaturaSalga(String temperaturaSalga) {
-        this.temperaturaSalga = temperaturaSalga;
-    }
-
-    public String getTempoTratamentoSalga() {
-        return tempoTratamentoSalga;
-    }
-
-    public void setTempoTratamentoSalga(String tempoTratamentoSalga) {
-        this.tempoTratamentoSalga = tempoTratamentoSalga;
-    }
-
-    public String getDataTratamentoCasca() {
-        return dataTratamentoCasca;
-    }
-
-    public void setDataTratamentoCasca(String dataTratamentoCasca) {
-        this.dataTratamentoCasca = dataTratamentoCasca;
-    }
-
-    public String getTipoTratamentoCasca() {
-        return tipoTratamentoCasca;
-    }
-
-    public void setTipoTratamentoCasca(String tipoTratamentoCasca) {
-        this.tipoTratamentoCasca = tipoTratamentoCasca;
-    }
-
-    public Integer getQtdPecas() {
-        return qtdPecas;
-    }
-
-    public void setQtdPecas(Integer qtdPecas) {
-        this.qtdPecas = qtdPecas;
-    }
-
-    public Double getPesoTotal() {
-        return pesoTotal;
-    }
-
-    public void setPesoTotal(Double pesoTotal) {
-        this.pesoTotal = pesoTotal;
-    }
-
-    public Double getPesoMedioPecas() {
-        return pesoMedioPecas;
-    }
-
-    public void setPesoMedioPecas(Double pesoMedioPecas) {
-        this.pesoMedioPecas = pesoMedioPecas;
-    }
-
-    public String getLoteAcabado() {
-        return LoteAcabado;
-    }
-
-    public void setLoteAcabado(String LoteAcabado) {
-        this.LoteAcabado = LoteAcabado;
-    }
-
-    public Pessoa getResponsavel_idResponsavel() {
-        return Responsavel_idResponsavel;
-    }
-
-    public void setResponsavel_idResponsavel(Pessoa Responsavel_idResponsavel) {
-        this.Responsavel_idResponsavel = Responsavel_idResponsavel;
+    public void setResponsavel(Pessoa responsavel) {
+        this.responsavel = responsavel;
     }
 
     public String getObservacoes() {
@@ -344,15 +250,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
-    }
-
-    public Integer getTempoMaturacao() {
-        return tempoMaturacao;
-    }
-
-    public void setTempoMaturacao(Integer tempoMaturacao) {
-        this.tempoMaturacao = tempoMaturacao;
-    }
+    }    
 
     public Date getDataFabricacao() {
         return dataFabricacao;
@@ -360,31 +258,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     public void setDataFabricacao(Date dataFabricacao) {
         this.dataFabricacao = dataFabricacao;
-    }
-
-    public Processamento getProcessamento_idProcessamento() {
-        return processamento_idProcessamento;
-    }
-
-    public void setProcessamento_idProcessamento(Processamento processamento_idProcessamento) {
-        this.processamento_idProcessamento = processamento_idProcessamento;
-    }
-
-    public Double getPhMaturacao() {
-        return phMaturacao;
-    }
-
-    public void setPhMaturacao(Double phMaturacao) {
-        this.phMaturacao = phMaturacao;
-    }
-
-    public Double getPhFinal() {
-        return phFinal;
-    }
-
-    public void setPhFinal(Double phFinal) {
-        this.phFinal = phFinal;
-    }
+    }   
 
     public String getTipoSalga() {
         return tipoSalga;
@@ -426,14 +300,6 @@ public class FabricacaoQueijo extends AbstractModel {
         this.tempoTratamento = tempoTratamento;
     }
 
-    public String getFabricacaoQueijocol() {
-        return fabricacaoQueijocol;
-    }
-
-    public void setFabricacaoQueijocol(String fabricacaoQueijocol) {
-        this.fabricacaoQueijocol = fabricacaoQueijocol;
-    }
-
     @Override
     public Integer getId() {
         return getIdFabricacaoQueijo() != null ? getIdFabricacaoQueijo() : 0;
@@ -443,5 +309,55 @@ public class FabricacaoQueijo extends AbstractModel {
     public void setId(Integer id) {
         setIdFabricacaoQueijo(id);
     }
+
+    public Fermento getFermento() {
+        return fermento;
+    }
+
+    public void setFermento(Fermento fermento) {
+        this.fermento = fermento;
+    }
+
+    public String getTipoTratamento() {
+        return tipoTratamento;
+    }
+
+    public void setTipoTratamento(String tipoTratamento) {
+        this.tipoTratamento = tipoTratamento;
+    }
+
+    public Integer getQtdPecas() {
+        return qtdPecas;
+    }
+
+    public void setQtdPecas(Integer qtdPecas) {
+        this.qtdPecas = qtdPecas;
+    }
+
+    public Double getPesoMedioPecas() {
+        return pesoMedioPecas;
+    }
+
+    public void setPesoMedioPecas(Double pesoMedioPecas) {
+        this.pesoMedioPecas = pesoMedioPecas;
+    }
+
+    public Double getPesoTotal() {
+        return pesoTotal;
+    }
+
+    public void setPesoTotal(Double pesoTotal) {
+        this.pesoTotal = pesoTotal;
+    }
+
+    public String getLoteAcabado() {
+        return loteAcabado;
+    }
+
+    public void setLoteAcabado(String loteAcabado) {
+        this.loteAcabado = loteAcabado;
+    }
+    
+    
 
 }

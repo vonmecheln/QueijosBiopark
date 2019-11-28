@@ -181,7 +181,7 @@ public class QueijoDesktop {
                 fb.setReceitaQueijo(new ReceitaQueijo());
                 fb.setColetaLeite(new ColetaLeite());
                 fb.setDataFabricacao(new Date("31/12/2020"));
-                fb.setQtdLeiteUtilizada(40.5);
+                fb.setQtdLeite(40.5);
                 fb.setLoteQueijo("AAABBB");
                 fb.setTipoLeite("");
                 fb.setTempoProcessamento(1);
@@ -194,7 +194,7 @@ public class QueijoDesktop {
                 fb = new FabricacaoQueijo();
                 fb.setLoteQueijo("AAABBB");
                 fb.setDataFabricacao(new Date("31/12/2020"));
-                fb.setQtdLeiteUtilizada(40.5);
+                fb.setQtdLeite(40.5);
                 fb.setTempoProcessamento(1);
                 fb.setTemperaturaProcessamento(2);
                 fb.setTemperaturaPreMaturacao(3);
