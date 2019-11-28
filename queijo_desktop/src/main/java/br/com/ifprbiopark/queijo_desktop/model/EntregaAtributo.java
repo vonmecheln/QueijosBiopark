@@ -41,7 +41,7 @@ public class EntregaAtributo extends AbstractModel {
 
     @Override
     public Integer getId() {
-        return getIdEntregaAtributo();
+        return getIdEntregaAtributo() != null ? getIdEntregaAtributo() : 0;
     }
 
     @Override

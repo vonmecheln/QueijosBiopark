@@ -46,7 +46,7 @@ public class TableFermento extends AbstractTableModel {
             case 0:
                 return fermentos.get(linha).getIdFermento();
             case 1:
-                return fermentos.get(linha).getTipoFermento();
+                return fermentos.get(linha).getNome();
             case 2:
                 return fermentos.get(linha).getMarca();
         }

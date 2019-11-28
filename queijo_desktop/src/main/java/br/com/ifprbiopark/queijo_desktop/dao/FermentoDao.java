@@ -13,13 +13,13 @@ public class FermentoDao extends AbstractDao<Fermento> {
     public FermentoDao() throws DbException {
         super("fermento", new ArrayList<>(Arrays.asList(
                 "idFermento",
-                "tipoFermento",
+                "nome",
                 "marca")));
     }
 
     @Override
     protected void confStantement(NamedParameterStatement nps, Fermento objeto) throws SQLException {
-        nps.setString("tipoFermento", objeto.getTipoFermento());
+        nps.setString("nome", objeto.getNome());
         nps.setString("marca", objeto.getMarca());
     }
 
@@ -60,7 +60,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
             while (consulta.next()) {
                 Fermento fermento = new Fermento();
                 fermento.setIdFermento(consulta.getInt("idFermento"));
-                fermento.setTipoFermento(consulta.getString("tipoFermento"));
+                fermento.setNome(consulta.getString("tipoFermento"));
                 fermento.setMarca(consulta.getString("marca"));
 
                 return fermento;
@@ -83,7 +83,7 @@ public class FermentoDao extends AbstractDao<Fermento> {
             while (consulta.next()) {
                 Fermento fermento = new Fermento();
                 fermento.setIdFermento(consulta.getInt("idFermento"));
-                fermento.setTipoFermento(consulta.getString("tipoFermento"));
+                fermento.setNome(consulta.getString("tipoFermento"));
                 fermento.setMarca(consulta.getString("marca"));
 
                 retornoFermento.add(fermento);

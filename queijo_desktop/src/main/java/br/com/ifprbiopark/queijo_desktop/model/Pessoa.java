@@ -72,7 +72,7 @@ public class Pessoa extends AbstractModel {
 
     @Override
     public Integer getId() {
-        return getIdPessoa();
+        return getIdPessoa() != null ? getIdPessoa() : 0;
     }
 
     @Override

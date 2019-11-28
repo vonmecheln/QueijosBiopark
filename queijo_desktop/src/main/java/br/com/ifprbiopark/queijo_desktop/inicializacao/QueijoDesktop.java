@@ -1,15 +1,24 @@
 package br.com.ifprbiopark.queijo_desktop.inicializacao;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.dao.ColetaLeiteDao;
+import br.com.ifprbiopark.queijo_desktop.dao.FermentoDao;
 import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
 import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
+import br.com.ifprbiopark.queijo_desktop.exception.ColetaLeiteException;
+import br.com.ifprbiopark.queijo_desktop.exception.FermentoException;
 import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
 import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.view.TelaPrincipalView;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,16 +38,16 @@ public class QueijoDesktop {
             p.setTipoFiscal("");
             p.setDocumento("");
             p.setTipoPessoa("");
-            
+
             try {
                 PessoaDao pd = new PessoaDao();
                 pd.inserir(p);
                 pd.alterar(p);
-                pd.excluir(p);                                
+                pd.excluir(p);
             } catch (DbException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             try {
                 p = new Pessoa();
                 p.setNome("-");
@@ -48,12 +57,10 @@ public class QueijoDesktop {
                 ControlePessoa cp = new ControlePessoa();
                 cp.salvar(p);
                 cp.salvar(p);
-                
-                
+
             } catch (PessoaException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
 
             ReceitaQueijo r = new ReceitaQueijo();
             r.setNomeTipo("");
@@ -73,9 +80,62 @@ public class QueijoDesktop {
             try {
                 cr.salvar(r);
                 cr.salvar(r);
+                cr.excluir(r);
+
             } catch (ReceitaQueijoException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            Fermento f;
+            try {
+                f = new Fermento();
+                f.setNome("");
+                f.setMarca("");
+                FermentoDao fd = new FermentoDao();
+
+                fd.inserir(f);
+                fd.alterar(f);
+                fd.excluir(f);
+
+                ControleFermento cf = new ControleFermento();
+                f = new Fermento();
+                f.setNome("-");
+                f.setMarca("--");
+                cf.salvar(f);
+                cf.salvar(f);
+                cf.excluir(f);
+
+            } catch (FermentoException | DbException ex) {
+                Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            ColetaLeite cl;
+            try {
+
+                cl = new ColetaLeite();
+                cl.setLoteColeta("");
+                cl.setDtColeta(new Date("01/01/2020"));                
+                ColetaLeiteDao cd = new ColetaLeiteDao();
+                cd.inserir(cl);
+                cd.alterar(cl);
+                cd.excluir(cl);
+                
+                cl = new ColetaLeite();
+                cl.setLoteColeta("-");
+                cl.setDtColeta(new Date("31/12/2020"));
+                cl.setQtdLeite(1.5);
+                cl.setFuncionario_idPessoa(new Pessoa());
+                cl.setProdutor_idPessoa(new Pessoa());
+                ControleColetaLeite cc = new ControleColetaLeite();
+                cc.salvar(cl);
+                cc.excluir(cl);
+                
+            } catch (DbException | ColetaLeiteException ex) {
+                Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            
 
         } else {
 
@@ -105,4 +165,5 @@ public class QueijoDesktop {
         }
 
     }
+    
 }

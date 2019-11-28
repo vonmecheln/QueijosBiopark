@@ -21,7 +21,6 @@ public class EntregaLeite extends AbstractModel {
     public void setIdEntregaLeite(Integer idEntregaLeite) {
         this.idEntregaLeite = idEntregaLeite;
     }
-    
 
     public Date getData() {
         return data;
@@ -89,7 +88,7 @@ public class EntregaLeite extends AbstractModel {
 
     @Override
     public Integer getId() {
-        return getIdEntregaLeite();
+        return getIdEntregaLeite() != null ? getIdEntregaLeite() : 0;
     }
 
     @Override

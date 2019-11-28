@@ -436,7 +436,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     @Override
     public Integer getId() {
-        return getIdFabricacaoQueijo();
+        return getIdFabricacaoQueijo() != null ? getIdFabricacaoQueijo() : 0;
     }
 
     @Override

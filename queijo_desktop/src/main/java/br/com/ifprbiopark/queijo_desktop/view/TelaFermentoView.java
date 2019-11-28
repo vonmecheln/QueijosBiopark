@@ -1,7 +1,7 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
-import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.exception.FermentoException;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableFermento;
 import java.util.logging.Level;
@@ -216,16 +216,12 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             item.setIdFermento(0); //setando o Id = zero
         }
-        item.setTipoFermento(txtTipo.getText());
+        item.setNome(txtTipo.getText());
         item.setMarca(txtMarca.getText());
         ControleFermento controleFermento = new ControleFermento();
         try {
-            if (item.getIdFermento() > 0) {
-                controleFermento.alterar(item);
-            } else {
-                controleFermento.salvar(item);
-            }
-        } catch (DbException ex) {
+            controleFermento.salvar(item);
+        } catch (FermentoException ex) {
             Logger.getLogger(TelaFermentoView.class.getName()).log(Level.SEVERE, null, ex);
         }
         tableFermento.recarregar();

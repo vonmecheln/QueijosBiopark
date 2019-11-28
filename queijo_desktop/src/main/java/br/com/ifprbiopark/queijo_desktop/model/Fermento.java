@@ -3,7 +3,7 @@ package br.com.ifprbiopark.queijo_desktop.model;
 public class Fermento extends AbstractModel {
 
     private Integer idFermento;
-    private String tipoFermento;
+    private String nome;
     private String marca;
 
     public Integer getIdFermento() {
@@ -14,12 +14,12 @@ public class Fermento extends AbstractModel {
         this.idFermento = idFermento;
     }
 
-    public String getTipoFermento() {
-        return tipoFermento;
+    public String getNome() {
+        return nome;
     }
 
-    public void setTipoFermento(String tipoFermento) {
-        this.tipoFermento = tipoFermento;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getMarca() {
@@ -32,7 +32,7 @@ public class Fermento extends AbstractModel {
 
     @Override
     public Integer getId() {
-        return getIdFermento();
+        return getIdFermento() != null ? getIdFermento() : 0;
     }
 
     @Override

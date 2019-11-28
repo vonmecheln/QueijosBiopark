@@ -2,6 +2,7 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
+import br.com.ifprbiopark.queijo_desktop.exception.ColetaLeiteException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.EntregaLeite;
@@ -304,22 +305,16 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
                     //funcionario
                     Pessoa p = new Pessoa();
-                    p.setIdPessoa(coleta.getPessoa_idPessoa().getIdPessoa());
+                    p.setIdPessoa(coleta.getFuncionario_idPessoa().getIdPessoa());
 
                     coleta.setLoteColeta((String) lote);
 
-                    try {
-                        cColeta.salvar(coleta);
-                    } catch (DbException ex) {
-                        Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    cColeta.salvar(coleta);
 
                     load();
                     listaColetas.updateRow();
 
-                } catch (ParseException ex) {
-                    Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (DbException ex) {
+                } catch (ParseException | DbException | ColetaLeiteException ex) {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -329,9 +324,9 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     //coleta dados do formulario da tela "ColetaLeite";
 
                     //fornecedor na tela;
-                    coleta.setProdutor_idProdutor(fornecedores.get(jcFornecedor.getSelectedIndex()));
+                    coleta.setProdutor_idPessoa(fornecedores.get(jcFornecedor.getSelectedIndex()));
                     //Funcionario na tela;
-                    coleta.setPessoa_idPessoa(funcionarios.get(jcFuncionario.getSelectedIndex()));
+                    coleta.setFuncionario_idPessoa(funcionarios.get(jcFuncionario.getSelectedIndex()));
                     //data da coleta;
                     Date leiteColeta = new SimpleDateFormat("dd/MM/yyyy").parse(jfData.getText());
                     coleta.setDtColeta(leiteColeta);
@@ -351,7 +346,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                 tfLote.setText("");
                 try {
                     cColeta.salvar(coleta);
-                } catch (DbException ex) {
+                } catch (ColetaLeiteException ex) {
                     Logger.getLogger(TelaColetaLeiteView.class.getName()).log(Level.SEVERE, null, ex);
                 }
 

@@ -1,14 +1,9 @@
 package br.com.ifprbiopark.queijo_desktop.control;
 
-import static br.com.ifprbiopark.queijo_desktop.control.ControlePessoa.isValidCNPJ;
-import static br.com.ifprbiopark.queijo_desktop.control.ControlePessoa.isValidCPF;
 import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
-import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
 import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
 import br.com.ifprbiopark.queijo_desktop.exception.RequiredFieldException;
-import br.com.ifprbiopark.queijo_desktop.exception.UniqueRegisterException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
-import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import com.google.common.base.Strings;
 import java.util.List;
@@ -44,8 +39,12 @@ public class ControleReceitaQueijo {
         }
     }
 
-    public void excluir(ReceitaQueijo c) throws DbException {
-        dao.excluir(c);
+    public void excluir(ReceitaQueijo c) throws ReceitaQueijoException {
+        try {
+            dao.excluir(c);
+        } catch (DbException ex) {
+            throw new ReceitaQueijoException(ex);
+        }
     }
 
     

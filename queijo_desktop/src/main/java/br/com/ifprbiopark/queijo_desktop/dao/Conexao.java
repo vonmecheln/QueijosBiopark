@@ -52,8 +52,8 @@ public class Conexao {
 
             statement.execute("CREATE TABLE IF NOT EXISTS fermento ("
                     + "    idFermento INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + "    tipoFermento VARCHAR(45) NOT NULL, "
-                    + "    Marca VARCHAR(45) NOT NULL);");
+                    + "    nome VARCHAR(45) NOT NULL, "
+                    + "    marca VARCHAR(45) NOT NULL);");
 
             statement.execute("CREATE TABLE IF NOT EXISTS receitaqueijo ("
                     + "    idReceita INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -113,10 +113,10 @@ public class Conexao {
                     statement.executeUpdate("INSERT INTO receitaqueijo (nomeReceita) VALUES ('Queijo Reblochon'); ");
 
                     //-- Populando tabela Fermento 
-                    statement.executeUpdate("INSERT INTO fermento (tipofermento, marca) VALUES ('Mesofilico old', 'Docina'); ");
-                    statement.executeUpdate("INSERT INTO fermento (tipofermento, marca) VALUES ('Mesofilico termofilico', 'Docina'); ");
-                    statement.executeUpdate("INSERT INTO fermento (tipofermento, marca) VALUES ('Mesofilico tipo O', 'Docina'); ");
-                    statement.executeUpdate("INSERT INTO fermento (tipofermento, marca) VALUES ('Mesofilico +PPR10', 'Docina+Lactopar'); ");
+                    statement.executeUpdate("INSERT INTO fermento (nome, marca) VALUES ('Mesofilico old', 'Docina'); ");
+                    statement.executeUpdate("INSERT INTO fermento (nome, marca) VALUES ('Mesofilico termofilico', 'Docina'); ");
+                    statement.executeUpdate("INSERT INTO fermento (nome, marca) VALUES ('Mesofilico tipo O', 'Docina'); ");
+                    statement.executeUpdate("INSERT INTO fermento (nome, marca) VALUES ('Mesofilico +PPR10', 'Docina+Lactopar'); ");
 
                     //-- Populando tabela Pessoa 
                     statement.executeUpdate("INSERT INTO pessoa (nome, endereco, telefone, tipoFiscal, documento, tipoPessoa) VALUES ('Beatriz Durlan', 'Rua Roxo nr 11','45 3333-3333','F', '00000000000','Fornecedor');  ");

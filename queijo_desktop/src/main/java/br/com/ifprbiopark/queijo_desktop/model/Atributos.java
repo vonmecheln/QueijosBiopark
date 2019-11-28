@@ -23,7 +23,7 @@ public class Atributos extends AbstractModel {
 
     @Override
     public Integer getId() {
-        return getIdAtributo();
+        return getIdAtributo() != null ? getIdAtributo() : 0;
     }
 
     @Override

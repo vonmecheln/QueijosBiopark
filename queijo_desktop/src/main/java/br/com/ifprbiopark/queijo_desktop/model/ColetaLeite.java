@@ -7,13 +7,13 @@ public class ColetaLeite extends AbstractModel {
     private Integer idColetaLeite;
     private String loteColeta;
     private Date dtColeta;
-    private Pessoa produtor_idProdutor;
-    private Pessoa Pessoa_idPessoa;
-    private double qtdLeite;
+    private Pessoa produtor_idPessoa;
+    private Pessoa funcionario_idPessoa;
+    private Double qtdLeite;
     private String situacao;
 
-    public Pessoa getPessoa_idPessoa() {
-        return Pessoa_idPessoa;
+    public Pessoa getFuncionario_idPessoa() {
+        return funcionario_idPessoa;
     }
 
     public String getSituacao() {
@@ -24,8 +24,8 @@ public class ColetaLeite extends AbstractModel {
         this.situacao = situacao;
     }
 
-    public void setPessoa_idPessoa(Pessoa Pessoa_idPessoa) {
-        this.Pessoa_idPessoa = Pessoa_idPessoa;
+    public void setFuncionario_idPessoa(Pessoa funcionarioIdPessoa) {
+        this.funcionario_idPessoa = funcionarioIdPessoa;
     }
 
     public Integer getIdColetaLeite() {
@@ -52,25 +52,25 @@ public class ColetaLeite extends AbstractModel {
         this.dtColeta = dtColeta;
     }
 
-    public Pessoa getProdutor_idProdutor() {
-        return produtor_idProdutor;
+    public Pessoa getProdutor_idPessoa() {
+        return produtor_idPessoa;
     }
 
-    public void setProdutor_idProdutor(Pessoa Produtor_idProdutor) {
-        this.produtor_idProdutor = Produtor_idProdutor;
+    public void setProdutor_idPessoa(Pessoa produtorIdPessoa) {
+        this.produtor_idPessoa = produtorIdPessoa;
     }
 
-    public double getQtdLeite() {
+    public Double getQtdLeite() {
         return qtdLeite;
     }
 
-    public void setQtdLeite(double qtdLeite) {
+    public void setQtdLeite(Double qtdLeite) {
         this.qtdLeite = qtdLeite;
     }
 
     @Override
     public Integer getId() {
-        return getIdColetaLeite();
+        return getIdColetaLeite() != null ? getIdColetaLeite() : 0;
     }
 
     @Override

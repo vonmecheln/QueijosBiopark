@@ -24,10 +24,19 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     @Override
     protected void confStantement(NamedParameterStatement nps, ColetaLeite objeto) throws SQLException {
         nps.setString("loteColeta", objeto.getLoteColeta());
-        nps.setDate("dtColeta", new java.sql.Date(objeto.getDtColeta().getTime()));
-        nps.setDouble("qtdLeite", objeto.getQtdLeite());
-        nps.setInt("produtor_id", objeto.getProdutor_idProdutor().getIdPessoa());
-        nps.setInt("funcionario_id", objeto.getPessoa_idPessoa().getIdPessoa());
+        nps.setDate("dtColeta", objeto.getDtColeta() != null ? new java.sql.Date(objeto.getDtColeta().getTime()) : null);
+        nps.setDouble("qtdLeite", objeto.getQtdLeite() != null ? objeto.getQtdLeite() : 0);
+        
+        nps.setInt("produtor_id", 
+                (objeto.getProdutor_idPessoa() != null && 
+                 objeto.getProdutor_idPessoa().getId() != null) ? 
+                        objeto.getProdutor_idPessoa().getId() : 0);
+        
+        nps.setInt("funcionario_id", 
+                (objeto.getFuncionario_idPessoa() != null && 
+                 objeto.getFuncionario_idPessoa().getId() != null) ? 
+                        objeto.getFuncionario_idPessoa().getId() : 0);
+        
         nps.setString("situacao", objeto.getSituacao());
     }
 
@@ -82,9 +91,9 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 //                p.setIdPessoa(consulta.getInt("Produtor_idProdutor"));
 //                coleta.setProdutor_idProdutor(p);
                 //
-                coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("produtor_id")));
+                coleta.setProdutor_idPessoa(pessoaDao.consultar(consulta.getInt("produtor_id")));
 
-                coleta.setPessoa_idPessoa(pessoaDao.consultar(consulta.getInt("funcionario_id")));
+                coleta.setFuncionario_idPessoa(pessoaDao.consultar(consulta.getInt("funcionario_id")));
                 coleta.setQtdLeite(consulta.getDouble("qtdLeite"));
                 coleta.setSituacao(consulta.getString("situacao"));
 
@@ -134,9 +143,9 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
 //                p.setIdPessoa(consulta.getInt("Produtor_idProdutor"));
 //                coleta.setProdutor_idProdutor(p);
                 //
-                coleta.setProdutor_idProdutor(pessoaDao.consultar(consulta.getInt("produtor_id")));
+                coleta.setProdutor_idPessoa(pessoaDao.consultar(consulta.getInt("produtor_id")));
 
-                coleta.setPessoa_idPessoa(pessoaDao.consultar(consulta.getInt("funcionario_id")));
+                coleta.setFuncionario_idPessoa(pessoaDao.consultar(consulta.getInt("funcionario_id")));
                 coleta.setQtdLeite(consulta.getDouble("qtdLeite"));
                 coleta.setSituacao(consulta.getString("situacao"));
 

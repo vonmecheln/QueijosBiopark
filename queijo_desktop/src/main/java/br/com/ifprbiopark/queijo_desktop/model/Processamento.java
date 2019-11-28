@@ -23,7 +23,7 @@ public class Processamento extends AbstractModel {
 
     @Override
     public Integer getId() {
-        return getIdProcesamento();
+        return getIdProcesamento() != null ? getIdProcesamento() : 0;
     }
 
     @Override
