@@ -1,19 +1,24 @@
 package br.com.ifprbiopark.queijo_desktop.inicializacao;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.control.ControleEntregaAtributo;
 import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.dao.ColetaLeiteDao;
+import br.com.ifprbiopark.queijo_desktop.dao.EntregaAtributoDao;
 import br.com.ifprbiopark.queijo_desktop.dao.FermentoDao;
 import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
 import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
 import br.com.ifprbiopark.queijo_desktop.exception.ColetaLeiteException;
+import br.com.ifprbiopark.queijo_desktop.exception.EntregaAtributoException;
 import br.com.ifprbiopark.queijo_desktop.exception.FermentoException;
 import br.com.ifprbiopark.queijo_desktop.exception.PessoaException;
 import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.Atributos;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.model.EntregaAtributo;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
@@ -31,7 +36,7 @@ public class QueijoDesktop {
      */
     public static void main(String args[]) {
 
-        if (false) {
+        if (true) {
             Pessoa p = new Pessoa();
             p.setNome("");
             p.setEndereco("");
@@ -134,7 +139,28 @@ public class QueijoDesktop {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            
+            EntregaAtributo ea;
+            try {
+                ea = new EntregaAtributo(); 
+                ea.setValor("0");
+                
+                EntregaAtributoDao ead = new EntregaAtributoDao();
+                ead.inserir(ea);
+                ead.alterar(ea);
+                ead.excluir(ea);
+                
+                ea = new EntregaAtributo(); 
+                ea.setValor("0");
+                ea.setAtributo_idAtributo(new Atributos());
+                ea.setColetaLeite_idColetaLeite(new ColetaLeite());
+                
+                ControleEntregaAtributo cea = new ControleEntregaAtributo();
+                cea.salvar(ea);
+                cea.excluir(ea);
+                
+            } catch (DbException | EntregaAtributoException ex) {
+                Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
 
         } else {
