@@ -17,6 +17,7 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
         initComponents();
         tblItem.setModel(listaItem);
         
+        setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
         
     }
 
