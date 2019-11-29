@@ -7,6 +7,7 @@ import br.com.ifprbiopark.queijo_desktop.exception.RequiredFieldException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import com.google.common.base.Strings;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,7 +72,7 @@ public class ControleColetaLeite {
     }
 
     public ColetaLeite consultar(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
 }

@@ -1,6 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.model;
 
-public class EntregaAtributo extends AbstractModel {
+public class EntradaAtributo extends AbstractModel {
 
     private Integer idEntregaAtributo;
     private String valor;

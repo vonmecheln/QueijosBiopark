@@ -48,7 +48,7 @@ public class AtributosDao extends AbstractDao<Atributos> {
             Atributos a = new Atributos();
 
             //String SQL;
-            String sql = "SELECT idAtributo, nomeAtributo FROM atributos WHERE idAtributo = :id ";
+            String sql = "SELECT idAtributo, nomeAtributo FROM atributo WHERE idAtributo = :id ";
 
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
@@ -71,7 +71,7 @@ public class AtributosDao extends AbstractDao<Atributos> {
             List<Atributos> lista = new ArrayList<Atributos>();
 
             //String SQL;
-            String sql = "SELECT idAtributo, nomeAtributo FROM atributos";
+            String sql = "SELECT idAtributo, nomeAtributo FROM atributo";
 
             NamedParameterStatement nps = con.NamedParameterStatement(sql);
 
@@ -88,4 +88,33 @@ public class AtributosDao extends AbstractDao<Atributos> {
             throw new DbException(ex);
         }
     }
+
+    public List<Atributos> listarColetas() {
+        try {
+            List<Atributos> atributo = new ArrayList<>();
+
+            //String SQL;
+            String sql = "SELECT idAtributo, nomeAtributo FROM atributo";
+
+            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+
+            PessoaDao pessoaDao = new PessoaDao();
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                Atributos atributos = new Atributos();
+                atributos.setIdAtributo(consulta.getInt("idAtributo"));
+                atributos.setNomeAtributo(consulta.getString("nomeAtributo"));
+
+                atributo.add(atributos);
+
+            }
+            return atributo;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
 }
