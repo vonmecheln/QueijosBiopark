@@ -7,7 +7,7 @@ import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.dao.ColetaLeiteDao;
-import br.com.ifprbiopark.queijo_desktop.dao.EntregaAtributoDao;
+import br.com.ifprbiopark.queijo_desktop.dao.EntradaAtributoDao;
 import br.com.ifprbiopark.queijo_desktop.dao.FabricacaoQueijoDao;
 import br.com.ifprbiopark.queijo_desktop.dao.FermentoDao;
 import br.com.ifprbiopark.queijo_desktop.dao.PessoaDao;
@@ -21,7 +21,7 @@ import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Atributos;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
-import br.com.ifprbiopark.queijo_desktop.model.EntregaAtributo;
+import br.com.ifprbiopark.queijo_desktop.model.EntradaAtributo;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
@@ -141,18 +141,19 @@ public class QueijoDesktop {
             } catch (DbException | ColetaLeiteException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
+            EntradaAtributo ea;
 
-            EntregaAtributo ea;
             try {
-                ea = new EntregaAtributo();
+                ea = new EntradaAtributo();
                 ea.setValor("0");
 
-                EntregaAtributoDao ead = new EntregaAtributoDao();
+                EntradaAtributoDao ead = new EntradaAtributoDao();
                 ead.inserir(ea);
                 ead.alterar(ea);
                 ead.excluir(ea);
 
-                ea = new EntregaAtributo();
+                ea = new EntradaAtributo();
+
                 ea.setValor("0");
                 ea.setAtributo(new Atributos());
                 ea.setColetaLeite_idColetaLeite(new ColetaLeite());
