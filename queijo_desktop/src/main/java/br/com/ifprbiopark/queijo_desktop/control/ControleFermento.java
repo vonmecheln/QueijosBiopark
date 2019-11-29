@@ -56,4 +56,8 @@ public class ControleFermento {
         return null;
     }
 
+    public Fermento consultar(int id) throws Exception{
+        return dao.consultar(id);
+    }
+
 }

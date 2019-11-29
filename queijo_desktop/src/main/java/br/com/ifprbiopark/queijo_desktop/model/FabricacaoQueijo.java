@@ -20,11 +20,11 @@ public class FabricacaoQueijo extends AbstractModel {
 
     //Prematuração
     private Integer temperaturaPreMaturacao;
-    private Integer phPreMaturacao;
-    //fermento;
-    private Fermento fermento;
-    private Double qtdFermento;
-    private Integer tempoFermentacao;
+    private Double phPreMaturacao;
+        //fermento;
+        private Fermento fermento;
+        private Double qtdFermento;
+        private Integer tempoFermentacao;    
 
     //Coagulacao;
     private Integer temperaturaCoagulacao;
@@ -156,11 +156,11 @@ public class FabricacaoQueijo extends AbstractModel {
         this.tempoFermentacao = tempoFermentacao;
     }
 
-    public Integer getPhPreMaturacao() {
+    public Double getPhPreMaturacao() {
         return phPreMaturacao;
     }
 
-    public void setPhPreMaturacao(Integer phPreMaturacao) {
+    public void setPhPreMaturacao(Double phPreMaturacao) {
         this.phPreMaturacao = phPreMaturacao;
     }
 

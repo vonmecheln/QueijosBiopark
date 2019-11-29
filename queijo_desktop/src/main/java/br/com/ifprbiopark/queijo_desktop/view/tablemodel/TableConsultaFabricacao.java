@@ -12,7 +12,7 @@ public class TableConsultaFabricacao extends AbstractTableModel {
 
     private ControleFabricacaoQueijo c = new ControleFabricacaoQueijo();
     private List<FabricacaoQueijo> dados;
-    private String[] colunas = {"ID", "Receita do queijo", "Lote do processamento", "Lote do leite", "Quantidade de leite"};
+    private String[] colunas = {"ID", "Receita do queijo", "Lote do processamento", "Lote do leite", "Quantidade de leite", "Data"};
     
     public TableConsultaFabricacao(){
         try{
@@ -52,6 +52,8 @@ public class TableConsultaFabricacao extends AbstractTableModel {
                 return dados.get(linha).getLoteQueijo();
             case 4:
                 return dados.get(linha).getQtdLeite();
+            case 5:
+                return dados.get(linha).getDataFabricacao();
         }
         return null;
     }
