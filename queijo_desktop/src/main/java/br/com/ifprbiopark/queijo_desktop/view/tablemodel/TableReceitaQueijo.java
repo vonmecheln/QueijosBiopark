@@ -1,27 +1,24 @@
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
-import br.com.ifprbiopark.queijo_desktop.dao.ReceitaQueijoDao;
+import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 public class TableReceitaQueijo extends AbstractTableModel {
-
-    ReceitaQueijoDao tipo;
 
     List<ReceitaQueijo> tiposQueijo;
 
     private String[] nomeColunas = {"Código", "Descrição"};
 
-    public TableReceitaQueijo() {
+    public TableReceitaQueijo() throws ReceitaQueijoException {
         try {
-            this.tipo = new ReceitaQueijoDao();
-            this.tiposQueijo = tipo.listarColetas();
+            ControleReceitaQueijo crc = new ControleReceitaQueijo();
+            this.tiposQueijo = crc.listaReceitaQueijo();
         } catch (DbException ex) {
-            Logger.getLogger(TableReceitaQueijo.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ReceitaQueijoException(ex);
         }
     }
 

@@ -52,7 +52,7 @@ public class ControleFermento {
         }
     }
 
-    public List<Fermento> listaColeta(Fermento c) throws DbException {
+    public List<Fermento> listarTodos() throws DbException {
         return null;
     }
 

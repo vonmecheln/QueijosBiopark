@@ -2,6 +2,7 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
 import br.com.ifprbiopark.queijo_desktop.exception.FermentoException;
+import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableFermento;
 import java.util.logging.Level;
@@ -9,12 +10,17 @@ import java.util.logging.Logger;
 
 public class TelaFermentoView extends javax.swing.JInternalFrame {
 
-    TableFermento tableFermento = new TableFermento();
+    TableFermento tableFermento;
 
     /**
      * Creates new form TelaFermento
      */
     public TelaFermentoView() {
+        try {
+            this.tableFermento = new TableFermento();
+        } catch (DbException ex) {
+            Logger.getLogger(TelaFermentoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         tbFermento.setModel(tableFermento);
 
@@ -226,7 +232,11 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
         } catch (FermentoException ex) {
             Logger.getLogger(TelaFermentoView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        tableFermento.recarregar();
+        try {
+            tableFermento.recarregar();
+        } catch (DbException ex) {
+            Logger.getLogger(TelaFermentoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         tableFermento.fireTableDataChanged();
     }//GEN-LAST:event_btnSalvarActionPerformed
 

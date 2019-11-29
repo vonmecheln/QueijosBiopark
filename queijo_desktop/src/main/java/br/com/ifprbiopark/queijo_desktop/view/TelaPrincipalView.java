@@ -1,5 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import java.awt.Color;
 import java.awt.Image;
@@ -471,8 +472,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_lbFabricacaoMouseClicked
 
     private void lbPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPessoasMouseClicked
-        TelaPessoaView formPessoa;
+        
         try {
+            TelaPessoaView formPessoa;
             formPessoa = new TelaPessoaView();
             painelDesktop.add(formPessoa);
             formPessoa.setPosicao();
@@ -484,10 +486,17 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_lbPessoasMouseClicked
 
     private void lbReceitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReceitasMouseClicked
-        TelaReceitaQueijoView formItem = new TelaReceitaQueijoView();
-        painelDesktop.add(formItem);
-        formItem.setPosicao();
-        formItem.setVisible(true);
+
+        try {
+            TelaReceitaQueijoView formItem;
+            formItem = new TelaReceitaQueijoView();
+            painelDesktop.add(formItem);
+            formItem.setPosicao();
+            formItem.setVisible(true);
+        } catch (ReceitaQueijoException ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_lbReceitasMouseClicked
 
     private void lbFermentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFermentosMouseClicked

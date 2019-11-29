@@ -1,32 +1,24 @@
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
-import br.com.ifprbiopark.queijo_desktop.dao.FermentoDao;
+import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 public class TableFermento extends AbstractTableModel {
 
-    FermentoDao tipo;
-
+    ControleFermento cf = new ControleFermento();
     List<Fermento> fermentos;
 
     private String[] nomeColunas = {"Código", "Tipo", "Marca"};
 
-    public TableFermento() {
-        try {
-            this.tipo = new FermentoDao();
-            this.fermentos = tipo.listar();
-        } catch (DbException ex) {
-            Logger.getLogger(TableFermento.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public TableFermento() throws DbException {
+        this.fermentos = cf.listarTodos();
     }
 
-    public void recarregar() {
-        fermentos = tipo.listar();
+    public void recarregar() throws DbException {
+        fermentos = cf.listarTodos();
     }
 
     public String getColumnName(int column) {

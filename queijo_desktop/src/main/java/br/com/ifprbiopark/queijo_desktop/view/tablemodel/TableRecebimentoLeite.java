@@ -1,6 +1,6 @@
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
-import br.com.ifprbiopark.queijo_desktop.dao.*;
+import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import java.text.SimpleDateFormat;
@@ -11,8 +11,6 @@ import javax.swing.table.AbstractTableModel;
 
 public class TableRecebimentoLeite extends AbstractTableModel {
 
-    ColetaLeiteDao coleta;
-
     List<ColetaLeite> listaEntregas;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -21,8 +19,8 @@ public class TableRecebimentoLeite extends AbstractTableModel {
 
     public TableRecebimentoLeite() {
         try {
-            this.coleta = new ColetaLeiteDao();
-            this.listaEntregas = coleta.listarColetas();
+            ControleColetaLeite ccl = new ControleColetaLeite();
+            this.listaEntregas = ccl.listaColeta();
         } catch (DbException ex) {
             Logger.getLogger(TableRecebimentoLeite.class.getName()).log(Level.SEVERE, null, ex);
         }

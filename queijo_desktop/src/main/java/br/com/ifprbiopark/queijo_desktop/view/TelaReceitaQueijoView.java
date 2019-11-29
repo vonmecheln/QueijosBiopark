@@ -2,25 +2,23 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
-import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
-import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableReceitaQueijo;
 import com.google.common.base.Strings;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.TableModel;
 
 public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
 
     Integer linhaSelecionada;
 
-    TableReceitaQueijo listaItem = new TableReceitaQueijo();
+    TableReceitaQueijo listaItem;
 
     ReceitaQueijo receita = new ReceitaQueijo();
 
-    public TelaReceitaQueijoView() {
+    public TelaReceitaQueijoView() throws ReceitaQueijoException {
+        this.listaItem = new TableReceitaQueijo();
         initComponents();
         tblItem.setModel(listaItem);
 
