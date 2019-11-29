@@ -86,7 +86,16 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
         nps.setDouble("phEnformagem", nullDouble(objeto.getPhEnformagem()));
         nps.setInt("phFinal", nullInt(objeto.getPh24()));
         nps.setInt("dessoragem", nullInt(objeto.getDessoragem()));
-        nps.setInt("temperaturaDessoragem", nullInt(objeto.getTemperaturaDessoragem()));                
+        nps.setInt("temperaturaDessoragem", nullInt(objeto.getTemperaturaDessoragem()));
+        
+        //Salga
+        nps.setString("tipoSalga", objeto.getTipoSalga());
+
+        //Maturação
+        nps.setDate("dataMaturacao", nullDate(objeto.getDataMaturacao()));
+        nps.setInt("temperaturaMaturacao", nullInt(objeto.getTemperaturaMaturacao()));        
+        
+                
                                         
     }
 
