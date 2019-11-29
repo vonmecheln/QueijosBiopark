@@ -3,7 +3,6 @@ package br.com.ifprbiopark.queijo_desktop.dao;
 import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
-import br.com.ifprbiopark.queijo_desktop.control.ControleProcessamento;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
@@ -11,8 +10,10 @@ import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
@@ -295,9 +296,9 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
                 //informacoes basicas de processamento;
                 fq.setReceitaQueijo(crq.consultar((consulta.getInt("receita_id"))));
-                ////fq.setDataFabricacao(consulta.getDate("dataFabricacao"));
+                fq.setDataFabricacao(converterData(consulta.getString("dataFabricacao")));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
-                ////fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
+                //fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
                 fq.setQtdLeite(consulta.getDouble("qtdLeite"));
                 //processamento                
                 fq.setTipoLeite(consulta.getString("tipoLeite"));
@@ -375,9 +376,9 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
                 //informacoes basicas de processamento;
                 fq.setReceitaQueijo(crq.consultar((consulta.getInt("receita_id"))));
-                fq.setDataFabricacao(consulta.getDate("dataFabricacao"));
+                fq.setDataFabricacao(converterData(consulta.getString("dataFabricacao")));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
-                fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
+                //fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
                 fq.setQtdLeite(consulta.getDouble("qtdLeite"));
                 //processamento                
                 fq.setTipoLeite(consulta.getString("tipoLeite"));

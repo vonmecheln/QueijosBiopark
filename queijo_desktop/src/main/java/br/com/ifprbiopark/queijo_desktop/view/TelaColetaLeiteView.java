@@ -376,7 +376,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         tblEntradaLeite.getSelectedRow();
         jcFornecedor.setSelectedItem(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 1)));
         tfQuantidade.setText(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 2)));
-        //jfData.setText(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 3)));
+        jfData.setText(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 3)));
         jcFuncionario.setSelectedItem(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 4)));
         tfLote.setText(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 5)));
         jcbSituacao.setSelectedItem(String.valueOf(listaColetas.getValueAt(tblEntradaLeite.getSelectedRow(), 6)));
