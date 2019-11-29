@@ -295,9 +295,9 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
                 //informacoes basicas de processamento;
                 fq.setReceitaQueijo(crq.consultar((consulta.getInt("receita_id"))));
-                fq.setDataFabricacao(consulta.getDate("dataFabricacao"));
+                ////fq.setDataFabricacao(consulta.getDate("dataFabricacao"));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
-                fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
+                ////fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
                 fq.setQtdLeite(consulta.getDouble("qtdLeite"));
                 //processamento                
                 fq.setTipoLeite(consulta.getString("tipoLeite"));
@@ -307,7 +307,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setTemperaturaPreMaturacao(consulta.getInt("temperaturaPreMaturacao"));
                 fq.setPhPreMaturacao(consulta.getDouble("phMaturacao"));
                 //fermento
-                fq.setFermento(cf.consultar(consulta.getInt("fermento_id")));
+                ////fq.setFermento(cf.consultar(consulta.getInt("fermento_id")));
                 fq.setQtdFermento(consulta.getDouble("qtdFermento"));
                 fq.setTempoFermentacao(consulta.getInt("tempoFermentacao"));
                 //coagulação
@@ -323,10 +323,10 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 //salga
                 fq.setTipoSalga(consulta.getString("tipoSalga"));
                 //maturação
-                fq.setDataMaturacao(consulta.getDate("dataMaturacao"));
+                ////fq.setDataMaturacao(consulta.getDate("dataMaturacao"));
                 fq.setTemperaturaMaturacao(consulta.getInt("temperaturaMaturacao"));
                 //tratamento da casca
-                fq.setDataLavagem(consulta.getDate("dataLavagem"));
+                ////fq.setDataLavagem(consulta.getDate("dataLavagem"));
                 fq.setTipoTratamento(consulta.getString("tipoTratamento"));
                 fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
                 //rendimento
@@ -358,49 +358,14 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
 
             List<FabricacaoQueijo> fabricacoes = new ArrayList<FabricacaoQueijo>();
 
-            String sql = "SELECT idFabricacaoQueijo,"
-                    + " receita_id,"
-                    + " dataFabricacao,"
-                    + " loteQueijo,"
-                    + " coleta_id,"
-                    + " qtdLeite,"
-                    + " tipoLeite,"
-                    + " tempoProcessamento,"
-                    + " temperaturaProcessamento,"
-                    + " temperaturaPreMaturacao,"
-                    + " phMaturacao,"
-                    + " fermento_id,"
-                    + " qtdFermento,"
-                    + " tempoFermentacao,"
-                    + " temperaturaCoagulacao,"
-                    + " qtdClCalcio,"
-                    + " qtdCoagulante,"
-                    + " tempoCoagulacao,"
-                    + " phCorte,"
-                    + " phEnformagem,"
-                    + " phFinal,"
-                    + " dessoragem,"
-                    + " temperaturaDessoragem,"
-                    + " tipoSalga,"
-                    + " dataMaturacao,"
-                    + " temperaturaMaturacao,"
-                    + " dataLavagem,"
-                    + " tipoTratamento,"
-                    + " tempoTratamento,"
-                    + " qtdPecas,"
-                    + " pesoMPecas,"
-                    + " observacoes,"
-                    + " loteAcabado,"
-                    + " responsavel_id,"
-                    + " inativo "
-                    + " FROM fabricacaoqueijo ";
+            StringBuilder sql = getConsultaBasica();
             if (inativos) {
-                sql += " WHERE inativo = 1 AND receita_id = :id";
+                sql.append(" WHERE inativo = 1 AND receita_id = :id");
             } else {
-                sql += " WHERE inativo = 0 AND receita_id = :id";
+                sql.append(" WHERE inativo = 0 AND receita_id = :id");
             }
 
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
 
             nps.setInt("id", idTipoQueijo);
 
