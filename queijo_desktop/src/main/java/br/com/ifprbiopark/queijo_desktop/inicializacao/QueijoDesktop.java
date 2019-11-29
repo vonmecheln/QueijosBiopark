@@ -32,7 +32,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class QueijoDesktop {
-    
+
     public static TelaPrincipalView telaPrincipal;
 
     /**
@@ -46,7 +46,7 @@ public class QueijoDesktop {
             p.setTipoFiscal("");
             p.setDocumento("");
             p.setTipoPessoa("");
-            
+
             try {
                 PessoaDao pd = new PessoaDao();
                 pd.inserir(p);
@@ -55,7 +55,7 @@ public class QueijoDesktop {
             } catch (DbException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             try {
                 p = new Pessoa();
                 p.setNome("-");
@@ -65,14 +65,14 @@ public class QueijoDesktop {
                 ControlePessoa cp = new ControlePessoa();
                 cp.salvar(p);
                 cp.salvar(p);
-                
+
             } catch (PessoaException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             ReceitaQueijo r = new ReceitaQueijo();
             r.setNomeTipo("");
-            
+
             try {
                 ReceitaQueijoDao rd = new ReceitaQueijoDao();
                 rd.inserir(r);
@@ -81,7 +81,7 @@ public class QueijoDesktop {
             } catch (DbException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             r = new ReceitaQueijo();
             r.setNomeTipo("--");
             ControleReceitaQueijo cr = new ControleReceitaQueijo();
@@ -89,22 +89,22 @@ public class QueijoDesktop {
                 cr.salvar(r);
                 cr.salvar(r);
                 cr.excluir(r);
-                
+
             } catch (ReceitaQueijoException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             Fermento f;
             try {
                 f = new Fermento();
                 f.setNome("");
                 f.setMarca("");
                 FermentoDao fd = new FermentoDao();
-                
+
                 fd.inserir(f);
                 fd.alterar(f);
                 fd.excluir(f);
-                
+
                 ControleFermento cf = new ControleFermento();
                 f = new Fermento();
                 f.setNome("-");
@@ -112,22 +112,22 @@ public class QueijoDesktop {
                 cf.salvar(f);
                 cf.salvar(f);
                 cf.excluir(f);
-                
+
             } catch (FermentoException | DbException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             ColetaLeite cl;
             try {
-                
+
                 cl = new ColetaLeite();
                 cl.setLoteColeta("");
-                cl.setDtColeta(new Date("01/01/2020"));                
+                cl.setDtColeta(new Date("01/01/2020"));
                 ColetaLeiteDao cd = new ColetaLeiteDao();
                 cd.inserir(cl);
                 cd.alterar(cl);
                 cd.excluir(cl);
-                
+
                 cl = new ColetaLeite();
                 cl.setLoteColeta("-");
                 cl.setDtColeta(new Date("31/12/2020"));
@@ -137,46 +137,47 @@ public class QueijoDesktop {
                 ControleColetaLeite cc = new ControleColetaLeite();
                 cc.salvar(cl);
                 cc.excluir(cl);
-                
+
             } catch (DbException | ColetaLeiteException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             EntregaAtributo ea;
             try {
-                ea = new EntregaAtributo();                
+                ea = new EntregaAtributo();
                 ea.setValor("0");
-                
+
                 EntregaAtributoDao ead = new EntregaAtributoDao();
                 ead.inserir(ea);
                 ead.alterar(ea);
                 ead.excluir(ea);
-                
-                ea = new EntregaAtributo();                
+
+                ea = new EntregaAtributo();
                 ea.setValor("0");
                 ea.setAtributo(new Atributos());
                 ea.setColetaLeite_idColetaLeite(new ColetaLeite());
-                
+
                 ControleEntregaAtributo cea = new ControleEntregaAtributo();
                 cea.salvar(ea);
                 cea.excluir(ea);
-                
+
             } catch (DbException | EntregaAtributoException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             FabricacaoQueijo fb;
             try {
-                
+
                 fb = new FabricacaoQueijo();
                 fb.setReceitaQueijo(new ReceitaQueijo());
                 fb.setColetaLeite(new ColetaLeite());
                 fb.setTipoLeite("");
+                fb.setDataFabricacao(new Date());
                 FabricacaoQueijoDao fbd = new FabricacaoQueijoDao();
                 fbd.inserir(fb);
                 fbd.alterar(fb);
                 fbd.excluir(fb);
-                
+
                 fb = new FabricacaoQueijo();
                 fb.setReceitaQueijo(new ReceitaQueijo());
                 fb.setColetaLeite(new ColetaLeite());
@@ -190,7 +191,7 @@ public class QueijoDesktop {
                 fbd.inserir(fb);
                 fbd.alterar(fb);
                 fbd.excluir(fb);
-                
+
                 fb = new FabricacaoQueijo();
                 fb.setLoteQueijo("AAABBB");
                 fb.setDataFabricacao(new Date("31/12/2020"));
@@ -201,16 +202,16 @@ public class QueijoDesktop {
                 fb.setReceitaQueijo(new ReceitaQueijo());
                 fb.setColetaLeite(new ColetaLeite());
                 fb.setTipoLeite("");
-                
+
                 ControleFabricacaoQueijo fbc = new ControleFabricacaoQueijo();
                 fbc.salvar(fb);
                 fbc.salvar(fb);
                 fbc.excluir(fb);
-                
+
             } catch (DbException | FabricacaoException ex) {
                 Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         } else {
 
             /* Set the Nimbus look and feel */
@@ -237,7 +238,7 @@ public class QueijoDesktop {
                 telaPrincipal.setVisible(true);
             });
         }
-        
+
     }
-    
+
 }

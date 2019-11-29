@@ -21,9 +21,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
      */
     public TelaPrincipalView() {
         initComponents();
-        
-         URL url = this.getClass().getResource("/iconeQueijos.png"); 
-         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(url); this.setIconImage(iconeTitulo);
+
+        URL url = this.getClass().getResource("/iconeQueijos.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(iconeTitulo);
 
     }
 

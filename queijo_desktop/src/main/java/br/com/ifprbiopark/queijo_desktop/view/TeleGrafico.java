@@ -7,8 +7,8 @@ public class TeleGrafico extends javax.swing.JInternalFrame {
      */
     public TeleGrafico() {
         initComponents();
-        
-         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
     }
 
     /**

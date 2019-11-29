@@ -13,12 +13,11 @@ public class TableConsultaFabricacao extends AbstractTableModel {
     private ControleFabricacaoQueijo c = new ControleFabricacaoQueijo();
     private List<FabricacaoQueijo> dados;
     private String[] colunas = {"ID", "Receita do queijo", "Lote do processamento", "Lote do leite", "Quantidade de leite", "Data"};
-    
-    public TableConsultaFabricacao(){
-        try{
+
+    public TableConsultaFabricacao() {
+        try {
             dados = c.consultarTabela(0, false);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
         }
     }
@@ -30,7 +29,7 @@ public class TableConsultaFabricacao extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return dados.size();
+        return colunas.length;
     }
 
     @Override

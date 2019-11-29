@@ -24,7 +24,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     @Override
     protected void confStantement(NamedParameterStatement nps, ColetaLeite objeto) throws SQLException {
         nps.setString("loteColeta", objeto.getLoteColeta());
-        nps.setDate("dtColeta", nullDate(objeto.getDtColeta()));        
+        nps.setDate("dtColeta", nullDate(objeto.getDtColeta()));
         nps.setDouble("qtdLeite", nullDouble(objeto.getQtdLeite()));
         nps.setInt("produtor_id", nullId(objeto.getProdutor()));
         nps.setInt("funcionario_id", nullId(objeto.getFuncionario_idPessoa()));

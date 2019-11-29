@@ -21,10 +21,10 @@ public class FabricacaoQueijo extends AbstractModel {
     //Prematuração
     private Integer temperaturaPreMaturacao;
     private Double phPreMaturacao;
-        //fermento;
-        private Fermento fermento;
-        private Double qtdFermento;
-        private Integer tempoFermentacao;    
+    //fermento;
+    private Fermento fermento;
+    private Double qtdFermento;
+    private Integer tempoFermentacao;
 
     //Coagulacao;
     private Integer temperaturaCoagulacao;
@@ -33,7 +33,7 @@ public class FabricacaoQueijo extends AbstractModel {
     private Integer tempoCoagulacao;
     private Double phCorte;
     private Double phEnformagem;
-    private Integer ph24;
+    private Double ph24;
     private Integer dessoragem;
     private Integer temperaturaDessoragem;
     //Salga
@@ -212,11 +212,11 @@ public class FabricacaoQueijo extends AbstractModel {
         this.phEnformagem = phEnformagem;
     }
 
-    public Integer getPh24() {
+    public Double getPh24() {
         return ph24;
     }
 
-    public void setPh24(Integer ph24) {
+    public void setPh24(Double ph24) {
         this.ph24 = ph24;
     }
 

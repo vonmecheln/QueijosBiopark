@@ -29,15 +29,15 @@ public class ControleFabricacaoQueijo {
             throw new FabricacaoException(new RequiredFieldException("Lote Queijo"));
         }
 
-        if (f.getDataFabricacao()== null) {
+        if (f.getDataFabricacao() == null) {
             throw new FabricacaoException(new RequiredFieldException("Data de Fabricação"));
         }
 
-        if (f.getQtdLeite()== null || f.getQtdLeite()== 0) {
+        if (f.getQtdLeite() == null || f.getQtdLeite() == 0) {
             throw new FabricacaoException(new RequiredFieldException("Quantidade Utilizada"));
         }
 
-        if (f.getReceitaQueijo()== null) {
+        if (f.getReceitaQueijo() == null) {
             throw new FabricacaoException(new RequiredFieldException("Receita"));
         }
 

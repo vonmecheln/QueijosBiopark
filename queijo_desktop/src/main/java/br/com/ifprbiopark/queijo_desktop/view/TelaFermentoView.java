@@ -17,8 +17,8 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
     public TelaFermentoView() {
         initComponents();
         tbFermento.setModel(tableFermento);
-        
-         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
     }
 
     /**

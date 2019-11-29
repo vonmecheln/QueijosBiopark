@@ -20,7 +20,7 @@ public class EntregaAtributoDao extends AbstractDao<EntregaAtributo> {
     protected void confStantement(NamedParameterStatement nps, EntregaAtributo objeto) throws SQLException {
         nps.setString("valor", objeto.getValor());
         nps.setInt("atributo_id", nullId(objeto.getAtributo()));
-        nps.setInt("coleta_id", nullId(objeto.getColetaLeite_idColetaLeite()));                
+        nps.setInt("coleta_id", nullId(objeto.getColetaLeite_idColetaLeite()));
     }
 
     @Override

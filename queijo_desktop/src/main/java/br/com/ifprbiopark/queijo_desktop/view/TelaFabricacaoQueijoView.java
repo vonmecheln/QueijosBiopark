@@ -46,8 +46,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
     public TelaFabricacaoQueijoView() {
         initComponents();
-        
-         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
 
         //carregar as receitas
         rqControl = new ControleReceitaQueijo();
@@ -92,8 +92,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void setID(int id){
+
+    public void setID(int id) {
         txtID.setText(String.valueOf(id));
         consultar();
     }
@@ -891,7 +891,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             queijo.setTempoFermentacao(parseInteiro(txtTempoFermento.getText()));
             //queijo.setFermento(txtTipoFermento.getText());
             //queijo.setMarcaFermento(txtMarcaFerm.getText());
-            queijo.setPhPreMaturacao(parseInteiro(txtPhPreMatura.getText()));
+            queijo.setPhPreMaturacao(parseDoubles(txtPhPreMatura.getText()));
 
             //Coagulacao
             queijo.setTemperaturaCoagulacao(parseInteiro(txtTemperaturaCoagula.getText()));
@@ -908,11 +908,9 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             //queijo.setDataSalga(txtDataSalga.getText());
             //queijo.setTemperaturaSalga(txtTemperaturaSalga.getText());
             //queijo.setTempoTratamentoSalga(txtTempoTratamento.getText());
-
             //tratamento casca
             //queijo.setDataTratamentoCasca(tfDataTratamentoCasca.getText());
             //queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
-
             //Rendimento
             queijo.setQtdPecas(parseInteiro(tfQueijoProduzido.getText()));
             queijo.setPesoTotal(parseDoubles(tfPesoTotalLote.getText()));

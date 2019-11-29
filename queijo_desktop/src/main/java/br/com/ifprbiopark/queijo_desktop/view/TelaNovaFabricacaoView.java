@@ -19,10 +19,10 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
      */
     public TelaNovaFabricacaoView() {
         initComponents();
-        
-         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -111,8 +111,8 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtLoteLeite;
     private javax.swing.JTextField txtQtd;
     // End of variables declaration//GEN-END:variables
-    
-    private void criar(){
+
+    private void criar() {
         FabricacaoQueijo fq = new FabricacaoQueijo();
         fq.setLoteQueijo(txtLote.getText());
         //fq.setColetaLeite(coletaLeite);

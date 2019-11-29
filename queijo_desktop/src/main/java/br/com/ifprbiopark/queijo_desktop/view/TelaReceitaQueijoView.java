@@ -13,19 +13,19 @@ import java.util.logging.Logger;
 import javax.swing.table.TableModel;
 
 public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
-    
+
     Integer linhaSelecionada;
 
     TableReceitaQueijo listaItem = new TableReceitaQueijo();
-    
+
     ReceitaQueijo receita = new ReceitaQueijo();
 
     public TelaReceitaQueijoView() {
         initComponents();
         tblItem.setModel(listaItem);
-        
-        setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
-        
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
+
     }
 
     public void setPosicao() {
@@ -156,25 +156,22 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ReceitaQueijo item = new ReceitaQueijo();
-         if (!Strings.isNullOrEmpty(txtIdTipoQueijo.getText())) {
-                    item.setId(Integer.parseInt(txtIdTipoQueijo.getText()));
-                }
+        if (!Strings.isNullOrEmpty(txtIdTipoQueijo.getText())) {
+            item.setId(Integer.parseInt(txtIdTipoQueijo.getText()));
+        }
         item.setNomeTipo(tfDescricao.getText());
         ControleReceitaQueijo controleQueijo = new ControleReceitaQueijo();
         try {
             controleQueijo.salvar(item);
-            if (linhaSelecionada == null){
-                linhaSelecionada = tblItem.getRowCount()+1;
+            if (linhaSelecionada == null) {
+                linhaSelecionada = tblItem.getRowCount() + 1;
                 listaItem.addRow(item);
-            }else{
+            } else {
                 listaItem.updateRow(linhaSelecionada, item);
             }
-           
+
             listaItem.fireTableDataChanged();
-           
-                    
-  
-         
+
         } catch (ReceitaQueijoException ex) {
             Logger.getLogger(TelaReceitaQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -196,7 +193,7 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
         txtIdTipoQueijo.setText("");
         linhaSelecionada = null;
         receita = new ReceitaQueijo();
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -189,7 +189,7 @@ public abstract class AbstractDao<T extends AbstractModel> {
     protected double nullDouble(Double value) {
         return value != null ? value.doubleValue() : nulldouble;
     }
-    
+
     protected int nullId(AbstractModel value) {
         return value != null ? value.getId() : nullint;
     }
@@ -199,5 +199,5 @@ public abstract class AbstractDao<T extends AbstractModel> {
     protected java.sql.Date nullDate(java.util.Date value) {
         return value != null ? new Date(value.getTime()) : nulldate;
     }
-    
+
 }

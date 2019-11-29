@@ -25,8 +25,6 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
     private List<Pessoa> funcionarios;
 
     TableRecebimentoLeite listaColetas = new TableRecebimentoLeite();
-    
-    
 
     public TelaColetaLeiteView() throws ParseException, DbException {
         initComponents();
@@ -57,8 +55,8 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
             jcFuncionario.addItem(funcionarios.get(i).getNome());
         }
         jcFuncionario.setSelectedIndex(-1);
-        
-        setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
 
     }
 

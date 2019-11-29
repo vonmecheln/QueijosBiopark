@@ -23,8 +23,8 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
      */
     public TelaPessoaView() throws ParseException {
         initComponents();
-        
-         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
 
         //mascara situacao fiscal (documento)        
         alteraMascara();

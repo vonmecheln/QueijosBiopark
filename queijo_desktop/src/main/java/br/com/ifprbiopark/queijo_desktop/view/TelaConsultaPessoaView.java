@@ -20,8 +20,6 @@ public class TelaConsultaPessoaView extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         tblPessoas.setModel(tableModel);
-        
-        
 
         txtID.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
@@ -31,8 +29,6 @@ public class TelaConsultaPessoaView extends javax.swing.JDialog {
                 }
             }
         });
-        
-        
 
     }
 

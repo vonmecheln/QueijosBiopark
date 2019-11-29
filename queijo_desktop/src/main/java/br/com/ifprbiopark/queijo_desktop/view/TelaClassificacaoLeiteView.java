@@ -7,22 +7,19 @@ import java.beans.PropertyVetoException;
 import java.net.URL;
 
 public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
-    
-    
 
     @Override
     public void setIcon(boolean b) throws PropertyVetoException {
         super.setIcon(b); //To change body of generated methods, choose Tools | Templates.
     }
 
-  
     /**
      * Creates new form TelaClassificacaoLeiteView
      */
     public TelaClassificacaoLeiteView() {
         initComponents();
-        
-       setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
     }
 
     public void setPosicao() {
@@ -191,10 +188,6 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    
-    
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;

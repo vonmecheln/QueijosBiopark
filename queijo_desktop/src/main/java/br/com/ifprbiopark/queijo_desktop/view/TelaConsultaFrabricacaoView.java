@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.util.List;
 
 public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
+
     private ControleReceitaQueijo rqControl = new ControleReceitaQueijo();
     private List<ReceitaQueijo> listaReceitaQueijo;
     private TableConsultaFabricacao tableModel = new TableConsultaFabricacao();
@@ -35,10 +36,10 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
         }
-        
-         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -201,12 +202,12 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }
-    
-    private void novaFabricacao(){
-            TelaNovaFabricacaoView form = new TelaNovaFabricacaoView();
-            QueijoDesktop.telaPrincipal.getPainelDesktop().add(form);
-            form.setPosicao();
-            form.setVisible(true);         
-            this.dispose();
+
+    private void novaFabricacao() {
+        TelaNovaFabricacaoView form = new TelaNovaFabricacaoView();
+        QueijoDesktop.telaPrincipal.getPainelDesktop().add(form);
+        form.setPosicao();
+        form.setVisible(true);
+        this.dispose();
     }
 }

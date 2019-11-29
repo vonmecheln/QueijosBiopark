@@ -71,9 +71,6 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             throw new DbException(ex);
         }
     }
-    
-   
-
 
     public List<ReceitaQueijo> consultar() throws DbException {
         try {

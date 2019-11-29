@@ -14,8 +14,8 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
     public TelaRelatorio() {
         initComponents();
         atualizarPesquisaRelatorio();
-        
-         setFrameIcon( new javax.swing.ImageIcon( getClass().getResource("/iconeQueijos.png") ) );
+
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
     }
 
     /**
