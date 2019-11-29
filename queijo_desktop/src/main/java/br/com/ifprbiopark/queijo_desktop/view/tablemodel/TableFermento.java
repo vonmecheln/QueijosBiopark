@@ -14,11 +14,11 @@ public class TableFermento extends AbstractTableModel {
     private String[] nomeColunas = {"Código", "Tipo", "Marca"};
 
     public TableFermento() throws DbException {
-        this.fermentos = cf.listarTodos();
+        this.fermentos = cf.listaFermento();
     }
 
     public void recarregar() throws DbException {
-        fermentos = cf.listarTodos();
+        fermentos = cf.listaFermento();
     }
 
     public String getColumnName(int column) {
