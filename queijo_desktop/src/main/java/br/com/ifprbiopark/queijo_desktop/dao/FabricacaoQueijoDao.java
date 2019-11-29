@@ -76,7 +76,18 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
         nps.setInt("fermento_id", nullId(objeto.getFermento()));        
         nps.setDouble("qtdFermento", nullDouble(objeto.getQtdLeite()));
         nps.setInt("tempoFermentacao", nullInt(objeto.getTempoFermentacao()));
-                        
+        
+        //Coagulacao;
+        nps.setInt("temperaturaCoagulacao", nullInt(objeto.getTempoCoagulacao()));
+        nps.setDouble("qtdClCalcio", nullDouble(objeto.getQtdClCalcio()));
+        nps.setDouble("qtdCoagulante", nullDouble(objeto.getQtdCoagulante()));
+        nps.setInt("tempoCoagulacao", nullInt(objeto.getTempoCoagulacao()));
+        nps.setDouble("phCorte", nullDouble(objeto.getPhCorte()));
+        nps.setDouble("phEnformagem", nullDouble(objeto.getPhEnformagem()));
+        nps.setInt("phFinal", nullInt(objeto.getPh24()));
+        nps.setInt("dessoragem", nullInt(objeto.getDessoragem()));
+        nps.setInt("temperaturaDessoragem", nullInt(objeto.getTemperaturaDessoragem()));                
+                                        
     }
 
     @Override
