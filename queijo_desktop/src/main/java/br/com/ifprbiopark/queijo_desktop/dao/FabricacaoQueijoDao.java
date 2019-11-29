@@ -312,7 +312,9 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                     + " observacoes,"
                     + " loteAcabado,"
                     + " responsavel_id,"
-                    + " inativo ";
+                    + " inativo "
+                    + " FROM fabricacaoqueijo ";
+            
             if (inativos) {
                 sql += " WHERE inativo = 1";
             } else {
@@ -424,7 +426,8 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                     + " observacoes,"
                     + " loteAcabado,"
                     + " responsavel_id,"
-                    + " inativo ";
+                    + " inativo "
+                    + " FROM fabricacaoqueijo ";
             if (inativos) {
                 sql += " WHERE inativo = 1 AND receita_id = :id";
             } else {

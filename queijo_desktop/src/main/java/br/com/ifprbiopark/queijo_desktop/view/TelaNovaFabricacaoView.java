@@ -5,6 +5,7 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import java.awt.Dimension;
 
 /**
@@ -110,4 +111,11 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtLoteLeite;
     private javax.swing.JTextField txtQtd;
     // End of variables declaration//GEN-END:variables
+    
+    private void criar(){
+        FabricacaoQueijo fq = new FabricacaoQueijo();
+        fq.setLoteQueijo(txtLote.getText());
+        //fq.setColetaLeite(coletaLeite);
+    }
+
 }

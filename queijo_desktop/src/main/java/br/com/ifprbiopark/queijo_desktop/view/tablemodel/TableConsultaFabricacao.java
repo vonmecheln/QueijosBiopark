@@ -16,8 +16,7 @@ public class TableConsultaFabricacao extends AbstractTableModel {
     
     public TableConsultaFabricacao(){
         try{
-            //dados = c.consultarTabela(0, false);
-            dados = new ArrayList<FabricacaoQueijo>();
+            dados = c.consultarTabela(0, false);
         }
         catch (Exception ex){
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);

@@ -180,7 +180,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
 
     private void consultar() {
         try {
-            int id = listaReceitaQueijo.get(cmbTipoQueijo.getSelectedIndex()).getId();
+            int id = listaReceitaQueijo.get(cmbTipoQueijo.getSelectedIndex()).getId() - 1;
             boolean inativo = Boolean.valueOf(chkInativo.getText());
 
             tableModel.consultar(id, inativo);
