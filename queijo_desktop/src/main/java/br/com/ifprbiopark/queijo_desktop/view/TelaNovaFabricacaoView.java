@@ -5,14 +5,33 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
+import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
+import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
+import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
+import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
+import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author jhona
  */
 public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
+    
+    private ControleReceitaQueijo rqControl = new ControleReceitaQueijo();
+    private ControleColetaLeite cleite = new ControleColetaLeite();
+    private List<ReceitaQueijo> listaReceitaQueijo;
+    private List<ColetaLeite> listaColetaLeite;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private ControleFabricacaoQueijo cfq = new ControleFabricacaoQueijo();
 
     /**
      * Creates new form TalaNovaFabricacaoView
@@ -21,6 +40,40 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         initComponents();
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
+        
+        try {
+            listaReceitaQueijo = rqControl.listaReceitaQueijo();
+            //jcTipoQueijo.removeAll();
+            cmbReceita.addItem("");
+            for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {
+                cmbReceita.addItem(receitaQueijo.getNomeTipo());
+            }
+
+        } catch (Exception ex) {
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
+        }
+        
+        //carregar as coletas de leite
+        try {
+            listaColetaLeite = cleite.listaColeta();
+            //jcColeta.removeAll();
+            cmbLoteLeite.addItem("");
+            for (ColetaLeite coletaLeite : listaColetaLeite) {
+                cmbLoteLeite.addItem(coletaLeite.getLoteColeta());
+            }
+
+        } catch (Exception ex) {
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
+        }
+        
+        txtQtd.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume(); // consume non-numbers
+                }
+            }
+        });
     }
 
     public void setPosicao() {
@@ -41,8 +94,10 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         cmbReceita = new javax.swing.JComboBox<>();
         txtLote = new javax.swing.JTextField();
-        txtLoteLeite = new javax.swing.JTextField();
         txtQtd = new javax.swing.JTextField();
+        cmbLoteLeite = new javax.swing.JComboBox<>();
+        txtData = new javax.swing.JFormattedTextField();
+        chkDataAuto = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -50,6 +105,11 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         setTitle("Nova fabricação");
 
         btnCriar.setText("Criar");
+        btnCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Cancelar");
 
@@ -57,9 +117,16 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
 
         txtLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote:"));
 
-        txtLoteLeite.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote da entrega de leite:"));
-
         txtQtd.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtde utilizada (L):"));
+
+        cmbLoteLeite.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote da coleta de leite:"));
+
+        txtData.setEditable(false);
+        txtData.setBorder(javax.swing.BorderFactory.createTitledBorder("Data"));
+
+        chkDataAuto.setBackground(new java.awt.Color(255, 255, 255));
+        chkDataAuto.setSelected(true);
+        chkDataAuto.setText("Data automática");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,19 +134,23 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtLoteLeite, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtQtd))
+                        .addComponent(chkDataAuto))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbReceita, 0, 276, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbLoteLeite, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtQtd)
+                            .addComponent(txtLote, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,32 +161,70 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
                     .addComponent(cmbReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtLoteLeite, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtQtd, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(cmbLoteLeite, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkDataAuto))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCriar)
                     .addComponent(jButton1))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
+        criar();
+    }//GEN-LAST:event_btnCriarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriar;
+    private javax.swing.JCheckBox chkDataAuto;
+    private javax.swing.JComboBox<String> cmbLoteLeite;
     private javax.swing.JComboBox<String> cmbReceita;
     private javax.swing.JButton jButton1;
+    private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtLote;
-    private javax.swing.JTextField txtLoteLeite;
     private javax.swing.JTextField txtQtd;
     // End of variables declaration//GEN-END:variables
 
     private void criar() {
-        FabricacaoQueijo fq = new FabricacaoQueijo();
-        fq.setLoteQueijo(txtLote.getText());
-        //fq.setColetaLeite(coletaLeite);
+        try{
+            FabricacaoQueijo fq = new FabricacaoQueijo();
+            fq.setLoteQueijo(txtLote.getText());
+            fq.setReceitaQueijo(listaReceitaQueijo.get(cmbReceita.getSelectedIndex() - 1));
+            fq.setColetaLeite(listaColetaLeite.get(cmbLoteLeite.getSelectedIndex() - 1));
+            fq.setQtdLeite(Double.parseDouble(txtQtd.getText()));
+        
+            if (chkDataAuto.isSelected())
+                fq.setDataFabricacao(new Date());
+            else{
+                fq.setDataFabricacao(sdf.parse(txtData.getText()));
+            }
+            
+            cfq.salvar(fq);
+            abrirFabricacao(fq);
+            
+        }
+        catch (Exception ex){
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getLocalizedMessage(), Color.red);
+        }       
     }
-
+    
+    private void abrirFabricacao(FabricacaoQueijo fq){
+        try {
+            TelaFabricacaoQueijoView form = new TelaFabricacaoQueijoView();
+            form.setFabricacao(fq);
+            QueijoDesktop.telaPrincipal.getPainelDesktop().add(form);
+            form.setPosicao();
+            form.setVisible(true);           
+        } catch (Exception ex) {
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getLocalizedMessage(), Color.red);
+        }
+    }
 }

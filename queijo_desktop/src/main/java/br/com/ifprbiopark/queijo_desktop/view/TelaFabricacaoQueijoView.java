@@ -122,6 +122,10 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         txtID.setText(String.valueOf(id));
         consultar();
     }
+    
+    public void setFabricacao(FabricacaoQueijo fq) {
+        
+    }
 
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
