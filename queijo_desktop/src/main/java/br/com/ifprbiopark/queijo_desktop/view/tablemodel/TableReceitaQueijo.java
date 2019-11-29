@@ -58,6 +58,9 @@ public class TableReceitaQueijo extends AbstractTableModel {
         this.tiposQueijo.remove(linha);
     }
 
-    public void updateRow() {
+    public void updateRow(int linha, ReceitaQueijo c) {
+        this.tiposQueijo.get(linha).setNomeTipo(c.getNomeTipo());
+        
     }
+    
 }

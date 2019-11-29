@@ -3,15 +3,22 @@ package br.com.ifprbiopark.queijo_desktop.view;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.exception.ReceitaQueijoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
+import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableReceitaQueijo;
+import com.google.common.base.Strings;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.TableModel;
 
 public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
+    
+    Integer linhaSelecionada;
 
     TableReceitaQueijo listaItem = new TableReceitaQueijo();
+    
+    ReceitaQueijo receita = new ReceitaQueijo();
 
     public TelaReceitaQueijoView() {
         initComponents();
@@ -37,6 +44,7 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         tfDescricao = new javax.swing.JTextField();
+        txtIdTipoQueijo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -50,20 +58,32 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
 
         tfDescricao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo do Queijo"));
 
+        txtIdTipoQueijo.setEditable(false);
+        txtIdTipoQueijo.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
+        txtIdTipoQueijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdTipoQueijoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tfDescricao)
+                .addComponent(txtIdTipoQueijo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtIdTipoQueijo)
+                    .addComponent(tfDescricao))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -75,6 +95,11 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         tblItem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,10 +156,25 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ReceitaQueijo item = new ReceitaQueijo();
+         if (!Strings.isNullOrEmpty(txtIdTipoQueijo.getText())) {
+                    item.setId(Integer.parseInt(txtIdTipoQueijo.getText()));
+                }
         item.setNomeTipo(tfDescricao.getText());
         ControleReceitaQueijo controleQueijo = new ControleReceitaQueijo();
         try {
             controleQueijo.salvar(item);
+            if (linhaSelecionada == null){
+                linhaSelecionada = tblItem.getRowCount()+1;
+                listaItem.addRow(item);
+            }else{
+                listaItem.updateRow(linhaSelecionada, item);
+            }
+           
+            listaItem.fireTableDataChanged();
+           
+                    
+  
+         
         } catch (ReceitaQueijoException ex) {
             Logger.getLogger(TelaReceitaQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -142,9 +182,22 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tblItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemMouseClicked
-        tblItem.getSelectedRow();
+        linhaSelecionada = tblItem.getSelectedRow();
         tfDescricao.setText(String.valueOf(listaItem.getValueAt(tblItem.getSelectedRow(), 1)));
+        txtIdTipoQueijo.setText(String.valueOf(listaItem.getValueAt(tblItem.getSelectedRow(), 0)));
     }//GEN-LAST:event_tblItemMouseClicked
+
+    private void txtIdTipoQueijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdTipoQueijoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdTipoQueijoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        tfDescricao.setText("");
+        txtIdTipoQueijo.setText("");
+        linhaSelecionada = null;
+        receita = new ReceitaQueijo();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -153,5 +206,6 @@ public class TelaReceitaQueijoView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblItem;
     private javax.swing.JTextField tfDescricao;
+    private javax.swing.JTextField txtIdTipoQueijo;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,7 @@ package br.com.ifprbiopark.queijo_desktop.dao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.GeneratedKeysException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.NotExecuteInsertException;
+import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,6 +36,9 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
 
     @Override
     public ReceitaQueijo consultar(ReceitaQueijo tq) throws DbException {
+        if (tq == null) {
+            return null;
+        }
         return consultar(tq.getIdTipoQueijo());
     }
 
@@ -67,6 +71,9 @@ public class ReceitaQueijoDao extends AbstractDao<ReceitaQueijo> {
             throw new DbException(ex);
         }
     }
+    
+   
+
 
     public List<ReceitaQueijo> consultar() throws DbException {
         try {
