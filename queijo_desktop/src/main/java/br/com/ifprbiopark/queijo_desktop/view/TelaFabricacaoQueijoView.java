@@ -17,6 +17,9 @@ import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import com.google.common.base.Strings;
 import java.awt.Dimension;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -908,9 +911,14 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             //queijo.setDataSalga(txtDataSalga.getText());
             //queijo.setTemperaturaSalga(txtTemperaturaSalga.getText());
             //queijo.setTempoTratamentoSalga(txtTempoTratamento.getText());
+            
+
             //tratamento casca
-            //queijo.setDataTratamentoCasca(tfDataTratamentoCasca.getText());
-            //queijo.setTipoTratamentoCasca(tfTipoTratamentoCasca.getText());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            queijo.setDataLavagem(sdf.parse(tfDataTratamentoCasca.getText()));
+            queijo.setTipoTratamento(tfTipoTratamentoCasca.getText());
+            queijo.setTempoTratamento(Integer.parseInt(txtTempoTratamento.getText()));
+            
             //Rendimento
             queijo.setQtdPecas(parseInteiro(tfQueijoProduzido.getText()));
             queijo.setPesoTotal(parseDoubles(tfPesoTotalLote.getText()));
@@ -921,6 +929,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
             cQueijo.salvar(queijo);
         } catch (FabricacaoException ex) {
+            Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
 

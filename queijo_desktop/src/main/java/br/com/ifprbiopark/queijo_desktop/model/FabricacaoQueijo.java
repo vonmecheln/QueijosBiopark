@@ -42,6 +42,7 @@ public class FabricacaoQueijo extends AbstractModel {
     //Maturação    
     private Date dataMaturacao;
     private Integer temperaturaMaturacao;
+    
     //Tratamento da casca    
     private Date dataLavagem;
     private String tipoTratamento;
