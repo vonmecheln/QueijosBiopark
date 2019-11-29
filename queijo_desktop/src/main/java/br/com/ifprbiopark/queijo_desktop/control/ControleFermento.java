@@ -52,8 +52,8 @@ public class ControleFermento {
         }
     }
 
-    public List<Fermento> listarTodos() throws DbException {
-        return null;
+    public List<Fermento> listaFermento() throws DbException {
+        return dao.listar();
     }
 
     public Fermento consultar(int id) throws Exception {

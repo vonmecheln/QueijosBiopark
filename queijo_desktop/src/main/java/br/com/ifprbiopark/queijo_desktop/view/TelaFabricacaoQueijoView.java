@@ -7,12 +7,14 @@ package br.com.ifprbiopark.queijo_desktop.view;
 
 import br.com.ifprbiopark.queijo_desktop.control.ControleColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
+import br.com.ifprbiopark.queijo_desktop.control.ControleFermento;
 import br.com.ifprbiopark.queijo_desktop.control.ControlePessoa;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.exception.FabricacaoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
+import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import br.com.ifprbiopark.queijo_desktop.model.Pessoa;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import com.google.common.base.Strings;
@@ -46,6 +48,13 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     List<Pessoa> listaFuncionarios;
     FabricacaoQueijo fq = new FabricacaoQueijo();
     ControleFabricacaoQueijo cfq = new ControleFabricacaoQueijo();
+    
+    //lista de fermentos
+    ControleFermento cFermento;
+    List<Fermento> listaFermentos;
+    
+    //configuracao de datas;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public TelaFabricacaoQueijoView() {
         initComponents();
@@ -94,6 +103,19 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         } catch (DbException ex) {
             Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        cFermento = new ControleFermento();
+        try {
+            listaFermentos = cFermento.listaFermento();
+            
+            cmbFermento.addItem("");
+            for (Fermento fermentos : listaFermentos) {
+                cmbFermento.addItem(fermentos.getNome());
+            }
+
+        } catch (DbException ex) {
+            Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void setID(int id) {
@@ -131,13 +153,11 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         jcTipoLeite = new javax.swing.JComboBox<>();
         pnlPreMaturacao = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        txtMarcaFerm = new javax.swing.JTextField();
-        txtTipoFermento = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
         txtQuantFerm = new javax.swing.JTextField();
         txtTempoFermentacao = new javax.swing.JTextField();
-        txtTempPreMat = new javax.swing.JTextField();
+        cmbFermento = new javax.swing.JComboBox<>();
         txtPhPreMatura = new javax.swing.JTextField();
+        txtTempPreMat = new javax.swing.JTextField();
         pnlCoagulacao = new javax.swing.JPanel();
         txtTemperaturaCoagula = new javax.swing.JTextField();
         txtQtdCoagulante = new javax.swing.JTextField();
@@ -148,7 +168,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         txtCloretoCalcio = new javax.swing.JTextField();
         txtDessoragem = new javax.swing.JTextField();
         txtTemperatura24 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtTipoSalga = new javax.swing.JTextField();
         pnlMaturacao = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         tfTipoTratamentoCasca = new javax.swing.JTextField();
@@ -280,7 +300,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 .addComponent(txtTempoFermento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTemperaturaPross, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(517, Short.MAX_VALUE))
+                .addContainerGap(525, Short.MAX_VALUE))
         );
         pnlProcessamentoLayout.setVerticalGroup(
             pnlProcessamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,29 +320,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Fermento"));
 
-        txtMarcaFerm.setEditable(false);
-        txtMarcaFerm.setBorder(javax.swing.BorderFactory.createTitledBorder("Marca:"));
-        txtMarcaFerm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaFermActionPerformed(evt);
-            }
-        });
-
-        txtTipoFermento.setEditable(false);
-        txtTipoFermento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Fermento:"));
-        txtTipoFermento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoFermentoActionPerformed(evt);
-            }
-        });
-
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         txtQuantFerm.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantidade (g):"));
         txtQuantFerm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,44 +334,43 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             }
         });
 
+        txtPhPreMatura.setBorder(javax.swing.BorderFactory.createTitledBorder("pH após pré-maturação:"));
+        txtPhPreMatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhPreMaturaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTipoFermento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMarcaFerm, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbFermento, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtQuantFerm, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTempoFermentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPhPreMatura, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtQuantFerm)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(txtTipoFermento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(txtMarcaFerm)
-            .addComponent(txtTempoFermentacao)
+                .addComponent(txtQuantFerm)
+                .addComponent(txtTempoFermentacao)
+                .addComponent(txtPhPreMatura))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cmbFermento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtTempPreMat.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura utilizada(°C):"));
         txtTempPreMat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTempPreMatActionPerformed(evt);
-            }
-        });
-
-        txtPhPreMatura.setBorder(javax.swing.BorderFactory.createTitledBorder("pH após pré-maturação:"));
-        txtPhPreMatura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhPreMaturaActionPerformed(evt);
             }
         });
 
@@ -386,9 +382,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnlPreMaturacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhPreMatura, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTempPreMat, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         pnlPreMaturacaoLayout.setVerticalGroup(
             pnlPreMaturacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,9 +392,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 .addComponent(txtTempPreMat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPhPreMatura)
-                .addGap(46, 46, 46))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         guia.addTab("Pré-maturação", pnlPreMaturacao);
@@ -469,7 +462,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de salga:"));
+        txtTipoSalga.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de salga:"));
 
         javax.swing.GroupLayout pnlCoagulacaoLayout = new javax.swing.GroupLayout(pnlCoagulacao);
         pnlCoagulacao.setLayout(pnlCoagulacaoLayout);
@@ -498,8 +491,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCoagulacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtPh24)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
-                .addContainerGap(407, Short.MAX_VALUE))
+                    .addComponent(txtTipoSalga, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                .addContainerGap(415, Short.MAX_VALUE))
         );
         pnlCoagulacaoLayout.setVerticalGroup(
             pnlCoagulacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,7 +515,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                     .addGroup(pnlCoagulacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtTemperatura24, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtDessoragem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTipoSalga, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
         );
 
@@ -564,7 +557,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 .addComponent(tfTipoTratamentoCasca, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTempoTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 291, Short.MAX_VALUE))
+                .addGap(0, 297, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -648,7 +641,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                     .addComponent(tfPesoTotalLote, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                     .addComponent(tfQueijoProduzido)
                     .addComponent(tfPesoMedioLote))
-                .addContainerGap(781, Short.MAX_VALUE))
+                .addContainerGap(789, Short.MAX_VALUE))
         );
         pnlRendimentoLayout.setVerticalGroup(
             pnlRendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -673,7 +666,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         pnlObsevacao.setLayout(pnlObsevacaoLayout);
         pnlObsevacaoLayout.setHorizontalGroup(
             pnlObsevacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 977, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
         );
         pnlObsevacaoLayout.setVerticalGroup(
             pnlObsevacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -709,7 +702,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(chkAtivo))
-                .addContainerGap(561, Short.MAX_VALUE))
+                .addContainerGap(569, Short.MAX_VALUE))
         );
         pnlFinalizacaoLayout.setVerticalGroup(
             pnlFinalizacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -775,14 +768,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     private void txtTempoFermentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoFermentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTempoFermentoActionPerformed
-
-    private void txtMarcaFermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaFermActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMarcaFermActionPerformed
-
-    private void txtTipoFermentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoFermentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoFermentoActionPerformed
 
     private void txtTempoFermentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoFermentacaoActionPerformed
         // TODO add your handling code here:
@@ -908,13 +893,9 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             queijo.setTemperaturaDessoragem(parseInteiro(txtTemperatura24.getText()));
 
             //Etapa de Salga
-            //queijo.setDataSalga(txtDataSalga.getText());
-            //queijo.setTemperaturaSalga(txtTemperaturaSalga.getText());
-            //queijo.setTempoTratamentoSalga(txtTempoTratamento.getText());
-            
-
+            queijo.setTipoSalga(txtTipoSalga.getText());
+               
             //tratamento casca
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             queijo.setDataLavagem(sdf.parse(tfDataTratamentoCasca.getText()));
             queijo.setTipoTratamento(tfTipoTratamentoCasca.getText());
             queijo.setTempoTratamento(Integer.parseInt(txtTempoTratamento.getText()));
@@ -940,22 +921,17 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcTipoLeiteActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JToggleButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkAtivo;
+    private javax.swing.JComboBox<String> cmbFermento;
     private javax.swing.JComboBox<String> cmbFuncionario;
     private javax.swing.JTabbedPane guia;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<String> jcTipoLeite;
     private javax.swing.JPanel pnlCoagulacao;
     private javax.swing.JPanel pnlFinalizacao;
@@ -978,7 +954,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLote;
     private javax.swing.JTextField txtLoteEntraga;
-    private javax.swing.JTextField txtMarcaFerm;
     private javax.swing.JTextField txtPh24;
     private javax.swing.JTextField txtPhCorte;
     private javax.swing.JTextField txtPhEsformagem;
@@ -996,7 +971,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTempoFermentacao;
     private javax.swing.JTextField txtTempoFermento;
     private javax.swing.JTextField txtTempoTratamento;
-    private javax.swing.JTextField txtTipoFermento;
+    private javax.swing.JTextField txtTipoSalga;
     // End of variables declaration//GEN-END:variables
 
     private Integer parseInteiro(String value) {
