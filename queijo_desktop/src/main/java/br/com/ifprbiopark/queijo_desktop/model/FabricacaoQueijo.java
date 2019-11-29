@@ -11,20 +11,20 @@ public class FabricacaoQueijo extends AbstractModel {
     private Date dataFabricacao;
     private String loteQueijo;
     private ColetaLeite coletaLeite;
-    private Double qtdLeite;    
+    private Double qtdLeite;
 
     //processamento;
     private String tipoLeite;
     private Integer tempoProcessamento;
-    private Integer temperaturaProcessamento;    
-    
+    private Integer temperaturaProcessamento;
+
     //Prematuração
     private Integer temperaturaPreMaturacao;
     private Integer phPreMaturacao;
-        //fermento;
-        private Fermento fermento;
-        private Double qtdFermento;
-        private Integer tempoFermentacao;    
+    //fermento;
+    private Fermento fermento;
+    private Double qtdFermento;
+    private Integer tempoFermentacao;
 
     //Coagulacao;
     private Integer temperaturaCoagulacao;
@@ -36,16 +36,16 @@ public class FabricacaoQueijo extends AbstractModel {
     private Integer ph24;
     private Integer dessoragem;
     private Integer temperaturaDessoragem;
-        //Salga
-        private String tipoSalga;
-    
+    //Salga
+    private String tipoSalga;
+
     //Maturação    
     private Date dataMaturacao;
     private Integer temperaturaMaturacao;
-        //Tratamento da casca    
-        private Date dataLavagem;
-        private String tipoTratamento;
-        private Integer tempoTratamento;
+    //Tratamento da casca    
+    private Date dataLavagem;
+    private String tipoTratamento;
+    private Integer tempoTratamento;
 
     //Rendimento;
     private Integer qtdPecas;
@@ -54,7 +54,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     //Obeservações
     private String observacoes;
-    
+
     //Finalização
     private String loteAcabado;
     private Pessoa responsavel;
@@ -154,7 +154,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     public void setTempoFermentacao(Integer tempoFermentacao) {
         this.tempoFermentacao = tempoFermentacao;
-    }    
+    }
 
     public Integer getPhPreMaturacao() {
         return phPreMaturacao;
@@ -234,7 +234,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     public void setTemperaturaDessoragem(Integer temperaturaDessoragem) {
         this.temperaturaDessoragem = temperaturaDessoragem;
-    }    
+    }
 
     public Pessoa getResponsavel() {
         return responsavel;
@@ -250,7 +250,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
-    }    
+    }
 
     public Date getDataFabricacao() {
         return dataFabricacao;
@@ -258,7 +258,7 @@ public class FabricacaoQueijo extends AbstractModel {
 
     public void setDataFabricacao(Date dataFabricacao) {
         this.dataFabricacao = dataFabricacao;
-    }   
+    }
 
     public String getTipoSalga() {
         return tipoSalga;
@@ -357,7 +357,5 @@ public class FabricacaoQueijo extends AbstractModel {
     public void setLoteAcabado(String loteAcabado) {
         this.loteAcabado = loteAcabado;
     }
-    
-    
 
 }

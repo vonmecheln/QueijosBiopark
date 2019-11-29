@@ -77,7 +77,7 @@ public class Conexao {
                     //fermento
                     + "    fermento_id INTEGER REFERENCES fermento(idFermento), "
                     + "    qtdFermento NUMERIC(14,2), "
-                    + "    tempoMaturacao INTEGER, "
+                    + "    tempoFermentacao INTEGER, "
                     //caogulação
                     + "    temperaturaCoagulacao INTEGER, "
                     + "    qtdClCalcio NUMERIC(14,2), "
