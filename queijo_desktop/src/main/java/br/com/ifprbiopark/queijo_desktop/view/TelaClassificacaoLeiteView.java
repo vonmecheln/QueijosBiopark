@@ -3,6 +3,7 @@ package br.com.ifprbiopark.queijo_desktop.view;
 import br.com.ifprbiopark.queijo_desktop.dao.AtributosDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Atributos;
+import br.com.ifprbiopark.queijo_desktop.model.EntradaAtributo;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableClassificacao;
 import java.awt.Dimension;
 import java.util.List;
@@ -24,9 +25,14 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
         consultaCb();
         tblClassificacao.setModel(tabela);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
-        
 
     }
+
+     public int idSelecionado(int idSelec) {
+        
+         return idSelec;
+    }
+
 
     private void consultaCb() {
         try {
@@ -68,7 +74,7 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
         btnExcluir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jcAnalise = new javax.swing.JComboBox<>();
-        txtGordura = new javax.swing.JTextField();
+        tfValor = new javax.swing.JTextField();
 
         jLabel8.setText("jLabel8");
 
@@ -93,6 +99,11 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(514, 428));
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         tblClassificacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,7 +126,7 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
             }
         });
 
-        txtGordura.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
+        tfValor.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -125,14 +136,14 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jcAnalise, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtGordura, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtGordura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcAnalise, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
@@ -177,6 +188,16 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcAnaliseActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        EntradaAtributo item = new EntradaAtributo();
+
+        item.setValor(tfValor.getText());
+        item.getAtributo().setIdAtributo(jcAnalise.getSelectedIndex());
+
+        //TableClassificacao.recarregar();
+
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
@@ -187,6 +208,6 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jcAnalise;
     private javax.swing.JTable tblClassificacao;
-    private javax.swing.JTextField txtGordura;
+    private javax.swing.JTextField tfValor;
     // End of variables declaration//GEN-END:variables
 }
