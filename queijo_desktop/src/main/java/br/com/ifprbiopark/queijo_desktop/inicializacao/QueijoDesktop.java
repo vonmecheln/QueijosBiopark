@@ -30,8 +30,12 @@ import br.com.ifprbiopark.queijo_desktop.view.TelaPrincipalView;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class QueijoDesktop {
+
+    public static GUIProperties guiProps = new GUIProperties();
 
     public static TelaPrincipalView telaPrincipal;
 
@@ -39,6 +43,7 @@ public class QueijoDesktop {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         if (false) {
             Pessoa p = new Pessoa();
             p.setNome("");
@@ -215,24 +220,37 @@ public class QueijoDesktop {
 
         } else {
 
-            /* Set the Nimbus look and feel */
-            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-             */
             try {
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Windows".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-                java.util.logging.Logger.getLogger(TelaPrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            }
-            //</editor-fold>
+                //            /* Set the Nimbus look and feel */
+//            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//             */
+//            try {
+//                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                    if ("Windows".equals(info.getName())) {
+//                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                        break;
+//                    }
+//                }
+//            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+//                java.util.logging.Logger.getLogger(TelaPrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            }
+//            //</editor-fold>
+//
+//            /* Create and display the form */
 
-            /* Create and display the form */
+                UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(QueijoDesktop.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             java.awt.EventQueue.invokeLater(() -> {
                 telaPrincipal = new TelaPrincipalView();
                 //telaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
