@@ -129,11 +129,17 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     
     public void setFabricacao(FabricacaoQueijo fq) {
         
+            txtID.setText(fq.getId().toString());
+            txtReceitaQueijo.setText(fq.getReceitaQueijo().getNomeTipo());
+            txtLote.setText(fq.getLoteQueijo());
+            txtLoteEntraga.setText(fq.getColetaLeite() != null ? fq.getColetaLeite().getLoteColeta() : null);
+            txtQuantidadeLeiteUtilizada.setText(fq.getDataFabricacao().toString());
+        
             //processamento
-            if(fq.getTipoLeite().equals("Cru")){
-                jcTipoLeite.setSelectedIndex(0);
-            } else {
+            if("Cru".equals(fq.getTipoLeite())){
                 jcTipoLeite.setSelectedIndex(1);
+            } else {
+                jcTipoLeite.setSelectedIndex(0);
             }
             
             txtTempoFermento.setText(fq.getTempoProcessamento().toString());
@@ -160,11 +166,11 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             txtTemperatura24.setText(fq.getTemperaturaDessoragem().toString());           
 
             //Etapa de Salga
-            txtTipoSalga.setText(fq.getTipoSalga().toString());
+            txtTipoSalga.setText(fq.getTipoSalga());
                            
             //tratamento casca
-            tfDataTratamentoCasca.setText(fq.getDataLavagem().toString());
-            tfTipoTratamentoCasca.setText(fq.getTipoTratamento().toString());
+            //tfDataTratamentoCasca.setText(fq.getDataLavagem().toString());
+            tfTipoTratamentoCasca.setText(fq.getTipoTratamento());
             txtTempoTratamento.setText(fq.getTempoTratamento().toString());
             
                   
@@ -172,8 +178,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             tfQueijoProduzido.setText(fq.getQtdPecas().toString());
             tfPesoTotalLote.setText(fq.getPesoTotal().toString());
             tfPesoMedioLote.setText(fq.getPesoMedioPecas().toString());
-            tfLoteProdutoAcabado.setText(fq.getLoteAcabado().toString());
-            cmbFuncionario.setSelectedItem(fq.getResponsavel().getNome());
+            tfLoteProdutoAcabado.setText(fq.getLoteAcabado());
+            cmbFuncionario.setSelectedItem(fq.getResponsavel() != null ? fq.getResponsavel().getNome(): null);
             tfObservacao.setText(fq.getObservacoes());
                       
             

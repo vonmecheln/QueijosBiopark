@@ -65,7 +65,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
         nps.setInt("receita_id", nullId(objeto.getReceitaQueijo()));
 
         //informacoes basicas de processamento;
-        nps.setDate("dataFabricacao", nullDate(objeto.getDataFabricacao()));
+        nps.setString("dataFabricacao", sdf.format(objeto.getDataFabricacao()));
         nps.setString("loteQueijo", objeto.getLoteQueijo());
         nps.setInt("coleta_id", nullId(objeto.getColetaLeite()));
         nps.setDouble("qtdLeite", nullDouble(objeto.getQtdLeite()));
@@ -298,7 +298,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setReceitaQueijo(crq.consultar((consulta.getInt("receita_id"))));
                 fq.setDataFabricacao(converterData(consulta.getString("dataFabricacao")));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
-                //fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
+                fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
                 fq.setQtdLeite(consulta.getDouble("qtdLeite"));
                 //processamento                
                 fq.setTipoLeite(consulta.getString("tipoLeite"));

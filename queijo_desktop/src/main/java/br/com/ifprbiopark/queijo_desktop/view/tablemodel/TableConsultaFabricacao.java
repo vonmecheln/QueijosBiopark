@@ -22,6 +22,10 @@ public class TableConsultaFabricacao extends AbstractTableModel {
         }
     }
 
+    public List<FabricacaoQueijo> getDados() {
+        return dados;
+    }
+
     @Override
     public int getRowCount() {
         return dados.size();

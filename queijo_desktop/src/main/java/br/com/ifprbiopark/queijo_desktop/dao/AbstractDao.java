@@ -11,6 +11,7 @@ import br.com.ifprbiopark.queijo_desktop.model.AbstractModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public abstract class AbstractDao<T extends AbstractModel> {
     private final String tableName;
     private final List<String> columnNames;
     protected Conexao con;
+    protected SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     public AbstractDao(String tableName, List<String> columnNames) throws DbException {
         this.tableName = tableName;

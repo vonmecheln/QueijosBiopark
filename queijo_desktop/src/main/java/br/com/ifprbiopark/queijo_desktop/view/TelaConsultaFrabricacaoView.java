@@ -3,6 +3,7 @@ package br.com.ifprbiopark.queijo_desktop.view;
 import br.com.ifprbiopark.queijo_desktop.control.ControleFabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.control.ControleReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.inicializacao.QueijoDesktop;
+import br.com.ifprbiopark.queijo_desktop.model.FabricacaoQueijo;
 import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableConsultaFabricacao;
 import java.awt.Color;
@@ -192,10 +193,10 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
 
     private void abrirFabricacao() {
         if (tblFabricacoes.getSelectedRow() != -1) {
-            int id = (int) tableModel.getValueAt(tblFabricacoes.getSelectedRow(), 0);
+            FabricacaoQueijo fq = tableModel.getDados().get(tblFabricacoes.getSelectedRow());
 
             TelaFabricacaoQueijoView form = new TelaFabricacaoQueijoView();
-            form.setID(id);
+            form.setFabricacao(fq);
             QueijoDesktop.telaPrincipal.getPainelDesktop().add(form);
             form.setPosicao();
             form.setVisible(true);

@@ -71,8 +71,8 @@ public class ControleColetaLeite {
         return dao.listarColetas();
     }
 
-    public ColetaLeite consultar(int aInt) {
-        return null;
+    public ColetaLeite consultar(int aInt) throws Exception{
+        return dao.consultar(aInt);
     }
 
 }

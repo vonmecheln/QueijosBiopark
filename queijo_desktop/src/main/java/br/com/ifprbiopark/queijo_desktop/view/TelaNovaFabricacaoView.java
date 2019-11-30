@@ -201,8 +201,11 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
             fq.setColetaLeite(listaColetaLeite.get(cmbLoteLeite.getSelectedIndex() - 1));
             fq.setQtdLeite(Double.parseDouble(txtQtd.getText()));
         
-            if (chkDataAuto.isSelected())
-                fq.setDataFabricacao(new Date());
+            
+            if (chkDataAuto.isSelected()){
+                String now = sdf.format(new Date());
+                fq.setDataFabricacao(sdf.parse(now));
+            }                
             else{
                 fq.setDataFabricacao(sdf.parse(txtData.getText()));
             }
