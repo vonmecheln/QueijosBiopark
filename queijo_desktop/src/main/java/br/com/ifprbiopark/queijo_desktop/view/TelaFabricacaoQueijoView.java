@@ -55,6 +55,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     
     //configuracao de datas;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    
+    
 
     public TelaFabricacaoQueijoView() {
         initComponents();
@@ -126,6 +128,55 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     }
     
     public void setFabricacao(FabricacaoQueijo fq) {
+        
+            //processamento
+            if(fq.getTipoLeite().equals("Cru")){
+                jcTipoLeite.setSelectedIndex(0);
+            } else {
+                jcTipoLeite.setSelectedIndex(1);
+            }
+            
+            txtTempoFermento.setText(fq.getTempoProcessamento().toString());
+            txtTemperaturaPross.setText(fq.getTempoProcessamento().toString());
+            
+
+            //Prematuracao
+            txtTempPreMat.setText(fq.getTemperaturaPreMaturacao().toString());
+            
+            //Insercao de Fermento
+            //fermento_id
+            txtQuantFerm.setText(fq.getQtdFermento().toString());
+            txtTempoFermento.setText(fq.getTempoFermentacao().toString());
+            txtPhPreMatura.setText(fq.getPhPreMaturacao().toString());
+
+            //Coagulacao
+            txtTemperaturaCoagula.setText(fq.getTemperaturaCoagulacao().toString());
+            txtCloretoCalcio.setText(fq.getQtdClCalcio().toString());
+            txtQtdCoagulante.setText(fq.getQtdCoagulante().toString());
+            txtTempoCoagulacao.setText(fq.getTempoCoagulacao().toString());
+            txtPhCorte.setText(fq.getPhCorte().toString());
+            txtPhEsformagem.setText(fq.getPhEnformagem().toString());
+            txtDessoragem.setText(fq.getDessoragem().toString());
+            txtTemperatura24.setText(fq.getTemperaturaDessoragem().toString());           
+
+            //Etapa de Salga
+            txtTipoSalga.setText(fq.getTipoSalga().toString());
+                           
+            //tratamento casca
+            tfDataTratamentoCasca.setText(fq.getDataLavagem().toString());
+            tfTipoTratamentoCasca.setText(fq.getTipoTratamento().toString());
+            txtTempoTratamento.setText(fq.getTempoTratamento().toString());
+            
+                  
+            //Rendimento
+            tfQueijoProduzido.setText(fq.getQtdPecas().toString());
+            tfPesoTotalLote.setText(fq.getPesoTotal().toString());
+            tfPesoMedioLote.setText(fq.getPesoMedioPecas().toString());
+            tfLoteProdutoAcabado.setText(fq.getLoteAcabado().toString());
+            cmbFuncionario.setSelectedItem(fq.getResponsavel().getNome());
+            tfObservacao.setText(fq.getObservacoes());
+                      
+            
         
     }
 
