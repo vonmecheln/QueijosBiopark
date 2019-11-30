@@ -52,19 +52,19 @@ public class FermentoDao extends AbstractDao<Fermento> {
         try {
 
             //String SQL;
-            String sql = "SELECT idFermento, tipoFermento,marca FROM fermento WHERE idFermento = :idFermento";
-
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            StringBuilder sql = getConsultaBasica();
+            sql.append("WHERE idFermento = :idFermento");
+            
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
+            
             nps.setInt("idFermento", id);
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 Fermento fermento = new Fermento();
                 fermento.setIdFermento(consulta.getInt("idFermento"));
-                fermento.setNome(consulta.getString("tipoFermento"));
+                fermento.setNome(consulta.getString("nome"));
                 fermento.setMarca(consulta.getString("marca"));
-
                 return fermento;
-
             }
             return null;
         } catch (SQLException ex) {
@@ -75,15 +75,15 @@ public class FermentoDao extends AbstractDao<Fermento> {
     public List<Fermento> listar() {
         try {
             List<Fermento> retornoFermento = new ArrayList<>();
-            //String SQL;
-            String sql = "SELECT idFermento, tipoFermento,marca FROM fermento";
+            
+            StringBuilder sql = getConsultaBasica();
 
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 Fermento fermento = new Fermento();
                 fermento.setIdFermento(consulta.getInt("idFermento"));
-                fermento.setNome(consulta.getString("tipoFermento"));
+                fermento.setNome(consulta.getString("nome"));
                 fermento.setMarca(consulta.getString("marca"));
 
                 retornoFermento.add(fermento);
