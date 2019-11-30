@@ -104,13 +104,15 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
             Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
+        //carregar lista de fermentos;
         cFermento = new ControleFermento();
         try {
             listaFermentos = cFermento.listaFermento();
             
             cmbFermento.addItem("");
             for (Fermento fermentos : listaFermentos) {
-                cmbFermento.addItem(fermentos.getNome());
+                cmbFermento.addItem(fermentos.getNome() + fermentos.getMarca());
             }
 
         } catch (DbException ex) {
