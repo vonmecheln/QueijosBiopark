@@ -49,7 +49,7 @@ public class TableConsultaFabricacao extends AbstractTableModel {
             case 1:
                 return dados.get(linha).getReceitaQueijo().getNomeTipo();
             case 2:
-                return dados.get(linha).getLoteAcabado();
+                return dados.get(linha).getLoteQueijo();
             case 3:
                 return dados.get(linha).getLoteQueijo();
             case 4:
