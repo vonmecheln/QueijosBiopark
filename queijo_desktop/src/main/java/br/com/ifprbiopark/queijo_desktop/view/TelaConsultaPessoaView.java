@@ -91,6 +91,7 @@ public class TelaConsultaPessoaView extends javax.swing.JDialog {
         btnAbrir = new javax.swing.JToggleButton();
 
         setTitle("Consulta");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
