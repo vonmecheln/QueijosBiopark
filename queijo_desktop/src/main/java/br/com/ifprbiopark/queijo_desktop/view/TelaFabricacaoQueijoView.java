@@ -183,7 +183,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 //tratamento casca
                 tfDataTratamentoCasca.setText(fq.getDataLavagem() != null ? sdf.format(fq.getDataLavagem()) : null);
                 tfTipoTratamentoCasca.setText(fq.getTipoTratamento() != null ? fq.getTipoTratamento() : null);
-                txtTempoTratamento.setText(fq.getTempoTratamento().toString() != null ? fq.getTempoTratamento().toString() : null);
+                txtTempoTratamento.setText(fq.getTempoTratamento() != null ? fq.getTempoTratamento().toString() : null);
 
                 //Rendimento
                 tfQueijoProduzido.setText(fq.getQtdPecas() != null ? fq.getQtdPecas().toString() : null);
