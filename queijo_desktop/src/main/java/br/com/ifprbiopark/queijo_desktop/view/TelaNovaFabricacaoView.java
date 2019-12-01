@@ -29,14 +29,23 @@ import javax.swing.text.DefaultFormatterFactory;
  */
 public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
     
+    //controles
     private ControleReceitaQueijo rqControl = new ControleReceitaQueijo();
     private ControleColetaLeite cleite = new ControleColetaLeite();
+    private ControleFabricacaoQueijo cfq = new ControleFabricacaoQueijo();
+    
+    //listas
     private List<ReceitaQueijo> listaReceitaQueijo;
     private List<ColetaLeite> listaColetaLeite;
+    
+    //formato de data
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private ControleFabricacaoQueijo cfq = new ControleFabricacaoQueijo();
-    private DefaultFormatterFactory dataFormatada;
+    private DefaultFormatterFactory formatoDeDataCampo;
+    
+    //variáveis de controle
     private Date hoje = new Date();
+    private boolean virgulaQtd = false;
+    private String qtd = "";
 
     /**
      * Creates new form TalaNovaFabricacaoView
@@ -49,8 +58,8 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
         
         try {
-            dataFormatada = new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####"));
-            txtData.setFormatterFactory(dataFormatada);
+            formatoDeDataCampo = new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####"));
+            txtData.setFormatterFactory(formatoDeDataCampo);
             alteraData();
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
@@ -83,10 +92,34 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         
         txtQtd.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
+                //qtd = txtQtd.getText();
                 char c = e.getKeyChar();
-                if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && ( c != ',') ) {
                     e.consume(); // consume non-numbers
                 }
+                else{
+                    if (c != KeyEvent.VK_BACK_SPACE)
+                        qtd += c;
+                }
+                
+                if ( c == ','){
+                    if (virgulaQtd){
+                        e.consume();
+                    }
+                    else{
+                        virgulaQtd = true;
+                    }
+                }
+                
+                if (c == KeyEvent.VK_BACK_SPACE){
+                    if (qtd.length() != 0){
+                        char ch = qtd.charAt(qtd.length() - 1);
+                        if (ch == ','){
+                            virgulaQtd = false;                            
+                        }
+                        qtd = txtQtd.getText();
+                    }                    
+                }              
             }
         });
     }
@@ -164,9 +197,9 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         chkDataAuto.setBackground(new java.awt.Color(255, 255, 255));
         chkDataAuto.setSelected(true);
         chkDataAuto.setText("Data automática");
-        chkDataAuto.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                chkDataAutoStateChanged(evt);
+        chkDataAuto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkDataAutoMouseClicked(evt);
             }
         });
 
@@ -232,9 +265,9 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         fechar();
     }//GEN-LAST:event_formInternalFrameClosing
 
-    private void chkDataAutoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chkDataAutoStateChanged
+    private void chkDataAutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkDataAutoMouseClicked
         alteraData();
-    }//GEN-LAST:event_chkDataAutoStateChanged
+    }//GEN-LAST:event_chkDataAutoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriar;
@@ -253,7 +286,7 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
             fq.setLoteQueijo(txtLote.getText());
             fq.setReceitaQueijo(listaReceitaQueijo.get(cmbReceita.getSelectedIndex() - 1));
             fq.setColetaLeite(listaColetaLeite.get(cmbLoteLeite.getSelectedIndex() - 1));
-            fq.setQtdLeite(Double.parseDouble(txtQtd.getText()));
+            fq.setQtdLeite(Double.parseDouble(txtQtd.getText().replace(',', '.')));
         
             
             if (chkDataAuto.isSelected()){
@@ -289,9 +322,15 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
     }
     
     private void fechar(){
-        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            this.dispose();
+        try{
+            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                this.dispose();
+            }
         }
+        catch (Exception ex){
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro ao fechar: " + ex.getMessage(), Color.red);
+        }
+        
     }
 
     private void alteraData() {

@@ -171,7 +171,7 @@
         <Property name="text" type="java.lang.String" value="Data autom&#xe1;tica"/>
       </Properties>
       <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="chkDataAutoStateChanged"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkDataAutoMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>
