@@ -429,4 +429,80 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
             throw new Exception(ex);
         }
     }
+    
+    public List<FabricacaoQueijo> consultarColetas(int idColeta) throws Exception {
+        try {
+            ControleReceitaQueijo crq = new ControleReceitaQueijo();
+            ControleColetaLeite ccl = new ControleColetaLeite();
+            ControlePessoa cp = new ControlePessoa();
+            ControleFermento cf = new ControleFermento();
+
+            List<FabricacaoQueijo> fabricacoes = new ArrayList<FabricacaoQueijo>();
+
+            StringBuilder sql = getConsultaBasica();
+            sql.append(" WHERE coleta_id = :id");            
+
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
+
+            nps.setInt("id", idColeta);
+
+            ResultSet consulta = nps.executeQuery();
+            while (consulta.next()) {
+                FabricacaoQueijo fq = new FabricacaoQueijo();
+                fq.setIdFabricacaoQueijo(consulta.getInt("idFabricacaoQueijo"));
+                //informacoes basicas de processamento;
+                fq.setReceitaQueijo(crq.consultar((consulta.getInt("receita_id"))));
+                fq.setDataFabricacao(converterData(consulta.getString("dataFabricacao")));
+                fq.setLoteQueijo(consulta.getString("loteQueijo"));
+                fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
+                fq.setQtdLeite(consulta.getDouble("qtdLeite"));
+                //processamento                
+                fq.setTipoLeite(consulta.getString("tipoLeite"));
+                fq.setTempoProcessamento(consulta.getInt("tempoProcessamento"));
+                fq.setTemperaturaProcessamento(consulta.getInt("temperaturaProcessamento"));
+                //Prematuracao
+                fq.setTemperaturaPreMaturacao(consulta.getInt("temperaturaPreMaturacao"));
+                fq.setPhPreMaturacao(consulta.getDouble("phMaturacao"));
+                //fermento
+                fq.setFermento(cf.consultar(consulta.getInt("fermento_id")));
+                fq.setQtdFermento(consulta.getDouble("qtdFermento"));
+                fq.setTempoFermentacao(consulta.getInt("tempoFermentacao"));
+                //coagulação
+                fq.setTemperaturaCoagulacao(consulta.getInt("temperaturaCoagulacao"));
+                fq.setQtdClCalcio(consulta.getDouble("qtdClCalcio"));
+                fq.setQtdCoagulante(consulta.getDouble("qtdCoagulante"));
+                fq.setTempoCoagulacao(consulta.getInt("tempoCoagulacao"));
+                fq.setPhCorte(consulta.getDouble("phCorte"));
+                fq.setPhEnformagem(consulta.getDouble("phEnformagem"));
+                fq.setPh24(consulta.getDouble("phFinal"));
+                fq.setDessoragem(consulta.getInt("dessoragem"));
+                fq.setTemperaturaDessoragem(consulta.getInt("temperaturaDessoragem"));
+                //salga
+                fq.setTipoSalga(consulta.getString("tipoSalga"));
+                //maturação
+                fq.setDataMaturacao(converterData(consulta.getString("dataMaturacao")));
+                fq.setTemperaturaMaturacao(consulta.getInt("temperaturaMaturacao"));
+                //tratamento da casca
+                fq.setDataLavagem(converterData(consulta.getString("dataLavagem")));
+                fq.setTipoTratamento(consulta.getString("tipoTratamento"));
+                fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
+                //rendimento
+                fq.setQtdPecas(consulta.getInt("qtdPecas"));
+                fq.setPesoMedioPecas(consulta.getDouble("pesoMPecas"));
+                fq.setPesoTotal(consulta.getDouble("pesoTotal"));
+                //observações
+                fq.setObservacoes(consulta.getString("observacoes"));
+                //finalização
+                fq.setLoteAcabado(consulta.getString("loteAcabado"));
+                fq.setResponsavel(cp.consultar(consulta.getInt("responsavel_id")));
+                fq.setInativo(consulta.getInt("inativo"));
+
+                fabricacoes.add(fq);
+            }
+            return fabricacoes;
+
+        } catch (Exception ex) {
+            throw new Exception(ex);
+        }
+    }
 }

@@ -24,7 +24,7 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
     @Override
     protected void confStantement(NamedParameterStatement nps, ColetaLeite objeto) throws SQLException {
         nps.setString("loteColeta", objeto.getLoteColeta());
-        nps.setDate("dtColeta", nullDate(objeto.getDtColeta()));
+        nps.setString("dtColeta", sdf.format(objeto.getDtColeta()));
         nps.setDouble("qtdLeite", nullDouble(objeto.getQtdLeite()));
         nps.setInt("produtor_id", nullId(objeto.getProdutor()));
         nps.setInt("funcionario_id", nullId(objeto.getFuncionario_idPessoa()));
@@ -69,8 +69,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 ColetaLeite coleta = new ColetaLeite();
                 coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
                 coleta.setLoteColeta(consulta.getString("loteColeta"));
-                java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dtColeta"));
-                coleta.setDtColeta(d);
+                //java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dtColeta"));
+                coleta.setDtColeta(sdf.parse(consulta.getString("dtColeta")));
 
 //                //seta funcionario;
 //                Pessoa f = new Pessoa();
@@ -121,8 +121,8 @@ public class ColetaLeiteDao extends AbstractDao<ColetaLeite> {
                 ColetaLeite coleta = new ColetaLeite();
                 coleta.setIdColetaLeite(consulta.getInt("idColetaLeite"));
                 coleta.setLoteColeta(consulta.getString("loteColeta"));
-                java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dtColeta"));
-                coleta.setDtColeta(d);
+                //java.sql.Date d = java.sql.Date.valueOf(consulta.getString("dtColeta"));
+                coleta.setDtColeta(sdf.parse(consulta.getString("dtColeta")));
 
 //                //seta funcionario;
 //                Pessoa f = new Pessoa();

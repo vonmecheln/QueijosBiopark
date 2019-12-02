@@ -29,6 +29,8 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
     TableRecebimentoLeite listaColetas = new TableRecebimentoLeite();
     TelaClassificacaoLeiteView formClassificacao = new TelaClassificacaoLeiteView();
     
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    
     
     public TelaColetaLeiteView() throws ParseException, DbException {
         initComponents();
@@ -323,7 +325,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                     coleta.setIdColetaLeite((Integer) id);
                     //coleta.setProdutor_idProdutor((Pessoa) produtor);
                     coleta.setQtdLeite((double) quantidade);
-                    coleta.setDtColeta((Date) data);
+                    coleta.setDtColeta(sdf.parse(data.toString()));
                     coleta.setSituacao((String) situacao);
 
                     //funcionario
