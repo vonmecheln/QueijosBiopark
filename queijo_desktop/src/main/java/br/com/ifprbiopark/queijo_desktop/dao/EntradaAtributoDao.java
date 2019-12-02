@@ -55,7 +55,7 @@ public class EntradaAtributoDao extends AbstractDao<EntradaAtributo> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<EntradaAtributo> listar() {
+    public List<EntradaAtributo> listar() throws Exception {
         try {
             List<EntradaAtributo> retornoEntrada = new ArrayList<>();
             //String SQL;
