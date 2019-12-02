@@ -955,7 +955,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cmbFuncionario" min="-2" pref="207" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="chkAtivo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chkArquivar" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="586" max="32767" attributes="0"/>
                   </Group>
@@ -970,7 +970,7 @@
                           <Component id="tfLoteProdutoAcabado" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="chkAtivo" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkArquivar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="162" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1001,13 +1001,12 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="chkAtivo">
+            <Component class="javax.swing.JCheckBox" name="chkArquivar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Fabrica&#xe7;&#xe3;o ativa"/>
+                <Property name="text" type="java.lang.String" value="Arquivar"/>
               </Properties>
             </Component>
           </SubComponents>

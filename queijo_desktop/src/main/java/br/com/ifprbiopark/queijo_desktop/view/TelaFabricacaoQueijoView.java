@@ -189,10 +189,10 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 cmbFuncionario.setSelectedItem(fq.getResponsavel() != null ? fq.getResponsavel().getNome(): null);            
                 if (fq.getInativo() != null){
                     if (fq.getInativo() == 0){
-                    chkAtivo.setSelected(true);
+                    chkArquivar.setSelected(false);
                     }
                     else{
-                        chkAtivo.setSelected(false);
+                        chkArquivar.setSelected(true);
                     }
                 }
             }
@@ -258,11 +258,11 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 //finalização
                 fq.setLoteAcabado(tfLoteProdutoAcabado.getText());
                 fq.setResponsavel(cmbFuncionario.getSelectedIndex() > 0 ? listaFuncionarios.get(cmbFuncionario.getSelectedIndex() - 1) : null);      
-                if (chkAtivo.isSelected()){
-                    fq.setInativo(0);
+                if (chkArquivar.isSelected()){
+                    fq.setInativo(1);
                 }
                 else{
-                    fq.setInativo(1);
+                    fq.setInativo(0);
                 }
                 
                 cfq.salvar(fq);
@@ -339,7 +339,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         pnlFinalizacao = new javax.swing.JPanel();
         cmbFuncionario = new javax.swing.JComboBox<>();
         tfLoteProdutoAcabado = new javax.swing.JTextField();
-        chkAtivo = new javax.swing.JCheckBox();
+        chkArquivar = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -847,9 +847,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
         tfLoteProdutoAcabado.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote (Produto Acabado):"));
 
-        chkAtivo.setBackground(new java.awt.Color(255, 255, 255));
-        chkAtivo.setSelected(true);
-        chkAtivo.setText("Fabricação ativa");
+        chkArquivar.setBackground(new java.awt.Color(255, 255, 255));
+        chkArquivar.setText("Arquivar");
 
         javax.swing.GroupLayout pnlFinalizacaoLayout = new javax.swing.GroupLayout(pnlFinalizacao);
         pnlFinalizacao.setLayout(pnlFinalizacaoLayout);
@@ -862,7 +861,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                         .addComponent(tfLoteProdutoAcabado, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(chkAtivo))
+                    .addComponent(chkArquivar))
                 .addContainerGap(586, Short.MAX_VALUE))
         );
         pnlFinalizacaoLayout.setVerticalGroup(
@@ -873,7 +872,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                     .addComponent(cmbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfLoteProdutoAcabado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkAtivo)
+                .addComponent(chkArquivar)
                 .addContainerGap(162, Short.MAX_VALUE))
         );
 
@@ -1021,7 +1020,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JToggleButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox chkAtivo;
+    private javax.swing.JCheckBox chkArquivar;
     private javax.swing.JComboBox<String> cmbFermento;
     private javax.swing.JComboBox<String> cmbFuncionario;
     private javax.swing.JTabbedPane guia;

@@ -110,7 +110,7 @@ public class TelaConsultaFrabricacaoView extends javax.swing.JInternalFrame {
         });
 
         chkInativo.setBackground(new java.awt.Color(255, 255, 255));
-        chkInativo.setText("Inativos");
+        chkInativo.setText("Arquivados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
