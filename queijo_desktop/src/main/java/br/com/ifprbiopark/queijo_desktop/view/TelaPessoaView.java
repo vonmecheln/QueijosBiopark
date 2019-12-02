@@ -66,6 +66,7 @@ public class TelaPessoaView extends javax.swing.JInternalFrame {
         btnConsultar = new javax.swing.JToggleButton();
         btnNovo = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);

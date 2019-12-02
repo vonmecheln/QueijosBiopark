@@ -82,4 +82,9 @@ public class TableRecebimentoLeite extends AbstractTableModel {
         this.fireTableDataChanged();
     }
 
+    public int getIdSelecionado() {
+        return 0;
+
+    }
+
 }

@@ -308,7 +308,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setTemperaturaPreMaturacao(consulta.getInt("temperaturaPreMaturacao"));
                 fq.setPhPreMaturacao(consulta.getDouble("phMaturacao"));
                 //fermento
-                ////fq.setFermento(cf.consultar(consulta.getInt("fermento_id")));
+                fq.setFermento(cf.consultar(consulta.getInt("fermento_id")));
                 fq.setQtdFermento(consulta.getDouble("qtdFermento"));
                 fq.setTempoFermentacao(consulta.getInt("tempoFermentacao"));
                 //coagulação
@@ -324,10 +324,10 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 //salga
                 fq.setTipoSalga(consulta.getString("tipoSalga"));
                 //maturação
-                ////fq.setDataMaturacao(consulta.getDate("dataMaturacao"));
+                fq.setDataMaturacao(converterData(consulta.getString("dataMaturacao")));
                 fq.setTemperaturaMaturacao(consulta.getInt("temperaturaMaturacao"));
                 //tratamento da casca
-                ////fq.setDataLavagem(consulta.getDate("dataLavagem"));
+                fq.setDataLavagem(converterData(consulta.getString("dataLavagem")));
                 fq.setTipoTratamento(consulta.getString("tipoTratamento"));
                 fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
                 //rendimento
@@ -378,7 +378,7 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 fq.setReceitaQueijo(crq.consultar((consulta.getInt("receita_id"))));
                 fq.setDataFabricacao(converterData(consulta.getString("dataFabricacao")));
                 fq.setLoteQueijo(consulta.getString("loteQueijo"));
-                //fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
+                fq.setColetaLeite(ccl.consultar(consulta.getInt("coleta_id")));
                 fq.setQtdLeite(consulta.getDouble("qtdLeite"));
                 //processamento                
                 fq.setTipoLeite(consulta.getString("tipoLeite"));
@@ -404,10 +404,10 @@ public class FabricacaoQueijoDao extends AbstractDao<FabricacaoQueijo> {
                 //salga
                 fq.setTipoSalga(consulta.getString("tipoSalga"));
                 //maturação
-                fq.setDataMaturacao(consulta.getDate("dataMaturacao"));
+                fq.setDataMaturacao(converterData(consulta.getString("dataMaturacao")));
                 fq.setTemperaturaMaturacao(consulta.getInt("temperaturaMaturacao"));
                 //tratamento da casca
-                fq.setDataLavagem(consulta.getDate("dataLavagem"));
+                fq.setDataLavagem(converterData(consulta.getString("dataLavagem")));
                 fq.setTipoTratamento(consulta.getString("tipoTratamento"));
                 fq.setTempoTratamento(consulta.getInt("tempoTratamento"));
                 //rendimento

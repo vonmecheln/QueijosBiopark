@@ -5,6 +5,7 @@ import br.com.ifprbiopark.queijo_desktop.exception.FermentoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Fermento;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableFermento;
+import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,6 +26,11 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
         tbFermento.setModel(tableFermento);
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
+    }
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -90,6 +96,7 @@ public class TelaFermentoView extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setTitle("Cadastro Fermento");
 

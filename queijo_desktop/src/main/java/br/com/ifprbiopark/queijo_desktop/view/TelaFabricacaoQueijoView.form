@@ -22,6 +22,9 @@
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="internalFrameClosing" listener="javax.swing.event.InternalFrameListener" parameters="javax.swing.event.InternalFrameEvent" handler="formInternalFrameClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -89,14 +92,16 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtID" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtReceitaQueijo" min="-2" pref="284" max="-2" attributes="0"/>
+                  <Component id="txtReceitaQueijo" min="-2" pref="206" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtLote" min="-2" pref="191" max="-2" attributes="0"/>
+                  <Component id="txtLote" min="-2" pref="146" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtLoteEntraga" min="-2" pref="183" max="-2" attributes="0"/>
+                  <Component id="txtLoteEntraga" min="-2" pref="160" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtQuantidadeLeiteUtilizada" min="-2" pref="155" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="txtQuantidadeLeiteUtilizada" min="-2" pref="130" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtData" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -112,6 +117,11 @@
                       <Component id="txtQuantidadeLeiteUtilizada" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtData" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -136,9 +146,6 @@
               </Border>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantidadeLeiteUtilizadaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtID">
           <Properties>
@@ -166,6 +173,16 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                 <TitledBorder title="Lote da entrega de leite:"/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtData">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Data:"/>
               </Border>
             </Property>
           </Properties>
@@ -219,10 +236,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jcTipoLeite" min="-2" pref="147" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtTempoFermento" min="-2" pref="169" max="-2" attributes="0"/>
+                      <Component id="txtTempoProcessamento" min="-2" pref="169" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtTemperaturaPross" min="-2" pref="126" max="-2" attributes="0"/>
-                      <EmptySpace pref="525" max="32767" attributes="0"/>
+                      <EmptySpace pref="542" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -232,7 +249,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jcTipoLeite" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="txtTempoFermento" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtTempoProcessamento" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="txtTemperaturaPross" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
@@ -243,6 +260,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtTemperaturaPross">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Temperatura (&#xb0;C):"/>
@@ -250,11 +268,12 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperaturaProssActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperaturaProssKeyTyped"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTempoFermento">
+            <Component class="javax.swing.JTextField" name="txtTempoProcessamento">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Tempo (min):"/>
@@ -262,7 +281,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoFermentoActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempoProcessamentoKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jcTipoLeite">
@@ -308,10 +327,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTempPreMat" min="-2" pref="202" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="txtTempPreMat" min="-2" pref="202" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="788" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jPanel4" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -322,7 +344,7 @@
                       <Component id="txtTempPreMat" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="102" max="32767" attributes="0"/>
+                      <EmptySpace pref="105" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -344,28 +366,27 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="cmbFermento" min="-2" pref="184" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cmbFermento" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtQuantFerm" min="-2" pref="160" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtTempoFermentacao" min="-2" pref="221" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtPhPreMatura" min="-2" pref="201" max="-2" attributes="0"/>
-                          <EmptySpace pref="102" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtQuantFerm" alignment="3" max="32767" attributes="0"/>
-                          <Component id="txtTempoFermentacao" alignment="3" max="32767" attributes="0"/>
-                          <Component id="txtPhPreMatura" alignment="3" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmbFermento" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtQuantFerm" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txtTempoFermentacao" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txtPhPreMatura" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="cmbFermento" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -380,7 +401,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantFermActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQuantFermKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTempoFermentacao">
@@ -392,13 +413,18 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoFermentacaoActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempoFermentacaoKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmbFermento">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Tipo do fermento e marca:"/>
+                      </Border>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -414,7 +440,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhPreMaturaActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPhPreMaturaKeyTyped"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -428,7 +454,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempPreMatActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempPreMatKeyTyped"/>
               </Events>
             </Component>
           </SubComponents>
@@ -459,28 +485,25 @@
                           <Component id="txtDessoragem" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                  <Component id="txtCloretoCalcio" min="-2" pref="183" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="txtTempoCoagulacao" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtTemperatura24" pref="199" max="32767" attributes="0"/>
+                                      <Component id="txtPhEnformagem" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtTempoCoagulacao" alignment="1" min="-2" pref="199" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtTemperatura24" pref="182" max="32767" attributes="0"/>
-                                  <Component id="txtPhEsformagem" max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Component id="txtCloretoCalcio" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtPh24" max="32767" attributes="0"/>
-                          <Component id="txtTipoSalga" pref="204" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtPh24" min="-2" pref="204" max="-2" attributes="0"/>
+                          <Component id="txtTipoSalga" min="-2" pref="204" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="415" max="32767" attributes="0"/>
                   </Group>
@@ -502,16 +525,14 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtPhCorte" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="txtPhEsformagem" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtPhEnformagem" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="txtPh24" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtTemperatura24" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="txtDessoragem" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="txtTipoSalga" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtTemperatura24" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtDessoragem" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtTipoSalga" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
@@ -528,7 +549,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperaturaCoagulaActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperaturaCoagulaKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtQtdCoagulante">
@@ -540,7 +561,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQtdCoagulanteActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQtdCoagulanteKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTempoCoagulacao">
@@ -552,7 +573,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoCoagulacaoActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempoCoagulacaoKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPhCorte">
@@ -564,10 +585,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhCorteActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPhCorteKeyTyped"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtPhEsformagem">
+            <Component class="javax.swing.JTextField" name="txtPhEnformagem">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -576,7 +597,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhEsformagemActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPhEnformagemKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPh24">
@@ -588,7 +609,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPh24ActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPh24KeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCloretoCalcio">
@@ -600,7 +621,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCloretoCalcioActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCloretoCalcioKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDessoragem">
@@ -612,7 +633,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDessoragemActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDessoragemKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTemperatura24">
@@ -624,7 +645,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperatura24ActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperatura24KeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTipoSalga">
@@ -659,9 +680,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="txtDataSalga" min="-2" pref="159" max="-2" attributes="0"/>
+                              <Component id="txtDataMaturacao" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtTemperaturaSalga" min="-2" pref="189" max="-2" attributes="0"/>
+                              <Component id="txtTemperaturaMaturacao" min="-2" pref="189" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jPanel7" max="32767" attributes="0"/>
@@ -675,8 +696,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtDataSalga" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="txtTemperaturaSalga" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtDataMaturacao" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtTemperaturaMaturacao" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
@@ -707,7 +728,7 @@
                           <Component id="tfTipoTratamentoCasca" min="-2" pref="184" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtTempoTratamento" min="-2" pref="226" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="297" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="316" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -733,9 +754,6 @@
                       </Border>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfTipoTratamentoCascaActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="tfDataTratamentoCasca">
                   <Properties>
@@ -745,9 +763,6 @@
                       </Border>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfDataTratamentoCascaActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTempoTratamento">
                   <Properties>
@@ -758,12 +773,12 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTempoTratamentoActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempoTratamentoKeyTyped"/>
                   </Events>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="txtTemperaturaSalga">
+            <Component class="javax.swing.JTextField" name="txtTemperaturaMaturacao">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -772,10 +787,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperaturaSalgaActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperaturaMaturacaoKeyTyped"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtDataSalga">
+            <Component class="javax.swing.JFormattedTextField" name="txtDataMaturacao">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -811,7 +826,7 @@
                           <Component id="tfQueijoProduzido" alignment="0" max="32767" attributes="0"/>
                           <Component id="tfPesoMedioLote" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="789" max="32767" attributes="0"/>
+                      <EmptySpace pref="806" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -839,7 +854,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPesoMedioLoteActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPesoMedioLoteKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="tfPesoTotalLote">
@@ -851,7 +866,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPesoTotalLoteActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPesoTotalLoteKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="tfQueijoProduzido">
@@ -863,7 +878,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfQueijoProduzidoActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfQueijoProduzidoKeyTyped"/>
               </Events>
             </Component>
           </SubComponents>
@@ -885,7 +900,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="985" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="1002" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -942,7 +957,7 @@
                           </Group>
                           <Component id="chkAtivo" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="569" max="32767" attributes="0"/>
+                      <EmptySpace pref="586" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -985,9 +1000,6 @@
                   </Border>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfLoteProdutoAcabadoActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chkAtivo">
               <Properties>

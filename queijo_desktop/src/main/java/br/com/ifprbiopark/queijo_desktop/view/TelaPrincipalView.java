@@ -502,7 +502,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void lbFermentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFermentosMouseClicked
         TelaFermentoView formFermento = new TelaFermentoView();
         painelDesktop.add(formFermento);
-        //formRelatorio.setPosicao();
+        formFermento.setPosicao();
         formFermento.setVisible(true);
     }//GEN-LAST:event_lbFermentosMouseClicked
 

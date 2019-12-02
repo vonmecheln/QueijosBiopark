@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static jdk.nashorn.internal.runtime.Debug.id;
 
 public class ControleColetaLeite {
 
@@ -71,8 +72,15 @@ public class ControleColetaLeite {
         return dao.listarColetas();
     }
 
-    public ColetaLeite consultar(int aInt) throws Exception{
-        return dao.consultar(aInt);
+    public ColetaLeite consultar(int aInt) {
+        try {
+            return dao.consultar(aInt);
+        } catch (DbException ex) {
+            Logger.getLogger(ControleColetaLeite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
+    
+    
 
 }

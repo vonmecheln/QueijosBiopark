@@ -52,7 +52,7 @@ public class TableClassificacao extends AbstractTableModel {
     public Object getValueAt(int linha, int coluna) {
         switch (coluna) {
             case 0:
-                return entrada.get(linha).getColetaLeite_idColetaLeite(); // erro aqui <-
+                return entrada.get(linha).getColetaLeite_idColetaLeite().getLoteColeta();
             case 1:
                 return entrada.get(linha).getAtributo().getNomeAtributo();
             case 2:

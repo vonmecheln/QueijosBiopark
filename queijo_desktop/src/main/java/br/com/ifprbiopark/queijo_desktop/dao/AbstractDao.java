@@ -203,6 +203,9 @@ public abstract class AbstractDao<T extends AbstractModel> {
     }
     
     protected Date converterData(String data){
-        return java.sql.Date.valueOf(data);
+        if (data != null)
+            return Date.valueOf(data);
+        else
+            return null;
     }
 }
