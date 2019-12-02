@@ -55,13 +55,15 @@ public class EntradaAtributoDao extends AbstractDao<EntradaAtributo> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<EntradaAtributo> listar() throws Exception {
+    public List<EntradaAtributo> listar(int idEntrada) {
         try {
             List<EntradaAtributo> retornoEntrada = new ArrayList<>();
             //String SQL;
-            String sql = "SELECT coleta_id, atributo_id, valor FROM entradaatributo";
+            StringBuilder sql = getConsultaBasica();
+            sql.append(" WHERE coleta_id = :id");
 
-            NamedParameterStatement nps = con.NamedParameterStatement(sql);
+            NamedParameterStatement nps = con.NamedParameterStatement(sql.toString());
+            nps.setInt("id", idEntrada);
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 EntradaAtributo entrada = new EntradaAtributo();
@@ -82,5 +84,7 @@ public class EntradaAtributoDao extends AbstractDao<EntradaAtributo> {
         return null;
 
     }
+
+
 
 }

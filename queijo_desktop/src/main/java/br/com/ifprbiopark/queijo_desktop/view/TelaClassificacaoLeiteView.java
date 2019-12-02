@@ -17,31 +17,30 @@ import java.net.URL;
 public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
 
     private List<Atributos> atributos;
-    TableClassificacao tabela = new TableClassificacao();
+    TableClassificacao tabela;
+    int idEntrada;
 
     public TelaClassificacaoLeiteView() {
         initComponents();
-
         consultaCb();
-        tblClassificacao.setModel(tabela);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
 
     }
 
-     public int idSelecionado(int idSelec) {
-        
-         return idSelec;
+    public int idSelecionado(int idSelec) {         //seta ID e depois cria tabela
+        this.idEntrada = idSelec;
+        tabela = new TableClassificacao(idEntrada);
+        tblClassificacao.setModel(tabela);
+        return idSelec;
     }
 
-
-    private void consultaCb() {
+    private void consultaCb() {     //Popula o combobox
         try {
 
             AtributosDao p = new AtributosDao();
 
             atributos = p.consultar();
 
-            // jcAnalise.removeAll();
             for (int i = 0; i < atributos.size(); i++) {
                 jcAnalise.addItem(atributos.get(i).getNomeAtributo());
             }

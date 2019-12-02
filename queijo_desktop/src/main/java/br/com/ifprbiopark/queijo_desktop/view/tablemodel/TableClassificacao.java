@@ -18,23 +18,26 @@ import javax.swing.table.AbstractTableModel;
  * @author macbook
  */
 public class TableClassificacao extends AbstractTableModel {
+
     EntradaAtributoDao tipo;
 
     List<EntradaAtributo> entrada;
 
     private String[] nomeColunas = {"Lote", "Tipo de Observação", "Resultado"};
-
-    public TableClassificacao() {
+    private int idEntrada;
+    
+    public TableClassificacao(int idEntrada) {
         try {
+            this.idEntrada = idEntrada;
             this.tipo = new EntradaAtributoDao();
-            this.entrada = tipo.listar();
+            this.entrada = tipo.listar(idEntrada);
         } catch (DbException ex) {
             Logger.getLogger(TableFermento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void recarregar() {
-        entrada = tipo.listar();
+        entrada = tipo.listar(this.idEntrada);
     }
 
     public String getColumnName(int column) {

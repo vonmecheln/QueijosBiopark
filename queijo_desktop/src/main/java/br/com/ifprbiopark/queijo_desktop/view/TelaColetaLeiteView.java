@@ -97,7 +97,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEntradaLeite = new javax.swing.JTable();
         jcbSituacao = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btClassificar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -203,10 +203,10 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         jcbSituacao.setMinimumSize(new java.awt.Dimension(84, 30));
         jcbSituacao.setPreferredSize(new java.awt.Dimension(84, 30));
 
-        jButton1.setText("Classificar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btClassificar.setText("Classificar");
+        btClassificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btClassificarActionPerformed(evt);
             }
         });
 
@@ -234,7 +234,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                                         .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(btClassificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -270,7 +270,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
                             .addComponent(jbSalvar)
                             .addComponent(jbExcluir))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(btClassificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
@@ -406,14 +406,14 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_tblEntradaLeiteMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btClassificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClassificarActionPerformed
         this.dispose();
         QueijoDesktop.telaPrincipal.getPainelDesktop().add(formClassificacao);
         formClassificacao.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btClassificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btClassificar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
