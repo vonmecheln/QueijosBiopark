@@ -136,6 +136,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQtdKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbLoteLeite">
       <Properties>

@@ -21,6 +21,7 @@ import br.com.ifprbiopark.queijo_desktop.model.ReceitaQueijo;
 import com.google.common.base.Strings;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +30,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 
 /**
@@ -441,9 +443,19 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
         txtTemperaturaPross.setEditable(false);
         txtTemperaturaPross.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura (°C):"));
+        txtTemperaturaPross.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTemperaturaProssKeyTyped(evt);
+            }
+        });
 
         txtTempoProcessamento.setEditable(false);
         txtTempoProcessamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo (min):"));
+        txtTempoProcessamento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTempoProcessamentoKeyTyped(evt);
+            }
+        });
 
         jcTipoLeite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cru", "Pasteurizado" }));
         jcTipoLeite.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Leite"));
@@ -485,12 +497,27 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Fermento"));
 
         txtQuantFerm.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantidade (g):"));
+        txtQuantFerm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQuantFermKeyTyped(evt);
+            }
+        });
 
         txtTempoFermentacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo(min):"));
+        txtTempoFermentacao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTempoFermentacaoKeyTyped(evt);
+            }
+        });
 
         cmbFermento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo do fermento e marca:"));
 
         txtPhPreMatura.setBorder(javax.swing.BorderFactory.createTitledBorder("pH após pré-maturação:"));
+        txtPhPreMatura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhPreMaturaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -518,6 +545,11 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         );
 
         txtTempPreMat.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura utilizada(°C):"));
+        txtTempPreMat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTempPreMatKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPreMaturacaoLayout = new javax.swing.GroupLayout(pnlPreMaturacao);
         pnlPreMaturacao.setLayout(pnlPreMaturacaoLayout);
@@ -547,22 +579,67 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         pnlCoagulacao.setBackground(new java.awt.Color(255, 255, 255));
 
         txtTemperaturaCoagula.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura (°C):"));
+        txtTemperaturaCoagula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTemperaturaCoagulaKeyTyped(evt);
+            }
+        });
 
         txtQtdCoagulante.setBorder(javax.swing.BorderFactory.createTitledBorder("Coagulante (mL):"));
+        txtQtdCoagulante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQtdCoagulanteKeyTyped(evt);
+            }
+        });
 
         txtTempoCoagulacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de coagulação (min):"));
+        txtTempoCoagulacao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTempoCoagulacaoKeyTyped(evt);
+            }
+        });
 
         txtPhCorte.setBorder(javax.swing.BorderFactory.createTitledBorder("pH do corte:"));
+        txtPhCorte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhCorteKeyTyped(evt);
+            }
+        });
 
         txtPhEnformagem.setBorder(javax.swing.BorderFactory.createTitledBorder("pH da enformagem:"));
+        txtPhEnformagem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhEnformagemKeyTyped(evt);
+            }
+        });
 
         txtPh24.setBorder(javax.swing.BorderFactory.createTitledBorder("pH após 24Hs:"));
+        txtPh24.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPh24KeyTyped(evt);
+            }
+        });
 
         txtCloretoCalcio.setBorder(javax.swing.BorderFactory.createTitledBorder("Cloreto de Cálcio (ml):"));
+        txtCloretoCalcio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCloretoCalcioKeyTyped(evt);
+            }
+        });
 
         txtDessoragem.setBorder(javax.swing.BorderFactory.createTitledBorder("Dessoragem:"));
+        txtDessoragem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDessoragemKeyTyped(evt);
+            }
+        });
 
         txtTemperatura24.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura dessoragem (°C):"));
+        txtTemperatura24.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTemperatura24KeyTyped(evt);
+            }
+        });
 
         txtTipoSalga.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de salga:"));
 
@@ -630,6 +707,11 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         tfDataTratamentoCasca.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de lavagem:"));
 
         txtTempoTratamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de tratamento (min):"));
+        txtTempoTratamento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTempoTratamentoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -654,6 +736,11 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         );
 
         txtTemperaturaMaturacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura (°C):"));
+        txtTemperaturaMaturacao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTemperaturaMaturacaoKeyTyped(evt);
+            }
+        });
 
         txtDataMaturacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Data:"));
         txtDataMaturacao.setToolTipText("");
@@ -690,10 +777,25 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         pnlRendimento.setBackground(new java.awt.Color(255, 255, 255));
 
         tfPesoMedioLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Peso médio (Kg):"));
+        tfPesoMedioLote.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfPesoMedioLoteKeyTyped(evt);
+            }
+        });
 
         tfPesoTotalLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Peso total (Kg):"));
+        tfPesoTotalLote.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfPesoTotalLoteKeyTyped(evt);
+            }
+        });
 
         tfQueijoProduzido.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtd de peças produzidas:"));
+        tfQueijoProduzido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfQueijoProduzidoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlRendimentoLayout = new javax.swing.GroupLayout(pnlRendimento);
         pnlRendimento.setLayout(pnlRendimentoLayout);
@@ -835,6 +937,86 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         fechar();
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void txtTempoProcessamentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTempoProcessamentoKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTempoProcessamentoKeyTyped
+
+    private void txtTemperaturaProssKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemperaturaProssKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTemperaturaProssKeyTyped
+
+    private void txtTempPreMatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTempPreMatKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTempPreMatKeyTyped
+
+    private void txtQuantFermKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantFermKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_txtQuantFermKeyTyped
+
+    private void txtTempoFermentacaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTempoFermentacaoKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTempoFermentacaoKeyTyped
+
+    private void txtPhPreMaturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhPreMaturaKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_txtPhPreMaturaKeyTyped
+
+    private void txtTemperaturaCoagulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemperaturaCoagulaKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTemperaturaCoagulaKeyTyped
+
+    private void txtCloretoCalcioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCloretoCalcioKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_txtCloretoCalcioKeyTyped
+
+    private void txtQtdCoagulanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdCoagulanteKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_txtQtdCoagulanteKeyTyped
+
+    private void txtTempoCoagulacaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTempoCoagulacaoKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTempoCoagulacaoKeyTyped
+
+    private void txtPhCorteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhCorteKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_txtPhCorteKeyTyped
+
+    private void txtPhEnformagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhEnformagemKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_txtPhEnformagemKeyTyped
+
+    private void txtPh24KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPh24KeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_txtPh24KeyTyped
+
+    private void txtDessoragemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDessoragemKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtDessoragemKeyTyped
+
+    private void txtTemperatura24KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemperatura24KeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTemperatura24KeyTyped
+
+    private void txtTemperaturaMaturacaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemperaturaMaturacaoKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTemperaturaMaturacaoKeyTyped
+
+    private void txtTempoTratamentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTempoTratamentoKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_txtTempoTratamentoKeyTyped
+
+    private void tfQueijoProduzidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfQueijoProduzidoKeyTyped
+        vericaTeclaInt(evt);
+    }//GEN-LAST:event_tfQueijoProduzidoKeyTyped
+
+    private void tfPesoMedioLoteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPesoMedioLoteKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_tfPesoMedioLoteKeyTyped
+
+    private void tfPesoTotalLoteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPesoTotalLoteKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_tfPesoTotalLoteKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JToggleButton btnSalvar;
@@ -913,6 +1095,30 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     private void fechar(){
         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             this.dispose();
+        }
+    }
+    
+    private void vericaTeclaDouble(KeyEvent e) {
+        char c = e.getKeyChar();
+        JTextField campo = (JTextField)e.getSource();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && ( c != ',') ) {
+            e.consume();
+        }
+
+        if ( c == ','){
+            for (char ch : campo.getText().toCharArray()){
+                if (c == ch){
+                    e.consume();
+                    break;
+                }
+            }
+        }
+    }
+    
+    private void vericaTeclaInt(KeyEvent e) {
+        char c = e.getKeyChar();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            e.consume();
         }
     }
 }

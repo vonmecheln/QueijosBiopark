@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 
 /**
@@ -89,39 +90,6 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
         }
-        
-        txtQtd.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                //qtd = txtQtd.getText();
-                char c = e.getKeyChar();
-                if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && ( c != ',') ) {
-                    e.consume(); // consume non-numbers
-                }
-                else{
-                    if (c != KeyEvent.VK_BACK_SPACE)
-                        qtd += c;
-                }
-                
-                if ( c == ','){
-                    if (virgulaQtd){
-                        e.consume();
-                    }
-                    else{
-                        virgulaQtd = true;
-                    }
-                }
-                
-                if (c == KeyEvent.VK_BACK_SPACE){
-                    if (qtd.length() != 0){
-                        char ch = qtd.charAt(qtd.length() - 1);
-                        if (ch == ','){
-                            virgulaQtd = false;                            
-                        }
-                        qtd = txtQtd.getText();
-                    }                    
-                }              
-            }
-        });
     }
 
     public void setPosicao() {
@@ -188,6 +156,11 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         txtLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote:"));
 
         txtQtd.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtde utilizada (L):"));
+        txtQtd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQtdKeyTyped(evt);
+            }
+        });
 
         cmbLoteLeite.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote da coleta de leite:"));
 
@@ -269,6 +242,10 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
         alteraData();
     }//GEN-LAST:event_chkDataAutoMouseClicked
 
+    private void txtQtdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdKeyTyped
+        vericaTeclaDouble(evt);
+    }//GEN-LAST:event_txtQtdKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriar;
     private javax.swing.JCheckBox chkDataAuto;
@@ -342,5 +319,22 @@ public class TelaNovaFabricacaoView extends javax.swing.JInternalFrame {
             txtData.setEditable(true);
             txtData.setText(null);
         }
+    }
+    
+    private void vericaTeclaDouble(KeyEvent e) {
+        char c = e.getKeyChar();
+        JTextField campo = (JTextField)e.getSource();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && ( c != ',') ) {
+            e.consume();
+        }
+
+        if ( c == ','){
+            for (char ch : campo.getText().toCharArray()){
+                if (c == ch){
+                    e.consume();
+                    break;
+                }
+            }
+        }            
     }
 }

@@ -267,6 +267,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperaturaProssKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTempoProcessamento">
               <Properties>
@@ -277,6 +280,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempoProcessamentoKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jcTipoLeite">
               <Properties>
@@ -394,6 +400,9 @@
                       </Border>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQuantFermKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTempoFermentacao">
                   <Properties>
@@ -403,6 +412,9 @@
                       </Border>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempoFermentacaoKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmbFermento">
                   <Properties>
@@ -427,6 +439,9 @@
                       </Border>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPhPreMaturaKeyTyped"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -438,6 +453,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempPreMatKeyTyped"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -530,6 +548,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperaturaCoagulaKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtQtdCoagulante">
               <Properties>
@@ -539,6 +560,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQtdCoagulanteKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTempoCoagulacao">
               <Properties>
@@ -548,6 +572,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempoCoagulacaoKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPhCorte">
               <Properties>
@@ -557,6 +584,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPhCorteKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPhEnformagem">
               <Properties>
@@ -566,6 +596,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPhEnformagemKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPh24">
               <Properties>
@@ -575,6 +608,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPh24KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCloretoCalcio">
               <Properties>
@@ -584,6 +620,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCloretoCalcioKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDessoragem">
               <Properties>
@@ -593,6 +632,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDessoragemKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTemperatura24">
               <Properties>
@@ -602,6 +644,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperatura24KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTipoSalga">
               <Properties>
@@ -727,6 +772,9 @@
                       </Border>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempoTratamentoKeyTyped"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -738,6 +786,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperaturaMaturacaoKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="txtDataMaturacao">
               <Properties>
@@ -802,6 +853,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPesoMedioLoteKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="tfPesoTotalLote">
               <Properties>
@@ -811,6 +865,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPesoTotalLoteKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="tfQueijoProduzido">
               <Properties>
@@ -820,6 +877,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfQueijoProduzidoKeyTyped"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
