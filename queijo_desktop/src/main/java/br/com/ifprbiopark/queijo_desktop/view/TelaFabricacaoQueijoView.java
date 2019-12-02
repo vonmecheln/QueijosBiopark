@@ -29,6 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
 
 /**
  *
@@ -51,6 +52,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     private ControlePessoa cPessoa;
     private List<Pessoa> listaFuncionarios;
     private FabricacaoQueijo fq = new FabricacaoQueijo();
+    
+    //controle fabricação queijo
     private ControleFabricacaoQueijo cfq = new ControleFabricacaoQueijo();
     
     //lista de fermentos
@@ -59,6 +62,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     
     //configuracao de datas;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private DefaultFormatterFactory formatoDataMaturacao;
+    private DefaultFormatterFactory formatoDataTratamentoCasca;
     
     
 
@@ -68,35 +73,19 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeQueijos.png")));
+        
+        //define as datas
+        try {
+            formatoDataMaturacao = new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####"));
+            formatoDataTratamentoCasca = new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####"));
+            txtDataMaturacao.setFormatterFactory(formatoDataMaturacao);
+            tfDataTratamentoCasca.setFormatterFactory(formatoDataTratamentoCasca);
+        } catch (Exception ex) {
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: " + ex.getMessage(), Color.RED);
+        }
 
         //carregar as receitas
         rqControl = new ControleReceitaQueijo();
-//        try {
-//            listaReceitaQueijo = rqControl.listaReceitaQueijo();
-//            //jcTipoQueijo.removeAll();
-//            jcTipoQueijo.addItem("");
-//            for (ReceitaQueijo receitaQueijo : listaReceitaQueijo) {
-//                jcTipoQueijo.addItem(receitaQueijo.getNomeTipo());
-//            }
-//
-//        } catch (DbException ex) {
-//            Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        //carregar as coletas de leite
-//        cleite = new ControleColetaLeite();
-//
-//        try {
-//            listaColetaLeite = cleite.listaColeta();
-//            //jcColeta.removeAll();
-//            jcColeta.addItem("");
-//            for (ColetaLeite coletaLeite : listaColetaLeite) {
-//                jcColeta.addItem(coletaLeite.getLoteColeta());
-//            }
-//
-//        } catch (DbException ex) {
-//            Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
 
         //carregar os funcionarios
         cPessoa = new ControlePessoa();
@@ -136,6 +125,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     public void setFabricacao(FabricacaoQueijo fq) {
         try{
             if (fq != null){
+                this.fq = fq;
                 //informações
                 txtID.setText(fq.getId() != null ? fq.getId().toString() : null);
                 txtReceitaQueijo.setText(fq.getReceitaQueijo() != null ? fq.getReceitaQueijo().getNomeTipo() : null);
@@ -147,31 +137,30 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 //processamento
                 if("Pasteurizado".equals(fq.getTipoLeite())){
                     jcTipoLeite.setSelectedIndex(1);
-                    txtTempoFermento.setEditable(true);
+                    txtTempoProcessamento.setEditable(true);
                     txtTemperaturaPross.setEditable(true);
                 } else {
                     jcTipoLeite.setSelectedIndex(0);
                 }            
-                txtTempoFermento.setText(fq.getTempoProcessamento() != null ? fq.getTempoProcessamento().toString() : null);
+                txtTempoProcessamento.setText(fq.getTempoProcessamento() != null ? fq.getTempoProcessamento().toString() : null);
                 txtTemperaturaPross.setText(fq.getTemperaturaProcessamento() != null ? fq.getTemperaturaProcessamento().toString() : null);
-
 
                 //Prematuracao
                 txtTempPreMat.setText(fq.getTemperaturaPreMaturacao() != null ? fq.getTemperaturaPreMaturacao().toString() : null);
                 //Fermento
                 cmbFermento.setSelectedIndex(fq.getFermento() != null ? fq.getFermento().getId(): 0);
-                txtQuantFerm.setText(fq.getQtdFermento() != null ? fq.getQtdFermento().toString() : null);
-                txtTempoFermento.setText(fq.getTempoFermentacao()!= null ? fq.getTempoFermentacao().toString() : null);
-                txtPhPreMatura.setText(fq.getPhPreMaturacao()!= null ? fq.getPhPreMaturacao().toString() : null);
+                txtQuantFerm.setText(fq.getQtdFermento() != null ? fq.getQtdFermento().toString().replace('.', ',') : null);
+                txtTempoProcessamento.setText(fq.getTempoFermentacao()!= null ? fq.getTempoFermentacao().toString() : null);
+                txtPhPreMatura.setText(fq.getPhPreMaturacao()!= null ? fq.getPhPreMaturacao().toString().replace('.', ',') : null);
 
                 //Coagulacao
                 txtTemperaturaCoagula.setText(fq.getTemperaturaCoagulacao()!= null ? fq.getTemperaturaCoagulacao().toString() : null);
-                txtCloretoCalcio.setText(fq.getQtdClCalcio() != null ? fq.getQtdClCalcio().toString() : null);
-                txtQtdCoagulante.setText(fq.getQtdCoagulante()!= null ? fq.getQtdCoagulante().toString() : null);
+                txtCloretoCalcio.setText(fq.getQtdClCalcio() != null ? fq.getQtdClCalcio().toString().replace('.', ',') : null);
+                txtQtdCoagulante.setText(fq.getQtdCoagulante()!= null ? fq.getQtdCoagulante().toString().replace('.', ',') : null);
                 txtTempoCoagulacao.setText(fq.getTempoCoagulacao() != null ? fq.getTempoCoagulacao().toString() : null);
-                txtPhCorte.setText(fq.getPhCorte() != null ? fq.getPhCorte().toString() : null);
-                txtPhEnformagem.setText(fq.getPhEnformagem() != null ? fq.getPhEnformagem().toString() : null);
-                txtPh24.setText(fq.getPh24() != null ? fq.getPh24().toString() : null);
+                txtPhCorte.setText(fq.getPhCorte() != null ? fq.getPhCorte().toString().replace('.', ',') : null);
+                txtPhEnformagem.setText(fq.getPhEnformagem() != null ? fq.getPhEnformagem().toString().replace('.', ',') : null);
+                txtPh24.setText(fq.getPh24() != null ? fq.getPh24().toString().replace('.', ',') : null);
                 txtDessoragem.setText(fq.getDessoragem() != null ? fq.getDessoragem().toString() : null);
                 txtTemperatura24.setText(fq.getTemperaturaDessoragem() != null ? fq.getTemperaturaDessoragem().toString() : null);           
                 //Etapa de Salga
@@ -187,8 +176,8 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
                 //Rendimento
                 tfQueijoProduzido.setText(fq.getQtdPecas() != null ? fq.getQtdPecas().toString() : null);
-                tfPesoTotalLote.setText(fq.getPesoTotal() != null ? fq.getPesoTotal().toString() : null);
-                tfPesoMedioLote.setText(fq.getPesoMedioPecas() != null ? fq.getPesoMedioPecas().toString() : null);
+                tfPesoTotalLote.setText(fq.getPesoTotal() != null ? fq.getPesoTotal().toString().replace('.', ',') : null);
+                tfPesoMedioLote.setText(fq.getPesoMedioPecas() != null ? fq.getPesoMedioPecas().toString().replace('.', ',') : null);
 
                 //observações
                 tfObservacao.setText(fq.getObservacoes() != null ? fq.getObservacoes() : null);
@@ -218,6 +207,76 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
+    
+    private void salvar(){
+        try{
+            if (fq != null){
+                //processamento
+                fq.setTipoLeite(jcTipoLeite.getSelectedItem().toString());
+                fq.setTempoProcessamento(Integer.parseInt(txtTempoProcessamento.getText()));
+                fq.setTemperaturaProcessamento(Integer.parseInt(txtTemperaturaPross.getText()));
+
+                //Prematuracao
+                fq.setTemperaturaPreMaturacao(Integer.parseInt(txtTempPreMat.getText()));
+                //Fermento
+                fq.setFermento(cmbFermento.getSelectedIndex() != 0 ? listaFermentos.get(cmbFermento.getSelectedIndex() - 1) : null);
+                fq.setQtdFermento(Double.parseDouble(txtQuantFerm.getText().replace(',', '.')));
+                fq.setTempoProcessamento(Integer.parseInt(txtTempoProcessamento.getText()));
+                fq.setPhPreMaturacao(Double.parseDouble(txtPhPreMatura.getText().replace(',', '.')));
+                               
+                //Coagulacao
+                fq.setTemperaturaCoagulacao(Integer.parseInt(txtTemperaturaCoagula.getText()));
+                fq.setQtdClCalcio(Double.parseDouble(txtCloretoCalcio.getText().replace(',', '.')));       
+                fq.setQtdCoagulante(Double.parseDouble(txtQtdCoagulante.getText().replace(',', '.')));
+                fq.setTempoCoagulacao(Integer.parseInt(txtTempoCoagulacao.getText()));
+                fq.setPhCorte(Double.parseDouble(txtPhCorte.getText().replace(',', '.')));
+                fq.setPhEnformagem(Double.parseDouble(txtPhEnformagem.getText().replace(',', '.')));
+                fq.setPh24(Double.parseDouble(txtPh24.getText().replace(',', '.')));
+                fq.setDessoragem(Integer.parseInt(txtDessoragem.getText()));
+                fq.setTemperaturaDessoragem(Integer.parseInt(txtTemperatura24.getText()));           
+                //Etapa de Salga
+                fq.setTipoSalga(txtTipoSalga.getText());
+
+                //maturação
+                fq.setDataMaturacao((txtDataMaturacao.getText() != null && !txtDataMaturacao.getText().equals("  /  /    ")) ? sdf.parse(txtDataMaturacao.getText()) : null);
+                fq.setTemperaturaMaturacao(Integer.parseInt(txtTemperaturaMaturacao.getText()));         
+                //tratamento casca
+                fq.setDataLavagem((tfDataTratamentoCasca.getText() != null && !tfDataTratamentoCasca.getText().equals("  /  /    ")) ? sdf.parse(tfDataTratamentoCasca.getText()) : null);
+                fq.setTipoTratamento(tfTipoTratamentoCasca.getText());
+                fq.setTempoTratamento(Integer.parseInt(txtTempoTratamento.getText()));
+
+                //Rendimento                
+                fq.setQtdPecas(Integer.parseInt(tfQueijoProduzido.getText()));
+                fq.setPesoTotal(Double.parseDouble(tfPesoTotalLote.getText().replace(',', '.')));
+                fq.setPesoMedioPecas(Double.parseDouble(tfPesoMedioLote.getText().replace(',', '.')));
+
+                //observações
+                fq.setObservacoes(tfObservacao.getText());
+
+                //finalização
+                fq.setLoteAcabado(tfLoteProdutoAcabado.getText());
+                fq.setResponsavel(cmbFuncionario.getSelectedIndex() > 0 ? listaFuncionarios.get(cmbFuncionario.getSelectedIndex() - 1) : null);      
+                if (chkAtivo.isSelected()){
+                    fq.setInativo(0);
+                }
+                else{
+                    fq.setInativo(1);
+                }
+                
+                cfq.salvar(fq);
+                
+                QueijoDesktop.telaPrincipal.setMenssagem("Salvo com sucesso.", Color.green);
+                
+                this.dispose();
+            }
+            else{
+                QueijoDesktop.telaPrincipal.setMenssagem("Erro: Fabricação nula", Color.red);
+            } 
+        }
+        catch (Exception ex){
+            QueijoDesktop.telaPrincipal.setMenssagem("Erro: (Tela de fabricação) erro ao salvar. " + ex.getMessage(), Color.red);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -241,7 +300,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         guia = new javax.swing.JTabbedPane();
         pnlProcessamento = new javax.swing.JPanel();
         txtTemperaturaPross = new javax.swing.JTextField();
-        txtTempoFermento = new javax.swing.JTextField();
+        txtTempoProcessamento = new javax.swing.JTextField();
         jcTipoLeite = new javax.swing.JComboBox<>();
         pnlPreMaturacao = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -314,11 +373,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
         txtQuantidadeLeiteUtilizada.setEditable(false);
         txtQuantidadeLeiteUtilizada.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtde Utilizada (L):"));
-        txtQuantidadeLeiteUtilizada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuantidadeLeiteUtilizadaActionPerformed(evt);
-            }
-        });
 
         txtID.setEditable(false);
         txtID.setBorder(javax.swing.BorderFactory.createTitledBorder("ID:"));
@@ -387,19 +441,9 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
 
         txtTemperaturaPross.setEditable(false);
         txtTemperaturaPross.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura (°C):"));
-        txtTemperaturaPross.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTemperaturaProssActionPerformed(evt);
-            }
-        });
 
-        txtTempoFermento.setEditable(false);
-        txtTempoFermento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo (min):"));
-        txtTempoFermento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTempoFermentoActionPerformed(evt);
-            }
-        });
+        txtTempoProcessamento.setEditable(false);
+        txtTempoProcessamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo (min):"));
 
         jcTipoLeite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cru", "Pasteurizado" }));
         jcTipoLeite.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Leite"));
@@ -417,7 +461,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jcTipoLeite, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTempoFermento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTempoProcessamento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTemperaturaPross, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(542, Short.MAX_VALUE))
@@ -428,7 +472,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnlProcessamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcTipoLeite, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTempoFermento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTempoProcessamento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTemperaturaPross, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(195, 195, 195))
         );
@@ -441,27 +485,12 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Fermento"));
 
         txtQuantFerm.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantidade (g):"));
-        txtQuantFerm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuantFermActionPerformed(evt);
-            }
-        });
 
         txtTempoFermentacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo(min):"));
-        txtTempoFermentacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTempoFermentacaoActionPerformed(evt);
-            }
-        });
 
         cmbFermento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo do fermento e marca:"));
 
         txtPhPreMatura.setBorder(javax.swing.BorderFactory.createTitledBorder("pH após pré-maturação:"));
-        txtPhPreMatura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhPreMaturaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -489,11 +518,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         );
 
         txtTempPreMat.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura utilizada(°C):"));
-        txtTempPreMat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTempPreMatActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlPreMaturacaoLayout = new javax.swing.GroupLayout(pnlPreMaturacao);
         pnlPreMaturacao.setLayout(pnlPreMaturacaoLayout);
@@ -523,67 +547,22 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         pnlCoagulacao.setBackground(new java.awt.Color(255, 255, 255));
 
         txtTemperaturaCoagula.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura (°C):"));
-        txtTemperaturaCoagula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTemperaturaCoagulaActionPerformed(evt);
-            }
-        });
 
         txtQtdCoagulante.setBorder(javax.swing.BorderFactory.createTitledBorder("Coagulante (mL):"));
-        txtQtdCoagulante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQtdCoagulanteActionPerformed(evt);
-            }
-        });
 
         txtTempoCoagulacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de coagulação (min):"));
-        txtTempoCoagulacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTempoCoagulacaoActionPerformed(evt);
-            }
-        });
 
         txtPhCorte.setBorder(javax.swing.BorderFactory.createTitledBorder("pH do corte:"));
-        txtPhCorte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhCorteActionPerformed(evt);
-            }
-        });
 
         txtPhEnformagem.setBorder(javax.swing.BorderFactory.createTitledBorder("pH da enformagem:"));
-        txtPhEnformagem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhEnformagemActionPerformed(evt);
-            }
-        });
 
         txtPh24.setBorder(javax.swing.BorderFactory.createTitledBorder("pH após 24Hs:"));
-        txtPh24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPh24ActionPerformed(evt);
-            }
-        });
 
         txtCloretoCalcio.setBorder(javax.swing.BorderFactory.createTitledBorder("Cloreto de Cálcio (ml):"));
-        txtCloretoCalcio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCloretoCalcioActionPerformed(evt);
-            }
-        });
 
         txtDessoragem.setBorder(javax.swing.BorderFactory.createTitledBorder("Dessoragem:"));
-        txtDessoragem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDessoragemActionPerformed(evt);
-            }
-        });
 
         txtTemperatura24.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura dessoragem (°C):"));
-        txtTemperatura24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTemperatura24ActionPerformed(evt);
-            }
-        });
 
         txtTipoSalga.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de salga:"));
 
@@ -647,25 +626,10 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Tratamento da Casca"));
 
         tfTipoTratamentoCasca.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de tratamento:"));
-        tfTipoTratamentoCasca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTipoTratamentoCascaActionPerformed(evt);
-            }
-        });
 
         tfDataTratamentoCasca.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de lavagem:"));
-        tfDataTratamentoCasca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfDataTratamentoCascaActionPerformed(evt);
-            }
-        });
 
         txtTempoTratamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Tempo de tratamento (min):"));
-        txtTempoTratamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTempoTratamentoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -690,11 +654,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         );
 
         txtTemperaturaMaturacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Temperatura (°C):"));
-        txtTemperaturaMaturacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTemperaturaMaturacaoActionPerformed(evt);
-            }
-        });
 
         txtDataMaturacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Data:"));
         txtDataMaturacao.setToolTipText("");
@@ -731,25 +690,10 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         pnlRendimento.setBackground(new java.awt.Color(255, 255, 255));
 
         tfPesoMedioLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Peso médio (Kg):"));
-        tfPesoMedioLote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfPesoMedioLoteActionPerformed(evt);
-            }
-        });
 
         tfPesoTotalLote.setBorder(javax.swing.BorderFactory.createTitledBorder("Peso total (Kg):"));
-        tfPesoTotalLote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfPesoTotalLoteActionPerformed(evt);
-            }
-        });
 
         tfQueijoProduzido.setBorder(javax.swing.BorderFactory.createTitledBorder("Qtd de peças produzidas:"));
-        tfQueijoProduzido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfQueijoProduzidoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlRendimentoLayout = new javax.swing.GroupLayout(pnlRendimento);
         pnlRendimento.setLayout(pnlRendimentoLayout);
@@ -800,11 +744,6 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         cmbFuncionario.setBorder(javax.swing.BorderFactory.createTitledBorder("Funcionario"));
 
         tfLoteProdutoAcabado.setBorder(javax.swing.BorderFactory.createTitledBorder("Lote (Produto Acabado):"));
-        tfLoteProdutoAcabado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfLoteProdutoAcabadoActionPerformed(evt);
-            }
-        });
 
         chkAtivo.setBackground(new java.awt.Color(255, 255, 255));
         chkAtivo.setSelected(true);
@@ -872,179 +811,22 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTemperaturaProssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperaturaProssActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTemperaturaProssActionPerformed
-
-    private void txtQuantFermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantFermActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtQuantFermActionPerformed
-
-    private void txtTempPreMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempPreMatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTempPreMatActionPerformed
-
-    private void txtTempoFermentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoFermentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTempoFermentoActionPerformed
-
-    private void txtTempoFermentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoFermentacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTempoFermentacaoActionPerformed
-
-    private void txtPhPreMaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhPreMaturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhPreMaturaActionPerformed
-
-    private void txtCloretoCalcioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCloretoCalcioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCloretoCalcioActionPerformed
-
-    private void txtTemperaturaMaturacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperaturaMaturacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTemperaturaMaturacaoActionPerformed
-
-    private void txtPhEnformagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhEnformagemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhEnformagemActionPerformed
-
-    private void txtTempoCoagulacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoCoagulacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTempoCoagulacaoActionPerformed
-
-    private void txtQtdCoagulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtdCoagulanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtQtdCoagulanteActionPerformed
-
-    private void txtPhCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhCorteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhCorteActionPerformed
-
-    private void txtPh24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPh24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPh24ActionPerformed
-
-    private void txtDessoragemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDessoragemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDessoragemActionPerformed
-
-    private void txtTemperatura24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperatura24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTemperatura24ActionPerformed
-
-    private void txtTemperaturaCoagulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperaturaCoagulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTemperaturaCoagulaActionPerformed
-
-    private void txtTempoTratamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempoTratamentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTempoTratamentoActionPerformed
-
-    private void tfLoteProdutoAcabadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoteProdutoAcabadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfLoteProdutoAcabadoActionPerformed
-
-    private void tfQueijoProduzidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfQueijoProduzidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfQueijoProduzidoActionPerformed
-
-    private void tfPesoMedioLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesoMedioLoteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfPesoMedioLoteActionPerformed
-
-    private void tfPesoTotalLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesoTotalLoteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfPesoTotalLoteActionPerformed
-
-    private void tfTipoTratamentoCascaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTipoTratamentoCascaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfTipoTratamentoCascaActionPerformed
-
-    private void txtQuantidadeLeiteUtilizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeLeiteUtilizadaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtQuantidadeLeiteUtilizadaActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         fechar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void tfDataTratamentoCascaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDataTratamentoCascaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfDataTratamentoCascaActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
-        try {
-            FabricacaoQueijo queijo = new FabricacaoQueijo();
-            ControleFabricacaoQueijo cQueijo = new ControleFabricacaoQueijo();
-
-            //informacoes iniciais de processamento
-            queijo.setReceitaQueijo(listaReceitaQueijo.get(fq.getReceitaQueijo().getIdTipoQueijo()));
-            queijo.setLoteQueijo(txtLote.getText());
-            queijo.setColetaLeite((listaColetaLeite.get(fq.getColetaLeite().getIdColetaLeite())));
-            queijo.setQtdLeite(parseDoubles(txtQuantidadeLeiteUtilizada.getText()));
-
-            //Processamento
-            queijo.setTipoLeite((String) jcTipoLeite.getSelectedItem());
-            queijo.setTempoProcessamento(parseInteiro(txtTempoFermento.getText()));
-            queijo.setTemperaturaProcessamento(parseInteiro(txtTemperaturaPross.getText()));
-
-            //Prematuracao
-            queijo.setTemperaturaPreMaturacao(parseInteiro(txtTempPreMat.getText()));
-
-            //Insercao de Fermento
-            //fermento_id
-            queijo.setQtdFermento(parseDoubles(txtQuantFerm.getText()));
-            queijo.setTempoFermentacao(parseInteiro(txtTempoFermento.getText()));
-            //queijo.setFermento(txtTipoFermento.getText());
-            //queijo.setMarcaFermento(txtMarcaFerm.getText());
-            queijo.setPhPreMaturacao(parseDoubles(txtPhPreMatura.getText()));
-
-            //Coagulacao
-            queijo.setTemperaturaCoagulacao(parseInteiro(txtTemperaturaCoagula.getText()));
-            queijo.setQtdClCalcio(parseDoubles(txtCloretoCalcio.getText()));
-            queijo.setQtdCoagulante(parseDoubles(txtQtdCoagulante.getText()));
-            queijo.setTempoCoagulacao(parseInteiro(txtTempoCoagulacao.getText()));
-            queijo.setPhCorte(parseDoubles(txtPhCorte.getText()));
-            queijo.setPhEnformagem(parseDoubles(txtPhEnformagem.getText()));
-            //queijo.setPhMaturacao(parseDoubles(txtPhPreMatura.getText()));
-            queijo.setDessoragem(parseInteiro(txtDessoragem.getText()));
-            queijo.setTemperaturaDessoragem(parseInteiro(txtTemperatura24.getText()));
-
-            //Etapa de Salga
-            queijo.setTipoSalga(txtTipoSalga.getText());
-               
-            //tratamento casca
-            queijo.setDataLavagem(sdf.parse(tfDataTratamentoCasca.getText()));
-            queijo.setTipoTratamento(tfTipoTratamentoCasca.getText());
-            queijo.setTempoTratamento(Integer.parseInt(txtTempoTratamento.getText()));
-            
-            //Rendimento
-            queijo.setQtdPecas(parseInteiro(tfQueijoProduzido.getText()));
-            queijo.setPesoTotal(parseDoubles(tfPesoTotalLote.getText()));
-            queijo.setPesoMedioPecas(parseDoubles(tfPesoMedioLote.getText()));
-            queijo.setLoteAcabado(tfLoteProdutoAcabado.getText());
-            queijo.setResponsavel(listaFuncionarios.get(cmbFuncionario.getSelectedIndex()));
-            queijo.setObservacoes(tfObservacao.getText());
-
-            cQueijo.salvar(queijo);
-        } catch (FabricacaoException ex) {
-            Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(TelaFabricacaoQueijoView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void jcTipoLeiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcTipoLeiteActionPerformed
         
         if(jcTipoLeite.getSelectedIndex() == 0){
-            txtTempoFermento.setEditable(false);
+            txtTempoProcessamento.setEditable(false);
             txtTemperaturaPross.setEditable(false);
         }
         else if (jcTipoLeite.getSelectedIndex() == 1){
-            txtTempoFermento.setEditable(true);
+            txtTempoProcessamento.setEditable(true);
             txtTemperaturaPross.setEditable(true);
         }
     }//GEN-LAST:event_jcTipoLeiteActionPerformed
@@ -1102,7 +884,7 @@ public class TelaFabricacaoQueijoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTemperaturaPross;
     private javax.swing.JTextField txtTempoCoagulacao;
     private javax.swing.JTextField txtTempoFermentacao;
-    private javax.swing.JTextField txtTempoFermento;
+    private javax.swing.JTextField txtTempoProcessamento;
     private javax.swing.JTextField txtTempoTratamento;
     private javax.swing.JTextField txtTipoSalga;
     // End of variables declaration//GEN-END:variables
