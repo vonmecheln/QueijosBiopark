@@ -5,6 +5,7 @@
  */
 package br.com.ifprbiopark.queijo_desktop.view.tablemodel;
 
+import br.com.ifprbiopark.queijo_desktop.control.ControleEntregaAtributo;
 import br.com.ifprbiopark.queijo_desktop.dao.EntradaAtributoDao;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.EntradaAtributo;
@@ -54,11 +55,12 @@ public class TableClassificacao extends AbstractTableModel {
 
     public Object getValueAt(int linha, int coluna) {
         switch (coluna) {
+            
             case 0:
                 return entrada.get(linha).getColetaLeite_idColetaLeite().getLoteColeta();
             case 1:
                 return entrada.get(linha).getAtributo().getNomeAtributo();
-            case 2:
+            case 2: 
                 return entrada.get(linha).getValor();
         }
 
@@ -73,8 +75,11 @@ public class TableClassificacao extends AbstractTableModel {
 
     public void removeRow(int linha) {
         this.entrada.remove(linha);
+        
     }
-
-    public void updateRow() {
+   
+    public void updateRow(){
+        entrada = tipo.listar(idEntrada);
+        this.fireTableDataChanged();
     }
 }

@@ -1,8 +1,10 @@
 package br.com.ifprbiopark.queijo_desktop.view;
-
+import br.com.ifprbiopark.queijo_desktop.control.ControleEntregaAtributo;
 import br.com.ifprbiopark.queijo_desktop.dao.AtributosDao;
+import br.com.ifprbiopark.queijo_desktop.exception.EntregaAtributoException;
 import br.com.ifprbiopark.queijo_desktop.exception.db.DbException;
 import br.com.ifprbiopark.queijo_desktop.model.Atributos;
+import br.com.ifprbiopark.queijo_desktop.model.ColetaLeite;
 import br.com.ifprbiopark.queijo_desktop.model.EntradaAtributo;
 import br.com.ifprbiopark.queijo_desktop.view.tablemodel.TableClassificacao;
 import java.awt.Dimension;
@@ -112,9 +114,19 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
                 "Lote", "Tipo de Observação", "Resultado"
             }
         ));
+        tblClassificacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClassificacaoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblClassificacao);
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Análises"));
@@ -190,12 +202,42 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         EntradaAtributo item = new EntradaAtributo();
 
+        Atributos atributo = new Atributos();                   
+        atributo.setIdAtributo(jcAnalise.getSelectedIndex());
         item.setValor(tfValor.getText());
-        item.getAtributo().setIdAtributo(jcAnalise.getSelectedIndex());
+        item.setAtributo(atributo);
+        
+        
+        ColetaLeite coleta = new ColetaLeite();
+        coleta.setIdColetaLeite(idEntrada);
+        item.setColetaLeite_idColetaLeite(coleta);
 
-        //TableClassificacao.recarregar();
-
+        ControleEntregaAtributo controle = new ControleEntregaAtributo();
+        try {
+            controle.salvar(item);
+        } catch (EntregaAtributoException ex) {
+            Logger.getLogger(TelaClassificacaoLeiteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tabela.updateRow();
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void tblClassificacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClassificacaoMouseClicked
+        tblClassificacao.getSelectedRow();
+        jcAnalise.setSelectedItem(String.valueOf(tabela.getValueAt(tblClassificacao.getSelectedRow(), 1)));
+        tfValor.setText(String.valueOf(tabela.getValueAt(tblClassificacao.getSelectedRow(), 2)));
+        
+        
+    }//GEN-LAST:event_tblClassificacaoMouseClicked
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+//        ControleEntregaAtributo controle = new ControleEntregaAtributo();
+//        controle.excluir(item);
+        
+  
+
+
+        tabela.updateRow();
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
