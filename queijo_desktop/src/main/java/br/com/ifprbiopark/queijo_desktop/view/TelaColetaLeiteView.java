@@ -412,6 +412,7 @@ public class TelaColetaLeiteView extends javax.swing.JInternalFrame {
         this.dispose();
         QueijoDesktop.telaPrincipal.getPainelDesktop().add(formClassificacao);
         formClassificacao.setVisible(true);
+        formClassificacao.setPosicao();
     }//GEN-LAST:event_btClassificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

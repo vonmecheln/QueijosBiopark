@@ -1,4 +1,5 @@
 package br.com.ifprbiopark.queijo_desktop.view;
+
 import br.com.ifprbiopark.queijo_desktop.control.ControleEntregaAtributo;
 import br.com.ifprbiopark.queijo_desktop.dao.AtributosDao;
 import br.com.ifprbiopark.queijo_desktop.exception.EntregaAtributoException;
@@ -29,14 +30,14 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
 
     }
 
-    public int idSelecionado(int idSelec) {         //seta ID e depois cria tabela
+    public int idSelecionado(int idSelec) {                                                  //seta ID selecionado na tela ENTRADA e depois cria tabela.
         this.idEntrada = idSelec;
         tabela = new TableClassificacao(idEntrada);
         tblClassificacao.setModel(tabela);
         return idSelec;
     }
 
-    private void consultaCb() {     //Popula o combobox
+    private void consultaCb() {                                                              //Popula o combobox
         try {
 
             AtributosDao p = new AtributosDao();
@@ -72,10 +73,11 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
         btnSalvar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblClassificacao = new javax.swing.JTable();
-        btnExcluir = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jcAnalise = new javax.swing.JComboBox<>();
         tfValor = new javax.swing.JTextField();
+        tfId = new javax.swing.JTextField();
 
         jLabel8.setText("jLabel8");
 
@@ -111,7 +113,7 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Lote", "Tipo de Observação", "Resultado"
+                "Id", "Lote", "Tipo de Observação", "Resultado"
             }
         ));
         tblClassificacao.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,10 +123,10 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblClassificacao);
 
-        btnExcluir.setText("Excluir");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btnNovoActionPerformed(evt);
             }
         });
 
@@ -139,23 +141,32 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
 
         tfValor.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
 
+        tfId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jcAnalise, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addComponent(jcAnalise, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcAnalise, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcAnalise, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
@@ -166,14 +177,14 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
@@ -184,7 +195,7 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnExcluir))
+                    .addComponent(btnNovo))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -202,16 +213,19 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         EntradaAtributo item = new EntradaAtributo();
 
-        Atributos atributo = new Atributos();                   
-        atributo.setIdAtributo(jcAnalise.getSelectedIndex());
+        Atributos atributo = new Atributos();
+        atributo.setIdAtributo((jcAnalise.getSelectedIndex())+1);
         item.setValor(tfValor.getText());
         item.setAtributo(atributo);
-        
-        
+
         ColetaLeite coleta = new ColetaLeite();
         coleta.setIdColetaLeite(idEntrada);
         item.setColetaLeite_idColetaLeite(coleta);
 
+        if (tfId != null && tfId.getText().length()>1) {                                                 //verifica se há alguma linha selecionada na tabela. Se sim, o substitui.
+            item.setId(Integer.parseInt(tfId.getText()));
+        }
+        
         ControleEntregaAtributo controle = new ControleEntregaAtributo();
         try {
             controle.salvar(item);
@@ -223,24 +237,25 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
 
     private void tblClassificacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClassificacaoMouseClicked
         tblClassificacao.getSelectedRow();
-        jcAnalise.setSelectedItem(String.valueOf(tabela.getValueAt(tblClassificacao.getSelectedRow(), 1)));
-        tfValor.setText(String.valueOf(tabela.getValueAt(tblClassificacao.getSelectedRow(), 2)));
-        
-        
+        tfId.setText(String.valueOf(tabela.getValueAt(tblClassificacao.getSelectedRow(), 0)));              //Este campo de texto não está visível 
+        jcAnalise.setSelectedItem(String.valueOf(tabela.getValueAt(tblClassificacao.getSelectedRow(), 2)));
+        tfValor.setText(String.valueOf(tabela.getValueAt(tblClassificacao.getSelectedRow(), 3)));
+
     }//GEN-LAST:event_tblClassificacaoMouseClicked
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-//        ControleEntregaAtributo controle = new ControleEntregaAtributo();
-//        controle.excluir(item);
-        
-  
-
-
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        tfId.setText(null);
+        jcAnalise.setSelectedItem(null);
+        tfValor.setText("");
         tabela.updateRow();
-    }//GEN-LAST:event_btnExcluirActionPerformed
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
@@ -249,6 +264,7 @@ public class TelaClassificacaoLeiteView extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jcAnalise;
     private javax.swing.JTable tblClassificacao;
+    private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfValor;
     // End of variables declaration//GEN-END:variables
 }

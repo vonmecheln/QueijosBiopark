@@ -24,7 +24,7 @@ public class TableClassificacao extends AbstractTableModel {
 
     List<EntradaAtributo> entrada;
 
-    private String[] nomeColunas = {"Lote", "Tipo de Observação", "Resultado"};
+    private String[] nomeColunas = {"idEntradaAtributo", "Lote", "Tipo de Observação", "Resultado"};
     private int idEntrada;
     
     public TableClassificacao(int idEntrada) {
@@ -57,10 +57,12 @@ public class TableClassificacao extends AbstractTableModel {
         switch (coluna) {
             
             case 0:
-                return entrada.get(linha).getColetaLeite_idColetaLeite().getLoteColeta();
+                return entrada.get(linha).getIdEntregaAtributo();          //idEntradaAtributo  getEntradaAtributo().            
             case 1:
+                return entrada.get(linha).getColetaLeite_idColetaLeite().getLoteColeta();
+            case 2:
                 return entrada.get(linha).getAtributo().getNomeAtributo();
-            case 2: 
+            case 3: 
                 return entrada.get(linha).getValor();
         }
 

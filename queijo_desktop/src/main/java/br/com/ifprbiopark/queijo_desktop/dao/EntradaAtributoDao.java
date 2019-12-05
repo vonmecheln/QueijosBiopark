@@ -67,12 +67,12 @@ public class EntradaAtributoDao extends AbstractDao<EntradaAtributo> {
             ResultSet consulta = nps.executeQuery();
             while (consulta.next()) {
                 EntradaAtributo entrada = new EntradaAtributo();
+                entrada.setIdEntregaAtributo(consulta.getInt("idEntradaAtributo"));
                 ControleColetaLeite coleta = new ControleColetaLeite();
                 entrada.setColetaLeite_idColetaLeite(coleta.consultar(consulta.getInt("coleta_id")));
                 ControleAtributos atributo = new ControleAtributos();
                 entrada.setAtributo(atributo.consultar(consulta.getInt("atributo_id")));
                 entrada.setValor(consulta.getString("valor"));
-
 
                 retornoEntrada.add(entrada);
 
